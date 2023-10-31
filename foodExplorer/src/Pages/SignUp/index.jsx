@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import './styles.css'
+import { Container } from './styles';
 
 export function SignUp() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <h1> . . .. . .. .  food Explorer  . . .. . .. . </h1>
-    </>
+    <Container>
+      <h1> Sapato Caramelizado</h1>
+      
+    </Container>
+    
   )
 }
