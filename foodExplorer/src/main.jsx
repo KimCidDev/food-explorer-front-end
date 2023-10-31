@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './Pages/SignIn/SignIn.jsx'
+import { SignUp } from './Pages/SignUp/SignUp.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <SignUp/>
   </React.StrictMode>,
 )
