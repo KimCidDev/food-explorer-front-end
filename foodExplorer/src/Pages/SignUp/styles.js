@@ -1,42 +1,35 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
   height: 100vh;
+  width: 100%;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_100};
+  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+
+  > .logo {
+    display: flex;
+    align-items: center;
+    padding-top: 160px;
+
+    h1 {
+      margin-left: 10px;
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      font-family: 'Roboto Slab', serif;
+    }
+  }
 `;
 
 export const Form = styled.div`
   width: 100%;
   height: 100vh;
-
+  
+  padding-top: 75px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
-  > h1 {
-    margin-left: 16px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_400};
-    font-family: 'Roboto Slab', serif;
-  }
-
-  > p {
-    margin-top: 24px;
-    margin-bottom: 8px;
-  }
-
-  > input {
-    max-width: 350px;
-    height: 32px;
-    
-    background-color: ${({ theme }) => theme.COLORS.LIGHT_400};
-    border: none;
-    border-radius: 10px;
-  }
 `;
