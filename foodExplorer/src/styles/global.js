@@ -10,5 +10,10 @@ export default createGlobalStyle`
   body {
     width: 100%;
   }
+
+  p, span {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 14px;
+  }
   
 `;

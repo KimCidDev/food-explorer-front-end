@@ -8,12 +8,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  padding-top: 80px;
+
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   > .logo {
     display: flex;
     align-items: center;
-    padding-top: 160px;
+    //padding-top: 160px;
 
     h1 {
       margin-left: 10px;
@@ -26,9 +28,9 @@ export const Container = styled.div`
 export const Form = styled.div`
   width: 100%;
   height: 100vh;
-  
+
   padding-top: 75px;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;

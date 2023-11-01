@@ -1,9 +1,11 @@
 import { Container } from './styles'
 
-export function Button ({title, ...rest}) {
+export function ButtonText ({title, ...rest}) {
   return (
     <Container {...rest}>
-      {title}
+      <span>
+        {title}
+      </span>
     </Container>
   )
 }

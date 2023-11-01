@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { SignUp } from './Pages/SignUp'
+import { SignUp } from './pages/SignUp'
 import { ThemeProvider } from 'styled-components'
 
 import theme from './styles/theme'
