@@ -17,9 +17,9 @@ export function SignUp() {
     <Form>
 
     
-      <Input title="Seu Nome"placeholder="testtext"/>
-      <Input title="Email"placeholder="testtext"/>
-      <Input title="Senha"placeholder="testtext"/>
+      <Input title="Seu Nome"placeholder="Ex.: Josh Homme"/>
+      <Input title="Email"placeholder="Ex.: something@thatmail.com"/>
+      <Input title="Senha"placeholder="Six digits or more"/>
 
 
     </Form>
