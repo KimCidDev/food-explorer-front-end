@@ -18,7 +18,7 @@ export const Container = styled.div`
     h1 {
       margin-left: 10px;
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
-      font-family: 'Roboto Slab', serif;
+      font-family: 'Roboto Slab', sans-serif;
     }
   }
 `;

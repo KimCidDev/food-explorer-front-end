@@ -9,15 +9,18 @@ export const Container = styled.div`
   }
 
   > input {
-    width: 100%;
+    width: 315px;
     height: 48px;
     margin-bottom: 32px;
-    
+
     border-radius: 8px;
     border: none;
 
+    background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
     &::placeholder {
       padding-left: 14px;
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
     }
   }
 `;
