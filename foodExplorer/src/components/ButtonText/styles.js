@@ -6,13 +6,12 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: center;
-
-  padding-top: 32px;
-  padding-bottom: 32px;
+  align-items: center;
 
   > span {
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     font-weight: bold;
+    font-size: 14px;
 
     cursor: pointer;
   }
