@@ -7,21 +7,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 
-  padding-top: 80px;
+  padding-top: 90px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-  > .logo {
-    display: flex;
-    align-items: center;
-    //padding-top: 160px;
-
-    h1 {
-      margin-left: 10px;
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
-      font-family: 'Roboto Slab', sans-serif;
-    }
+  > div {
+    margin-bottom: 75px;
   }
 `;
 
@@ -29,9 +22,10 @@ export const Form = styled.div`
   width: 100%;
   height: 100vh;
 
-  padding-top: 75px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 32px; 
+
+  padding: 0 60px;
 `;
