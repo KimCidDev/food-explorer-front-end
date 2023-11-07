@@ -6,7 +6,7 @@ import { Card } from '../../components/Card';
 import { BsSearch, BsXLg } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
 
-import macaroon from '../../assets/macroon-promo-pic.png';
+import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
 
