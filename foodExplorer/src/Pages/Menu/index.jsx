@@ -15,12 +15,14 @@ export function Menu () {
       <Header icon={BsXLg}>    
         <h1>Menu</h1>
       </Header>
-
+      <div className="itemSearchBox">
       <Input
-        placeholder="Name"
+        placeholder="Procure pelo prato ou ingrediente desejado"
         type="text"
         icon={BsSearch}
       />
+      <h2>Sair</h2>
+      </div>
 
       <Footer icon={PiCopyright}/>
     </Container>
