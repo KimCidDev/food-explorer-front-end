@@ -3,7 +3,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Card } from '../../components/Card';
 
-import { BsSearch, BsXLg } from 'react-icons/bs';
+import { BsXLg } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
 
 import macaroon from '../../assets/macaroon-promo-pic.png';
@@ -24,16 +24,12 @@ export function Home () {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut aperiam praesentium nesciunt corporis dolorum quaerat.</p>
         </div>
       </div>
-
-      <div className="itemSearchBox">
-        
-        <Card>
-
-        </Card>
-
-      </div>
+      
+      <Card 
+      recipe="Hobbit Salad"
+      description="beets, lettuce iceberg, parmesan, grape tomato"/>
 
       <Footer icon={PiCopyright}/>
-    </ Container>
+    </Container>
   )
 } 

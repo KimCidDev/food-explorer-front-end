@@ -2,25 +2,26 @@ import { Container } from './styles'
 
 import { Button } from '../../components/Button'
 
-import { BsSearch, BsXLg } from 'react-icons/bs';
-import { PiCopyright } from 'react-icons/pi';
+import { BsStar, BsStarFill, BsPlusLg,  } from 'react-icons/bs';
+import { BiMinus } from 'react-icons/bi';
 
 import Salada from '../../assets/greenSalad.png'
 
-export function Card ({title, price, ...rest}) {
+export function Card ({recipe, description, ...rest}) {
   return (
     <Container {...rest}>
-      <BsSearch/>
-      {Salada}
-      {title}
-      {price}
+      <BsStar/>
+      <img src={Salada} alt="lettuce iceberg, beets, arugula, tomato" />
+      <h2>{recipe}</h2>
+      <p>{description}</p>
+      <div className="sendAmount">
       <div className="howManyBox">
-        <PiCopyright/>
-        <p>1</p>
-        <PiCopyright/>
+        <BiMinus/>
+        <p>01</p>
+        <BsPlusLg/>
       </div>
-      {BsXLg}
-      <Button title="Adicionar" />
+      </div>
+     <Button title="Entrar" />
     </Container>
   )
 }
