@@ -10,10 +10,9 @@ import Salada from '../../assets/greenSalad.png'
 export function Card ({recipe, description, ...rest}) {
   return (
     <Container {...rest}>
-      <BsStar/>
+      <BsStar id="save"/>
       <img src={Salada} alt="lettuce iceberg, beets, arugula, tomato" />
       <h2>{recipe}</h2>
-      <p>{description}</p>
       <div className="sendAmount">
       <div className="howManyBox">
         <BiMinus/>

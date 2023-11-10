@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100vh;
+  max-width: 210px;
+  height: 290px;
   
   display: flex;
   position: relative;
@@ -11,12 +11,18 @@ export const Container = styled.div`
   justify-content: center;
 
   padding: 25px;
+  gap: 12px;
 
   background-color: ${({theme}) => theme.COLORS.DARK_200};
   
-  svg:first-child {
+  #save {
     position: absolute;
-   
+    top: 0;
+    right: 0;
+
+    margin: 15px;
+
+    font-size: 22px;
   }
 
   h2, p, svg {
@@ -24,11 +30,18 @@ export const Container = styled.div`
   }
 
   .sendAmount .howManyBox p {
-    color: ${({ theme }) => theme.COLORS.TINT_CAKE_200}
+    color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
+    font-size: 16px;
   }
 
   .howManyBox {   
     display: flex;
+    align-items: center;
+
+    gap: 4px;
+    font-size: 22px;
+
+
   }
 
   img {
