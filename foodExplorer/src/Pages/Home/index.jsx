@@ -9,7 +9,6 @@ import { PiCopyright } from 'react-icons/pi';
 import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
-
 export function Home () {
 
   return (
@@ -21,13 +20,19 @@ export function Home () {
         <img src={macaroon} alt="" />
         <div className="textContent">
         <h2>Sabores Inigualáveis</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut aperiam praesentium nesciunt corporis dolorum quaerat.</p>
+        <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
         </div>
       </div>
-      
+
+      <div className="sectionMenu">      
       <Card 
       recipe="Hobbit Salad"
       description="beets, lettuce iceberg, parmesan, grape tomato"/>
+      <Card 
+      recipe="Hobbit Salad"
+      description="beets, lettuce iceberg, parmesan, grape tomato"/>
+      </div>
+
 
       <Footer icon={PiCopyright}/>
     </Container>

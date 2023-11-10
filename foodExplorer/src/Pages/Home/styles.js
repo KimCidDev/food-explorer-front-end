@@ -11,21 +11,41 @@ export const Container = styled.div`
 
   > .banner {
     height: 120px;
-    width: 100%;
+    max-width: 560px;
 
     display: flex;
+    align-items: center;
+    background: linear-gradient(#091E26, #00131C);
+
+    margin: 0 25px;
+    border-radius: 3px;
+
+    img {
+      height: 145px;
+    }
 
     .textContent {
+      widht: 100%;
+
       h2 {
         color: white;
+        font-size: 18px;
+        font-weight: bold;
       }
+
       p {
         color: white;
+        font-size: 12px;
       }
     }
   }
 
-  > .itemSearchBox {
-    padding: 0 30px;
+  > .sectionMenu {
+    display: flex;
+    gap: 16px;
+  }
+
+  > .sectionMenu div button {
+    height: 32px;
   }
 `;

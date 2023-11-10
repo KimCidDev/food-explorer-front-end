@@ -40,8 +40,6 @@ export const Container = styled.div`
 
     gap: 4px;
     font-size: 22px;
-
-
   }
 
   img {
