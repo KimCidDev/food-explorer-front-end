@@ -6,8 +6,24 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
+
+  > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .logo h1 {
+      font-size: 21px;
+    }
+
+    .logo svg {
+      height: 21px;
+    }
+  }
 
   > .banner {
     height: 120px;
@@ -15,7 +31,7 @@ export const Container = styled.div`
 
     display: flex;
     align-items: center;
-    background: linear-gradient(#091E26, #00131C);
+    background: linear-gradient(#091e26, #00131c);
 
     margin: 0 25px;
     border-radius: 3px;
@@ -25,7 +41,7 @@ export const Container = styled.div`
     }
 
     .textContent {
-      widht: 100%;
+      width: 100%;
 
       h2 {
         color: white;
@@ -38,6 +54,11 @@ export const Container = styled.div`
         font-size: 12px;
       }
     }
+  }
+
+  > .section h1 {
+    color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    margin-top: 30px;
   }
 
   > .sectionMenu {
