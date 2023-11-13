@@ -5,7 +5,7 @@ import { Card } from '../../components/Card';
 import { Section } from '../../components/Section';
 import { Logo } from '../../components/Logo';
 
-import { BsXLg } from 'react-icons/bs';
+import { AiOutlineMenu } from 'react-icons/ai';
 import { PiCopyright } from 'react-icons/pi';
 import { GiMailbox } from 'react-icons/gi';
 
@@ -20,7 +20,7 @@ export function Home () {
 
   return (
     <Container>
-      <Header icon={BsXLg}>
+      <Header icon={AiOutlineMenu}>
         <Logo />
 
         <GiMailbox />

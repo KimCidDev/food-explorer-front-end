@@ -8,5 +8,6 @@ export const Container = styled.div`
     margin-left: 10px;
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
     font-family: 'Roboto Slab', sans-serif;
+    letter-spacing: -1px;
   }
 `;
