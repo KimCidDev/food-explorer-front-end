@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  min-width: 120px;
   max-width: 210px;
   height: 290px;
-  
+
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   padding: 25px;
   gap: 12px;
 
-  background-color: ${({theme}) => theme.COLORS.DARK_200};
-  
+  background-color: ${({ theme }) => theme.COLORS.DARK_200};
+
   #save {
     position: absolute;
     top: 0;
@@ -25,8 +26,9 @@ export const Container = styled.div`
     font-size: 22px;
   }
 
-  h2, p, svg {
-    color: ${({ theme }) => theme.COLORS.LIGHT_200}
+  h2 {
+    width: 100%;
+    text-align: center;
   }
 
   .sendAmount .howManyBox p {
@@ -34,11 +36,13 @@ export const Container = styled.div`
     font-size: 16px;
   }
 
-  .howManyBox {   
+  .howManyBox {
     display: flex;
     align-items: center;
 
-    gap: 4px;
+    padding: 5px 0;
+
+    gap: 14px;
     font-size: 22px;
   }
 
@@ -46,4 +50,7 @@ export const Container = styled.div`
     height: 88px;
   }
 
+  button {
+    height: 30px;
+  }
 `;

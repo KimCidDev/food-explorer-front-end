@@ -4,8 +4,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  padding: 24px 24px 0 24px;
+
   h1 {
-    padding-left: 24px;
+    //padding-left: 24px;
 
     color: ${({ theme }) => theme.COLORS.LIGTH_300};
     font-family: 'Poppins';
@@ -16,7 +18,8 @@ export const Container = styled.div`
 
   .childrenBox {
     display: flex;
+    gap: 16px;
 
-    padding-left: 24px;
+    margin-top: 14px;
   }
 `;

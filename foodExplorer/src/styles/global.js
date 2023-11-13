@@ -16,4 +16,14 @@ export default createGlobalStyle`
     font-size: 14px;
   }
   
+  h2 {
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+
+  h2, p, svg {
+    color: ${({ theme }) => theme.COLORS.LIGHT_200};
+  }
+
 `;

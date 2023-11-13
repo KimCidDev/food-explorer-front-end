@@ -2,19 +2,21 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
-  
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   > div:first-child {
+    max-width: 500px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    padding: 0 40px;
 
     .logo h1 {
       font-size: 21px;
@@ -38,6 +40,8 @@ export const Container = styled.div`
 
     img {
       height: 145px;
+      margin-bottom: 25px;
+      margin-left: -25px;
     }
 
     .textContent {
@@ -45,8 +49,9 @@ export const Container = styled.div`
 
       h2 {
         color: white;
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: normal;
+        white-space: nowrap;
       }
 
       p {
@@ -58,12 +63,6 @@ export const Container = styled.div`
 
   > .section h1 {
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
-    margin-top: 30px;
-  }
-
-  > .sectionMenu {
-    display: flex;
-    gap: 16px;
   }
 
   > .sectionMenu div button {
