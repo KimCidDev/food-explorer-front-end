@@ -11,6 +11,7 @@ export function Card ({recipe, description, prato, ...rest}) {
       <BsStar id="save"/>
       <img src={prato} alt="lettuce iceberg, beets, arugula, tomato" />
       <h2>{recipe}</h2>
+      { description && <p>{description}</p>}
       <div className="sendAmount">
       <div className="howManyBox">
         <BiMinus/>

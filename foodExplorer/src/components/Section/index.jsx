@@ -1,10 +1,10 @@
 import { Container } from './styles'
 
-export function Section ({children, title, ...rest}) {
+export function Section ({children, icon: Icon, title, ...rest}) {
   return (
     <Container {...rest} className='section'>
       
-      <h1>{title}</h1>
+      <h1>{ Icon && <Icon size={18} />}{title}</h1>
       <div className='childrenBox'>
       {children}
       </div>
