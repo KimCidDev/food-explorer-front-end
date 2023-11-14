@@ -7,8 +7,6 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   > div:first-child {
-    max-width: 500px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,21 +37,35 @@ export const Container = styled.div`
 
   }
 
-  > .section .childrenBox div {
+  > .section .childrenBox {
+    display: flex;
+    justify-content: center;
 
-    max-width: 100%;
-    max-height: 100vh;
-    width: 100%;
     height: 100vh;
 
+    overflow-y: auto;
+  }
+
+
+  > .section .childrenBox div {
+    padding-top: 0;
+
+    background-color: ${({ theme}) => theme.COLORS.DARK_400}
   }
 
   > .section .childrenBox div img {
-    height: 265px;
+    height: 165px;
+  }
+
+  > .section .childrenBox div #save {
+    display: none;
+    height: 0;
+    width: 0;
   }
 
   > .section .childrenBox div h2 {
-    font-size: 40px;
+    font-size: 27px;
+    white-space: nowrap;
   }
 `;
 

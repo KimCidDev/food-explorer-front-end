@@ -37,12 +37,10 @@ export function Home () {
       <Section title="Saladas" className="sectionMenu" >
       <Card 
       recipe="Hobbit Salad"
-      description="beets, lettuce iceberg, parmesan, grape tomato"
       prato={greenSalad1}
       />
       <Card 
       recipe="Zuchinni Salad"
-      description="beets, lettuce iceberg, parmesan, grape tomato"
       prato={greenSalad2}
       />
      </Section>
@@ -50,12 +48,10 @@ export function Home () {
      <Section title="Pratos Principais" className="sectionMenu" >
       <Card 
       recipe="Pork Steak"
-      description="beets, lettuce iceberg, parmesan, grape tomato"
       prato={meal1}
       />
       <Card 
       recipe="Shirmp Pasta"
-      description="beets, lettuce iceberg, parmesan, grape tomato"
       prato={meal2}
       />
      </Section>
