@@ -4,6 +4,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
 
+  overflow-y: auto;
+
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   > div:first-child {
@@ -22,53 +24,69 @@ export const Container = styled.div`
     }
   }
 
-  .section {
-    padding-top: 0;
-  }
-
-  > .section h1 {
-    color: ${({ theme }) => theme.COLORS.LIGHT_200};
-    display: flex;
-    align-items: center;
-    
-    svg {
-      font-size: 12px;
-    }
-
+  > .section {
+    padding: 0 56px;
   }
 
   > .section .childrenBox {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
-    height: 100vh;
+    height: 100%;
+  }
 
-    overflow-y: auto;
+  > .section img {
+    height: 245px;
+    width: 245px;
   }
 
 
-  > .section .childrenBox div {
-    padding-top: 0;
+> .section h1 {
+  color: ${({ theme }) => theme.COLORS.LIGHT_200};
+  font-size: 27px;
+  display: flex;
+  align-items: center;
 
-    background-color: ${({ theme}) => theme.COLORS.DARK_400}
+  svg {
+    font-size: 12px;
+  }
+}
+
+> .section p {
+  text-align: center;
+}
+
+ > .section .tagsSection {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 450px;
+    flex-wrap: wrap;
+
   }
 
-  > .section .childrenBox div img {
-    height: 165px;
-  }
+ > .section .addToBasket {      
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin-top: 24px;
 
-  > .section .childrenBox div #save {
-    display: none;
-    height: 0;
-    width: 0;
-  }
+    > .howManyBox {
+      display: flex;
+      gap: 15px;
+      margin-right: 16px;
 
-  > .section .childrenBox div h2 {
-    font-size: 27px;
-    white-space: nowrap;
+      svg, p {
+        font-size: 22px;
+      }
+    }
+
+    > button {
+      max-width: auto;
+    }
+
   }
 `;
-
-
-
-      // add buttonText component, add tag component, add tag property to Card component

@@ -19,7 +19,7 @@ export const Container = styled.div`
 
   .childrenBox {
     display: flex;
-    gap: 16px;
+    gap: 24px;
 
     margin-top: 14px;
   }

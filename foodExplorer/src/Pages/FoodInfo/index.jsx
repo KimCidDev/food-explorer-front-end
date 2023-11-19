@@ -1,20 +1,19 @@
 import { Container } from './styles';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { Card } from '../../components/Card';
+import { Button } from '../../components/Button';
 import { Section } from '../../components/Section';
 import { Logo } from '../../components/Logo';
+import { Tag } from '../../components/Tag';
 
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { PiCopyright } from 'react-icons/pi';
 import { GiMailbox } from 'react-icons/gi';
+import { BiMinus } from 'react-icons/bi';
+import { BsPlusLg } from 'react-icons/bs';
 
-import macaroon from '../../assets/macaroon-promo-pic.png';
 import greenSalad1 from '../../assets/greenSalad1.png';
-import greenSalad2 from '../../assets/greenSalad2.png';
-import meal1 from '../../assets/meal1.png';
-import meal2 from '../../assets/meal2.png';
 
 
 export function FoodInfo () {
@@ -29,14 +28,29 @@ export function FoodInfo () {
       <Section
       icon={AiOutlineLeft}
       title="voltar" 
-      className="sectionMenu"
        >
-      <Card 
-      recipe="Hobbit Salad"
-      description="beets, lettuce iceberg, parmesan, grape tomato"
-      prato={greenSalad1}
-      />
+      <img src={greenSalad1} alt="Ravanello Salad view from the top" />
+      <h1>Salada Ravanello</h1>
+      <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
+      <div className="tagsSection">
+      <Tag title="alface"/>
+      <Tag title="cebola"/>
+      <Tag title="pão naan"/>
+      <Tag title="pepino"/>
+      <Tag title="tomate"/>
+      <Tag title="rabanete"/>
+      </div>
+      <div className="addToBasket">
+      <div className="howManyBox">
+        <BiMinus/>
+        <p>01</p>
+        <BsPlusLg/>
+      </div>      
+     <Button title="Incluir" />
+     </div>
      </Section>
+
+     
       <Footer icon={PiCopyright}/>
     </Container>
   )
