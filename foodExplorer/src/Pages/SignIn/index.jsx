@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Container, Form } from './styles';
+
+import { Logo } from '../../components/Logo';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
-import { Logo } from '../../components/Logo';
+
 
 export function SignIn() {
   const [count, setCount] = useState(0)

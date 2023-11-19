@@ -1,19 +1,19 @@
 import { Container } from './styles';
+import { Card } from '../../components/Card';
+import { Logo } from '../../components/Logo';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { Card } from '../../components/Card';
 import { Section } from '../../components/Section';
-import { Logo } from '../../components/Logo';
 
-import { AiOutlineMenu } from 'react-icons/ai';
-import { PiCopyright } from 'react-icons/pi';
 import { GiMailbox } from 'react-icons/gi';
+import { PiCopyright } from 'react-icons/pi';
+import { AiOutlineMenu } from 'react-icons/ai';
 
-import macaroon from '../../assets/macaroon-promo-pic.png';
-import greenSalad1 from '../../assets/greenSalad1.png';
-import greenSalad2 from '../../assets/greenSalad2.png';
 import meal1 from '../../assets/meal1.png';
 import meal2 from '../../assets/meal2.png';
+import greenSalad1 from '../../assets/greenSalad1.png';
+import greenSalad2 from '../../assets/greenSalad2.png';
+import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
 export function Home () {

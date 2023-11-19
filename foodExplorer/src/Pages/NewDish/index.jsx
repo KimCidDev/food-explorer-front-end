@@ -1,6 +1,7 @@
 import { Container } from './styles';
 import { Tag } from '../../components/Tag';
 import { Logo } from '../../components/Logo';
+import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
@@ -16,7 +17,7 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import greenSalad1 from '../../assets/greenSalad1.png';
 
 
-export function FoodInfo () {
+export function NewDish () {
 
   return (
     <Container>
@@ -29,26 +30,13 @@ export function FoodInfo () {
       icon={AiOutlineLeft}
       title="voltar" 
        >
-      <img src={greenSalad1} alt="Ravanello Salad view from the top" />
-      <h1>Salada Ravanello</h1>
-      <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-      <div className="tagsSection">
-      <Tag title="alface"/>
-      <Tag title="cebola"/>
-      <Tag title="pão naan"/>
-      <Tag title="pepino"/>
-      <Tag title="tomate"/>
-      <Tag title="rabanete"/>
-      </div>
-      <div className="addToBasket">
-      <div className="howManyBox">
-        <BiMinus/>
-        <p>01</p>
-        <BsPlusLg/>
-      </div>      
-     <Button title="Incluir" />
-     </div>
-     </Section>
+
+        <h1> Novo prato</h1>
+        <form action="">
+
+        </form>
+      <Button title="Incluir" />
+      </Section>
 
      
       <Footer icon={PiCopyright}/>

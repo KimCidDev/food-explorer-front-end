@@ -1,11 +1,10 @@
 import { Container } from './styles';
-import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
+import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 
-import { BsSearch, BsXLg } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
-
+import { BsSearch, BsXLg } from 'react-icons/bs';
 
 
 export function Menu () {
