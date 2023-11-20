@@ -29,7 +29,7 @@ export const Container = styled.div`
   > .section .childrenBox {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
 
     height: 100%;
 
@@ -41,6 +41,10 @@ export const Container = styled.div`
   > .section h1 {
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
     font-size: 27px;
-    display: flex;
   }
+
+  > .section .childrenBox h1 {
+    color: red;
+  }
+
 `;
