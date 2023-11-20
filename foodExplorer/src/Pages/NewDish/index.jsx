@@ -33,7 +33,18 @@ export function NewDish () {
 
         <h1> Novo prato</h1>
         <form action="">
-
+        <Input title="Imagem do Prato" />
+        <Input title="Nome do Prato" />
+        <Input title="Categoria" />
+        <div>
+          <Input title="Ingredientes" />
+        </div>
+        <Input title="Preço" />
+        <h3>Description</h3>
+        <div className="description">
+        <textarea name="" id="" cols="30" rows="10">
+        </textarea>
+        </div>
         </form>
       <Button title="Incluir" />
       </Section>
