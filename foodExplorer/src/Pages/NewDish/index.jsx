@@ -6,6 +6,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { Section } from '../../components/Section';
+import { Select } from '../../components/Select';
 
 import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
@@ -33,16 +34,22 @@ export function NewDish () {
 
         <h1> Novo prato</h1>
         <form action="">
-        <Input title="Imagem do Prato" />
-        <Input title="Nome do Prato" />
-        <Input title="Categoria" />
+        <Input 
+        title="Imagem do Prato"
+        type="file" />
+        <Input 
+        title="Nome do Prato"
+        placeholder="Ex.: Salada Caesar" />
+        <Select />
         <div>
           <Input title="Ingredientes" />
         </div>
-        <Input title="Preço" />
+        <Input 
+        title="Preço"
+        placeholder="R$ 00,00" />
         <h3>Description</h3>
         <div className="description">
-        <textarea name="" id="" cols="30" rows="10">
+        <textarea name="" id="" cols="30" rows="4" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição">
         </textarea>
         </div>
         </form>

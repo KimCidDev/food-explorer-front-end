@@ -42,6 +42,12 @@ export const Container = styled.div`
 
     height: 100%;
 
+    > form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
     > button {
       max-width: auto;
     }
@@ -53,7 +59,7 @@ export const Container = styled.div`
   }
 
   > .section .childrenBox h1 {
-    color: red;
+    color: ${({ theme }) => theme.COLORS.LIGHT_200};
   }
 
   > .section .childrenBox h3 {
@@ -62,12 +68,19 @@ export const Container = styled.div`
     font-weight: normal;
     margin-top: 8px;
   }
+  
+  > .section .childrenBox div p {
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+  }
+
+  > .section .childrenBox input:nth-child(0) {
+    background-color: red;
+  }
 
   > .section .childrenBox .description {
     width: 100%;
     height: 172px;
     
-    margin-top: 16px;
     border-radius: 8px;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
@@ -82,6 +95,7 @@ export const Container = styled.div`
       background-color: transparent;
 
       &::placeholder {
+        padding-top: 14px;
         padding-left: 14px;
         color: ${({ theme }) => theme.COLORS.LIGHT_500};
       }
