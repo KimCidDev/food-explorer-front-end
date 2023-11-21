@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  
+  overflow-y: auto;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
@@ -24,7 +26,7 @@ export const Container = styled.div`
 
   > .section {
     padding: 0 24px;
-    
+
     margin-bottom: 8px;
 
     > h1:first-child {
@@ -36,9 +38,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-    
+
     gap: 18px;
-    overflow-y: auto;
 
     height: 100%;
 
@@ -63,24 +64,27 @@ export const Container = styled.div`
   }
 
   > .section .childrenBox h3 {
-    color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
     font-size: 14px;
     font-weight: normal;
     margin-top: 8px;
   }
-  
+
   > .section .childrenBox div p {
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
 
-  > .section .childrenBox input:nth-child(0) {
-    background-color: red;
+  > .section .childrenBox input {
+    width: 100%;
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
   }
 
   > .section .childrenBox .description {
     width: 100%;
-    height: 172px;
-    
+    height: 120px;
+
+    margin-top: -18px;
+
     border-radius: 8px;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
