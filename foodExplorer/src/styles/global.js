@@ -16,7 +16,7 @@ export default createGlobalStyle`
     font-size: 14px;
   }
   
-  h2 {
+  h1, h2, h3 {
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     font-weight: 400;

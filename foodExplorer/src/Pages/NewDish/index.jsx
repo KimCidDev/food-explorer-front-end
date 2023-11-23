@@ -40,7 +40,8 @@ export function NewDish () {
         <Input 
         title="Nome do Prato"
         placeholder="Ex.: Salada Caesar" />
-        <Select />
+        <Select
+        title="Categoria" />
         <div>
           <Input title="Ingredientes" />
         </div>
