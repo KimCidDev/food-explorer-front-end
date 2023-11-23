@@ -8,11 +8,9 @@ export const Container = styled.div`
   padding: 24px 24px 0 24px;
 
   h1 {
-    //padding-left: 24px;
-
     color: ${({ theme }) => theme.COLORS.LIGTH_300};
     font-family: 'Poppins';
-    font-size: 18px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 500;
   }

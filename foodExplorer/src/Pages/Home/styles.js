@@ -6,6 +6,8 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  
+  padding-bottom: 90px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 

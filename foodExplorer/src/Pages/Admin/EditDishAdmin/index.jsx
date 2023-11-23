@@ -1,12 +1,12 @@
 import { Container } from './styles';
-import { Tag } from '../../components/Tag';
-import { Logo } from '../../components/Logo';
-import { Input } from '../../components/Input';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { Button } from '../../components/Button';
-import { Section } from '../../components/Section';
-import { Select } from '../../components/Select';
+import { Tag } from '../../../components/Tag';
+import { Logo } from '../../../components/Logo';
+import { Input } from '../../../components/Input';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { Button } from '../../../components/Button';
+import { Section } from '../../../components/Section';
+import { Select } from '../../../components/Select';
 
 import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
@@ -16,10 +16,10 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { MdOutlineFileDownload } from "react-icons/md";
 
-import greenSalad1 from '../../assets/greenSalad1.png';
+import greenSalad1 from '../../../assets/greenSalad1.png';
 
 
-export function NewDish () {
+export function EditDishAdmin () {
 
   return (
     <Container>
@@ -33,7 +33,7 @@ export function NewDish () {
       title="voltar" 
        >
 
-        <h1>Novo prato</h1>
+        <h1>Editar Prato</h1>
         <form action="">
         <div className="dishImg">
         <Input 
@@ -71,7 +71,10 @@ export function NewDish () {
         </textarea>
         </div>
         </form>
-      <Button title="Incluir" />
+        <div className="buttonOptions">
+        <Button title="Excluir Prato" />
+        <Button title="Salvar Alterações" />
+        </div>
       </Section>
 
      

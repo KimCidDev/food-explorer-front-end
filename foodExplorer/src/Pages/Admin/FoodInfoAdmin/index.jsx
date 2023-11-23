@@ -1,10 +1,10 @@
 import { Container } from './styles';
-import { Tag } from '../../components/Tag';
-import { Logo } from '../../components/Logo';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { Button } from '../../components/Button';
-import { Section } from '../../components/Section';
+import { Tag } from '../../../components/Tag';
+import { Logo } from '../../../components/Logo';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { Button } from '../../../components/Button';
+import { Section } from '../../../components/Section';
 
 import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
@@ -13,10 +13,10 @@ import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
 
-import greenSalad1 from '../../assets/greenSalad1.png';
+import greenSalad1 from '../../../assets/greenSalad1.png';
 
 
-export function FoodInfo () {
+export function FoodInfoAdmin () {
 
   return (
     <Container>
