@@ -16,7 +16,7 @@ export const Container = styled.div`
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
     color: ${({ theme }) => theme.COLORS.GRAY_300};
 
-    border-radius: 10px;
+    border-radius: 8px;
 
     svg {
       margin-left: 16px;

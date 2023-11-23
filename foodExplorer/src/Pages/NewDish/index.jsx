@@ -14,6 +14,7 @@ import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
+import { MdOutlineFileDownload } from "react-icons/md";
 
 import greenSalad1 from '../../assets/greenSalad1.png';
 
@@ -34,16 +35,32 @@ export function NewDish () {
 
         <h1> Novo prato</h1>
         <form action="">
+        <div className="dishImg">
         <Input 
         title="Imagem do Prato"
-        type="file" />
+        type="file"
+        id="dishImg" 
+        />
+        <label for="dishImg">
+          <MdOutlineFileDownload />
+          <p>Selecione imagem</p>
+        </label>
+        </div>
         <Input 
         title="Nome do Prato"
-        placeholder="Ex.: Salada Caesar" />
+        placeholder="Ex.: Salada Caesar" 
+        />
         <Select
-        title="Categoria" />
-        <div>
-          <Input title="Ingredientes" />
+        title="Categoria" 
+        />
+        <h3>Ingredientes</h3>
+        <div className='tagBox'>
+          <Tag 
+          title="Sushi"
+          />
+          <Tag 
+          title="Seaweed"
+          />
         </div>
         <Input 
         title="Preço"

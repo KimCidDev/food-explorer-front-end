@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  
+  height: 100%;
+
+  padding-bottom: 77px;
+
   overflow-y: auto;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
@@ -37,7 +39,6 @@ export const Container = styled.div`
   > .section .childrenBox {
     display: flex;
     flex-direction: column;
-    align-items: left;
 
     gap: 18px;
 
@@ -67,7 +68,6 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
     font-size: 14px;
     font-weight: normal;
-    margin-top: 8px;
   }
 
   > .section .childrenBox div p {
@@ -77,6 +77,65 @@ export const Container = styled.div`
   > .section .childrenBox input {
     width: 100%;
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
+  }
+
+  > .section .childrenBox #dishImg {
+    height: 0;
+    width: 0;
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  > .section .childrenBox label {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      height: 50px;
+
+      padding: 0 14px;
+      gap: 8px;
+
+      border-radius: 8px;
+      border: none;
+
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
+      svg {
+        font-size: 21px;
+      }
+  }
+
+
+  > .section .childrenBox .tagBox {
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+
+    margin-top: -18px;
+    padding: 26px 14px;
+    gap: 16px;
+
+    background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+    border-radius: 8px;
+
+    > div {
+      height: 32px;
+      padding: 10px 16px;
+
+      margin: 12px 0;
+
+      border-radius: 10px;
+
+      background-color: ${({ theme }) => theme.COLORS.LIGHT_600};
+
+      p {
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      }
+    }
   }
 
   > .section .childrenBox .description {
@@ -102,6 +161,7 @@ export const Container = styled.div`
         padding-top: 14px;
         padding-left: 14px;
         color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        font-family: "Roboto";
       }
     }
   }

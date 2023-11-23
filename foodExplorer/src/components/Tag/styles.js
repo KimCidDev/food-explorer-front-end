@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   height: 24px;
 
   border: none;
@@ -16,6 +17,6 @@ export const Container = styled.div`
 
   > p {
     font-size: 15px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_200}
+    color: ${({ theme }) => theme.COLORS.LIGHT_200};
   }
-`
+`;
