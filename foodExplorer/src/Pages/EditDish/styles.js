@@ -49,10 +49,6 @@ export const Container = styled.div`
       flex-direction: column;
       gap: 24px;
     }
-
-    > button {
-      max-width: auto;
-    }
   }
 
   > .section h1 {
@@ -163,6 +159,19 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.LIGHT_500};
         font-family: "Roboto";
       }
+    }
+  }
+
+  .section .childrenBox .buttonOptions {
+    display: flex;
+    gap: 32px;
+
+    button {
+      background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+    }
+
+    button:first-child {
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
     }
   }
 `;

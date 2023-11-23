@@ -19,7 +19,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import greenSalad1 from '../../assets/greenSalad1.png';
 
 
-export function NewDish () {
+export function EditDish () {
 
   return (
     <Container>
@@ -33,7 +33,7 @@ export function NewDish () {
       title="voltar" 
        >
 
-        <h1>Novo prato</h1>
+        <h1>Editar Prato</h1>
         <form action="">
         <div className="dishImg">
         <Input 
@@ -71,7 +71,10 @@ export function NewDish () {
         </textarea>
         </div>
         </form>
-      <Button title="Incluir" />
+        <div className="buttonOptions">
+        <Button title="Excluir Prato" />
+        <Button title="Salvar Alterações" />
+        </div>
       </Section>
 
      
