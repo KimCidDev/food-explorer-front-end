@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
   width: 100%;
@@ -6,14 +7,12 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  
+
   padding-bottom: 90px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   > div:first-child {
-    max-width: 500px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,11 +26,22 @@ export const Container = styled.div`
     .logo svg {
       height: 21px;
     }
+
+    > .searchAndCart {
+      display: none;
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      > .searchAndCart {
+        display: flex;
+        width: 50%;
+        gap: 20px;
+      }
+    }
   }
 
   > .banner {
     height: 120px;
-    max-width: 560px;
 
     display: flex;
     align-items: center;

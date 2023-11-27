@@ -1,6 +1,7 @@
 import { Container } from './styles';
 import { Card } from '../../components/Card';
 import { Logo } from '../../components/Logo';
+import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
@@ -8,6 +9,7 @@ import { Section } from '../../components/Section';
 import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { TiShoppingCart } from "react-icons/ti";
 
 import meal1 from '../../assets/meal1.png';
 import meal2 from '../../assets/meal2.png';
@@ -22,7 +24,10 @@ export function Home () {
     <Container>
       <Header icon={AiOutlineMenu}>
         <Logo />
-
+        <div className="searchAndCart">
+          <input type="text" />
+          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+        </div>
         <GiMailbox />
       </Header>
 
