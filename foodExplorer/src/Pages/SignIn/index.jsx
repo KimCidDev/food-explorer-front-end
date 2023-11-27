@@ -16,7 +16,8 @@ export function SignIn() {
       <Logo />
 
     <Form>
-    
+      <h1>Faça Login</h1> 
+
       <Input 
       title="Email" 
       type='text' 

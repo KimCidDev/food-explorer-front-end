@@ -41,7 +41,7 @@ export function NewDishAdmin () {
         type="file"
         id="dishImg" 
         />
-        <label for="dishImg">
+        <label htmlFor="dishImg">
           <MdOutlineFileDownload />
           <p>Selecione imagem</p>
         </label>

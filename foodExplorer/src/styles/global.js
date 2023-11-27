@@ -1,10 +1,37 @@
 import { createGlobalStyle } from 'styled-components';
+import { DEVICE_BREAKPOINTS } from './deviceBreakpoints';
 
 export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  :root {
+    p {
+      //font-size: 16px;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+      body div {
+      //background-color: #330022;
+    }
+
+      p {
+        //font-size: 0.8rem;
+      }
+    }
+    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+      body div {
+      //background-color: blue;
+    }
+    }
+    @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
+      body div {
+      //background-color: purple;
+    }
+    }
   }
 
   body {
