@@ -15,7 +15,7 @@ export function SignUp() {
     <Logo />
 
     <Form>
-
+      <h1>Crie sua Conta</h1> 
     
       <Input title="Seu Nome" placeholder="Ex.: Josh Homme"/>
       <Input title="Email"placeholder="Ex.: something@thatmail.com"/>
