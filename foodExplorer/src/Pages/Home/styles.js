@@ -36,6 +36,25 @@ export const Container = styled.div`
         display: flex;
         width: 50%;
         gap: 20px;
+
+        input {
+          border-radius: 8px;
+          height: 32px;
+        }
+
+        button {
+          height: 32px;
+
+          padding: 0 10px;
+          
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px; 
+
+          font-weight: bold;
+          white-space:nowrap;
+        }
       }
     }
   }
@@ -51,13 +70,11 @@ export const Container = styled.div`
     border-radius: 3px;
 
     img {
-      height: 145px;
+      height: 165px;
       margin-bottom: 25px;
-      margin-left: -25px;
     }
 
     .textContent {
-      width: 100%;
 
       h2 {
         color: white;
@@ -70,6 +87,19 @@ export const Container = styled.div`
         color: white;
         font-size: 12px;
       }
+    }
+    
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      overflow: hidden;
+
+      img {
+        height: 295px;
+      }
+
     }
   }
 

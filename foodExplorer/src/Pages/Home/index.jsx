@@ -43,21 +43,29 @@ export function Home () {
       <Card 
       recipe="Hobbit Salad"
       prato={greenSalad1}
+      description="Green leafs, cucumber, radish and cauliflower salad"
+      price="R$ 38,45"
       />
       <Card 
       recipe="Zuchinni Salad"
       prato={greenSalad2}
+      description="Lettuce iceberd, cucumber, tomato, red onions"
+      price="R$ 27,95"
       />
      </Section>
 
      <Section title="Pratos Principais" className="sectionMenu" >
       <Card 
-      recipe="Pork Steak"
+      recipe="Pancetta Bruschetta"
       prato={meal1}
+      description="Whole wheat toast, butter, arugula, smoked pancetta"
+      price="R$ 29,95"
       />
       <Card 
       recipe="Shirmp Pasta"
       prato={meal2}
+      description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
+      price="R$ 45,50"
       />
      </Section>
 
