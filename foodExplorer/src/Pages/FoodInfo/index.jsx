@@ -30,6 +30,7 @@ export function FoodInfo () {
       title="voltar" 
        >
       <img src={greenSalad1} alt="Ravanello Salad view from the top" />
+      <div className="textContent">
       <h1>Salada Ravanello</h1>
       <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
       <div className="tagsSection">
@@ -47,6 +48,7 @@ export function FoodInfo () {
         <BsPlusLg/>
       </div>      
      <Button title="Incluir" />
+     </div>
      </div>
      </Section>
 

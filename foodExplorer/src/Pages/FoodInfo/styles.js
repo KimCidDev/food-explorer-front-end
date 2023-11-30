@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
 
   overflow-y: auto;
+
+  padding-bottom: 110px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
@@ -26,47 +29,63 @@ export const Container = styled.div`
 
   > .section {
     padding: 0 56px;
+
+    h1 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    }
   }
 
   > .section .childrenBox {
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    height: 100%;
+    img {
+      height: 245px;
+      width: 245px;
+    }
+
+    .textContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1 {
+        color: ${({ theme }) => theme.COLORS.LIGHT_200};
+        font-size: 27px;
+        display: flex;
+        align-items: center;
+
+        svg {
+          font-size: 12px;
+        }
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      flex-direction: row;
+
+      .textContent {
+        align-items: start;
+      }
+    }
   }
 
-  > .section img {
-    height: 245px;
-    width: 245px;
-  }
-
-
-> .section h1 {
-  color: ${({ theme }) => theme.COLORS.LIGHT_200};
-  font-size: 27px;
-  display: flex;
-  align-items: center;
-
-  svg {
-    font-size: 12px;
-  }
-}
-
-> .section p {
-  text-align: center;
-}
-
- > .section .tagsSection {
+  > .section .tagsSection {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     max-width: 450px;
     flex-wrap: wrap;
-
   }
 
- > .section .addToBasket {      
+  > .section .addToBasket {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -79,7 +98,8 @@ export const Container = styled.div`
       gap: 15px;
       margin-right: 16px;
 
-      svg, p {
+      svg,
+      p {
         font-size: 22px;
       }
     }
@@ -87,6 +107,5 @@ export const Container = styled.div`
     > button {
       max-width: auto;
     }
-
   }
 `;

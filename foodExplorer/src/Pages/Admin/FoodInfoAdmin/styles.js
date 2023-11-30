@@ -41,32 +41,30 @@ export const Container = styled.div`
     width: 245px;
   }
 
+  > .section h1 {
+    color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    font-size: 27px;
+    display: flex;
+    align-items: center;
 
-> .section h1 {
-  color: ${({ theme }) => theme.COLORS.LIGHT_200};
-  font-size: 27px;
-  display: flex;
-  align-items: center;
-
-  svg {
-    font-size: 12px;
+    svg {
+      font-size: 12px;
+    }
   }
-}
 
-> .section p {
-  text-align: center;
-}
+  > .section p {
+    text-align: center;
+  }
 
- > .section .tagsSection {
+  > .section .tagsSection {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     max-width: 450px;
     flex-wrap: wrap;
-
   }
 
- > .section .addToBasket {      
+  > .section .addToBasket {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -79,7 +77,8 @@ export const Container = styled.div`
       gap: 15px;
       margin-right: 16px;
 
-      svg, p {
+      svg,
+      p {
         font-size: 22px;
       }
     }
@@ -87,6 +86,5 @@ export const Container = styled.div`
     > button {
       max-width: auto;
     }
-
   }
 `;

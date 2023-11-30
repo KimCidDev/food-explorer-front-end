@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { HomeAdmin } from './pages/Admin/HomeAdmin'
+import { FoodInfo } from './pages/FoodInfo'
 import { ThemeProvider } from 'styled-components'
 
 import theme from './styles/theme'
@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <HomeAdmin />
+    <FoodInfo />
     </ThemeProvider>
   </React.StrictMode>,
 )
