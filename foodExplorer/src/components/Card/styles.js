@@ -9,7 +9,7 @@ export const Container = styled.div`
   position: relative;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   padding: 25px;
   gap: 12px;
@@ -27,6 +27,7 @@ export const Container = styled.div`
   }
 
   h2 {
+    font-weight: bold;
     width: 100%;
     text-align: center;
   }
@@ -34,6 +35,13 @@ export const Container = styled.div`
   p {
     display: none;
   }
+
+  #price {
+      display: flex;
+      font-size: 18px;
+      color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};      
+      -webkit-font-smoothing: antialiased;
+    }
 
   .sendAmount .howManyBox p {
     color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
@@ -78,9 +86,6 @@ export const Container = styled.div`
 
     #price {
       font-size: 28px;
-      //font-weight: bold;
-      color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};      
-      -webkit-font-smoothing: antialiased;
     }
 
     .addToBasket {

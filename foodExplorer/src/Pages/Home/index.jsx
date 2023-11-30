@@ -6,6 +6,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
 
+import { BsStar } from 'react-icons/bs';
 import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
@@ -41,12 +42,14 @@ export function Home () {
 
       <Section title="Saladas" className="sectionMenu" >
       <Card 
+      icon={BsStar}
       recipe="Hobbit Salad"
       prato={greenSalad1}
       description="Green leafs, cucumber, radish and cauliflower salad"
       price="R$ 38,45"
       />
       <Card 
+      icon={BsStar}
       recipe="Zuchinni Salad"
       prato={greenSalad2}
       description="Lettuce iceberd, cucumber, tomato, red onions"
@@ -56,12 +59,14 @@ export function Home () {
 
      <Section title="Pratos Principais" className="sectionMenu" >
       <Card 
+      icon={BsStar}
       recipe="Pancetta Bruschetta"
       prato={meal1}
       description="Whole wheat toast, butter, arugula, smoked pancetta"
       price="R$ 29,95"
       />
       <Card 
+      icon={BsStar}
       recipe="Shirmp Pasta"
       prato={meal2}
       description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"

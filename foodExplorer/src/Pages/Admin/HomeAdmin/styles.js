@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from '../../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
   width: 100%;
@@ -12,8 +13,6 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   > div:first-child {
-    max-width: 500px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,11 +26,41 @@ export const Container = styled.div`
     .logo svg {
       height: 21px;
     }
+
+    > .searchAndCart {
+      display: none;
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      > .searchAndCart {
+        display: flex;
+        width: 50%;
+        gap: 20px;
+
+        input {
+          border-radius: 8px;
+          height: 32px;
+        }
+
+        button {
+          height: 32px;
+
+          padding: 0 10px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+
+          font-weight: bold;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 
   > .banner {
     height: 120px;
-    max-width: 560px;
 
     display: flex;
     align-items: center;
@@ -41,14 +70,11 @@ export const Container = styled.div`
     border-radius: 3px;
 
     img {
-      height: 145px;
+      height: 165px;
       margin-bottom: 25px;
-      margin-left: -25px;
     }
 
     .textContent {
-      width: 100%;
-
       h2 {
         color: white;
         font-size: 16px;
@@ -61,10 +87,25 @@ export const Container = styled.div`
         font-size: 12px;
       }
     }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      overflow: hidden;
+
+      img {
+        height: 295px;
+      }
+    }
   }
 
   > .section h1 {
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
+  }
+
+  > div .addToBasket {
+    display: none;
   }
 
   > .sectionMenu div button {
