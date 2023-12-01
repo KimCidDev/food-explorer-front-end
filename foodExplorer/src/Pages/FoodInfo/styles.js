@@ -74,6 +74,11 @@ export const Container = styled.div`
       .textContent {
         align-items: start;
       }
+
+      .tagsSection {
+        background-color: red;
+        justify-content: start;
+      }
     }
   }
 
