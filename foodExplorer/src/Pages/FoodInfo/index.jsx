@@ -12,6 +12,7 @@ import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
+import { TiShoppingCart } from "react-icons/ti";
 
 import greenSalad1 from '../../assets/greenSalad1.png';
 
@@ -21,7 +22,11 @@ export function FoodInfo () {
   return (
     <Container>
       <Header icon={AiOutlineMenu}>
-        <Logo />
+        <Logo />        
+        <div className="searchAndCart">
+          <input type="text" />
+          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+        </div>
         <GiMailbox />
       </Header>
 
@@ -32,7 +37,7 @@ export function FoodInfo () {
       <img src={greenSalad1} alt="Ravanello Salad view from the top" />
       <div className="textContent">
       <h1>Salada Ravanello</h1>
-      <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
+      <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim tostado.</p>
       <div className="tagsSection">
       <Tag title="alface"/>
       <Tag title="cebola"/>

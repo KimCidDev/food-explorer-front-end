@@ -25,6 +25,37 @@ export const Container = styled.div`
     .logo svg {
       height: 21px;
     }
+
+    > .searchAndCart {
+      display: none;
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      > .searchAndCart {
+        display: flex;
+        width: 50%;
+        gap: 20px;
+
+        input {
+          border-radius: 8px;
+          height: 32px;
+        }
+
+        button {
+          height: 32px;
+
+          padding: 0 10px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+
+          font-weight: bold;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 
   > .section {
@@ -71,9 +102,18 @@ export const Container = styled.div`
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       flex-direction: row;
 
+      margin-top: 42px;
+
       .textContent {
+        max-width: 65%;
+        margin-right: 150px;
         align-items: start;
         gap: 24px;
+
+        p {
+          text-align: left;
+          flex-wrap: nowrap;
+        }
       }
 
       .addToBasket {
@@ -90,6 +130,10 @@ export const Container = styled.div`
 
         div:first-child {
           margin-left: 0;
+        }
+
+        p {
+          font-size: 0.8rem;
         }
       }
     }
