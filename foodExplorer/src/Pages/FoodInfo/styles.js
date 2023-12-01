@@ -73,11 +73,24 @@ export const Container = styled.div`
 
       .textContent {
         align-items: start;
+        gap: 24px;
+      }
+
+      .addToBasket {
+        margin-top: 24px;
       }
 
       .tagsSection {
-        background-color: red;
         justify-content: start;
+        flex-wrap: nowrap;
+
+        div {
+          padding: 0 6px;
+        }
+
+        div:first-child {
+          margin-left: 0;
+        }
       }
     }
   }
