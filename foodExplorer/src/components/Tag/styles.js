@@ -18,5 +18,6 @@ export const Container = styled.div`
   > p {
     font-size: 15px;
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    white-space: nowrap;
   }
 `;

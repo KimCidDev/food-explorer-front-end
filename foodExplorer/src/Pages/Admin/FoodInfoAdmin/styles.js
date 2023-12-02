@@ -101,12 +101,12 @@ export const Container = styled.div`
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       flex-direction: row;
+      justify-content: center;
 
       margin-top: 42px;
 
       .textContent {
         max-width: 65%;
-        margin-right: 150px;
         align-items: start;
         gap: 24px;
 
@@ -126,8 +126,8 @@ export const Container = styled.div`
       }
 
       .tagsSection {
+        max-width: 700px;
         justify-content: start;
-        flex-wrap: nowrap;
 
         div {
           padding: 0 6px;
