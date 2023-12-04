@@ -16,9 +16,6 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { MdOutlineFileDownload } from "react-icons/md";
 
-import greenSalad1 from '../../../assets/greenSalad1.png';
-
-
 export function NewDishAdmin () {
 
   return (
@@ -35,6 +32,8 @@ export function NewDishAdmin () {
 
         <h1>Novo prato</h1>
         <form action="">
+          
+        <div className="formTop">
         <div className="dishImg">
         <Input 
         title="Imagem do Prato"
@@ -53,6 +52,10 @@ export function NewDishAdmin () {
         <Select
         title="Categoria" 
         />
+        </div>
+
+        <div className="formMiddle">
+        <div className="ingredientBox">
         <h3>Ingredientes</h3>
         <div className='tagBox'>
           <Tag 
@@ -62,16 +65,22 @@ export function NewDishAdmin () {
           title="Seaweed"
           />
         </div>
+        </div>
         <Input 
         title="Preço"
         placeholder="R$ 00,00" />
+        </div>
+
         <h3>Description</h3>
         <div className="description">
         <textarea name="" id="" cols="30" rows="4" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição">
         </textarea>
         </div>
         </form>
+
+        <div className="formBottom">
       <Button title="Incluir" />
+      </div>
       </Section>
 
      
