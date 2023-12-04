@@ -31,16 +31,16 @@ export function NewDishAdmin () {
        >
 
         <h1>Novo prato</h1>
-        <form action="">
+        <form action="" id="newDishForm">
           
         <div className="formTop">
         <div className="dishImg">
         <Input 
         title="Imagem do Prato"
         type="file"
-        id="dishImg" 
+        id="hiddenInput" 
         />
-        <label htmlFor="dishImg">
+        <label htmlFor="hiddenInput">
           <MdOutlineFileDownload />
           <p>Selecione imagem</p>
         </label>
@@ -71,16 +71,18 @@ export function NewDishAdmin () {
         placeholder="R$ 00,00" />
         </div>
 
+        <div className="formBottom">        
+        <div className="description">        
         <h3>Description</h3>
-        <div className="description">
         <textarea name="" id="" cols="30" rows="4" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição">
-        </textarea>
+        </textarea>        
+        </div>
+        <Button title="Incluir" form="newDishForm"/>
         </div>
         </form>
 
-        <div className="formBottom">
-      <Button title="Incluir" />
-      </div>
+        
+
       </Section>
 
      
