@@ -101,12 +101,13 @@ export const Container = styled.div`
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       flex-direction: row;
+      align-items: center;
+      justify-content: center;
 
       margin-top: 42px;
 
       .textContent {
         max-width: 65%;
-        margin-right: 150px;
         align-items: start;
         gap: 24px;
 

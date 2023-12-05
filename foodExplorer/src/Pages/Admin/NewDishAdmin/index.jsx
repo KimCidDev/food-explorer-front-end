@@ -14,6 +14,7 @@ import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
+import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 export function NewDishAdmin () {
@@ -22,6 +23,10 @@ export function NewDishAdmin () {
     <Container>
       <Header icon={AiOutlineMenu}>
         <Logo />
+        <div className="searchAndCart">
+          <input type="text" />
+          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+        </div>
         <GiMailbox />
       </Header>
 

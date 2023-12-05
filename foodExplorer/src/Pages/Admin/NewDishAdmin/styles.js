@@ -25,6 +25,33 @@ export const Container = styled.div`
     .logo svg {
       height: 21px;
     }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      > .searchAndCart {
+        display: flex;
+        width: 50%;
+        gap: 20px;
+
+        input {
+          border-radius: 8px;
+          height: 32px;
+        }
+
+        button {
+          height: 32px;
+
+          padding: 0 10px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+
+          font-weight: bold;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 
   > .section {
