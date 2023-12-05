@@ -17,7 +17,7 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-export function NewDishAdmin () {
+export function EditDishAdmin () {
 
   return (
     <Container>
@@ -35,7 +35,7 @@ export function NewDishAdmin () {
       title="voltar" 
        >
 
-        <h1>Novo prato</h1>
+        <h1>Editar Prato</h1>
         <form action="" id="newDishForm">
           
         <div className="formTop">
@@ -82,7 +82,10 @@ export function NewDishAdmin () {
         <textarea name="" id="" cols="30" rows="4" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição">
         </textarea>        
         </div>
-        <Button title="Adicionar Prato ao Cardápio" form="newDishForm"/>
+        <div className="saveInfoBox">
+        <Button title="Salvar Alterações" form="newDishForm"/>
+        <Button title="Excluir Prato" form="newDishForm"/>
+        </div>
         </div>
         </form>
 
