@@ -26,6 +26,10 @@ export const Container = styled.div`
       height: 21px;
     }
 
+    > .searchAndCart {
+      display: none;
+    }
+
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       > .searchAndCart {
         display: flex;
