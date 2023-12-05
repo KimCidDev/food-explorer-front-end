@@ -174,11 +174,78 @@ export const Container = styled.div`
         }
 
         @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+          padding: 0 80px;
+
+          > .formTop {
+            max-width: 100%;
+
+            flex-direction: row;
+            gap: 32px;
+
+            > div {
+              width: clamp(100%, 100%, 300px);
+            }
+
+            > div:nth-child(2) {
+              min-width: 170px;
+              max-width: 220px;
+            }
+          }
+
+          .formMiddle {
+            flex-direction: row;
+            align-items: center;
+
+            gap: 32px;
+
+            > h3 {
+              margin-bottom: 130px;
+            }
+
+            > .ingredientBox .tagBox {
+              margin-top: 8px;
+            }
+
+            > .inputBox input {
+              width: 100%;
+            }
+          }
+
+          .formBottom {
+            width: 100%;
+
+            display: flex;
+            justify-content: end;
+
+            > .description {
+              width: 100%;
+
+              textarea {
+                resize: none;
+                width: 100%;
+              }
+            }
+
+            > button {
+              display: block;
+              margin-left: auto;
+              margin-right: 0;
+              width: 98px;
+            }
+          }
+        }
+
+        @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
           padding: 0 125px;
 
           > .formTop {
+            max-width: 100%;
             flex-direction: row;
             gap: 32px;
+
+            > div {
+              width: clamp(100%, 100%, 300px);
+            }
           }
 
           .formMiddle {
@@ -197,8 +264,19 @@ export const Container = styled.div`
           }
 
           .formBottom {
+            width: 100%;
+
             display: flex;
             justify-content: end;
+
+            > .description {
+              width: 100%;
+
+              textarea {
+                resize: none;
+                width: 100%;
+              }
+            }
 
             > button {
               width: 98px;
