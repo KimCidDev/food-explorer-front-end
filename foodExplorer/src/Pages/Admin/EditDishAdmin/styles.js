@@ -203,8 +203,14 @@ export const Container = styled.div`
             }
           }
 
-          > .saveInfoBox button {
-            background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          > .saveInfoBox {
+            display: flex;
+            gap: clamp(40px, 100px, 200px);
+
+            button {
+              width: 100%;
+              background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+            }
           }
         }
 
