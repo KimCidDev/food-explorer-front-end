@@ -34,7 +34,7 @@ export const Container = styled.div`
       > .searchAndCart {
         display: flex;
         width: 50%;
-        gap: 20px;
+        gap: clamp(50px, 30px, 100px);
 
         input {
           border-radius: 8px;
@@ -43,6 +43,7 @@ export const Container = styled.div`
 
         button {
           height: 32px;
+          width: clamp(200px, 95%, 600px);
 
           padding: 0 10px;
 
@@ -127,6 +128,10 @@ export const Container = styled.div`
           flex-direction: column;
           gap: 24px;
           margin-bottom: 24px;
+
+          > div .inputBox input {
+            width: 100px;
+          }
 
           .ingredientBox h3 {
             color: ${({ theme }) => theme.COLORS.LIGHT_100};
