@@ -299,6 +299,7 @@ export const Container = styled.div`
               }
 
               button:first-child {
+                border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
                 background-color: ${({ theme }) => theme.COLORS.DARK_800};
                 max-width: 125px;
               }
