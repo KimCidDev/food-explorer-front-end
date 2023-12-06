@@ -34,7 +34,7 @@ export const Container = styled.div`
       > .searchAndCart {
         display: flex;
         width: 50%;
-        gap: clamp(50px, 30px, 100px);
+        gap: clamp(50px, 15%, 100px);
 
         input {
           border-radius: 8px;
@@ -43,7 +43,7 @@ export const Container = styled.div`
 
         button {
           height: 32px;
-          width: clamp(200px, 95%, 600px);
+          width: clamp(200px, 95%, 400px);
 
           padding: 0 10px;
 
