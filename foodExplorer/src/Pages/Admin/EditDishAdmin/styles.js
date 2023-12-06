@@ -28,17 +28,32 @@ export const Container = styled.div`
 
     > .searchAndCart {
       display: none;
+
+      #searchInput {
+        ::placeholder {
+          color: red;
+        }
+      }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       > .searchAndCart {
         display: flex;
         width: 50%;
-        gap: clamp(50px, 15%, 100px);
+        gap: clamp(25px, 15%, 100px);
 
-        input {
-          border-radius: 8px;
+        #searchInput {
           height: 32px;
+          width: clamp(240px, 95%, 400px);
+
+          padding: 0 16px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border-radius: 8px;
+
+          // ESSE TESTE AQUI NÃO TÁ FUNCIONANDO. PESQUISAR O PORQUÊ
         }
 
         button {
