@@ -44,9 +44,7 @@ export const Container = styled.div`
 
         #searchInput {
           height: 32px;
-          width: clamp(240px, 95%, 400px);
-
-          padding: 0 16px;
+          width: clamp(150px, 95%, 400px);
 
           background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
