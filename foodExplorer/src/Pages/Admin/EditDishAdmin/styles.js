@@ -52,8 +52,6 @@ export const Container = styled.div`
 
           border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
           border-radius: 8px;
-
-          // ESSE TESTE AQUI NÃO TÁ FUNCIONANDO. PESQUISAR O PORQUÊ
         }
 
         button {

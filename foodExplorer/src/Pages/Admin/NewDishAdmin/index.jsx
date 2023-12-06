@@ -24,7 +24,10 @@ export function NewDishAdmin () {
       <Header icon={AiOutlineMenu}>
         <Logo />
         <div className="searchAndCart">
-          <input type="text" />
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Busque por pratos ou ingredientes"/>
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
         <GiMailbox />
@@ -82,7 +85,7 @@ export function NewDishAdmin () {
         <textarea name="" id="" cols="30" rows="4" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição">
         </textarea>        
         </div>
-        <Button title="Adicionar Prato ao Cardápio" form="newDishForm"/>
+        <Button title="Adicionar ao Cardápio" form="newDishForm"/>
         </div>
         </form>
 
