@@ -28,33 +28,21 @@ export const Container = styled.div`
 
     > .searchAndCart {
       display: none;
-
-      #searchInput {
-        ::placeholder {
-          color: red;
-        }
-      }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       > .searchAndCart {
         display: flex;
         width: 50%;
-        gap: clamp(25px, 15%, 100px);
+        gap: 20px;
 
-        #searchInput {
-          height: 32px;
-          width: clamp(150px, 95%, 400px);
-
-          background-color: ${({ theme }) => theme.COLORS.DARK_900};
-
-          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+        input {
           border-radius: 8px;
+          height: 32px;
         }
 
         button {
           height: 32px;
-          width: clamp(200px, 95%, 400px);
 
           padding: 0 10px;
 

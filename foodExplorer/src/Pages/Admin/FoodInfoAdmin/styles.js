@@ -34,15 +34,23 @@ export const Container = styled.div`
       > .searchAndCart {
         display: flex;
         width: 50%;
-        gap: 20px;
+        gap: clamp(25px, 15%, 100px);
 
-        input {
-          border-radius: 8px;
+        #searchInput {
           height: 32px;
+          width: clamp(240px, 95%, 400px);
+
+          padding: 0 16px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border-radius: 8px;
         }
 
         button {
           height: 32px;
+          width: clamp(200px, 95%, 400px);
 
           padding: 0 10px;
 
