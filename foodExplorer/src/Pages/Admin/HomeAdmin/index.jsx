@@ -26,7 +26,10 @@ export function HomeAdmin () {
       <Header icon={AiOutlineMenu}>
         <Logo />
         <div className="searchAndCart">
-          <input type="text" />
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Busque por pratos ou ingredientes"/>
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
         <GiMailbox />

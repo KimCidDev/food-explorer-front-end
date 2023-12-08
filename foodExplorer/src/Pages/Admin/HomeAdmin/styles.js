@@ -32,18 +32,32 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      margin-bottom: 110px;
+
       > .searchAndCart {
         display: flex;
         width: 50%;
-        gap: 20px;
+        gap: clamp(25px, 15%, 100px);
 
-        input {
-          border-radius: 8px;
+        #searchInput {
           height: 32px;
+          width: clamp(240px, 95%, 400px);
+
+          padding: 0 16px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border-radius: 8px;
+
+          ::placeholder {
+            color: white;
+          }
         }
 
         button {
           height: 32px;
+          width: clamp(200px, 95%, 400px);
 
           padding: 0 10px;
 
@@ -92,10 +106,10 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-around;
-      overflow: hidden;
 
       img {
-        height: 295px;
+        height: 245px;
+        clip-path: polygon(5% -9px, 100% 7.29%, 99.68% 80.02%, 8.41% 79.38%);
       }
     }
   }
