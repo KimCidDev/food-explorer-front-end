@@ -45,7 +45,7 @@ export const Container = styled.div`
 
         #searchInput {
           height: 32px;
-          width: clamp(240px, 95%, 400px);
+          width: clamp(100px, 95%, 400px);
 
           padding: 0 16px;
 
@@ -111,6 +111,17 @@ export const Container = styled.div`
         height: 245px;
         clip-path: polygon(5% -9px, 100% 7.29%, 99.68% 80.02%, 8.41% 79.38%);
       }
+
+      .textContent {
+      h2 {
+        font-size: 32px;
+      }
+
+      p {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
     }
   }
 
