@@ -29,6 +29,10 @@ export const Container = styled.div`
 
     > .searchAndCart {
       display: none;
+
+      input::placeholder {
+        color: white;
+      }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -49,10 +53,6 @@ export const Container = styled.div`
 
           border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
           border-radius: 8px;
-
-          ::placeholder {
-            color: white;
-          }
         }
 
         button {
