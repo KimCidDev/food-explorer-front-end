@@ -113,15 +113,15 @@ export const Container = styled.div`
       }
 
       .textContent {
-      h2 {
-        font-size: 32px;
-      }
+        h2 {
+          font-size: 32px;
+        }
 
-      p {
-        margin-top: 5px;
-        font-size: 14px;
+        p {
+          margin-top: 5px;
+          font-size: 14px;
+        }
       }
-    }
     }
   }
 
