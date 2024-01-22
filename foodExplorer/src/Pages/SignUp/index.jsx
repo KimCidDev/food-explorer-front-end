@@ -8,7 +8,9 @@ import { ButtonText } from '../../components/ButtonText';
 
 
 export function SignUp() {
-  const [count, setCount] = useState(0)
+  const [name, setName]  = useState("");
+  const [email, setEmail]  = useState("");
+  const [password, setpassword]  = useState("");
 
   return (
     <Container>
