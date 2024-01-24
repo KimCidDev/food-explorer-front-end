@@ -143,6 +143,6 @@ export const Container = styled.div`
 
     .section .addToBasket {
       display: none;
-    } 
+    }
   }
 `;
