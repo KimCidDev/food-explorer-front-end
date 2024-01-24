@@ -20,10 +20,11 @@ import macaroon from '../../../assets/macaroon-promo-pic.png';
 
 
 export function HomeAdmin () {
+  const menuPath = '/admin/menu'
   
   return (
     <Container >
-      <Header icon={AiOutlineMenu}>
+      <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
         <input 
