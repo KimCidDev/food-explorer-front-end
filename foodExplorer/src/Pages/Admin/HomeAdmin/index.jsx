@@ -6,10 +6,10 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Section } from '../../../components/Section';
 
-import { GiMailbox } from 'react-icons/gi';
+import { RxExit } from "react-icons/rx";
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { TiShoppingCart } from "react-icons/ti";
+import { MdOutlineFastfood } from "react-icons/md";
 import { LiaUserEditSolid } from "react-icons/lia";
 
 import meal1 from '../../../assets/meal1.png';
@@ -30,11 +30,13 @@ export function HomeAdmin () {
           id="searchInput"
           type="text" 
           placeholder="Busque por pratos ou ingredientes"/>
-          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+          <Button to="/admin/newdish  " icon={MdOutlineFastfood} title="Adicionar prato" />
         </div>
-        <GiMailbox />
+        <RxExit />
       </Header>
 
+
+      <main>
       <div className="banner">
         <img src={macaroon} alt="macaroon sweet in many colors" />
         <div className="textContent">
@@ -74,6 +76,7 @@ export function HomeAdmin () {
       price="R$ 45,50"
       />
      </Section>
+     </main>
 
       <Footer icon={PiCopyright}/>
     </Container>

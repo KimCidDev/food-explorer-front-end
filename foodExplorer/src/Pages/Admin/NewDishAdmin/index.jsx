@@ -35,8 +35,8 @@ export function NewDishAdmin () {
 
       <Section
       icon={AiOutlineLeft}
-      title="voltar" 
-       >
+      title="voltar"
+      >
 
         <h1>Novo prato</h1>
         <form action="" id="newDishForm">

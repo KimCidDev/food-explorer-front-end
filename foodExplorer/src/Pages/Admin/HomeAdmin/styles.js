@@ -73,67 +73,76 @@ export const Container = styled.div`
     }
   }
 
-  > .banner {
-    height: 120px;
-
-    display: flex;
-    align-items: center;
-    background: linear-gradient(#091e26, #00131c);
-
-    margin: 0 25px;
-    border-radius: 3px;
-
-    img {
-      height: 165px;
-      margin-bottom: 25px;
-    }
-
-    .textContent {
-      h2 {
-        color: white;
-        font-size: 16px;
-        font-weight: normal;
-        white-space: nowrap;
-      }
-
-      p {
-        color: white;
-        font-size: 12px;
-      }
-    }
-
+  main {
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      padding: 0 120px;
+    }
+
+    > .banner {
+      height: 420px;
+
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      background: linear-gradient(#091e26, #00131c);
+
+      margin: 0 25px;
+      border-radius: 3px;
 
       img {
-        height: 245px;
-        clip-path: polygon(5% -9px, 100% 7.29%, 99.68% 80.02%, 8.41% 79.38%);
+        height: 165px;
+        margin-bottom: 25px;
       }
 
       .textContent {
         h2 {
-          font-size: 32px;
+          color: white;
+          font-size: 16px;
+          font-weight: normal;
+          white-space: nowrap;
         }
 
         p {
-          margin-top: 5px;
-          font-size: 14px;
+          text-align: center;
+          color: white;
+          font-size: 12px;
+        }
+      }
+
+      @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        height: 220px;
+
+        img {
+          height: 400px;
+          clip-path: polygon(5% -9px, 100% 7.29%, 99.68% 80.02%, 8.41% 79.38%);
+        }
+
+        .textContent {
+          h2 {
+            font-size: 32px;
+          }
+
+          p {
+            margin-top: 5px;
+            font-size: 14px;
+          }
         }
       }
     }
-  }
 
-  > .section h1 {
-    color: ${({ theme }) => theme.COLORS.LIGHT_200};
-  }
+    > .section h1 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    }
 
-  > div .addToBasket {
-    display: none;
-  }
+    .section p {
+      text-align: center;
+    }
 
-  > .sectionMenu div button {
-    height: 32px;
+    .section .addToBasket {
+      display: none;
+    } 
   }
 `;

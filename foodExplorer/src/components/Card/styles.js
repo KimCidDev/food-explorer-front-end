@@ -34,14 +34,17 @@ export const Container = styled.div`
 
   p {
     display: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
 
   #price {
-      display: flex;
-      font-size: 18px;
-      color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};      
-      -webkit-font-smoothing: antialiased;
-    }
+    display: flex;
+    font-size: 18px;
+    color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
+    -webkit-font-smoothing: antialiased;
+  }
 
   .sendAmount .howManyBox p {
     color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
@@ -68,7 +71,7 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    height: 460px;
+    height: 400px;
     justify-content: space-around;
 
     img {
@@ -94,11 +97,13 @@ export const Container = styled.div`
       display: flex;
       justify-content: space-around;
 
+      gap: 10px;
+
       .howManyBox {
         gap: 5px;
       }
       button {
-        max-width: 40%;
+        max-width: 20%;
       }
     }
   }
