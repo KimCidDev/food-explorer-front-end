@@ -31,7 +31,7 @@ export function HomeAdmin () {
           id="searchInput"
           type="text" 
           placeholder="Busque por pratos ou ingredientes"/>
-          <Button to="/admin/newdish  " icon={MdOutlineFastfood} title="Adicionar prato" />
+          <Button to="/admin/newdish  " icon={MdOutlineFastfood} title="Adicionar Prato" />
         </div>
         <RxExit />
       </Header>
