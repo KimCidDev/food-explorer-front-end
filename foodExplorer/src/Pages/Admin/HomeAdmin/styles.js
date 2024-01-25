@@ -36,19 +36,30 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      padding: 0 120px;
       margin-bottom: 110px;
+      justify-content: space-between;
+
+      #menuLink {
+        display: none;
+
+        svg:first-child {
+          display: none;
+        }
+      }
 
       > .searchAndCart {
         display: flex;
+        align-items: center;
+
         width: 50%;
         gap: clamp(25px, 15%, 100px);
 
         #searchInput {
-          height: 32px;
-          width: clamp(100px, 95%, 400px);
+          height: 45px;
+          width: clamp(100px, 85%, 500px);
 
           padding: 0 16px;
-
           background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
           border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};

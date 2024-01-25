@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Home } from '../pages/Home';
-import { Menu } from '../pages/Menu';
-import { FoodInfo } from '../pages/FoodInfo';
+import { Home } from '../Pages/Home';
+import { Menu } from '../Pages/Menu';
+import { FoodInfo } from '../Pages/FoodInfo';
 
-import { HomeAdmin } from '../pages/Admin/HomeAdmin';
-import { MenuAdmin } from '../pages/Admin/MenuAdmin';
-import { FoodInfoAdmin } from '../pages/Admin/FoodInfoAdmin';
-import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
-import { EditDishAdmin } from '../pages/Admin/EditDishAdmin';
+import { HomeAdmin } from '../Pages/Admin/HomeAdmin';
+import { MenuAdmin } from '../Pages/Admin/MenuAdmin';
+import { FoodInfoAdmin } from '../Pages/Admin/FoodInfoAdmin';
+import { NewDishAdmin } from '../Pages/Admin/NewDishAdmin';
+import { EditDishAdmin } from '../Pages/Admin/EditDishAdmin';
 
 
 export function AppRoutes() {

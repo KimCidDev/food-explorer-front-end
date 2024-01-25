@@ -6,7 +6,7 @@ export function Header ({icon: Icon, children, to}) {
 
   return (
     <Container>
-      <Link to={getTo}>
+      <Link id="menuLink" to={getTo}>
       { Icon && <Icon size={20} /> }
       </Link>
       {children}
