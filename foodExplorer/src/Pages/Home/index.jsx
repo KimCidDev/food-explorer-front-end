@@ -1,3 +1,6 @@
+import 'keen-slider/keen-slider.min.css';
+import { useKeenSlider } from 'keen-slider/react';
+
 import { Container } from './styles';
 import { Card } from '../../components/Card';
 import { Logo } from '../../components/Logo';
@@ -20,6 +23,12 @@ import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
 export function Home () {
+  const [ sliderRef ] = useKeenSlider({
+    slides: {
+      perView: 3
+    }
+  });
+
   const menuPath = '/menu';
 
 
@@ -28,11 +37,15 @@ export function Home () {
       <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
-          <input type="text" />
+          <input
+          id="searchInput"
+          type="text" />
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
         <GiMailbox />
       </Header>
+
+      <main>
 
       <div className="banner">
         <img src={macaroon} alt="macaroon sweet in many colors" />
@@ -43,6 +56,7 @@ export function Home () {
       </div>
 
       <Section title="Saladas" className="sectionMenu" >
+      <div ref={sliderRef} className='keen-slider'>
       <Card 
       icon={BsStar}
       recipe="Hobbit Salad"
@@ -57,9 +71,25 @@ export function Home () {
       description="Lettuce iceberd, cucumber, tomato, red onions"
       price="R$ 27,95"
       />
+      <Card 
+      icon={BsStar}
+      recipe="Hobbit Salad"
+      prato={greenSalad1}
+      description="Green leafs, cucumber, radish and cauliflower salad"
+      price="R$ 38,45"
+      />
+      <Card 
+      icon={BsStar}
+      recipe="Zuchinni Salad"
+      prato={greenSalad2}
+      description="Lettuce iceberd, cucumber, tomato, red onions"
+      price="R$ 27,95"
+      />
+      </div>
      </Section>
 
      <Section title="Pratos Principais" className="sectionMenu" >
+     <div ref={sliderRef} className='keen-slider'>
       <Card 
       icon={BsStar}
       recipe="Pancetta Bruschetta"
@@ -74,7 +104,23 @@ export function Home () {
       description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
       price="R$ 45,50"
       />
+      <Card 
+      icon={BsStar}
+      recipe="Pancetta Bruschetta"
+      prato={meal1}
+      description="Whole wheat toast, butter, arugula, smoked pancetta"
+      price="R$ 29,95"
+      />
+      <Card 
+      icon={BsStar}
+      recipe="Shirmp Pasta"
+      prato={meal2}
+      description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
+      price="R$ 45,50"
+      />
+      </div>
      </Section>
+     </main>
 
       <Footer icon={PiCopyright}/>
     </Container>

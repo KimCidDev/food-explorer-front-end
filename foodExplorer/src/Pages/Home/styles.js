@@ -32,10 +32,25 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      margin-bottom: clamp(30px, 90%, 80px);
+
       > .searchAndCart {
         display: flex;
         width: 50%;
         gap: 20px;
+
+        #searchInput {
+          height: 45px;
+          width: clamp(100px, 85%, 500px);
+
+          color: ${({ theme }) => theme.COLORS.LIGHT_200};
+
+          padding: 0 16px;
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border-radius: 8px;
+        }
 
         input {
           border-radius: 8px;
@@ -59,52 +74,71 @@ export const Container = styled.div`
     }
   }
 
-  > .banner {
-    height: 120px;
+  main {
+    > .banner {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(#091e26, #00131c);
 
-    display: flex;
-    align-items: center;
-    background: linear-gradient(#091e26, #00131c);
+      margin: 0 25px;
+      border-radius: 3px;
 
-    margin: 0 25px;
-    border-radius: 3px;
+      .textContent {
+        h2 {
+          color: white;
+          font-size: 16px;
+          font-weight: normal;
+          white-space: nowrap;
+        }
 
-    img {
-      height: 165px;
-      margin-bottom: 25px;
+        p {
+          text-align: center;
+          color: white;
+          font-size: 12px;
+        }
+      }
     }
 
-    .textContent {
-      h2 {
-        color: white;
-        font-size: 16px;
-        font-weight: normal;
-        white-space: nowrap;
-      }
+    > .section h1 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    }
 
-      p {
-        color: white;
-        font-size: 12px;
-      }
+    .section p {
+      text-align: center;
+    }
+
+    .section .addToBasket {
+      display: none;
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      overflow: hidden;
+      margin: 0 120px;
 
-      img {
-        height: 295px;
+      .banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        overflow: visible;
+
+        height: clamp(180px, 100%, 220px);
+        padding: 0 120px;
+
+        img {
+          width: clamp(230px, 100%, 320px);
+        }
+
+        .textContent {
+          h2 {
+            font-size: 32px;
+          }
+
+          p {
+            margin-top: 5px;
+            font-size: 14px;
+          }
+        }
       }
     }
-  }
-
-  > .section h1 {
-    color: ${({ theme }) => theme.COLORS.LIGHT_200};
-  }
-
-  > .sectionMenu div button {
-    height: 32px;
   }
 `;
