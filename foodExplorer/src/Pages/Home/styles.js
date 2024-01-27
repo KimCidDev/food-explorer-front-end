@@ -46,14 +46,14 @@ export const Container = styled.div`
           height: 32px;
 
           padding: 0 10px;
-          
+
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px; 
+          gap: 12px;
 
           font-weight: bold;
-          white-space:nowrap;
+          white-space: nowrap;
         }
       }
     }
@@ -75,7 +75,6 @@ export const Container = styled.div`
     }
 
     .textContent {
-
       h2 {
         color: white;
         font-size: 16px;
@@ -88,7 +87,6 @@ export const Container = styled.div`
         font-size: 12px;
       }
     }
-    
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       display: flex;
@@ -99,7 +97,6 @@ export const Container = styled.div`
       img {
         height: 295px;
       }
-
     }
   }
 
