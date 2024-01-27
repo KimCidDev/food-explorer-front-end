@@ -13,6 +13,8 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
+    padding-left: 14px;
+
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
     color: ${({ theme }) => theme.COLORS.GRAY_300};
 

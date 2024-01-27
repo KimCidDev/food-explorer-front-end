@@ -59,6 +59,8 @@ export const Container = styled.div`
           height: 45px;
           width: clamp(100px, 85%, 500px);
 
+          color: ${({ theme }) => theme.COLORS.LIGHT_200};
+
           padding: 0 16px;
           background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
@@ -90,7 +92,7 @@ export const Container = styled.div`
     }
 
     > .banner {
-      height: 420px;
+      height: 220px;
 
       display: flex;
       align-items: center;

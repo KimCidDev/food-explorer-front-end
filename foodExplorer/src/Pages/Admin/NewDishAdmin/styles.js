@@ -31,21 +31,37 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      padding: 0 120px;
+      justify-content: space-between;
+
+      #menuLink {
+        display: none;
+
+        svg:first-child {
+          display: none;
+        }
+      }
+
       > .searchAndCart {
         display: flex;
+        align-items: center;
+
         width: 50%;
         gap: clamp(25px, 15%, 100px);
 
         #searchInput {
-          height: 32px;
-          width: clamp(240px, 95%, 400px);
+          height: 45px;
+          width: clamp(100px, 85%, 500px);
 
           padding: 0 16px;
-
           background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
           border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
           border-radius: 8px;
+        }
+
+        #searchInput::placeholder {
+          color: ${({ theme }) => theme.COLORS.LIGHT_400};
         }
 
         button {
@@ -67,7 +83,7 @@ export const Container = styled.div`
   }
 
   > .section {
-    padding: 0 24px;
+    padding: 0 160px;
 
     margin-bottom: 8px;
 
@@ -89,6 +105,7 @@ export const Container = styled.div`
 
       > h1 {
         color: ${({ theme }) => theme.COLORS.LIGHT_200};
+        font-size: 32px;
       }
 
       > form {
@@ -262,6 +279,8 @@ export const Container = styled.div`
 
             > .description {
               width: 100%;
+
+              padding-left: 14px;
 
               textarea {
                 resize: none;
