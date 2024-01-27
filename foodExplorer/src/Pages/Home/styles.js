@@ -118,14 +118,16 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-around;
+        max-height: 300px;
 
+        padding: 0 120px;
+        margin-bottom: 62px;
+
+        gap: clamp(25px, 100%, 40px);
         overflow: visible;
 
-        height: clamp(180px, 100%, 220px);
-        padding: 0 120px;
-
         img {
-          width: clamp(230px, 100%, 320px);
+          width: clamp(350px, 100%, 450px);
         }
 
         .textContent {

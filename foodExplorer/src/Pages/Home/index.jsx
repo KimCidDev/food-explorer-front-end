@@ -40,7 +40,9 @@ export function Home () {
           <input
           id="searchInput"
           type="text" />
-          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+          <Button
+          icon={TiShoppingCart}
+          title="Verificar Carrinho" />
         </div>
         <GiMailbox />
       </Header>
