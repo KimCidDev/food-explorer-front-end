@@ -26,6 +26,8 @@ export const Container = styled.div`
     }
 
     input {
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+
       width: 315px;
       height: 50px;
 
