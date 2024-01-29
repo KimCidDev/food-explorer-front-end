@@ -56,6 +56,7 @@ export function SignUp() {
       
       <Input 
       title="Senha"
+      inputType="password"
       placeholder="Six digits or more"
       onChange={e => setPassword(e.target.value)}/>
 
