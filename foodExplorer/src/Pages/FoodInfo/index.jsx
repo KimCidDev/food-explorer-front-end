@@ -1,3 +1,5 @@
+import { useAuth } from '../../hooks/auth'
+
 import { Container } from './styles';
 import { Tag } from '../../components/Tag';
 import { Logo } from '../../components/Logo';
@@ -6,9 +8,9 @@ import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { Section } from '../../components/Section';
 
+import { ImExit } from 'react-icons/im';
 import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
-import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
@@ -18,16 +20,24 @@ import greenSalad1 from '../../assets/greenSalad1.png';
 
 
 export function FoodInfo () {
+  const { signOut } = useAuth();
+
 
   return (
     <Container>
       <Header icon={AiOutlineMenu}>
         <Logo />        
         <div className="searchAndCart">
-          <input type="text" />
-          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+          <input
+          id="searchInput"
+          type="text"
+          placeholder='Procure por outros pratos'
+          />
+          <Button 
+          icon={TiShoppingCart} 
+          title="Verificar Carrinho" />
         </div>
-        <GiMailbox />
+        <ImExit onClick={signOut}/>
       </Header>
 
       <Section

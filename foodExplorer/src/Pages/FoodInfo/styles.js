@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   overflow-y: auto;
 
-  padding-bottom: 110px;
+  padding-bottom: 150px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
@@ -31,10 +31,25 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      margin-bottom: clamp(15px, 90%, 30px);
+
       > .searchAndCart {
         display: flex;
         width: 50%;
         gap: 20px;
+
+        #searchInput {
+          height: 45px;
+          width: clamp(100px, 85%, 500px);
+
+          color: ${({ theme }) => theme.COLORS.LIGHT_200};
+
+          padding: 0 16px;
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border-radius: 8px;
+        }
 
         input {
           border-radius: 8px;
@@ -59,7 +74,7 @@ export const Container = styled.div`
   }
 
   > .section {
-    padding: 0 56px;
+    display: flex;
 
     h1 {
       color: ${({ theme }) => theme.COLORS.LIGHT_200};
@@ -67,15 +82,12 @@ export const Container = styled.div`
   }
 
   > .section .childrenBox {
-    height: 100%;
-
     display: flex;
-    flex-direction: column;
-    align-items: center;
 
     img {
-      height: 245px;
-      width: 245px;
+      height: clamp(250px, 100%, 400px);
+      width: clamp(250px, 100%, 400px);
+      margin-right: 60px;
     }
 
     .textContent {
