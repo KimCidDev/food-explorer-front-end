@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Container, Form } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 import { Logo } from '../../components/Logo';
 import { Input } from '../../components/Input';
@@ -10,27 +13,11 @@ import { ButtonText } from '../../components/ButtonText';
 export function SignIn() {
   const [email, setEmail]  = useState("");
   const [password, setPassword]  = useState("");
-  
-  const navigate = useNavigate();
+
+  const { signIn } = useAuth();
 
   function handleSignIn () {
-    if ( !email || !password) {
-      return alert("todos os campos precisam estar preenchidos, rapá")
-    }
-
-    api.get('/users', {name, email, password})
-    .then(() => {
-      alert("ususário cadastrado com sucesso");
-      navigate('/');
-    })
-    .catch(error => {
-      if (error.response) {
-        console.log("Xis Salada");
-        alert(error.response.data.message)
-      } else {
-        alert("Não foi possível fazer o cadastro")
-      }
-    });
+    signIn({email, password})
   }
 
   return (
@@ -45,7 +32,7 @@ export function SignIn() {
       title="Email" 
       type='text' 
       placeholder="Ex.: something@thatmail.com"
-      onChange={setEmail(e => e.target.value)}
+      onChange={e => setEmail(e.target.value)}
       />
       
       
@@ -53,7 +40,7 @@ export function SignIn() {
       title="Senha" 
       type='password' 
       placeholder="Six digits or more"
-      onChange={setPassword(e => e.target.value)}
+      onChange={e => setPassword(e.target.value)}
       />
 
       <Button 
