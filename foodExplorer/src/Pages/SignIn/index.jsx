@@ -8,7 +8,30 @@ import { ButtonText } from '../../components/ButtonText';
 
 
 export function SignIn() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail]  = useState("");
+  const [password, setPassword]  = useState("");
+  
+  const navigate = useNavigate();
+
+  function handleSignIn () {
+    if ( !email || !password) {
+      return alert("todos os campos precisam estar preenchidos, rapá")
+    }
+
+    api.get('/users', {name, email, password})
+    .then(() => {
+      alert("ususário cadastrado com sucesso");
+      navigate('/');
+    })
+    .catch(error => {
+      if (error.response) {
+        console.log("Xis Salada");
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível fazer o cadastro")
+      }
+    });
+  }
 
   return (
     <Container>
@@ -22,6 +45,7 @@ export function SignIn() {
       title="Email" 
       type='text' 
       placeholder="Ex.: something@thatmail.com"
+      onChange={setEmail(e => e.target.value)}
       />
       
       
@@ -29,9 +53,12 @@ export function SignIn() {
       title="Senha" 
       type='password' 
       placeholder="Six digits or more"
+      onChange={setPassword(e => e.target.value)}
       />
 
-      <Button title="Entrar" />
+      <Button 
+      title="Entrar"
+      onClick={handleSignIn}/>
       
       <ButtonText to='/register'
       title="Criar uma conta"/>

@@ -29,7 +29,8 @@ export function SignUp() {
     })
     .catch(error => {
       if (error.response) {
-        alert(error.respose.data.message)
+        console.log("Xis Salada");
+        alert(error.response.data.message)
       } else {
         alert("Não foi possível fazer o cadastro")
       }
