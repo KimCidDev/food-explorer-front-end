@@ -1,5 +1,6 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
+import { useAuth } from '../../hooks/auth'
 
 import { Container } from './styles';
 import { Card } from '../../components/Card';
@@ -9,8 +10,8 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
 
+import { ImExit } from "react-icons/im";
 import { BsStar } from 'react-icons/bs';
-import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from "react-icons/ti";
@@ -31,6 +32,8 @@ export function Home () {
 
   const menuPath = '/menu';
 
+  const { signOut } = useAuth();
+
 
   return (
     <Container>
@@ -44,7 +47,7 @@ export function Home () {
           icon={TiShoppingCart}
           title="Verificar Carrinho" />
         </div>
-        <GiMailbox />
+        <ImExit onClick={signOut}/>
       </Header>
 
       <main>

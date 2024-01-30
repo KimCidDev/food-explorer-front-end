@@ -30,11 +30,18 @@ function AuthProvider({ children }) {
 
   }
 
+  function signOut () {
+    localStorage.removeItem('@foodExplorer:user');
+    localStorage.removeItem('@foodExplorer:token');
+
+    setData({});
+  }
+
   useEffect(() => {
     const user = localStorage.getItem('@foodExplorer:user');
     const token = localStorage.getItem('@foodExplorer:token');
   
-    if (user && token ) {
+    if (user && token) {
       api.defaults.headers.authorization = `Beaerer ${token}`;
 
       setData({
@@ -46,7 +53,11 @@ function AuthProvider({ children }) {
   
 
   return (
-    <AuthContext.Provider value={{ signIn, user: data.user }}>
+    <AuthContext.Provider value={{ 
+      signIn,
+      signOut,
+      user: data.user
+      }}>
       {children}
     </AuthContext.Provider>
   );
