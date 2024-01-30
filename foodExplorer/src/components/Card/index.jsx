@@ -1,6 +1,7 @@
-import { Container } from './styles'
+import { Container } from './styles';
+import { Link } from 'react-router-dom';
 
-import { Button } from '../../components/Button'
+import { Button } from '../../components/Button';
 
 import { BsStar, BsStarFill, BsPlusLg,  } from 'react-icons/bs';
 import { BiMinus } from 'react-icons/bi';

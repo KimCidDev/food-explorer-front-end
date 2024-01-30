@@ -1,5 +1,7 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
+import { useAuth } from '../../../hooks/auth';
+import { Link } from 'react-router-dom';
 
 import { Container } from './styles';
 import { Card } from '../../../components/Card';
@@ -9,7 +11,7 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Section } from '../../../components/Section';
 
-import { RxExit } from "react-icons/rx";
+import { ImExit } from "react-icons/im";
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { MdOutlineFastfood } from "react-icons/md";
@@ -23,6 +25,7 @@ import macaroon from '../../../assets/macaroon-promo-pic.png';
 
 
 export function HomeAdmin () {
+  const { signOut } = useAuth();
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -47,7 +50,9 @@ export function HomeAdmin () {
           icon={MdOutlineFastfood} 
           title="Adicionar Prato" />
         </div>
-        <RxExit />
+        <Link to="/">
+        <ImExit onClick={signOut}/>
+        </Link>
       </Header>
 
 
@@ -76,7 +81,7 @@ export function HomeAdmin () {
       description="Lettuce iceberd, cucumber, tomato, red onions"
       price="R$ 27,95"
       />
-            <Card 
+      <Card 
       icon={LiaUserEditSolid}
       recipe="Hobbit Salad"
       prato={greenSalad1}

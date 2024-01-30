@@ -5,9 +5,11 @@ export function Section ({children, icon: Icon, title, ...rest}) {
   return (
     <Container {...rest} className='section'>
       
-      <Link className='goBackLink' to='/admin/'>{ Icon && <Icon size={18} />}{title}</Link>
+      { Icon && <Icon size={18} />}{title}
       <div className='childrenBox'>
+      <Link className='goBackLink' to='/foodInfo'>
       {children}
+      </Link>
       </div>
     </Container>
   )

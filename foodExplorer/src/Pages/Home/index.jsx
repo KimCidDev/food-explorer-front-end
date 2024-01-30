@@ -47,6 +47,7 @@ export function Home () {
           icon={TiShoppingCart}
           title="Verificar Carrinho" />
         </div>
+        
         <ImExit onClick={signOut}/>
       </Header>
 
