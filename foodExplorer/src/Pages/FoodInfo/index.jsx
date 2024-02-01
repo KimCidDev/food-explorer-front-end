@@ -62,6 +62,7 @@ export function FoodInfo () {
         <BiMinus/>
         <p>01</p>
         <BsPlusLg/>
+        <Button title='Adicionar ao carrinho'></Button>
       </div>      
      </div>
      </div>

@@ -67,7 +67,7 @@ export const Container = styled.div`
         }
 
         button {
-          height: 32px;
+          height: 56x;
 
           padding: 0 10px;
 
@@ -180,8 +180,10 @@ export const Container = styled.div`
 
     > .howManyBox {
       display: flex;
+      width: 100%;
+      justify-content: space-;
+      align-items: center;
       gap: 15px;
-      margin-right: 16px;
 
       svg,
       p {
