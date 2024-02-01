@@ -1,4 +1,6 @@
-import { useAuth } from '../../hooks/auth'
+import { useState, useEffect } from 'react';
+import { useAuth } from '../../hooks/auth';
+import { api } from '../../services/api'
 
 import { Container } from './styles';
 import { Tag } from '../../components/Tag';
@@ -22,6 +24,20 @@ import greenSalad1 from '../../assets/greenSalad1.png';
 export function FoodInfo () {
   const { signOut } = useAuth();
 
+  const [ name, setName ] = useState();
+  const [ description, setDescription ] = useState('');
+  const [ price, setPrice ] = useState('');
+
+  async function testDishes() {     
+    const getDishes = await api.get('/dishes');
+    const dishes = getDishes.data
+    return console.log(dishes)
+  }
+
+  useEffect(() => {
+    
+  }, [])
+
 
   return (
     <Container>
@@ -37,7 +53,7 @@ export function FoodInfo () {
           icon={TiShoppingCart} 
           title="Verificar Carrinho" />
         </div>
-        <ImExit onClick={signOut}/>
+        <ImExit onClick={testDishes}/>
       </Header>
 
       <Section

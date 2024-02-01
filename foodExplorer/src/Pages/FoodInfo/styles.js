@@ -45,6 +45,7 @@ export const Container = styled.div`
 
       > .searchAndCart {
         display: flex;
+        align-items: center;
         width: 50%;
         gap: 20px;
 
@@ -67,7 +68,7 @@ export const Container = styled.div`
         }
 
         button {
-          height: 56x;
+          height: 56px;
 
           padding: 0 10px;
 

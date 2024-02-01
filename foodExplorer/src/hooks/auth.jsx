@@ -7,9 +7,9 @@ function AuthProvider({ children }) {
   const [data, setData] = useState({});
 
   async function signIn ({ email, password}) {
-
     try {      
       const response = await api.post('/sessions', { email, password });
+
       const { user, token } = response.data;
 
       localStorage.setItem('@foodExplorer:user', JSON.stringify(user));
@@ -17,7 +17,6 @@ function AuthProvider({ children }) {
 
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setData({user, token});
-
 
     } catch (error) {
       if(error.response) {
@@ -33,6 +32,7 @@ function AuthProvider({ children }) {
   function signOut () {
     localStorage.removeItem('@foodExplorer:user');
     localStorage.removeItem('@foodExplorer:token');
+    localStorage.removeItem('@foodExplorer:dishes');
 
     setData({});
   }
