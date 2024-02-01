@@ -63,7 +63,6 @@ export function FoodInfo () {
         <p>01</p>
         <BsPlusLg/>
       </div>      
-     <Button title="Incluir" />
      </div>
      </div>
      </Section>
