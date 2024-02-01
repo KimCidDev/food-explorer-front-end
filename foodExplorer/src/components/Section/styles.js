@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   padding: 24px 24px 0 24px;
+
+  cursor: auto;
 
   .goBackLink {
     text-decoration: none;

@@ -1,9 +1,8 @@
 import { Container } from './styles';
-import { Link } from 'react-router-dom';
 
 import { Button } from '../../components/Button';
 
-import { BsStar, BsStarFill, BsPlusLg,  } from 'react-icons/bs';
+import { BsPlusLg } from 'react-icons/bs';
 import { BiMinus } from 'react-icons/bi';
 
 export function Card ({icon: Icon, prato, recipe, description, price, tag: Tag, ...rest}) {

@@ -32,6 +32,16 @@ export const Container = styled.div`
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       margin-bottom: clamp(15px, 90%, 30px);
+      padding: 0 120px;
+      justify-content: space-between;
+
+      #menuLink {
+        display: none;
+
+        svg:first-child {
+          display: none;
+        }
+      }
 
       > .searchAndCart {
         display: flex;
@@ -75,6 +85,7 @@ export const Container = styled.div`
 
   > .section {
     display: flex;
+    margin: 0 120px;
 
     h1 {
       color: ${({ theme }) => theme.COLORS.LIGHT_200};
@@ -83,6 +94,7 @@ export const Container = styled.div`
 
   > .section .childrenBox {
     display: flex;
+    gap: 50px;
 
     img {
       height: clamp(250px, 100%, 400px);
@@ -115,8 +127,6 @@ export const Container = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: center;
-
-      margin-top: 42px;
 
       .textContent {
         max-width: 65%;

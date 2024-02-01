@@ -33,6 +33,16 @@ export const Container = styled.div`
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
       margin-bottom: clamp(30px, 90%, 80px);
+      padding: 0 120px;
+      justify-content: space-between;
+
+      #menuLink {
+        display: none;
+
+        svg:first-child {
+          display: none;
+        }
+      }
 
       > .searchAndCart {
         display: flex;

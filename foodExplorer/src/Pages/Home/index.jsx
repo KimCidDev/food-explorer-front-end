@@ -61,7 +61,7 @@ export function Home () {
         </div>
       </div>
 
-      <Section title="Saladas" className="sectionMenu" >
+      <Section title="Saladas" >
       <div ref={sliderRef} className='keen-slider'>
       <Card 
       icon={BsStar}

@@ -41,8 +41,9 @@ export function FoodInfo () {
       </Header>
 
       <Section
-      icon={AiOutlineLeft}
       title="voltar" 
+      icon={AiOutlineLeft}
+      to="/"
        >
       <img src={greenSalad1} alt="Ravanello Salad view from the top" />
       <div className="textContent">
