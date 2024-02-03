@@ -42,7 +42,9 @@ export function Home () {
         <div className="searchAndCart">
           <input
           id="searchInput"
-          type="text" />
+          type="text" 
+          placeholder='Tem algum prato em mente?'
+          />
           <Button
           icon={TiShoppingCart}
           title="Verificar Carrinho" />

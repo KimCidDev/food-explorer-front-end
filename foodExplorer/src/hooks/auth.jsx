@@ -5,6 +5,33 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
+  const [dishData, setDishData ] = useState([]);
+
+  async function getDishes () {
+    try {      
+      const response = await api.get('/dishes');
+      const dishesArray = response.data;
+  
+      // Assuming dishData is an array with one entry (the specific structure you provided)  
+      localStorage.setItem('@foodExplorer:dishes', JSON.stringify(dishesArray));
+      setDishData(dishesArray);
+
+      const dishesArrayWithId = dishesArray.map(([id, dishData]) => ({
+        id,
+        ...dishData,
+      }));
+      console.log(dishesArrayWithId)
+
+    } catch (error) {
+      if(error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível autenticar o seu login")
+      }
+      
+    }
+
+  }
 
   async function signIn ({ email, password}) {
     try {      
@@ -32,7 +59,6 @@ function AuthProvider({ children }) {
   function signOut () {
     localStorage.removeItem('@foodExplorer:user');
     localStorage.removeItem('@foodExplorer:token');
-    localStorage.removeItem('@foodExplorer:dishes');
 
     setData({});
   }
@@ -49,12 +75,14 @@ function AuthProvider({ children }) {
         user: JSON.parse(user)
       })
     }
+    getDishes()
   }, []);
   
 
   return (
     <AuthContext.Provider value={{ 
       signIn,
+      dishData,
       signOut,
       user: data.user
       }}>
