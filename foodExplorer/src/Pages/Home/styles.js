@@ -47,12 +47,17 @@ export const Container = styled.div`
       > .searchAndCart {
         display: flex;
         align-items: center;
-        width: 50%;
+        width: 55%;
         gap: 20px;
+
+        h2 {
+          min-width: 200px;
+          color: ${({ theme }) => theme.COLORS.LIGHT_400};
+        }
 
         #searchInput {
           height: 45px;
-          width: clamp(100px, 85%, 500px);
+          width: 550px;
 
           color: ${({ theme }) => theme.COLORS.LIGHT_200};
 

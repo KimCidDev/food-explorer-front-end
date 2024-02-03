@@ -7,7 +7,7 @@ import { BiMinus } from 'react-icons/bi';
 
 export function Card ({icon: Icon, prato, recipe, description, price, tag: Tag, ...rest}) {
   return (
-    <Container {...rest} className='keen-slider__slide'>
+    <Container {...rest}>
       { Icon && <Icon id="save"/> }
       <img src={prato} alt="lettuce iceberg, beets, arugula, tomato" />
       <h2>{recipe}</h2>

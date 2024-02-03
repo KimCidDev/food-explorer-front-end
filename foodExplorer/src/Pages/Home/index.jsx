@@ -1,6 +1,7 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import { useAuth } from '../../hooks/auth'
+import { useState } from 'react'
 
 import { Container } from './styles';
 import { Card } from '../../components/Card';
@@ -24,15 +25,22 @@ import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
 export function Home () {
-  const [ sliderRef ] = useKeenSlider({
+  const { signOut, user } = useAuth();
+  const [name, setName ] = useState(user.name);
+
+  const [ sliderRefSalad ] = useKeenSlider({
     slides: {
-      perView: 3
+      perView: 2
+    }
+  });
+  const [ sliderRefMain ] = useKeenSlider({
+    slides: {
+      perView: 2
     }
   });
 
   const menuPath = '/menu';
 
-  const { signOut } = useAuth();
 
 
   return (
@@ -40,10 +48,11 @@ export function Home () {
       <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
+          <h2>{`Olá, ${name}`}</h2>
           <input
           id="searchInput"
           type="text" 
-          placeholder='Tem algum prato em mente?'
+          placeholder='Algum prato em mente?'
           />
           <Button
           icon={TiShoppingCart}
@@ -64,13 +73,14 @@ export function Home () {
       </div>
 
       <Section title="Saladas" >
-      <div ref={sliderRef} className='keen-slider'>
+      <div ref={sliderRefSalad} className='keen-slider'>
       <Card 
       icon={BsStar}
       recipe="Hobbit Salad"
       prato={greenSalad1}
       description="Green leafs, cucumber, radish and cauliflower salad"
       price="R$ 38,45"
+      className='keen-slider__slide'
       />
       <Card 
       icon={BsStar}
@@ -78,6 +88,7 @@ export function Home () {
       prato={greenSalad2}
       description="Lettuce iceberd, cucumber, tomato, red onions"
       price="R$ 27,95"
+      className='keen-slider__slide'
       />
       <Card 
       icon={BsStar}
@@ -85,6 +96,7 @@ export function Home () {
       prato={greenSalad1}
       description="Green leafs, cucumber, radish and cauliflower salad"
       price="R$ 38,45"
+      className='keen-slider__slide'
       />
       <Card 
       icon={BsStar}
@@ -92,18 +104,20 @@ export function Home () {
       prato={greenSalad2}
       description="Lettuce iceberd, cucumber, tomato, red onions"
       price="R$ 27,95"
+      className='keen-slider__slide'
       />
       </div>
      </Section>
 
      <Section title="Pratos Principais" className="sectionMenu" >
-     <div ref={sliderRef} className='keen-slider'>
+     <div ref={sliderRefMain} className='keen-slider'>
       <Card 
       icon={BsStar}
       recipe="Pancetta Bruschetta"
       prato={meal1}
       description="Whole wheat toast, butter, arugula, smoked pancetta"
       price="R$ 29,95"
+      className="keen-slider__slide"
       />
       <Card 
       icon={BsStar}
@@ -111,6 +125,7 @@ export function Home () {
       prato={meal2}
       description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
       price="R$ 45,50"
+      className="keen-slider__slide"
       />
       <Card 
       icon={BsStar}
@@ -118,6 +133,7 @@ export function Home () {
       prato={meal1}
       description="Whole wheat toast, butter, arugula, smoked pancetta"
       price="R$ 29,95"
+      className="keen-slider__slide"
       />
       <Card 
       icon={BsStar}
@@ -125,6 +141,7 @@ export function Home () {
       prato={meal2}
       description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
       price="R$ 45,50"
+      className="keen-slider__slide"
       />
       </div>
      </Section>
