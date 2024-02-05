@@ -40,18 +40,21 @@ function AuthProvider({ children }) {
   
   async function getDishes () {
     try {      
+      console.log(data.token);
+      api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+
       const response = await api.get('/dishes');
+      console.log(response);
       const dishesArray = response.data;
-  
-      // Assuming dishData is an array with one entry (the specific structure you provided)  
-      localStorage.setItem('@foodExplorer:dishes', JSON.stringify(dishesArray));
+      console.log(dishesArray);
+
+      
+      localStorage.setItem('@foodExplorer:dishes', JSON.stringify(dishesArray.map(dish => dish)));
+
+      
+      // até aqui o código funciona;
       setDishData(dishesArray);
 
-      const dishesArrayWithId = dishesArray.map(([id, dishData]) => ({
-        id,
-        ...dishData,
-      }));
-      console.log(dishesArrayWithId)
 
     } catch (error) {
       if(error.response) {
@@ -62,19 +65,6 @@ function AuthProvider({ children }) {
       
     }
 
-  }
-
-  async function getDishes () {
-    try {      
-
-    } catch (error) {
-      if(error.response) {
-        alert(error.response.data.message)
-      } else {
-        alert("Não foi possível autenticar o seu login")
-      }
-      
-    }
 
   }
 
@@ -83,6 +73,7 @@ function AuthProvider({ children }) {
     const token = localStorage.getItem('@foodExplorer:token');
   
     if (user && token) {
+      
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       setData({
@@ -90,14 +81,18 @@ function AuthProvider({ children }) {
         user: JSON.parse(user)
       })
     }
-    //getDishes()
   }, []);
   
+
+  useEffect(() => {
+    console.log("Updated dishData:", dishData);
+  }, [dishData]);
 
   return (
     <AuthContext.Provider value={{ 
       signIn,
       dishData,
+      getDishes,
       signOut,
       user: data.user
       }}>

@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import { api } from '../../../services/api'
+import { useAuth } from '../../../hooks/auth'
+
 import { Container } from './styles';
 import { Tag } from '../../../components/Tag';
 import { Logo } from '../../../components/Logo';
@@ -8,8 +12,6 @@ import { Button } from '../../../components/Button';
 import { Section } from '../../../components/Section';
 import { Select } from '../../../components/Select';
 
-import { BiMinus } from 'react-icons/bi';
-import { BsPlusLg } from 'react-icons/bs';
 import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
@@ -18,6 +20,26 @@ import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 export function EditDishAdmin () {
+
+  const { dishData, getDishes } = useAuth();
+
+  const [ name, setName ] = useState();
+  const [ description, setDescription ] = useState();
+  const [ price, setPrice ] = useState();
+
+  const [ avatarFile, setAvatarFile ] = useState();
+
+  async function handleAvatarUpdate (event) {
+    const file = event.target.files[0];
+
+    setAvatarFile(file)
+
+   // const imagePreview
+  }
+
+  useEffect(() => {
+    getDishes()
+  }, []);
 
   return (
     <Container>
@@ -46,7 +68,8 @@ export function EditDishAdmin () {
         <Input 
         title="Imagem do Prato"
         type="file"
-        id="hiddenInput" 
+        id="hiddenInput"
+        onClick={setAvatarFile}
         />
         <label htmlFor="hiddenInput">
           <MdOutlineFileDownload />
@@ -56,6 +79,8 @@ export function EditDishAdmin () {
         <Input 
         title="Nome do Prato"
         placeholder="Ex.: Salada Caesar" 
+        
+        defaultValue={dishData.map(dish => dish.name)}
         />
         <Select
         title="Categoria" 
@@ -86,7 +111,7 @@ export function EditDishAdmin () {
         </textarea>        
         </div>
         <div className="saveInfoBox">
-        <Button title="Salvar Alterações" form="newDishForm"/>
+        <Button title="Salvar Alterações" form="newDishForm" onClick={getDishes}/>
         <Button title="Excluir Prato" form="newDishForm"/>
         </div>
         </div>
