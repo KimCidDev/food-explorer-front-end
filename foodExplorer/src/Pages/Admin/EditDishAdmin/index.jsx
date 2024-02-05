@@ -23,7 +23,7 @@ export function EditDishAdmin () {
 
   const { dishData, getDishes } = useAuth();
 
-  const [ name, setName ] = useState();
+  const [ name, setName ] = useState(dishData.name);
   const [ description, setDescription ] = useState();
   const [ price, setPrice ] = useState();
 
@@ -38,7 +38,7 @@ export function EditDishAdmin () {
   }
 
   useEffect(() => {
-    getDishes()
+    getDishes();
   }, []);
 
   return (
@@ -78,9 +78,8 @@ export function EditDishAdmin () {
         </div>
         <Input 
         title="Nome do Prato"
-        placeholder="Ex.: Salada Caesar" 
-        
-        defaultValue={dishData.map(dish => dish.name)}
+        placeholder="Ex.: Salada Caesar"
+        value={name}
         />
         <Select
         title="Categoria" 

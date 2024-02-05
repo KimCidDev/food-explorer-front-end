@@ -1,7 +1,9 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
-import { useAuth } from '../../hooks/auth'
-import { useState } from 'react'
+import { useAuth } from '../../hooks/auth';
+import { useState } from 'react';
+import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 import { Container } from './styles';
 import { Card } from '../../components/Card';
@@ -26,7 +28,7 @@ import macaroon from '../../assets/macaroon-promo-pic.png';
 
 export function Home () {
   const { signOut, user } = useAuth();
-  const [name, setName ] = useState(user.name);
+  const [ name, setName ] = useState(user.name);
 
   const [ sliderRefSalad ] = useKeenSlider({
     slides: {
@@ -39,7 +41,13 @@ export function Home () {
     }
   });
 
+  const navigate = useNavigate();
   const menuPath = '/menu';
+
+  async function handleNavitateToDish (id) {
+
+    
+  };
 
 
 

@@ -34,6 +34,7 @@ function AuthProvider({ children }) {
   function signOut () {
     localStorage.removeItem('@foodExplorer:user');
     localStorage.removeItem('@foodExplorer:token');
+    localStorage.removeItem('@foodExplorer:dishes')
 
     setData({});
   }
@@ -47,12 +48,9 @@ function AuthProvider({ children }) {
       console.log(response);
       const dishesArray = response.data;
       console.log(dishesArray);
-
       
       localStorage.setItem('@foodExplorer:dishes', JSON.stringify(dishesArray.map(dish => dish)));
 
-      
-      // até aqui o código funciona;
       setDishData(dishesArray);
 
 
@@ -71,6 +69,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const user = localStorage.getItem('@foodExplorer:user');
     const token = localStorage.getItem('@foodExplorer:token');
+    const dishData = localStorage.getItem('@foodExplorer:dishes');
   
     if (user && token) {
       
@@ -80,6 +79,8 @@ function AuthProvider({ children }) {
         token,
         user: JSON.parse(user)
       })
+
+      setDishData({dish: JSON.parse(dishData)})
     }
   }, []);
   
