@@ -23,7 +23,8 @@ import greenSalad1 from '../../assets/greenSalad1.png';
 
 
 export function FoodInfo () {
-  const { signOut, dishData } = useAuth();
+  const { signOut, dishData } = useAuth();  
+  const { id } = useParams();
           
 
   return (

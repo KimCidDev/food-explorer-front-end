@@ -1,7 +1,7 @@
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import { useAuth } from '../../hooks/auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,14 +21,13 @@ import { TiShoppingCart } from "react-icons/ti";
 
 import meal1 from '../../assets/meal1.png';
 import meal2 from '../../assets/meal2.png';
-import greenSalad1 from '../../assets/greenSalad1.png';
-import greenSalad2 from '../../assets/greenSalad2.png';
 import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
 export function Home () {
-  const { signOut, user } = useAuth();
+  const { signOut, getDishes, user } = useAuth();
   const [ name, setName ] = useState(user.name);
+  const [ dishes, setDishes ] = useState([])
 
   const [ sliderRefSalad ] = useKeenSlider({
     slides: {
@@ -41,14 +40,43 @@ export function Home () {
     }
   });
 
-  const navigate = useNavigate();
   const menuPath = '/menu';
+  const navigate = useNavigate();
 
-  async function handleNavitateToDish (id) {
+  async function handleNavigateToDish(dish_id) {
+    try {
+      const response = await api.get(`/dishes/${dish_id}`);
+      const dishById = response.data;
+      console.log(dishById);
 
-    
+      navigate(`/foodInfo/${dish_id}`)
+  
+    } catch (error) {
+      console.error('Error fetching dish information:', error);
+    }
   };
 
+
+  useEffect(() => { 
+    async function fetchDishes() {
+      try {  
+        const response = await api.get('/dishes/');
+        const allDish = response.data;
+        console.log(allDish);
+        setDishes(allDish)
+
+  
+    
+      } catch (error) {
+        console.error('Error fetching dish information:', error);
+      }
+    };
+
+    
+
+      
+    fetchDishes();
+  }, []);
 
 
   return (
@@ -81,39 +109,23 @@ export function Home () {
       </div>
 
       <Section title="Saladas" >
-      <div ref={sliderRefSalad} className='keen-slider'>
-      <Card 
-      icon={BsStar}
-      recipe="Hobbit Salad"
-      prato={greenSalad1}
-      description="Green leafs, cucumber, radish and cauliflower salad"
-      price="R$ 38,45"
-      className='keen-slider__slide'
-      />
-      <Card 
-      icon={BsStar}
-      recipe="Zuchinni Salad"
-      prato={greenSalad2}
-      description="Lettuce iceberd, cucumber, tomato, red onions"
-      price="R$ 27,95"
-      className='keen-slider__slide'
-      />
-      <Card 
-      icon={BsStar}
-      recipe="Hobbit Salad"
-      prato={greenSalad1}
-      description="Green leafs, cucumber, radish and cauliflower salad"
-      price="R$ 38,45"
-      className='keen-slider__slide'
-      />
-      <Card 
-      icon={BsStar}
-      recipe="Zuchinni Salad"
-      prato={greenSalad2}
-      description="Lettuce iceberd, cucumber, tomato, red onions"
-      price="R$ 27,95"
-      className='keen-slider__slide'
-      />
+      
+     <div ref={sliderRefSalad} className='keen-slider'>
+      {
+        dishes.map(dish => (
+          <Card 
+          key={dish.id}
+          icon={BsStar}
+          recipe={dish.name}
+          prato={meal1}
+          description={dish.description}
+          price={dish.price}
+          className="keen-slider__slide"
+          onClick={() => handleNavigateToDish(dish.id)}
+          />
+        ))
+
+    }
       </div>
      </Section>
 
@@ -158,4 +170,4 @@ export function Home () {
       <Footer icon={PiCopyright}/>
     </Container>
   )
-} 
+}  
