@@ -29,14 +29,15 @@ export function Home () {
   const [ name, setName ] = useState(user.name);
   const [ dishes, setDishes ] = useState([])
 
-  const [ sliderRefSalad ] = useKeenSlider({
+  const [sliderRefSalad] = useKeenSlider({
     slides: {
-      perView: 2
+      perView: 3
     }
   });
+
   const [ sliderRefMain ] = useKeenSlider({
     slides: {
-      perView: 2
+      perView: 3
     }
   });
 
@@ -49,7 +50,7 @@ export function Home () {
       const dishById = response.data;
       console.log(dishById);
 
-      navigate(`/foodInfo/${dish_id}`)
+      navigate(`/foodInfo/${dish}`)
   
     } catch (error) {
       console.error('Error fetching dish information:', error);
@@ -111,58 +112,38 @@ export function Home () {
       <Section title="Saladas" >
       
      <div ref={sliderRefSalad} className='keen-slider'>
-      {
-        dishes.map(dish => (
-          <Card 
-          key={dish.id}
-          icon={BsStar}
-          recipe={dish.name}
-          prato={meal1}
-          description={dish.description}
-          price={dish.price}
-          className="keen-slider__slide"
-          onClick={() => handleNavigateToDish(dish.id)}
-          />
-        ))
-
-    }
+            {dishes
+              .filter(dish => dish.category === 'Salad')        
+              .map(dish => (
+                <Card
+                  key={dish.id}
+                  icon={BsStar}
+                  recipe={dish.name}
+                  prato={meal1}
+                  description={dish.description}
+                  price={dish.price}
+                  className="keen-slider__slide"
+                  onClick={() => handleNavigateToDish(dish.id)}
+                />
+              ))}
       </div>
      </Section>
 
      <Section title="Pratos Principais" className="sectionMenu" >
-     <div ref={sliderRefMain} className='keen-slider'>
-      <Card 
-      icon={BsStar}
-      recipe="Pancetta Bruschetta"
-      prato={meal1}
-      description="Whole wheat toast, butter, arugula, smoked pancetta"
-      price="R$ 29,95"
-      className="keen-slider__slide"
-      />
-      <Card 
-      icon={BsStar}
-      recipe="Shirmp Pasta"
-      prato={meal2}
-      description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
-      price="R$ 45,50"
-      className="keen-slider__slide"
-      />
-      <Card 
-      icon={BsStar}
-      recipe="Pancetta Bruschetta"
-      prato={meal1}
-      description="Whole wheat toast, butter, arugula, smoked pancetta"
-      price="R$ 29,95"
-      className="keen-slider__slide"
-      />
-      <Card 
-      icon={BsStar}
-      recipe="Shirmp Pasta"
-      prato={meal2}
-      description="Pan-fried giant shrimp on spaghettini with pesto and fresh basil"
-      price="R$ 45,50"
-      className="keen-slider__slide"
-      />
+     <div ref={sliderRefMain} className='keen-slider'>            {dishes
+              .filter(dish => dish.category === 'Main')        
+              .map(dish => (
+                <Card
+                  key={dish.id}
+                  icon={BsStar}
+                  recipe={dish.name}
+                  prato={meal1}
+                  description={dish.description}
+                  price={dish.price}
+                  className="keen-slider__slide"
+                  onClick={() => handleNavigateToDish(dish.id)}
+                />
+              ))}
       </div>
      </Section>
      </main>

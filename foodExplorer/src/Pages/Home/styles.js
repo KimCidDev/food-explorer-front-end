@@ -12,6 +12,15 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
+  .keen-slider {
+    display: flex;
+  }
+
+  .keen-slider__slide {
+    flex: 0 0 auto;
+    width: 33.33%; /* Each slide takes up one third of the container */
+  }
+
   > div:first-child {
     display: flex;
     align-items: center;
