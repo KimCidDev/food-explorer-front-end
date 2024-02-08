@@ -25,57 +25,49 @@ import macaroon from '../../assets/macaroon-promo-pic.png';
 
 
 export function Home () {
-  const { signOut, getDishes, user } = useAuth();
+  const { signOut, user } = useAuth();
   const [ name, setName ] = useState(user.name);
-  const [ dishes, setDishes ] = useState([])
+  const [ dishes, setDishes ] = useState([]);
 
-  const [sliderRefSalad] = useKeenSlider({
-    slides: {
-      perView: 3
-    }
-  });
+    const [sliderRefSalad] = useKeenSlider({
+      slides: {
+        perView: 3
+      }
+    });
 
-  const [ sliderRefMain ] = useKeenSlider({
-    slides: {
-      perView: 3
-    }
-  });
+    const [sliderRefMain] = useKeenSlider({
+      slides: {
+        perView: 3
+      }
+    });
+
 
   const menuPath = '/menu';
   const navigate = useNavigate();
 
-  async function handleNavigateToDish(dish_id) {
-    try {
-      const response = await api.get(`/dishes/${dish_id}`);
-      const dishById = response.data;
-      console.log(dishById);
-
-      navigate(`/foodInfo/${dish}`)
+  function handleNavigateToDish(id) {
+      navigate(`/foodInfo/${id}`)
   
-    } catch (error) {
-      console.error('Error fetching dish information:', error);
-    }
   };
 
 
-  useEffect(() => { 
+  useEffect(() => {
     async function fetchDishes() {
-      try {  
-        const response = await api.get('/dishes/');
-        const allDish = response.data;
-        console.log(allDish);
-        setDishes(allDish)
+      try {
+        const response = await api.get('/dishes');
+        const allDishes = response.data;
+        localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
 
-  
-    
+        const token = localStorage.getItem('@foodExplorer:token');
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        
+        console.log(allDishes);
+        setDishes(allDishes);
       } catch (error) {
         console.error('Error fetching dish information:', error);
       }
-    };
+    }
 
-    
-
-      
     fetchDishes();
   }, []);
 
@@ -109,12 +101,12 @@ export function Home () {
         </div>
       </div>
 
-      <Section title="Saladas" >
-      
-     <div ref={sliderRefSalad} className='keen-slider'>
-            {dishes
+      <Section title="Saladas">
+      <div ref={sliderRefSalad} className='keen-slider .keen-slider--ready'>
+             {
+                dishes
               .filter(dish => dish.category === 'Salad')        
-              .map(dish => (
+             .map(dish => (
                 <Card
                   key={dish.id}
                   icon={BsStar}
@@ -125,12 +117,14 @@ export function Home () {
                   className="keen-slider__slide"
                   onClick={() => handleNavigateToDish(dish.id)}
                 />
-              ))}
-      </div>
-     </Section>
+        ))
+    }
+     </div>
+</Section>
 
      <Section title="Pratos Principais" className="sectionMenu" >
-     <div ref={sliderRefMain} className='keen-slider'>            {dishes
+     <div ref={sliderRefMain} className='keen-slider .keen-slider--ready'>            
+        {dishes
               .filter(dish => dish.category === 'Main')        
               .map(dish => (
                 <Card
@@ -141,9 +135,10 @@ export function Home () {
                   description={dish.description}
                   price={dish.price}
                   className="keen-slider__slide"
-                  onClick={() => handleNavigateToDish(dish.id)}
+                  onClick={() => console.log(dish.id)}
                 />
-              ))}
+              ))
+              }
       </div>
      </Section>
      </main>

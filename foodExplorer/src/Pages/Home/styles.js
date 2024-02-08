@@ -12,8 +12,14 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-  .keen-slider {
-    display: flex;
+  /* Display keen-slider for no-js browsers */
+  .no-js .keen-slider {
+    display: block;
+  }
+
+  /* Display keen-slider once it's loaded */
+  .keen-slider .keen-slider--ready {
+    display: block;
   }
 
   .keen-slider__slide {
