@@ -5,15 +5,18 @@ import { Button } from '../../components/Button';
 import { BsPlusLg } from 'react-icons/bs';
 import { BiMinus } from 'react-icons/bi';
 
-export function Card ({icon: Icon, prato, recipe, description, price, tag: Tag, ...rest}) {
+export function Card ({icon: Icon, prato, recipe, description, price, tag: Tag, onClick, ...rest}) {
   return (
-    <Container {...rest}>
+    <Container {...rest} onClick={onClick}>
       { Icon && <Icon id="save"/> }
       <img src={prato} alt="lettuce iceberg, beets, arugula, tomato" />
       <h2>{recipe}</h2>
-      { description && <p>{description}</p>}
-      { price && <p id="price">{price} </p>}
-      { Tag && <div> {<Tag />} </div>}
+      { description && 
+      <p>{description}</p>}
+      { price && 
+      <p id="price">{price} </p>}
+      { Tag && 
+      <div> {<Tag />} </div>}
       <div className="addToBasket">
       <div className="howManyBox">
         <BiMinus/>

@@ -16,6 +16,8 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
+  cursor: pointer;
+
   #save {
     position: absolute;
     top: 0;

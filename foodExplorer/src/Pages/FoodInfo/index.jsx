@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
-import { api } from '../../services/api'
+import { api } from '../../services/api';
 
 import { Container } from './styles';
 import { Tag } from '../../components/Tag';
@@ -23,8 +23,8 @@ import greenSalad1 from '../../assets/greenSalad1.png';
 
 
 export function FoodInfo () {
-  const { signOut, dishData } = useAuth();  
-  const { id } = useParams();
+  const { signOut } = useAuth();  
+  const params = useParams();
           
 
   return (
@@ -51,14 +51,6 @@ export function FoodInfo () {
        >
       <img src={greenSalad1} alt="Ravanello Salad view from the top" />
       <div className="textContent">
-      {dishData.map((dish) => (
-          <div key={dish.id}> {/* Assuming each dish has an 'id' property */}
-            <h1>{dish.name}</h1>
-            <p>{dish.description}</p>
-            <p>{dish.price}</p>
-            {/* ... other dish information ... */}
-          </div>
-        ))}
       <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim tostado.</p>
       <div className="tagsSection">
       <Tag title="alface"/>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { Container, Form } from './styles';
 import { useAuth } from '../../hooks/auth';

@@ -20,7 +20,7 @@ export function AppRoutes() {
 
       <Route path="/admin/" element={<HomeAdmin />} />
       <Route path="/admin/menu" element={<MenuAdmin />} />
-      <Route path="/admin/foodinfo" element={<FoodInfoAdmin />} />
+      <Route path="/admin/foodinfo/:id" element={<FoodInfoAdmin />} />
       <Route path="/admin/newdish" element={<NewDishAdmin />} />
       <Route path="/admin/editdish" element={<EditDishAdmin />} />
 

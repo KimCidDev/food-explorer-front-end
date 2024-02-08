@@ -2,8 +2,8 @@ import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
-import { api } from '../../services/api'
-import { useNavigate } from 'react-router-dom'
+import { api } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 import { Container } from './styles';
 import { Card } from '../../components/Card';
@@ -13,43 +13,35 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
 
-import { ImExit } from "react-icons/im";
+import { ImExit } from 'react-icons/im';
 import { BsStar } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { TiShoppingCart } from "react-icons/ti";
+import { TiShoppingCart } from 'react-icons/ti';
 
 import meal1 from '../../assets/meal1.png';
-import meal2 from '../../assets/meal2.png';
 import macaroon from '../../assets/macaroon-promo-pic.png';
 
-
-export function Home () {
+export function Home() {
   const { signOut, user } = useAuth();
-  const [ name, setName ] = useState(user.name);
-  const [ dishes, setDishes ] = useState([]);
+  const [ name, setName] = useState(user.name);
+  const [ dishes, setDishes] = useState([]);  
+  const [loading, setLoading] = useState(true);
 
-    const [sliderRefSalad] = useKeenSlider({
-      slides: {
-        perView: 3
-      }
-    });
-
-    const [sliderRefMain] = useKeenSlider({
-      slides: {
-        perView: 3
-      }
-    });
-
+  const [saladSliderRef] = useKeenSlider({ slides: { perView: 3 } });
+  const [mainSliderRef] = useKeenSlider({ slides: { perView: 3 } });
 
   const menuPath = '/menu';
   const navigate = useNavigate();
 
   function handleNavigateToDish(id) {
-      navigate(`/foodInfo/${id}`)
-  
-  };
-
+    try {
+      console.log(id);
+      navigate(`/foodInfo/${id}`);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     async function fetchDishes() {
@@ -60,9 +52,10 @@ export function Home () {
 
         const token = localStorage.getItem('@foodExplorer:token');
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        
+
         console.log(allDishes);
         setDishes(allDishes);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching dish information:', error);
       }
@@ -71,6 +64,9 @@ export function Home () {
     fetchDishes();
   }, []);
 
+  if (loading) {
+    return <div>Loading...</div>; // You can customize this loading indicator
+  }
 
   return (
     <Container>
@@ -79,34 +75,30 @@ export function Home () {
         <div className="searchAndCart">
           <h2>{`Olá, ${name}`}</h2>
           <input
-          id="searchInput"
-          type="text" 
-          placeholder='Algum prato em mente?'
+            id="searchInput"
+            type="text"
+            placeholder="Algum prato em mente?"
           />
-          <Button
-          icon={TiShoppingCart}
-          title="Verificar Carrinho" />
+          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
-        
-        <ImExit onClick={signOut}/>
+
+        <ImExit onClick={signOut} />
       </Header>
 
       <main>
-
-      <div className="banner">
-        <img src={macaroon} alt="macaroon sweet in many colors" />
-        <div className="textContent">
-        <h2>Sabores Inigualáveis</h2>
-        <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+        <div className="banner">
+          <img src={macaroon} alt="macaroon sweet in many colors" />
+          <div className="textContent">
+            <h2>Sabores Inigualáveis</h2>
+            <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+          </div>
         </div>
-      </div>
 
-      <Section title="Saladas">
-      <div ref={sliderRefSalad} className='keen-slider .keen-slider--ready'>
-             {
-                dishes
-              .filter(dish => dish.category === 'Salad')        
-             .map(dish => (
+        <Section title="Saladas">
+          <div ref={saladSliderRef} className="keen-slider">
+            {dishes && dishes
+              .filter(dish => dish.category === 'Salad')
+              .map(dish => (
                 <Card
                   key={dish.id}
                   icon={BsStar}
@@ -115,17 +107,15 @@ export function Home () {
                   description={dish.description}
                   price={dish.price}
                   className="keen-slider__slide"
-                  onClick={() => handleNavigateToDish(dish.id)}
                 />
-        ))
-    }
-     </div>
-</Section>
+              ))}
+          </div>
+        </Section>
 
-     <Section title="Pratos Principais" className="sectionMenu" >
-     <div ref={sliderRefMain} className='keen-slider .keen-slider--ready'>            
-        {dishes
-              .filter(dish => dish.category === 'Main')        
+        <Section title="Pratos Principais" className="sectionMenu">
+          <div ref={mainSliderRef} className="keen-slider">
+            {dishes
+              .filter(dish => dish.category === 'Main')
               .map(dish => (
                 <Card
                   key={dish.id}
@@ -137,13 +127,12 @@ export function Home () {
                   className="keen-slider__slide"
                   onClick={() => console.log(dish.id)}
                 />
-              ))
-              }
-      </div>
-     </Section>
-     </main>
+              ))}
+          </div>
+        </Section>
+      </main>
 
-      <Footer icon={PiCopyright}/>
+      <Footer icon={PiCopyright} />
     </Container>
-  )
-}  
+  );
+}
