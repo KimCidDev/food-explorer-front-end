@@ -3,7 +3,6 @@ import { useKeenSlider } from 'keen-slider/react';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
-import { useNavigate } from 'react-router-dom';
 
 import { Container } from './styles';
 import { Card } from '../../components/Card';
@@ -21,11 +20,12 @@ import { TiShoppingCart } from 'react-icons/ti';
 
 import meal1 from '../../assets/meal1.png';
 import macaroon from '../../assets/macaroon-promo-pic.png';
+import { useNavigate } from 'react-router-dom';
 
 export function Home() {
   const { signOut, user } = useAuth();
-  const [ name, setName] = useState(user.name);
-  const [ dishes, setDishes] = useState([]);  
+  const [name, setName] = useState(user.name);
+  const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [saladSliderRef] = useKeenSlider({ slides: { perView: 3 } });
@@ -33,15 +33,6 @@ export function Home() {
 
   const menuPath = '/menu';
   const navigate = useNavigate();
-
-  function handleNavigateToDish(id) {
-    try {
-      console.log(id);
-      navigate(`/foodInfo/${id}`);
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   useEffect(() => {
     async function fetchDishes() {
@@ -53,7 +44,6 @@ export function Home() {
         const token = localStorage.getItem('@foodExplorer:token');
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-        console.log(allDishes);
         setDishes(allDishes);
         setLoading(false);
       } catch (error) {
@@ -64,6 +54,11 @@ export function Home() {
     fetchDishes();
   }, []);
 
+  function handleNavigateToDish(id) {
+    console.log("olá");
+    navigate(`/foodinfo/${id}`)
+  }
+
   if (loading) {
     return <div>Loading...</div>; // You can customize this loading indicator
   }
@@ -73,7 +68,7 @@ export function Home() {
       <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
-          <h2>{`Olá, ${name}`}</h2>
+          <h2 onClick={() => handleNavigateToDish(1)}>{`Olá, ${name}`}</h2>
           <input
             id="searchInput"
             type="text"
@@ -89,7 +84,9 @@ export function Home() {
         <div className="banner">
           <img src={macaroon} alt="macaroon sweet in many colors" />
           <div className="textContent">
-            <h2>Sabores Inigualáveis</h2>
+            <h2>
+              Sabores Inigualáveis
+            </h2>
             <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
           </div>
         </div>
@@ -107,6 +104,7 @@ export function Home() {
                   description={dish.description}
                   price={dish.price}
                   className="keen-slider__slide"
+                  onClick={() => handleNavigateToDish(1)}
                 />
               ))}
           </div>
@@ -125,7 +123,7 @@ export function Home() {
                   description={dish.description}
                   price={dish.price}
                   className="keen-slider__slide"
-                  onClick={() => console.log(dish.id)}
+                  onClick={() => handleNavigateToDish(1)}
                 />
               ))}
           </div>
