@@ -62,7 +62,7 @@ export function Home() {
       <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
-          <h2 onClick={() => navigate('/foodinfo/1')}>{`Olá, ${name}`}</h2>
+          <h2>{`Olá, ${name}`}</h2>
           <input
             id="searchInput"
             type="text"
