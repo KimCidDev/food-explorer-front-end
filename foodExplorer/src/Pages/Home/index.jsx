@@ -1,11 +1,10 @@
-import 'keen-slider/keen-slider.min.css';
-import { useKeenSlider } from 'keen-slider/react';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../services/api';
+import { Swiper } from '../../components/Swiper';
 
 import { Container } from './styles';
-import { Card } from '../../components/Card';
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
@@ -20,7 +19,6 @@ import { TiShoppingCart } from 'react-icons/ti';
 
 import meal1 from '../../assets/meal1.png';
 import macaroon from '../../assets/macaroon-promo-pic.png';
-import { useNavigate } from 'react-router-dom';
 
 export function Home() {
   const { signOut, user } = useAuth();
@@ -28,39 +26,35 @@ export function Home() {
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [saladSliderRef] = useKeenSlider({ slides: { perView: 3 } });
-  const [mainSliderRef] = useKeenSlider({ slides: { perView: 3 } });
-
   const menuPath = '/menu';
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchDishes() {
+      const token = localStorage.getItem('@foodExplorer:token');
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
       try {
         const response = await api.get('/dishes');
+        console.log(response)
         const allDishes = response.data;
         localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
-
-        const token = localStorage.getItem('@foodExplorer:token');
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         setDishes(allDishes);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching dish information:', error);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);  
       }
     }
 
     fetchDishes();
   }, []);
 
-  function handleNavigateToDish(id) {
-    console.log("olá");
-    navigate(`/foodinfo/${id}`)
-  }
-
   if (loading) {
-    return <div>Loading...</div>; // You can customize this loading indicator
+    return <div>Loading...</div>;
   }
 
   return (
@@ -68,7 +62,7 @@ export function Home() {
       <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
-          <h2 onClick={() => handleNavigateToDish(1)}>{`Olá, ${name}`}</h2>
+          <h2 onClick={() => navigate('/foodinfo/1')}>{`Olá, ${name}`}</h2>
           <input
             id="searchInput"
             type="text"
@@ -91,42 +85,15 @@ export function Home() {
           </div>
         </div>
 
+
         <Section title="Saladas">
-          <div ref={saladSliderRef} className="keen-slider">
-            {dishes && dishes
-              .filter(dish => dish.category === 'Salad')
-              .map(dish => (
-                <Card
-                  key={dish.id}
-                  icon={BsStar}
-                  recipe={dish.name}
-                  prato={meal1}
-                  description={dish.description}
-                  price={dish.price}
-                  className="keen-slider__slide"
-                  onClick={() => handleNavigateToDish(1)}
-                />
-              ))}
-          </div>
+          <Swiper dishes={dishes.filter(dish => dish.category === 'Salad'
+            )} />
         </Section>
 
-        <Section title="Pratos Principais" className="sectionMenu">
-          <div ref={mainSliderRef} className="keen-slider">
-            {dishes
-              .filter(dish => dish.category === 'Main')
-              .map(dish => (
-                <Card
-                  key={dish.id}
-                  icon={BsStar}
-                  recipe={dish.name}
-                  prato={meal1}
-                  description={dish.description}
-                  price={dish.price}
-                  className="keen-slider__slide"
-                  onClick={() => handleNavigateToDish(1)}
-                />
-              ))}
-          </div>
+        <Section title="Pratos Principais">
+          <Swiper dishes={dishes.filter(dish => dish.category === 'Main'
+          )} />
         </Section>
       </main>
 

@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  padding: 24px 24px 0 24px;
 
   cursor: auto;
 
@@ -23,9 +22,14 @@ export const Container = styled(Link)`
   }
 
   .childrenBox {
-    display: flex;
-    gap: 24px;
+    margin: 15px 0;
+  }
 
-    margin-top: 14px;
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    margin: 25px 120px;
+
+    .childrenBox {
+      margin: 0 40px;
+    }
   }
 `;

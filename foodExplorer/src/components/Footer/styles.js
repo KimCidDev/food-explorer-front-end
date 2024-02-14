@@ -8,8 +8,11 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: space-around;
 
+  margin-top: 100px;
+
   position: fixed;
   bottom: 0;
+  z-index: 10;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_700};
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -34,7 +37,7 @@ export const Container = styled.footer`
     align-items: center;
     font-size: 10px;
 
-    svg{
+    svg {
       margin-right: 2px;
     }
   }

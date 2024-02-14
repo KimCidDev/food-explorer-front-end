@@ -12,21 +12,6 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-  /* Display keen-slider for no-js browsers */
-  .no-js .keen-slider {
-    display: block;
-  }
-
-  /* Display keen-slider once it's loaded */
-  .keen-slider .keen-slider--ready {
-    display: block;
-  }
-
-  .keen-slider__slide {
-    flex: 0 0 auto;
-    width: 33.33%; /* Each slide takes up one third of the container */
-  }
-
   > div:first-child {
     display: flex;
     align-items: center;
@@ -130,28 +115,14 @@ export const Container = styled.div`
       }
     }
 
-    > .section h1 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_200};
-    }
-
-    .section p {
-      text-align: center;
-    }
-
-    .section .addToBasket {
-      display: none;
-    }
-
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      margin: 0 120px;
-
       .banner {
         display: flex;
         align-items: center;
         justify-content: space-around;
         max-height: 300px;
 
-        padding: 0 120px;
+        margin: 0 120px;
         margin-bottom: 62px;
 
         gap: clamp(25px, 100%, 40px);
