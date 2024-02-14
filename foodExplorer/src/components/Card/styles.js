@@ -75,6 +75,7 @@ export const Container = styled.div`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     height: 400px;
     justify-content: space-around;
+    margin-left: 70px;
 
     img {
       height: 176px;

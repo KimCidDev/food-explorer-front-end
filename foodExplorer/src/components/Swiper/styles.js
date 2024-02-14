@@ -10,10 +10,9 @@ export const Container = styled.div`
     width: 210px;
   }
 
-  .swiper-button-next,
-  .swiper-button-prev {
+  swiper-button-next,
+  swiper-button-prev {
     display: none;
-    position: absolute;
     top: 22px;
     height: 100%;
     width: 1rem;
@@ -27,14 +26,11 @@ export const Container = styled.div`
   .swiper-button-next {
     background: linear-gradient(90deg, transparent, #000a0f);
     justify-content: flex-end;
-    padding-right: 1.6rem;
   }
 
   .swiper-button-prev {
-    left: 0;
     background: linear-gradient(90deg, #000a0f, transparent);
     justify-content: flex-start;
-    padding-left: 1.6rem;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -45,15 +41,12 @@ export const Container = styled.div`
 
     swiper-slide {
       width: 304px;
+      
+    margin-left: 50px;
 
       .swiper-slide-active {
         width: 400px;
       }
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      display: flex;
     }
 
     .swiper-button-disabled {
