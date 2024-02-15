@@ -27,21 +27,35 @@ export function FoodInfo () {
   const { id } = params;
 
   const [dish, setDish] = useState(null);
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
+    async function fetchTags() {
+      try {
+        const response = await api.get('/tags');
+        console.log(response.data);
+        setTags(response);
+      } catch (error) {
+        console.error('Error fetching dish information:', error);
+
+      }
+    }
+
     async function fetchDish() {
       try {
         const response = await api.get(`/dishes/${id}`);
         setDish(response.data);
+
       } catch (error) {
         console.error('Error fetching dish information:', error);
       }
     }
 
     fetchDish();
+    fetchTags();
   }, [id]);
 
   if (!dish) {

@@ -29,15 +29,11 @@ export const Container = styled.div`
 
     > .searchAndCart {
       display: none;
-
-      input::placeholder {
-        color: white;
-      }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      margin-bottom: clamp(30px, 90%, 80px);
       padding: 0 120px;
-      margin-bottom: 110px;
       justify-content: space-between;
 
       #menuLink {
@@ -51,13 +47,17 @@ export const Container = styled.div`
       > .searchAndCart {
         display: flex;
         align-items: center;
+        width: 55%;
+        gap: 20px;
 
-        width: 50%;
-        gap: clamp(25px, 15%, 100px);
+        h2 {
+          min-width: 200px;
+          color: ${({ theme }) => theme.COLORS.LIGHT_400};
+        }
 
         #searchInput {
           height: 45px;
-          width: clamp(100px, 85%, 500px);
+          width: 550px;
 
           color: ${({ theme }) => theme.COLORS.LIGHT_200};
 
@@ -68,9 +68,13 @@ export const Container = styled.div`
           border-radius: 8px;
         }
 
-        button {
+        input {
+          border-radius: 8px;
           height: 32px;
-          width: clamp(200px, 95%, 400px);
+        }
+
+        button {
+          height: 56px;
 
           padding: 0 10px;
 
@@ -87,24 +91,13 @@ export const Container = styled.div`
   }
 
   main {
-    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      padding: 0 120px;
-    }
-
     > .banner {
-      height: 220px;
-
       display: flex;
       align-items: center;
       background: linear-gradient(#091e26, #00131c);
 
       margin: 0 25px;
       border-radius: 3px;
-
-      img {
-        height: 165px;
-        margin-bottom: 25px;
-      }
 
       .textContent {
         h2 {
@@ -120,17 +113,23 @@ export const Container = styled.div`
           font-size: 12px;
         }
       }
+    }
 
-      @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      .banner {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        max-height: 300px;
 
-        height: 220px;
+        margin: 0 120px;
+        margin-bottom: 62px;
+
+        gap: clamp(25px, 100%, 40px);
+        overflow: visible;
 
         img {
-          height: 400px;
-          clip-path: polygon(5% -9px, 100% 7.29%, 99.68% 80.02%, 8.41% 79.38%);
+          width: clamp(350px, 100%, 450px);
         }
 
         .textContent {
@@ -144,18 +143,6 @@ export const Container = styled.div`
           }
         }
       }
-    }
-
-    > .section h1 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_200};
-    }
-
-    .section p {
-      text-align: center;
-    }
-
-    .section .addToBasket {
-      display: none;
     }
   }
 `;

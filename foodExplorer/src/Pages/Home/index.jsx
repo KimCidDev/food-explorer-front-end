@@ -22,17 +22,36 @@ import macaroon from '../../assets/macaroon-promo-pic.png';
 
 export function Home() {
   const { signOut, user } = useAuth();
+
   const [name, setName] = useState(user.name);
   const [dishes, setDishes] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [search, setSearch] = useState("");
+  const [dishSearchResult, setDishSearchResult] = useState([]);
+
   const [loading, setLoading] = useState(true);
 
   const menuPath = '/menu';
   const navigate = useNavigate();
 
   useEffect(() => {
+    
+    const token = localStorage.getItem('@foodExplorer:token');
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    async function fetchTags() {
+      
+      try {
+        const response = await api.get('/tags');
+        console.log(response.data);
+        setTags(response.data);
+      } catch (error) {
+        console.error('Error fetching dish information:', error);
+
+      }
+    }
+
     async function fetchDishes() {
-      const token = localStorage.getItem('@foodExplorer:token');
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       try {
         const response = await api.get('/dishes');
@@ -51,7 +70,29 @@ export function Home() {
     }
 
     fetchDishes();
+    fetchTags()
   }, []);
+
+  useEffect(() => {
+    async function fetchDishesBySearch() {
+      try {
+        const response = await api.get(`/dishes?name=${search}`)
+        
+        console.log(response.data)
+        setDishSearchResult(response.data)
+
+      } catch (error) {        
+        console.error('Error fetching dish information:', error);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);  
+      }
+      }
+      
+    
+    fetchDishesBySearch()
+    
+  }, [search])
 
   if (loading) {
     return <div>Loading...</div>;
@@ -67,6 +108,7 @@ export function Home() {
             id="searchInput"
             type="text"
             placeholder="Algum prato em mente?"
+            onChange={((e) => setSearch(e.target.value))}
           />
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
@@ -87,14 +129,17 @@ export function Home() {
 
 
         <Section title="Saladas">
-          <Swiper dishes={dishes.filter(dish => dish.category === 'Salad'
-            )} />
-        </Section>
+          <Swiper dishes={dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad')} />
+         </Section>
 
         <Section title="Pratos Principais">
-          <Swiper dishes={dishes.filter(dish => dish.category === 'Main'
-          )} />
+          <Swiper dishes={dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main')} />
         </Section>
+
+        <Section title="Desserts">
+          <Swiper dishes={dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Desserts') : dishes.filter(dish => dish.category === 'Desserts')} />
+        </Section>
+
       </main>
 
       <Footer icon={PiCopyright} />
