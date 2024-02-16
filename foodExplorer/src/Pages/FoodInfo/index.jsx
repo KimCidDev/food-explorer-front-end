@@ -9,6 +9,7 @@ import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 import { Section } from '../../components/Section';
 import { Footer } from '../../components/Footer';
+import { Tag } from '../../components/Tag';
 
 
 import { AiOutlineMenu } from 'react-icons/ai'; 
@@ -33,21 +34,31 @@ export function FoodInfo () {
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-    async function fetchTags() {
+    /*async function fetchTags() {
       try {
         const response = await api.get('/tags');
-        console.log(response.data);
-        setTags(response);
+        const tagList = response.data.tagList;
+
+        const tagsFromId = tagList.filter(tag => tag.dish_id === Number(id));
+        console.log(tagsFromId);
+        
+        setTags(tagsFromId);
       } catch (error) {
         console.error('Error fetching dish information:', error);
 
       }
     }
+    */
 
     async function fetchDish() {
       try {
         const response = await api.get(`/dishes/${id}`);
-        setDish(response.data);
+        const dishInfo = response.data.dish;
+        const dishtags = response.data.tags
+        console.log(dishInfo);
+        setDish(dishInfo);
+        console.log(dishtags);
+        setTags(dishtags);
 
       } catch (error) {
         console.error('Error fetching dish information:', error);
@@ -55,7 +66,7 @@ export function FoodInfo () {
     }
 
     fetchDish();
-    fetchTags();
+    //fetchTags();
   }, [id]);
 
   if (!dish) {
@@ -87,8 +98,11 @@ export function FoodInfo () {
       <img src={dish.dishImg} alt={dish.description} />
       <div className="textContent">
       <p>{dish.description}</p>
+      
       <div className="tagsSection">
-      {/* Render your tags here */}
+      { tags && tags.map(tag => (
+        <Tag key={tag.id} title={tag.name}></Tag>        
+      ))}
       </div>
       <div className="addToBasket">
       <div className="howManyBox">

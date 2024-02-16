@@ -34,17 +34,20 @@ export function Home() {
   const menuPath = '/menu';
   const navigate = useNavigate();
 
-  useEffect(() => {
-    
+  useEffect(() => {    
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     async function fetchTags() {
-      
+      // PENSAR POR QUE EU 'TÔ MEXENDO EM TAGS. NEM AS TAGS NEM OS DISHES TÃO SENDO PASSADOS PARA O LOCALSTORAGE. NÃO SEI SE ISSO VAI FAZER DIFERENÇA.
+      // LEMBRAR QUE EU TIREI A CONDIÇÃO DO WHERE(USER_ID) para liberar todos os pratos para todos os usuários. Aí a condição vai ficar para o usuário admin, que pode fazer mais coisas
       try {
         const response = await api.get('/tags');
-        console.log(response.data);
-        setTags(response.data);
+        const taglist = response.data.taglist;
+        console.log(tags);
+        setTimeout(() => {          
+          setTags(taglist);
+        }, 0);
       } catch (error) {
         console.error('Error fetching dish information:', error);
 

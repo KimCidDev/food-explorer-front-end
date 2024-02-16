@@ -96,6 +96,7 @@ export const Container = styled.div`
   > .section .childrenBox {
     display: flex;
     gap: 50px;
+    margin-top: 42px;
 
     img {
       height: clamp(250px, 100%, 400px);
@@ -145,10 +146,8 @@ export const Container = styled.div`
       }
 
       .tagsSection {
-        justify-content: start;
-        flex-wrap: nowrap;
-
         div {
+          display: flex;
           padding: 0 6px;
         }
 
