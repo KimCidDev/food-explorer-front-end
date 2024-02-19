@@ -91,11 +91,11 @@ export function FoodInfo () {
       </Header>
 
       <Section
-      title="voltar" 
+      title="Voltar à página principal" 
       icon={AiOutlineLeft}
       to="/"
        >
-      <img src={dish.dishImg} alt={dish.description} />
+      <img src={`http://localhost:5555/files/${dish.dishImg}`} alt={dish.description} />
       <div className="textContent">
       <p>{dish.description}</p>
       

@@ -20,7 +20,11 @@ export default {
     DARK_1000: '#192227',
 
     GRADIENT_1: '#568182',
-    GRADIENT_1: '#571154',
+    GRADIENT_2: '#571154',
+
+    PURPLE_100: '#DAB6FF',
+    PURPLE_200: '#9C4DCC',
+    PURPLE_300: '#5D2555',
 
     TINT_TOMATO_100: '#750310',
     TINT_TOMATO_200: '#92000E',

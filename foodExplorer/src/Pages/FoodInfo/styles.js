@@ -88,8 +88,8 @@ export const Container = styled.div`
     display: flex;
     margin: 0 120px;
 
-    h1 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    h2 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
     }
   }
 

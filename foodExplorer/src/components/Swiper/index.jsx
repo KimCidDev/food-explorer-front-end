@@ -12,7 +12,8 @@ export function Swiper({ dishes }) {
     const swiperContainer = swiperRef.current;
     const params = {
       navigation: true,
-      slidesPerView: 'auto'
+      slidesPerView: 'auto',
+      spaceBetween: 20
     };
 
     Object.assign(swiperContainer, params);

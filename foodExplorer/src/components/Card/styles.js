@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
-  width: clamp(100px, 250px, 300px);
+  width: clamp(200px, 80%, 600px);
   height: 290px;
 
   display: flex;
@@ -10,6 +10,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  border: solid 2px ${({ theme }) => theme.COLORS.GRADIENT_1};
+  border-radius: 30px;
 
   padding: 25px;
   gap: 12px;
@@ -73,9 +76,9 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    height: 400px;
+    height: 500px;
+    width: 400px;
     justify-content: space-around;
-    margin-left: 70px;
 
     img {
       height: 176px;

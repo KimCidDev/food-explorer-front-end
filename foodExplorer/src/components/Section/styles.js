@@ -10,15 +10,22 @@ export const Container = styled(Link)`
   cursor: auto;
 
   .goBackLink {
-    text-decoration: none;
-
     display: flex;
     align-items: center;
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    font-family: 'Poppins';
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
+    gap: 10px;
+
+    h2 {
+      text-decoration: none;
+      border: none;
+
+      display: flex;
+      align-items: center;
+      color: ${({ theme }) => theme.COLORS.PURPLE_100};
+      font-family: 'Poppins';
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+    }
   }
 
   .childrenBox {
@@ -29,7 +36,7 @@ export const Container = styled(Link)`
     margin: 25px 120px;
 
     .childrenBox {
-      margin: 0 40px;
+      margin: 30px 40px;
     }
   }
 `;
