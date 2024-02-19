@@ -15,7 +15,7 @@ export const Container = styled.div`
   border-radius: 30px;
 
   padding: 25px;
-  gap: 12px;
+  gap: 15px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
@@ -45,6 +45,7 @@ export const Container = styled.div`
   }
 
   #price {
+    margin-top: 32px;
     display: flex;
     font-size: 18px;
     color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
@@ -61,10 +62,13 @@ export const Container = styled.div`
     align-items: center;
 
     padding: 5px 0;
-    margin-bottom: 15px;
 
-    gap: 14px;
+    gap: 10px;
     font-size: 22px;
+
+    p {
+      font-size: 18px;
+    }
   }
 
   img {
@@ -78,7 +82,6 @@ export const Container = styled.div`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     height: 500px;
     width: 400px;
-    justify-content: space-around;
 
     img {
       height: 176px;
@@ -102,14 +105,22 @@ export const Container = styled.div`
 
       display: flex;
       justify-content: space-around;
+      align-items: center;
 
-      gap: 10px;
+      gap: 30px;
 
       .howManyBox {
-        gap: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
       }
       button {
-        max-width: 20%;
+        height: 32px;
+        width: 100%;
+        padding: 0 20px;
+        font-weight: bold;
+        width: clamp(100px, 70%, 400px);
       }
     }
   }
