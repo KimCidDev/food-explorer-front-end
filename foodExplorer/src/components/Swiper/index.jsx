@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { register } from 'swiper/element/bundle';
 import { Card } from '../Card';
 import { Container } from './styles';
-import { Link } from 'react-router-dom';
 
 register();
 
