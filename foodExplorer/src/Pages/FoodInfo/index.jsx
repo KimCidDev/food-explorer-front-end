@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
@@ -26,6 +26,8 @@ export function FoodInfo () {
   const { signOut } = useAuth();  
   const params = useParams();
   const { id } = params;
+
+  const navigate = useNavigate();
 
   const [dish, setDish] = useState(null);
   const [tags, setTags] = useState([]);
@@ -93,7 +95,7 @@ export function FoodInfo () {
       <Section
       title="Voltar à página principal" 
       icon={AiOutlineLeft}
-      to="/"
+      onClick={() => navigate('/')}
        >
       <img src={`http://localhost:5555/files/${dish.dishImg}`} alt={dish.description} />
       <div className="textContent">
