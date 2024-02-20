@@ -17,7 +17,6 @@ import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti';
 
-import meal1 from '../../assets/meal1.png';
 import macaroon from '../../assets/macaroon-promo-pic.png';
 
 export function Home() {
@@ -25,7 +24,6 @@ export function Home() {
 
   const [name, setName] = useState(user.name);
   const [dishes, setDishes] = useState([]);
-  const [tags, setTags] = useState([]);
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
 
@@ -35,8 +33,8 @@ export function Home() {
   const navigate = useNavigate();
 
   const saladDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad');
-const mainDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main');
-const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Desserts') : dishes.filter(dish => dish.category === 'Desserts');
+  const mainDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main');
+  const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Desserts') : dishes.filter(dish => dish.category === 'Desserts');
 
   function handleSignOut () {
     navigate('/');
@@ -57,10 +55,6 @@ const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish
 
         setDishes(allDishes);
         setLoading(false);
-        setTimeout(() => {
-          console.log(allDishes);
-          console.log(dishes);
-        }, 0)
       } catch (error) {
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);

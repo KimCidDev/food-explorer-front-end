@@ -123,6 +123,14 @@ export const Container = styled.div`
       p {
         text-align: center;
       }
+
+      .adminEditButton {
+        width: 400px;
+
+        button {
+          width: 400px;
+        }
+      }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -194,7 +202,6 @@ export const Container = styled.div`
 
   > .section .addToBasket {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     width: 100%;
     max-width: 450px;
@@ -203,7 +210,6 @@ export const Container = styled.div`
     > .howManyBox {
       display: flex;
       width: 100%;
-      justify-content: space-;
       align-items: center;
       gap: 15px;
 

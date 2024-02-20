@@ -20,10 +20,8 @@ import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
 
-// ... other imports ...
-
 export function FoodInfo () {
-  const { signOut } = useAuth();  
+  const { user, signOut } = useAuth();  
   const params = useParams();
   const { id } = params;
 
@@ -31,6 +29,10 @@ export function FoodInfo () {
 
   const [dish, setDish] = useState(null);
   const [tags, setTags] = useState([]);
+
+  function handleEditDish () {    
+    navigate(`/admin/editdish/${dish.id}`);
+  }
 
   function handleSignOut () {
     navigate('/');
@@ -95,12 +97,25 @@ export function FoodInfo () {
       ))}
       </div>
       <div className="addToBasket">
-      <div className="howManyBox">
+     
+        { user.isAdmin ?
+        <div className="adminEditButton">
+        <Button
+         title='Editar Prato'
+         onClick={handleEditDish}
+         /> 
+        </div> 
+        :       
+        <div className="howManyBox">
         <BiMinus/>
         <p>01</p>
         <BsPlusLg/>
-        <Button title='Adicionar ao carrinho'></Button>
-      </div>      
+        <Button 
+        title='Adicionar ao carrinho'
+        />
+      </div> 
+        }
+         
      </div>
      </div>
      </Section>

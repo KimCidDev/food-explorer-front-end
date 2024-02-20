@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { api } from '../../../services/api'
-import { useAuth } from '../../../hooks/auth'
+import { api } from '../../../services/api';
+import { useAuth } from '../../../hooks/auth';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { Container } from './styles';
 import { Tag } from '../../../components/Tag';
@@ -20,25 +21,48 @@ import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 export function EditDishAdmin () {
+   
+  const params = useParams();
+  const { id } = params; 
+  const [dishes, setDishes] = useState([]);  
+  const [loading, setLoading] = useState(true);
 
-  const { dishData, getDishes } = useAuth();
+  function handleDisplayDishByParams () {
+    console.log(id);
+  }
 
-  const [ name, setName ] = useState(dishData.name);
-  const [ description, setDescription ] = useState();
-  const [ price, setPrice ] = useState();
+  useEffect(() => {    
+    const token = localStorage.getItem('@foodExplorer:token');
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const [ avatarFile, setAvatarFile ] = useState();
+    async function fetchDishes() {
 
+      try {
+        const response = await api.get(`/dishes`)
+        console.log(response.data)
+        const allDishes = response.data;
+        localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
+
+        setDishes(allDishes);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching dish information:', error);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);  
+      }
+    }
+
+    fetchDishes();
+  }, []);
+  
   async function handleAvatarUpdate (event) {
     const file = event.target.files[0];
 
     setAvatarFile(file)
-
-   // const imagePreview
-  }
+ }
 
   useEffect(() => {
-    getDishes();
   }, []);
 
   return (
@@ -69,7 +93,6 @@ export function EditDishAdmin () {
         title="Imagem do Prato"
         type="file"
         id="hiddenInput"
-        onClick={setAvatarFile}
         />
         <label htmlFor="hiddenInput">
           <MdOutlineFileDownload />
@@ -79,7 +102,6 @@ export function EditDishAdmin () {
         <Input 
         title="Nome do Prato"
         placeholder="Ex.: Salada Caesar"
-        value={name}
         />
         <Select
         title="Categoria" 
@@ -110,7 +132,7 @@ export function EditDishAdmin () {
         </textarea>        
         </div>
         <div className="saveInfoBox">
-        <Button title="Salvar Alterações" form="newDishForm" onClick={getDishes}/>
+        <Button title="Salvar Alterações" onClick={() => handleDisplayDishByParams} form="newDishForm"/>
         <Button title="Excluir Prato" form="newDishForm"/>
         </div>
         </div>
