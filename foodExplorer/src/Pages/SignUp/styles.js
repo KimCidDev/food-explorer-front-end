@@ -14,27 +14,34 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+
+    svg {
+      transform: scale(2.52); /* Adjust this value to get the desired size */
+    }
+
+    h1 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      font-size: 52px;
+      font-family: 'Roboto Slab', sans-serif;
+      letter-spacing: -1px;
+    }
+  }
+
   > div {
     margin-bottom: 75px;
   }
 
   > div:nth-child(2) {
     gap: 1rem;
-
   }
 
   > div:nth-child(2) h1 {
     display: none;
-  }
-
-  > .logo h1 {
-    font-size: 37px;
-    font-weight: bold;
-  }
-
-  > .logo svg {
-    font-size: 259px;
-    fill: #333333;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -62,10 +69,6 @@ export const Container = styled.div`
 
       font-size: 1.5rem;
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    }
-
-    .logo {
-      margin: 0 20px;
     }
   }
 `;

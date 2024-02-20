@@ -32,25 +32,14 @@ export function FoodInfo () {
   const [dish, setDish] = useState(null);
   const [tags, setTags] = useState([]);
 
+  function handleSignOut () {
+    navigate('/');
+    return signOut();
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-    /*async function fetchTags() {
-      try {
-        const response = await api.get('/tags');
-        const tagList = response.data.tagList;
-
-        const tagsFromId = tagList.filter(tag => tag.dish_id === Number(id));
-        console.log(tagsFromId);
-        
-        setTags(tagsFromId);
-      } catch (error) {
-        console.error('Error fetching dish information:', error);
-
-      }
-    }
-    */
 
     async function fetchDish() {
       try {
@@ -68,7 +57,6 @@ export function FoodInfo () {
     }
 
     fetchDish();
-    //fetchTags();
   }, [id]);
 
   if (!dish) {
@@ -89,7 +77,7 @@ export function FoodInfo () {
           icon={TiShoppingCart} 
           title="Verificar Carrinho" />
         </div>
-        <ImExit onClick={signOut}/>
+        <ImExit onClick={handleSignOut}/>
       </Header>
 
       <Section

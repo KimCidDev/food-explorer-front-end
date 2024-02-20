@@ -13,22 +13,30 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+
+    svg {
+      transform: scale(2.52); /* Adjust this value to get the desired size */
+    }
+
+    h1 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      font-size: 52px;
+      font-family: 'Roboto Slab', sans-serif;
+      letter-spacing: -1px;
+    }
+  }
+
   > div {
     margin-bottom: 75px;
   }
 
   > div:nth-child(2) h1 {
     display: none;
-  }
-
-  > .logo h1 {
-    font-size: 37px;
-    font-weight: bold;
-  }
-
-  > .logo svg {
-    font-size: 259px;
-    fill: #333333;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -39,24 +47,20 @@ export const Container = styled.div`
     margin: 0 auto;
 
     > div:nth-child(2) {
-    max-height: 80vh;
-    max-width: 350px;
+      max-height: 80vh;
+      max-width: 350px;
 
-    margin: 0;
-    border-radius: 8px;
+      margin: 0;
+      border-radius: 8px;
 
-    background-color: ${({ theme }) => theme.COLORS.DARK_700};
-  }
+      background-color: ${({ theme }) => theme.COLORS.DARK_700};
+    }
 
-  > div:nth-child(2) h1 {
-    display: flex;
+    > div:nth-child(2) h1 {
+      display: flex;
 
-    font-size: 1.5rem;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100}
-  }
-
-    .logo {
-      margin: 0 20px;
+      font-size: 1.5rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
   }
 `;

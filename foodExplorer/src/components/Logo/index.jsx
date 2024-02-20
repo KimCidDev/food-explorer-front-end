@@ -1,6 +1,9 @@
 import { Container } from './styles';
+import { useAuth } from '../../hooks/auth';
 
-export function Logo (admin = false) {
+export function Logo () {  
+  const { user } = useAuth();
+  console.log(user)
 
   return (
     <Container className='logo'>
@@ -9,7 +12,7 @@ export function Logo (admin = false) {
       </svg>
       <div className="adminBox">
       <h1> food explorer </h1>
-      {admin && <p>Admin</p>}      
+      {user.isAdmin && <p>Admin</p>}      
       </div>
     </Container>
   )

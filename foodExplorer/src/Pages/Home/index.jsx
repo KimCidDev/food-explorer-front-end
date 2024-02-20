@@ -34,26 +34,18 @@ export function Home() {
   const menuPath = '/menu';
   const navigate = useNavigate();
 
+  const saladDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad');
+const mainDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main');
+const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Desserts') : dishes.filter(dish => dish.category === 'Desserts');
+
+  function handleSignOut () {
+    navigate('/');
+    return signOut();
+  }
+
   useEffect(() => {    
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-    /*async function fetchTags() {
-      // PENSAR POR QUE EU 'TÔ MEXENDO EM TAGS. NEM AS TAGS NEM OS DISHES TÃO SENDO PASSADOS PARA O LOCALSTORAGE. NÃO SEI SE ISSO VAI FAZER DIFERENÇA.
-      // LEMBRAR QUE EU TIREI A CONDIÇÃO DO WHERE(USER_ID) para liberar todos os pratos para todos os usuários. Aí a condição vai ficar para o usuário admin, que pode fazer mais coisas
-      try {
-        const response = await api.get('/tags');
-        const taglist = response.data.taglist;
-        console.log(tags);
-        setTimeout(() => {          
-          setTags(taglist);
-        }, 0);
-      } catch (error) {
-        console.error('Error fetching tag information:', error);
-
-      }
-    }
-    */
 
     async function fetchDishes() {
 
@@ -78,7 +70,6 @@ export function Home() {
     }
 
     fetchDishes();
-    //fetchTags()
   }, []);
 
   useEffect(() => {
@@ -121,7 +112,7 @@ export function Home() {
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
 
-        <ImExit onClick={signOut} />
+        <ImExit onClick={handleSignOut} />
       </Header>
 
       <main>
@@ -136,17 +127,21 @@ export function Home() {
         </div>
 
 
+        {saladDishes.length > 0 && (
         <Section title="Saladas">
-          <Swiper dishes={dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad')} />
-         </Section>
-
+          <Swiper dishes={saladDishes} />
+        </Section>
+      )}
+      {mainDishes.length > 0 && (
         <Section title="Pratos Principais">
-          <Swiper dishes={dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main')} />
+          <Swiper dishes={mainDishes} />
         </Section>
-
+      )}
+      {dessertDishes.length > 0 && (
         <Section title="Desserts">
-          <Swiper dishes={dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Desserts') : dishes.filter(dish => dish.category === 'Desserts')} />
+          <Swiper dishes={dessertDishes} />
         </Section>
+      )}
 
       </main>
 

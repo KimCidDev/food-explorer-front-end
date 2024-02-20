@@ -129,34 +129,56 @@ export const Container = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      gap: 10px;
 
       .textContent {
         max-width: 65%;
         align-items: start;
-        gap: 24px;
+        gap: 20px;
 
         p {
-          text-align: left;
+          color: ${({ theme }) => theme.COLORS.LIGHT_300};
+          font-family: 'Poppins', sans-serif;
+          font-size: 25px;
+          text-align: justify;
           flex-wrap: nowrap;
         }
       }
 
       .addToBasket {
         margin-top: 24px;
+        > .howManyBox {
+          gap: 32px;
+
+          svg {
+            font-size: 52px;
+          }
+
+          p {
+            font-size: 32px;
+          }
+        }
+
+        > .howManyBox button {
+          margin-left: 60px;
+          max-width: auto;
+        }
       }
 
       .tagsSection {
+        justify-content: left;
+        gap: 20px;
+
         div {
           display: flex;
-          padding: 0 6px;
-        }
+          margin: 0;
+          height: 32px;
+          padding: 0 15px;
 
-        div:first-child {
-          margin-left: 0;
-        }
-
-        p {
-          font-size: 0.8rem;
+          p {
+            font-size: 1rem;
+            color: ${({ theme }) => theme.COLORS.TINT_CARROT};
+          }
         }
       }
     }
