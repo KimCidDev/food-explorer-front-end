@@ -24,10 +24,13 @@ export function EditDishAdmin () {
    
   const params = useParams();
   const { id } = params; 
-  const [dishes, setDishes] = useState([]);  
+  const [dish, setDish] = useState({});  
+  const [tags, setTags] = useState([]);  
   const [loading, setLoading] = useState(true);
 
-  function handleDisplayDishByParams () {
+  const navigate = useNavigate();
+
+  function handleDisplayDishByParams() {
     console.log(id);
   }
 
@@ -35,16 +38,15 @@ export function EditDishAdmin () {
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-    async function fetchDishes() {
-
+    async function fetchClickedDish() {
       try {
-        const response = await api.get(`/dishes`)
-        console.log(response.data)
-        const allDishes = response.data;
-        localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
-
-        setDishes(allDishes);
-        setLoading(false);
+        const response = await api.get(`/dishes/${id}`);
+        const dishInfo = response.data.dish;
+        const dishtags = response.data.tags
+        console.log(dishInfo);
+        setDish(dishInfo);
+        console.log(dishtags);
+        setTags(dishtags);
       } catch (error) {
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);
@@ -53,7 +55,7 @@ export function EditDishAdmin () {
       }
     }
 
-    fetchDishes();
+    fetchClickedDish();
   }, []);
   
   async function handleAvatarUpdate (event) {
@@ -81,7 +83,8 @@ export function EditDishAdmin () {
 
       <Section
       icon={AiOutlineLeft}
-      title="voltar" 
+      title="voltar"       
+      onClick={() => navigate('/')}
        >
 
         <h1>Editar Prato</h1>
@@ -96,43 +99,46 @@ export function EditDishAdmin () {
         />
         <label htmlFor="hiddenInput">
           <MdOutlineFileDownload />
-          <p>Selecione imagem</p>
+          <p>Alterar Imagem</p>
         </label>
         </div>
         <Input 
         title="Nome do Prato"
-        placeholder="Ex.: Salada Caesar"
+        placeholder={dish.name}
         />
         <Select
-        title="Categoria" 
+        title="Categoria"
+        value={dish.category}
         />
         </div>
 
         <div className="formMiddle">
         <div className="ingredientBox">
-        <h3>Ingredientes</h3>
+        <h3>Tags</h3>
         <div className='tagBox'>
-          <Tag 
-          title="Sushi"
-          />
-          <Tag 
-          title="Seaweed"
-          />
+
+          { tags && tags.map(tag => (
+                      <Tag 
+                      title={tag.name}
+                      />
+          ))
+
+          }
         </div>
         </div>
         <Input 
         title="Preço"
-        placeholder="R$ 00,00" />
+        placeholder={dish.price} />
         </div>
 
         <div className="formBottom">        
         <div className="description">        
         <h3>Description</h3>
-        <textarea name="" id="" cols="30" rows="4" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição">
+        <textarea name="" id="" cols="30" rows="4" placeholder={dish.description}>
         </textarea>        
         </div>
         <div className="saveInfoBox">
-        <Button title="Salvar Alterações" onClick={() => handleDisplayDishByParams} form="newDishForm"/>
+        <Button title="Salvar Alterações" onClick={() => handleDisplayDishByParams()} form="newDishForm"/>
         <Button title="Excluir Prato" form="newDishForm"/>
         </div>
         </div>

@@ -1,16 +1,15 @@
 import { Container } from './styles';
 
-export function Select ({icon: Icon, title, ...rest}) { 
+export function Select ({icon: Icon, title, value, ...rest}) { 
   return (
     <Container> 
     { title && <p>{title}</p>}
     <div className='inputBox'>
     { Icon && <Icon size={20} /> }
-       <select {...rest}>
-        <option>Entrada</option>
-        <option>Prato Principal</option>
-        <option>Sobremesa</option>
-        <option>Bebidas</option>
+       <select value={value} {...rest}>
+        <option>Salad</option>
+        <option>Main</option>
+        <option>Desserts</option>
        </select>
     </div>
     </Container>
