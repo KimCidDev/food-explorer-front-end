@@ -21,18 +21,40 @@ import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 export function EditDishAdmin () {
+  const { updateDish } = useAuth();
    
   const params = useParams();
   const { id } = params; 
   const [dish, setDish] = useState({});  
   const [tags, setTags] = useState([]);  
-  const [loading, setLoading] = useState(true);
+  
+  const [ name, setName ] = useState("");
+  const [ description, setDescription ] = useState("");
+  const [ price, setPrice ] = useState("");
+  const [ category, setCategory ] = useState("");
+
+  const [ dishImgFile, setdishImgFile ] = useState(null);
 
   const navigate = useNavigate();
 
-  function handleDisplayDishByParams() {
-    console.log(id);
+  async function handleUpdateDish() {
+    const dish = {
+      id,
+      name,
+      description,
+      category,
+      price
+    }
+
+    await updateDish({dish, dishImgFile});
   }
+
+  async function handleAvatarImgUpdate (event) {
+    const file = event.target.files[0];
+
+    setdishImgFile(file)
+ }
+
 
   useEffect(() => {    
     const token = localStorage.getItem('@foodExplorer:token');
@@ -58,14 +80,6 @@ export function EditDishAdmin () {
     fetchClickedDish();
   }, []);
   
-  async function handleAvatarUpdate (event) {
-    const file = event.target.files[0];
-
-    setAvatarFile(file)
- }
-
-  useEffect(() => {
-  }, []);
 
   return (
     <Container>
@@ -96,6 +110,7 @@ export function EditDishAdmin () {
         title="Imagem do Prato"
         type="file"
         id="hiddenInput"
+        onChange={handleAvatarImgUpdate}
         />
         <label htmlFor="hiddenInput">
           <MdOutlineFileDownload />
@@ -105,10 +120,12 @@ export function EditDishAdmin () {
         <Input 
         title="Nome do Prato"
         placeholder={dish.name}
+        onChange={e=> setName(e.target.value)}
         />
         <Select
         title="Categoria"
         value={dish.category}
+        onChange={e=> setCategory(e.target.value)}
         />
         </div>
 
@@ -118,7 +135,8 @@ export function EditDishAdmin () {
         <div className='tagBox'>
 
           { tags && tags.map(tag => (
-                      <Tag 
+                      <Tag
+                      key={tag.id} 
                       title={tag.name}
                       />
           ))
@@ -128,17 +146,23 @@ export function EditDishAdmin () {
         </div>
         <Input 
         title="Preço"
-        placeholder={dish.price} />
+        placeholder={dish.price} 
+        onChange={e=> setPrice(e.target.value)}
+        />
+        
         </div>
 
         <div className="formBottom">        
         <div className="description">        
         <h3>Description</h3>
-        <textarea name="" id="" cols="30" rows="4" placeholder={dish.description}>
+        <textarea
+        name="" id="" cols="30" rows="4" 
+        placeholder={dish.description}
+        onChange={e=> setPrice(e.target.value)}>
         </textarea>        
         </div>
         <div className="saveInfoBox">
-        <Button title="Salvar Alterações" onClick={() => handleDisplayDishByParams()} form="newDishForm"/>
+        <Button title="Salvar Alterações" onClick={handleUpdateDish} form="newDishForm"/>
         <Button title="Excluir Prato" form="newDishForm"/>
         </div>
         </div>

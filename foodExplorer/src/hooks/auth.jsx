@@ -30,6 +30,31 @@ function AuthProvider({ children }) {
 
   }
 
+  async function updateDish ({dish, dishImgFile}) {
+    try {
+      if (dishImgFile) {
+        console.log(dishImgFile)
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("dishImg", dishImgFile)
+
+        const response = await api.patch(`/dishes/dishImg/${dish.id}`, fileUploadForm);
+        dish.dishImg = response.data.dishImg;
+      }
+
+      await api.put(`/dishes/${dish.id}`, dish);      
+      localStorage.setItem('@foodExplorer:dishes', JSON.stringify(dish));
+      alert("Prato atualizado com sucesso");
+
+
+    } catch (error) {      
+      if(error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível autenticar o seu login")
+      }
+    }
+  }
+
   function signOut () {
     localStorage.removeItem('@foodExplorer:user');
     localStorage.removeItem('@foodExplorer:token');
@@ -57,6 +82,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider value={{ 
       signIn,
       signOut,
+      updateDish,
       user: data.user
       }}>
       {children}

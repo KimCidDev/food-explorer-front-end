@@ -11,7 +11,6 @@ import { Section } from '../../components/Section';
 import { Footer } from '../../components/Footer';
 import { Tag } from '../../components/Tag';
 
-
 import { AiOutlineMenu } from 'react-icons/ai'; 
 import { AiOutlineLeft } from 'react-icons/ai'; 
 import { TiShoppingCart } from 'react-icons/ti'; 
