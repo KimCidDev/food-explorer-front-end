@@ -13,6 +13,7 @@ import { Button } from '../../../components/Button';
 import { Section } from '../../../components/Section';
 import { Select } from '../../../components/Select';
 
+import { ImExit } from 'react-icons/im';
 import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
@@ -21,7 +22,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 export function EditDishAdmin () {
-  const { updateDish } = useAuth();
+  const { updateDish, signOut } = useAuth();
    
   const params = useParams();
   const { id } = params; 
@@ -36,6 +37,10 @@ export function EditDishAdmin () {
   const [ dishImgFile, setdishImgFile ] = useState(null);
 
   const navigate = useNavigate();
+
+  function handleNavigateHome () {
+    navigate('/');
+  }
 
   async function handleUpdateDish() {
     const dish = {
@@ -54,6 +59,20 @@ export function EditDishAdmin () {
 
     setdishImgFile(file)
  }
+
+ function handleSignOut () {
+  navigate('/');
+  return signOut();
+}
+
+async function handleDeleteDish () {
+  const confirm = window.confirm("Deseja realmente excluir esse prato?")
+
+  if (confirm) {
+    navigate('/');
+    return await api.delete(`/dishes/${id}`);
+  }
+}
 
 
   useEffect(() => {    
@@ -92,13 +111,13 @@ export function EditDishAdmin () {
           placeholder="Busque por pratos ou ingredientes"/>
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
-        <GiMailbox />
+        <ImExit onClick={handleSignOut}/>
       </Header>
 
       <Section
       icon={AiOutlineLeft}
       title="voltar"       
-      onClick={() => navigate('/')}
+      onClick={handleNavigateHome}
        >
 
         <h1>Editar Prato</h1>
@@ -163,7 +182,7 @@ export function EditDishAdmin () {
         </div>
         <div className="saveInfoBox">
         <Button title="Salvar Alterações" onClick={handleUpdateDish} form="newDishForm"/>
-        <Button title="Excluir Prato" form="newDishForm"/>
+        <Button title="Excluir Prato" onClick={handleDeleteDish} form="newDishForm"/>
         </div>
         </div>
         </form>

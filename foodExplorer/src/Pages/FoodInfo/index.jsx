@@ -29,6 +29,10 @@ export function FoodInfo () {
   const [dish, setDish] = useState(null);
   const [tags, setTags] = useState([]);
 
+  function handleNavigateHome () {
+    navigate('/');
+  }
+
   function handleEditDish () {    
     navigate(`/admin/editdish/${dish.id}`);
   }
@@ -84,7 +88,7 @@ export function FoodInfo () {
       <Section
       title="Voltar à página principal" 
       icon={AiOutlineLeft}
-      onClick={() => navigate('/')}
+      onClick={handleNavigateHome}
        >
       <img src={`http://localhost:5555/files/${dish.dishImg}`} alt={dish.description} />
       <div className="textContent">

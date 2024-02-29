@@ -7,7 +7,6 @@ import { Menu } from '../Pages/Menu';
 import { FoodInfo } from '../Pages/FoodInfo';
 
 import { MenuAdmin } from '../Pages/Admin/MenuAdmin';
-import { FoodInfoAdmin } from '../Pages/Admin/FoodInfoAdmin';
 import { NewDishAdmin } from '../Pages/Admin/NewDishAdmin';
 import { EditDishAdmin } from '../Pages/Admin/EditDishAdmin';
 
@@ -25,7 +24,6 @@ export function AppRoutes() {
       <Route path="/foodinfo/:id" element={<FoodInfo/>} />
       
       <Route path="/admin/menu" element={<MenuAdmin />} />
-      <Route path="/admin/foodinfo/:id" element={<FoodInfoAdmin />} />
 
     </Routes>
   )

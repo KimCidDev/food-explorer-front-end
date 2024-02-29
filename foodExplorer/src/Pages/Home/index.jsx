@@ -66,6 +66,10 @@ export function Home() {
     fetchDishes();
   }, []);
 
+    function handleNavigateNewDish () {
+      return navigate('admin/newDish');
+  }
+
   useEffect(() => {
     async function fetchDishesBySearch() {
       try {
@@ -103,7 +107,15 @@ export function Home() {
             placeholder="Algum prato em mente?"
             onChange={((e) => setSearch(e.target.value))}
           />
-          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+          { user.isAdmin ?
+            <Button icon={TiShoppingCart}
+             title="Novo Prato"
+             onClick={handleNavigateNewDish} />
+            :       
+            <Button icon={TiShoppingCart}
+             title="Verificar Carrinho"
+              />     
+        }
         </div>
 
         <ImExit onClick={handleSignOut} />
