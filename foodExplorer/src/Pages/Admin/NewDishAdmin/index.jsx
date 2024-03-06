@@ -165,9 +165,8 @@ async function handleDeleteDish () {
           
         <Input 
         title="Preço"
-        placeholder="Quanto custará o prato?" 
-        onChange={e=> setPrice(e.target.value)}
-        value={"CAD$ "}
+        placeholder="Quanto custará o prato? Use apenas números" 
+        onChange={e=> setPrice(`CAD$ ${e.target.value}`)}
         />
         <div className="ingredientBox">
         <h3>Tags</h3>

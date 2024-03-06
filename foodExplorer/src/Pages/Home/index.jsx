@@ -122,15 +122,17 @@ export function Home() {
       </Header>
 
       <main>
-        <div className="banner">
-          <img src={macaroon} alt="macaroon sweet in many colors" />
-          <div className="textContent">
-            <h2>
-              Sabores Inigualáveis
-            </h2>
-            <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
-          </div>
-        </div>
+
+      {search === "" && (
+  <div className="banner">
+    <img src={macaroon} alt="macaroon sweet in many colors" />
+    <div className="textContent">
+      <h2>Sabores Inigualáveis</h2>
+      <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+    </div>
+  </div>
+)}
+
 
 
         {saladDishes.length > 0 && (
