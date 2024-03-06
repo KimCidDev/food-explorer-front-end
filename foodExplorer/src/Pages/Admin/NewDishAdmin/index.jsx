@@ -25,7 +25,8 @@ export function NewDishAdmin () {
    
   const params = useParams();
   const [dish, setDish] = useState({});  
-  const [tags, setTags] = useState([]);  
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
   
   const [ name, setName ] = useState("");
   const [ description, setDescription ] = useState("");
@@ -40,20 +41,59 @@ export function NewDishAdmin () {
     navigate('/');
   }
 
+  async function handleAddTags(e) {
+    e.preventDefault(); // Prevent default form submission behavior
+    console.log(newTag);
+    setTags(prevState => [...prevState, newTag]);
+    setNewTag("");
+  }
+
   async function handleCreateDish() {
-    const dish = {
+    try {
+      
+      const dishData = {
       name,
       description,
       category,
-      price
+      price,
+      tags
+    };
+
+    let dishImgFileName = null;
+    if (dishImgFile) {
+      const fileFormData = new FormData();
+      fileFormData.append('dishImg', dishImgFile);
+
+      const response = await api.post('/dishes/upload', fileFormData);
+      dishImgFileName = response.data.fileName;
     }
 
+    const dish = {
+      ...dishData,
+      dishImg: dishImgFileName
+    } 
+
+    console.log(dish)
+    
     await api.post("/dishes", dish);
+    
+
+    return alert("Prato criado com sucesso");
+
+
+    } catch (error) {      
+      if(error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível autenticar o seu login")
+      }
+    }
+
   }
 
   async function handleAvatarImgUpdate (event) {
     const file = event.target.files[0];
-
+    console.log(file)
     setdishImgFile(file)
  }
 
@@ -71,30 +111,6 @@ async function handleDeleteDish () {
   }
 }
 
-
-  useEffect(() => {    
-    const token = localStorage.getItem('@foodExplorer:token');
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-    async function fetchClickedDish() {
-      try {
-        const response = await api.get(`/dishes/${id}`);
-        const dishInfo = response.data.dish;
-        const dishtags = response.data.tags
-        console.log(dishInfo);
-        setDish(dishInfo);
-        console.log(dishtags);
-        setTags(dishtags);
-      } catch (error) {
-        console.error('Error fetching dish information:', error);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);  
-      }
-    }
-
-    fetchClickedDish();
-  }, []);
   
 
   return (
@@ -117,7 +133,7 @@ async function handleDeleteDish () {
       onClick={handleNavigateHome}
        >
 
-        <h1>Editar Prato</h1>
+        <h1>Adicione os detalhes do novo prato</h1>
         <form action="" id="newDishForm">
           
         <div className="formTop">
@@ -146,30 +162,36 @@ async function handleDeleteDish () {
         </div>
 
         <div className="formMiddle">
-        <div className="ingredientBox">
-        <h3>Tags</h3>
-        <div className='tagBox'>
-
-
-
-         {// Fazer sistema de input que adiciona tags similar às aulas
-         
-         /* tags && tags.map(tag => (
-                      <Tag
-                      key={tag.id} 
-                      title={tag.name}
-                      />
-          ))
-
-         */} 
-
-        </div>
-        </div>
+          
         <Input 
         title="Preço"
         placeholder="Quanto custará o prato?" 
         onChange={e=> setPrice(e.target.value)}
+        value={"CAD$ "}
         />
+        <div className="ingredientBox">
+        <h3>Tags</h3>
+          <Input 
+           placeholder="Adicione uma tag"
+           onChange={e => setNewTag(e.target.value)}
+           value={newTag}
+          />
+          <Button
+          title="adicionar tag!"
+          onClick={handleAddTags}
+          />
+          <div className='tagBox'>
+        { 
+          
+        tags && tags.map((tag, index) => (
+                      <Tag
+                      key={index}
+                      title={tag}
+                      />
+          ))
+          }
+        </div>
+        </div>
         
         </div>
 
@@ -179,11 +201,11 @@ async function handleDeleteDish () {
         <textarea
         name="" id="" cols="30" rows="4" 
         placeholder="Conte os pontos-chave dessa obra-prima"
-        onChange={e=> setPrice(e.target.value)}>
+        onChange={e=> setDescription(e.target.value)}>
         </textarea>        
         </div>
         <div className="saveInfoBox">
-        <Button title="Salvar Alterações" onClick={handleCreateDish} form="newDishForm"/>
+        <Button title="Criar Prato" onClick={handleCreateDish} form="newDishForm"/>
         </div>
         </div>
         </form>

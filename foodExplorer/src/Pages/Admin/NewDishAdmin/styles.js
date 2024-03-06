@@ -88,6 +88,7 @@ export const Container = styled.div`
 
       > h1 {
         color: ${({ theme }) => theme.COLORS.LIGHT_200};
+        margin-bottom: 20px;
       }
 
       > form {
@@ -148,7 +149,6 @@ export const Container = styled.div`
           .ingredientBox .tagBox {
             height: 45px;
 
-            display: flex;
             align-items: center;
 
             margin-top: 8px;
@@ -254,11 +254,17 @@ export const Container = styled.div`
               margin-bottom: 130px;
             }
 
-            > .ingredientBox .tagBox {
-              margin-top: 8px;
+            > .ingredientBox {
+              width: 100vw;
             }
 
-            > .inputBox input {
+            > .ingredientBox .tagBox {
+              display: flex;
+              margin-top: 8px;
+              width: 100%;
+            }
+
+            > div .inputBox input {
               width: 100%;
             }
           }
@@ -321,12 +327,13 @@ export const Container = styled.div`
               margin-bottom: 130px;
             }
 
-            > .ingredientBox .tagBox {
-              margin-top: 8px;
-            }
+            > .ingredientBox {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
 
-            > div .inputBox input {
-              width: 100%;
+              .tagBox {
+              }
             }
           }
 

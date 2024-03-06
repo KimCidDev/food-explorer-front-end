@@ -67,7 +67,7 @@ export function Home() {
   }, []);
 
     function handleNavigateNewDish () {
-      return navigate('admin/newDish');
+      return navigate('admin/newdish');
   }
 
   useEffect(() => {
