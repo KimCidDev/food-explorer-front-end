@@ -17,9 +17,19 @@ export const Container = styled.div`
 
       margin-top: 36px;
       padding: 10px;
-      
+
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
       border-bottom: 1px solid ${({ theme }) => theme.COLORS.LIGHT_700};
+    }
+
+    input {
+      width: 100%;
+    }
+
+    .overviewBox {
+      h3 {
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      }
     }
   }
 `;

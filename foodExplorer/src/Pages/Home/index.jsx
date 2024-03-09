@@ -41,6 +41,14 @@ export function Home() {
     return signOut();
   }
 
+  function handleNavigateNewDish () {
+    return navigate('admin/newdish');
+}
+
+  function handleNavigateCart () {
+    return navigate('/menu')
+  }
+
   useEffect(() => {    
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -66,9 +74,7 @@ export function Home() {
     fetchDishes();
   }, []);
 
-    function handleNavigateNewDish () {
-      return navigate('admin/newdish');
-  }
+  // AQUI PARECE QUE EU TÔ FAZENDO DUAS VEZES A MESMA COISA COM O USEEFFECT, ELIMINAR O QUE FOR REDUNDANTE
 
   useEffect(() => {
     async function fetchDishesBySearch() {
@@ -114,6 +120,7 @@ export function Home() {
             :       
             <Button icon={TiShoppingCart}
              title="View Cart"
+             onClick={handleNavigateCart}
               />     
         }
         </div>
