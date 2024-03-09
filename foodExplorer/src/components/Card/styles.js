@@ -15,7 +15,7 @@ export const Container = styled.div`
   border-radius: 30px;
 
   padding: 25px;
-  gap: 15px;
+  gap: 0px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
@@ -82,6 +82,8 @@ export const Container = styled.div`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     height: 500px;
     width: 400px;
+
+    gap: 10px;
 
     img {
       height: 176px;

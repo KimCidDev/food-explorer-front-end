@@ -32,8 +32,8 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      margin-bottom: clamp(30px, 90%, 80px);
-      padding: 0 120px;
+      // margin-bottom: clamp(30px, 90%, 80px);
+      padding: 0 100px;
       justify-content: space-between;
 
       #menuLink {
@@ -44,45 +44,49 @@ export const Container = styled.div`
         }
       }
 
-      > .searchAndCart {
+      .searchAndCart {
         display: flex;
         align-items: center;
-        width: 55%;
-        gap: 20px;
+        gap: clamp(10px, 1px, 120px);
 
         h2 {
-          min-width: 200px;
+          min-width: 100px;
+          margin: 0 clamp(30px, 2vw, 100px);
+
+          font-size: clamp(10px, 1vw, 16px);
           color: ${({ theme }) => theme.COLORS.LIGHT_400};
+          white-space: nowrap;
         }
 
         #searchInput {
           height: 45px;
-          width: 550px;
-
+          width: clamp(110px, 60%, 170px);
           color: ${({ theme }) => theme.COLORS.LIGHT_200};
-
           padding: 0 16px;
           background-color: ${({ theme }) => theme.COLORS.DARK_900};
-
           border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
           border-radius: 8px;
         }
 
         input {
-          border-radius: 8px;
-          height: 32px;
+          &::placeholder {
+            font-size: clamp(6px, 10px, 1rem);
+          }
         }
 
         button {
-          height: 56px;
-
-          padding: 0 10px;
+          width: clamp(100px, 90%, 150px);
+          height: clamp(40px, 40px, 55px);
 
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px;
+          gap: 6px;
 
+          padding: 0 5px;
+          margin-right: 10px;
+
+          font-size: clamp(10px, 11px, 12px);
           font-weight: bold;
           white-space: nowrap;
         }
@@ -91,50 +95,75 @@ export const Container = styled.div`
   }
 
   main {
+    padding: 0 25px;
+
     > .banner {
       display: flex;
       align-items: center;
       background: linear-gradient(#091e26, #00131c);
 
-      margin: 0 25px;
+      margin: 25px;
       border-radius: 3px;
 
+      img {
+        height: clamp();
+      }
+
       .textContent {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+
         h2 {
           color: white;
-          font-size: 16px;
-          font-weight: normal;
+          font-weight: bold;
           white-space: nowrap;
+          font-size: clamp(9px, 14px, 24px);
         }
 
         p {
-          text-align: center;
+          text-align: left;
           color: white;
-          font-size: 12px;
+          font-size: clamp(3px, 11px, 12px);
         }
       }
     }
 
+    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+      > .banner {
+        justify-content: center;
+        margin-bottom: 50px;
+      }
+
+      > .banner .textContent p {
+        text-align: left;
+      }
+    }
+
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      padding: 0;
+
       .banner {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
         max-height: 300px;
 
-        margin: 0 120px;
-        margin-bottom: 62px;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0 120px 62px 120px;
 
         gap: clamp(25px, 100%, 40px);
         overflow: visible;
 
         img {
-          width: clamp(350px, 100%, 450px);
+          width: clamp(150px, 250vw, 450px);
         }
 
         .textContent {
+          width: auto;
+
           h2 {
-            font-size: 32px;
+            font-size: clamp(16px, 130%, 32px);
           }
 
           p {
@@ -144,5 +173,14 @@ export const Container = styled.div`
         }
       }
     }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+      .banner {
+        padding: 24px;
+        img {
+          display: none;
+        }
+      }
   }
 `;

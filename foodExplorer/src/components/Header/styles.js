@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
   width: 100%;
@@ -17,5 +18,9 @@ export const Container = styled.div`
   > h1 {
     font-size: 21px;
     padding-left: 8px;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    
   }
 `;

@@ -100,20 +100,20 @@ export function Home() {
       <Header icon={AiOutlineMenu} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
-          <h2>{`Olá, ${name}`}</h2>
+          <h2>{`Hello, ${name}`}</h2>
           <input
             id="searchInput"
             type="text"
-            placeholder="Algum prato em mente?"
+            placeholder="Meal choice made yet?"
             onChange={((e) => setSearch(e.target.value))}
           />
           { user.isAdmin ?
             <Button icon={TiShoppingCart}
-             title="Novo Prato"
+             title="New Dish"
              onClick={handleNavigateNewDish} />
             :       
             <Button icon={TiShoppingCart}
-             title="Verificar Carrinho"
+             title="View Cart"
               />     
         }
         </div>
@@ -127,8 +127,8 @@ export function Home() {
   <div className="banner">
     <img src={macaroon} alt="macaroon sweet in many colors" />
     <div className="textContent">
-      <h2>Sabores Inigualáveis</h2>
-      <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+      <h2>Unmatched flavors</h2>
+      <p>of all your favourites dishes, every single time.</p>
     </div>
   </div>
 )}
@@ -136,12 +136,12 @@ export function Home() {
 
 
         {saladDishes.length > 0 && (
-        <Section title="Saladas">
+        <Section title="Salads">
           <Swiper dishes={saladDishes} />
         </Section>
       )}
       {mainDishes.length > 0 && (
-        <Section title="Pratos Principais">
+        <Section title="Main">
           <Swiper dishes={mainDishes} />
         </Section>
       )}

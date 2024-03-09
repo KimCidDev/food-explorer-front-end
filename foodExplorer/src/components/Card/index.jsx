@@ -30,7 +30,7 @@ export function Card ({ dish }) {
           <p>01</p>
           <BsPlusLg/>
         </div>      
-        <Button title="Incluir" />
+        <Button title="Add" />
       </div>
     </Container>
   )
