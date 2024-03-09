@@ -46,7 +46,7 @@ export function Home() {
 }
 
   function handleNavigateCart () {
-    return navigate('/menu')
+    return navigate('/cart')
   }
 
   useEffect(() => {    

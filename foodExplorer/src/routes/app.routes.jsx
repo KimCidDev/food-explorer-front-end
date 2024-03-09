@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useAuth } from '../hooks/auth'
 
 import { Home } from '../Pages/Home';
-import { Menu } from '../Pages/Menu';
+import { Cart } from '../Pages/Cart';
 import { FoodInfo } from '../Pages/FoodInfo';
 
 import { MenuAdmin } from '../Pages/Admin/MenuAdmin';
@@ -20,7 +20,7 @@ export function AppRoutes() {
       { user.isAdmin && <Route path="/admin/editdish/:id" element={<EditDishAdmin />} />}
 
       <Route path="/" element={<Home />} />
-      <Route path="/menu" element={<Menu />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/foodinfo/:id" element={<FoodInfo/>} />
       
       <Route path="/admin/menu" element={<MenuAdmin />} />

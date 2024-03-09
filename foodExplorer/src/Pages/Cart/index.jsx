@@ -13,7 +13,7 @@ import { PiCopyright } from 'react-icons/pi';
 import { BsSearch, BsXLg } from 'react-icons/bs';
 
 
-export function Menu () {
+export function Cart () {
   const { signOut } = useAuth();
 
   const [search, setSearch] = useState("");
