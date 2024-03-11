@@ -27,8 +27,22 @@ export const Container = styled.div`
     }
 
     .overviewBox {
+      width: 80%;
+      display: flex;
+      justify-content: space-around;
+      margin: 15px 0;
+      padding: 5px 0;
+
+      background-color: #8a5eff;
+      border-radius: 10px;
+
       h3 {
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      }
+
+      button {
+        width: 20px;
+        height: 20px;
       }
     }
   }

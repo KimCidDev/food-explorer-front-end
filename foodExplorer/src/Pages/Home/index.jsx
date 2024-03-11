@@ -27,6 +27,9 @@ export function Home() {
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
 
+  const [count, setCount] = useState("");
+  const [cart, setCart] = useState([]);
+
   const [loading, setLoading] = useState(true);
 
   const menuPath = '/menu';

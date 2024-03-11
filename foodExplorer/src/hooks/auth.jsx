@@ -58,10 +58,11 @@ function AuthProvider({ children }) {
   function signOut () {
     localStorage.removeItem('@foodExplorer:user');
     localStorage.removeItem('@foodExplorer:token');
-    localStorage.removeItem('@foodExplorer:dishes')
+    localStorage.removeItem('@foodExplorer:dishes');
+    localStorage.removeItem('@foodExplorer:cart');
 
     setData({});
-  }
+  };
 
   useEffect(() => {
     const user = localStorage.getItem('@foodExplorer:user');
