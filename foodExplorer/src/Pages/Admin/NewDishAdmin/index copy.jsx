@@ -111,8 +111,6 @@ async function handleDeleteDish () {
   }
 }
 
-  
-
   return (
     <Container>
       <Header icon={AiOutlineMenu}>
@@ -134,6 +132,7 @@ async function handleDeleteDish () {
        >
 
         <h1>Adicione os detalhes do novo prato</h1>
+          
         <div className="formTop">
         <div className="dishImg">
         <Input 
@@ -202,11 +201,9 @@ async function handleDeleteDish () {
         </textarea>        
         </div>
         <div className="saveInfoBox">
-        <Button title="Criar Prato" onClick={handleCreateDish} form="newDishForm"/>
+        <Button title="Criar Prato" onClick={handleCreateDish} />
         </div>
         </div>
-
-        
 
       </Section>
 

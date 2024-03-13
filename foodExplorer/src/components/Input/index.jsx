@@ -6,7 +6,7 @@ export function Input ({icon: Icon, title, inputType, ...rest}) {
     { title && <p>{title}</p>}
     <div className='inputBox'>
     { Icon && <Icon size={20} /> }
-       <input type={inputType} {...rest}/>
+       <input type={inputType} ref={rest.ref} {...rest}/>
     </div>
     </Container>
   )

@@ -91,270 +91,268 @@ export const Container = styled.div`
         margin-bottom: 20px;
       }
 
-      > form {
+      display: flex;
+      flex-direction: column;
+
+      > .formTop {
         display: flex;
         flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
 
-        > .formTop {
+        #hiddenInput {
+          height: 0;
+          width: 0;
+          display: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .dishImg label {
           display: flex;
-          flex-direction: column;
-          gap: 24px;
-          margin-bottom: 24px;
+          align-items: center;
 
-          #hiddenInput {
-            height: 0;
-            width: 0;
-            display: none;
-            margin: 0;
-            padding: 0;
+          width: 100%;
+          height: 50px;
+
+          padding: 0 14px;
+          gap: 8px;
+
+          border-radius: 8px;
+          border: none;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
+          svg {
+            font-size: 21px;
+          }
+        }
+      }
+
+      > .formMiddle {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
+
+        > div .inputBox input {
+          width: 100px;
+        }
+
+        .ingredientBox h3 {
+          color: ${({ theme }) => theme.COLORS.LIGHT_100};
+          font-size: 14px;
+          font-weight: normal;
+        }
+
+        .ingredientBox .tagBox {
+          height: 45px;
+
+          align-items: center;
+
+          margin-top: 8px;
+          padding: 26px 14px;
+          gap: 16px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border-radius: 8px;
+
+          > div {
+            height: 32px;
+            padding: 10px 16px;
+
+            margin: 12px 0;
+
+            border-radius: 10px;
+
+            background-color: ${({ theme }) => theme.COLORS.LIGHT_600};
+
+            p {
+              color: ${({ theme }) => theme.COLORS.LIGHT_300};
+            }
+          }
+        }
+      }
+
+      > .formBottom {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
+
+        .description {
+          width: 100%;
+          height: 120px;
+          border-radius: 8px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
+          h3 {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            background-color: ${({ theme }) => theme.COLORS.DARK_400};
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
           }
 
-          .dishImg label {
-            display: flex;
-            align-items: center;
-
+          > textarea {
             width: 100%;
-            height: 50px;
-
-            padding: 0 14px;
-            gap: 8px;
+            height: 100%;
 
             border-radius: 8px;
             border: none;
 
-            background-color: ${({ theme }) => theme.COLORS.DARK_800};
+            background-color: transparent;
 
-            svg {
-              font-size: 21px;
+            &::placeholder {
+              padding-top: 14px;
+              padding-left: 14px;
+              color: ${({ theme }) => theme.COLORS.LIGHT_500};
+              font-family: 'Roboto';
             }
           }
         }
 
-        > .formMiddle {
+        > .saveInfoBox {
           display: flex;
-          flex-direction: column;
-          gap: 24px;
-          margin-bottom: 24px;
+          gap: clamp(40px, 100px, 200px);
+
+          button {
+            width: 100%;
+            background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          }
+        }
+      }
+
+      @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+        padding: 0 80px;
+
+        > .formTop {
+          max-width: 100%;
+
+          flex-direction: row;
+          gap: 32px;
+
+          > div {
+            width: clamp(100%, 100%, 300px);
+          }
+
+          > div:nth-child(2) {
+            min-width: 170px;
+            max-width: 220px;
+          }
+        }
+
+        .formMiddle {
+          flex-direction: row;
+          align-items: center;
+
+          gap: 32px;
+
+          > h3 {
+            margin-bottom: 130px;
+          }
+
+          > .ingredientBox {
+            width: 100vw;
+          }
+
+          > .ingredientBox .tagBox {
+            display: flex;
+            margin-top: 8px;
+            width: 100%;
+          }
 
           > div .inputBox input {
-            width: 100px;
-          }
-
-          .ingredientBox h3 {
-            color: ${({ theme }) => theme.COLORS.LIGHT_100};
-            font-size: 14px;
-            font-weight: normal;
-          }
-
-          .ingredientBox .tagBox {
-            height: 45px;
-
-            align-items: center;
-
-            margin-top: 8px;
-            padding: 26px 14px;
-            gap: 16px;
-
-            background-color: ${({ theme }) => theme.COLORS.DARK_900};
-
-            border-radius: 8px;
-
-            > div {
-              height: 32px;
-              padding: 10px 16px;
-
-              margin: 12px 0;
-
-              border-radius: 10px;
-
-              background-color: ${({ theme }) => theme.COLORS.LIGHT_600};
-
-              p {
-                color: ${({ theme }) => theme.COLORS.LIGHT_300};
-              }
-            }
+            width: 100%;
           }
         }
 
-        > .formBottom {
+        .formBottom {
+          width: 100%;
+
           display: flex;
-          flex-direction: column;
-          gap: 24px;
-          margin-bottom: 24px;
+          justify-content: end;
 
-          .description {
+          > .description {
             width: 100%;
-            height: 120px;
-            border-radius: 8px;
 
-            background-color: ${({ theme }) => theme.COLORS.DARK_800};
-
-            h3 {
-              margin-bottom: 8px;
-              padding-bottom: 8px;
-              background-color: ${({ theme }) => theme.COLORS.DARK_400};
-              color: ${({ theme }) => theme.COLORS.LIGHT_100};
-            }
-
-            > textarea {
+            textarea {
+              resize: none;
               width: 100%;
-              height: 100%;
-
-              border-radius: 8px;
-              border: none;
-
-              background-color: transparent;
-
-              &::placeholder {
-                padding-top: 14px;
-                padding-left: 14px;
-                color: ${({ theme }) => theme.COLORS.LIGHT_500};
-                font-family: 'Roboto';
-              }
             }
           }
 
           > .saveInfoBox {
+            width: 100%;
+
             display: flex;
-            gap: clamp(40px, 100px, 200px);
+            justify-content: end;
+            gap: 30px;
 
             button {
-              width: 100%;
-              background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+              max-width: 125px;
+            }
+
+            button:first-child {
+              border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+              background-color: ${({ theme }) => theme.COLORS.DARK_800};
+              max-width: 125px;
+            }
+          }
+        }
+      }
+
+      @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
+        padding: 0 125px;
+
+        > .formTop {
+          max-width: 100%;
+          flex-direction: row;
+          gap: 32px;
+
+          > div {
+            width: clamp(100%, 100%, 300px);
+          }
+        }
+
+        .formMiddle {
+          flex-direction: row;
+          align-items: center;
+
+          gap: 32px;
+
+          > h3 {
+            margin-bottom: 130px;
+          }
+
+          > .ingredientBox {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .tagBox {
             }
           }
         }
 
-        @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-          padding: 0 80px;
+        .formBottom {
+          width: 100%;
 
-          > .formTop {
-            max-width: 100%;
+          display: flex;
+          justify-content: end;
 
-            flex-direction: row;
-            gap: 32px;
-
-            > div {
-              width: clamp(100%, 100%, 300px);
-            }
-
-            > div:nth-child(2) {
-              min-width: 170px;
-              max-width: 220px;
-            }
-          }
-
-          .formMiddle {
-            flex-direction: row;
-            align-items: center;
-
-            gap: 32px;
-
-            > h3 {
-              margin-bottom: 130px;
-            }
-
-            > .ingredientBox {
-              width: 100vw;
-            }
-
-            > .ingredientBox .tagBox {
-              display: flex;
-              margin-top: 8px;
-              width: 100%;
-            }
-
-            > div .inputBox input {
-              width: 100%;
-            }
-          }
-
-          .formBottom {
+          > .description {
             width: 100%;
 
-            display: flex;
-            justify-content: end;
-
-            > .description {
+            textarea {
+              resize: none;
               width: 100%;
-
-              textarea {
-                resize: none;
-                width: 100%;
-              }
-            }
-
-            > .saveInfoBox {
-              width: 100%;
-
-              display: flex;
-              justify-content: end;
-              gap: 30px;
-
-              button {
-                max-width: 125px;
-              }
-
-              button:first-child {
-                border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
-                background-color: ${({ theme }) => theme.COLORS.DARK_800};
-                max-width: 125px;
-              }
-            }
-          }
-        }
-
-        @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
-          padding: 0 125px;
-
-          > .formTop {
-            max-width: 100%;
-            flex-direction: row;
-            gap: 32px;
-
-            > div {
-              width: clamp(100%, 100%, 300px);
             }
           }
 
-          .formMiddle {
-            flex-direction: row;
-            align-items: center;
-
-            gap: 32px;
-
-            > h3 {
-              margin-bottom: 130px;
-            }
-
-            > .ingredientBox {
-              display: flex;
-              flex-direction: column;
-              gap: 10px;
-
-              .tagBox {
-              }
-            }
-          }
-
-          .formBottom {
-            width: 100%;
-
-            display: flex;
-            justify-content: end;
-
-            > .description {
-              width: 100%;
-
-              textarea {
-                resize: none;
-                width: 100%;
-              }
-            }
-
-            > button {
-              width: 98px;
-            }
+          > button {
+            width: 98px;
           }
         }
       }

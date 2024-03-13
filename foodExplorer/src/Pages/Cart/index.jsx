@@ -10,6 +10,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { BsPlusLg } from 'react-icons/bs';
+import { BiMinus } from 'react-icons/bi';
 
 import { PiCopyright } from 'react-icons/pi';
 import { BsSearch, BsXLg } from 'react-icons/bs';
@@ -22,10 +23,25 @@ export function Cart () {
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);  
 
   const navigate = useNavigate();
 
-  const dishesFromCart = cart.map(dish => dish)
+  function handleAddToCart(index) {
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart];
+      updatedCart[index].quantity += 1;
+      return updatedCart
+    });
+  };
+  
+  function handleSubtractFromCart(index) {
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart];
+      if (updatedCart[index].quantity > 1) {
+        updatedCart[index].quantity -= 1;
+      } return updatedCart })
+  };
 
   function handleSignOut () {
     navigate('/');
@@ -34,22 +50,47 @@ export function Cart () {
   };
 
   function handleSaveToCart(dishId) {
-    setCart(prevState => {
+    try {
+      const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]'; // Initialize as an empty array if no cart exists
+      const cartUpdated = JSON.parse(cartDishes);
+  
+      // Fetch dish data
       const dishData = JSON.parse(localStorage.getItem('@foodExplorer:dishes')) || [];
-      const filteredDish = dishData.filter(dish => dish.id == dishId);
-      console.log(filteredDish);
-      const updatedCartDishes = [...prevState, ...filteredDish ];
-      console.log(updatedCartDishes);
-      const cartData = JSON.parse(localStorage.getItem('@foodExplorer:cart')) || [];
-      console.log(cartData);
-      const updatedCartData = [...cartData, ...filteredDish ];
-      console.log(updatedCartData);
-      localStorage.setItem('@foodExplorer:cart', JSON.stringify(updatedCartData));
-      alert("Meal placed on the cart. Yummy!")
-      return updatedCartDishes;
-    });
-  }
+      const selectedDish = dishData.find(dish => dish.id === dishId);
+  
+      if (!selectedDish) {
+        console.error('Dish not found');
+        return;
+      }
+  
+      // Check if the dish already exists in the cart
+      const existingCartItem = cartUpdated.find(item => item.id === dishId);
+  
+      if (existingCartItem) {
+        // If the dish already exists in the cart, update its quantity
+        existingCartItem.quantity += quantity;
+      } else {
+        // If the dish doesn't exist in the cart, add it with the specified quantity
+        cartUpdated.push({ ...selectedDish, quantity });
+      }
+  
+      // Update cart in localStorage
+      localStorage.setItem('@foodExplorer:cart', JSON.stringify(cartUpdated));
+  
+      // Update state
+      setCart(cartUpdated);
+  
+      // Provide feedback to the user
+      alert("Meal placed on the cart. Yummy!");
+      setSearch("");
 
+      setLoading(false);
+    } catch (error) {
+      console.error('Error saving to cart:', error);
+      // Handle error gracefully
+    }
+  }
+  
   function handleRemoveFromCart (dishId) {
     const filteredCart = cart.filter(item => item.id !== dishId);
     localStorage.setItem('@foodExplorer:cart', JSON.stringify(filteredCart));
@@ -81,23 +122,27 @@ export function Cart () {
   useEffect(() => {
     async function fetchDishesBySearch() {
       try {
-        const response = await api.get(`/dishes?name=${search}`)
-        
-        console.log(response.data)
-        setDishSearchResult(response.data)
-
+        const response = await api.get(`/dishes?name=${search}`);
+        const dishesWithQuantity = response.data.map(dish => ({
+          ...dish,
+          quantity: 1  // Initialize quantity to 1 for each dish
+        }));
+        setDishSearchResult(dishesWithQuantity);
+  
       } catch (error) {        
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);  
       }
-      }
-      
-    
-    fetchDishesBySearch()
-    
-  }, [search])
+    }
+  
+    fetchDishesBySearch();
+  
+    // Ensure that loading state is updated immediately after search
+    setLoading(false);
+  }, [search]);
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -106,7 +151,7 @@ export function Cart () {
   return (
     <Container>
       <Header icon={BsXLg} to='/'>    
-        <h1 onClick={() => console.log(dishesFromCart)}>Cart</h1>
+        <h1 onClick={() => console.log(cart)}>Cart</h1>
       </Header>
       <div className="itemSearchBox">
       <Input
@@ -116,15 +161,20 @@ export function Cart () {
         onChange={((e) => setSearch(e.target.value))}
       />
       {
-        search ? dishSearchResult.map(dish => 
-          <div className='overviewBox' key={dish.id}> 
-            <h3>{dish.name}</h3>
-            <p>{dish.price}</p>            
-          <Button
-          icon={BsPlusLg}
-          onClick={() => handleSaveToCart(dish.id)}/>
+          search ? dishSearchResult.map((dish, index) => 
+            <div className='overviewBox' key={dish.id}> 
+              <h3>{dish.name}</h3>
+              <p>{dish.price}</p>
+              <div className='howManyBox'>
+            <BiMinus onClick={() => handleSubtractFromCart(index)}/>
+            <p>{1}</p>
+            <BsPlusLg onClick={() => handleAddToCart(index)} />                      
+            <Button
+            icon={BsPlusLg}
+            onClick={() => handleSaveToCart(dish.id)}/>
+            </div>
         </div>)
-         : dishesFromCart.map(dish => 
+         : cart.map((dish, index) => 
           <div className='overviewBox' key={dish.id}> 
             <h3>{dish.name}</h3>
             <p>{dish.price}</p>
@@ -142,4 +192,4 @@ export function Cart () {
       <Footer icon={PiCopyright}/>
     </Container>
   )
-} 
+}

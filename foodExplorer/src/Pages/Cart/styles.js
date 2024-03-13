@@ -36,14 +36,28 @@ export const Container = styled.div`
       background-color: #8a5eff;
       border-radius: 10px;
 
-      h3 {
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-      }
-
-      button {
-        width: 20px;
+      .howManyBox {
         height: 20px;
+        display: flex;
+        gap: 15px;
+
+        svg {
+          height: 16px;
+
+          path {
+            fill: white !important;
+          }
+        }
       }
+    }
+
+    h3 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+
+    button {
+      width: 20px;
+      height: 20px;
     }
   }
 `;
