@@ -33,7 +33,7 @@ export const Container = styled.div`
       margin: 15px 0;
       padding: 5px 0;
 
-      background-color: #8a5eff;
+      background-color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
       border-radius: 10px;
 
       .howManyBox {

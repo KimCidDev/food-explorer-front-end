@@ -165,9 +165,6 @@ export const Container = styled.div`
             margin: 12px 0;
 
             border-radius: 10px;
-
-            background-color: ${({ theme }) => theme.COLORS.LIGHT_600};
-
             p {
               color: ${({ theme }) => theme.COLORS.LIGHT_300};
             }
@@ -197,7 +194,11 @@ export const Container = styled.div`
 
           > textarea {
             width: 100%;
-            height: 100%;
+            height: 80px;
+
+            padding: 10px 0 0 10px;
+
+            color: ${({ theme }) => theme.COLORS.LIGHT_200};
 
             border-radius: 8px;
             border: none;
@@ -205,8 +206,6 @@ export const Container = styled.div`
             background-color: transparent;
 
             &::placeholder {
-              padding-top: 14px;
-              padding-left: 14px;
               color: ${({ theme }) => theme.COLORS.LIGHT_500};
               font-family: 'Roboto';
             }

@@ -25,6 +25,7 @@ export default {
     PURPLE_100: '#DAB6FF',
     PURPLE_200: '#9C4DCC',
     PURPLE_300: '#5D2555',
+    COOLEST_PURPLE:'#8a5eff',
 
     TINT_TOMATO_100: '#750310',
     TINT_TOMATO_200: '#92000E',

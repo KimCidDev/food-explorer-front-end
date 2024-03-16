@@ -154,7 +154,7 @@ async function handleDeleteDish () {
           />
           <Select
           title="Categoria"
-          value="Salad"
+          value={category}
           onChange={e=> setCategory(e.target.value)}
           />
         </div>
@@ -162,7 +162,7 @@ async function handleDeleteDish () {
         <div className="formMiddle">          
           <Input 
           title="Preço"
-          placeholder="Quanto custará o prato? Use apenas números" 
+          placeholder="Ex.: 19.90" 
           onChange={e=> setPrice(`CAD$ ${e.target.value}`)}
         />        
           <div className="ingredientBox">

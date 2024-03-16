@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   margin: 12px;
 
-  background-color: ${({ theme }) => theme.COLORS.DARK_1000};
+  background-color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
 
   > p {
     font-size: 15px;

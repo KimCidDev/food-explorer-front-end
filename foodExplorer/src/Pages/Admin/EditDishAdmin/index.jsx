@@ -122,74 +122,65 @@ async function handleDeleteDish () {
         <form action="" id="newDishForm">
           
         <div className="formTop">
-        <div className="dishImg">
-        <Input 
-        title="Imagem do Prato"
-        type="file"
-        id="hiddenInput"
-        onChange={handleAvatarImgUpdate}
-        />
-        <label htmlFor="hiddenInput">
-          <MdOutlineFileDownload />
-          <p>Alterar Imagem</p>
-        </label>
-        </div>
-        <Input 
-        title="Nome do Prato"
-        placeholder={dish.name}
-        onChange={e=> setName(e.target.value)}
-        />
-        <Select
-        title="Categoria"
-        value={dish.category}
-        onChange={e=> setCategory(e.target.value)}
-        />
+          <div className="dishImg">
+            <Input 
+            title="Imagem do Prato"
+            type="file"
+            id="hiddenInput"
+            onChange={handleAvatarImgUpdate}
+            />
+            <label htmlFor="hiddenInput">
+              <MdOutlineFileDownload />
+              <p>Alterar Imagem</p>
+            </label>
+          </div>
+          <Input 
+          title="Nome do Prato"
+          placeholder={dish.name}
+          onChange={e=> setName(e.target.value)}
+          />
+          <Select
+          title="Categoria"
+          value={dish.category}
+          onChange={e=> setCategory(e.target.value)}
+          />
         </div>
 
         <div className="formMiddle">
-        <div className="ingredientBox">
-        <h3>Tags</h3>
-        <div className='tagBox'>
-
-          { tags && tags.map(tag => (
-                      <Tag
-                      key={tag.id} 
-                      title={tag.name}
-                      />
-          ))
-
-          }
-        </div>
-        </div>
-        <Input 
-        title="Preço"
-        placeholder={dish.price} 
-        onChange={e=> setPrice(e.target.value)}
-        />
-        
+          <div className="ingredientBox">
+            <h3>Tags</h3>
+            <div className='tagBox'>
+              { tags && tags.map(tag => (
+              <Tag
+              key={tag.id} 
+              title={tag.name}
+              />))
+              }
+            </div>
+          </div>
+          <Input 
+          title="Preço"
+          placeholder={dish.price} 
+          onChange={e=> setPrice(e.target.value)}
+          />          
         </div>
 
         <div className="formBottom">        
-        <div className="description">        
-        <h3>Description</h3>
-        <textarea
-        name="" id="" cols="30" rows="4" 
-        placeholder={dish.description}
-        onChange={e=> setPrice(e.target.value)}>
-        </textarea>        
+          <div className="description">        
+            <h3>Description</h3>
+            <textarea
+            placeholder={dish.description}
+            onChange={e=> setPrice(e.target.value)}>
+            </textarea>        
+          </div>
+          <div className="saveInfoBox">
+            <Button title="Salvar Alterações" onClick={handleUpdateDish} form="newDishForm"/>
+            <Button title="Excluir Prato" onClick={handleDeleteDish} form="newDishForm"/>
+          </div>
         </div>
-        <div className="saveInfoBox">
-        <Button title="Salvar Alterações" onClick={handleUpdateDish} form="newDishForm"/>
-        <Button title="Excluir Prato" onClick={handleDeleteDish} form="newDishForm"/>
-        </div>
-        </div>
-        </form>
+        </form>        
 
-        
-
-      </Section>
-
-     
+      </Section>     
       <Footer icon={PiCopyright}/>
     </Container>
   )

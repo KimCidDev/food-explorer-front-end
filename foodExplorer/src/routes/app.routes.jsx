@@ -6,7 +6,6 @@ import { Home } from '../Pages/Home';
 import { Cart } from '../Pages/Cart';
 import { FoodInfo } from '../Pages/FoodInfo';
 
-import { MenuAdmin } from '../Pages/Admin/MenuAdmin';
 import { NewDishAdmin } from '../Pages/Admin/NewDishAdmin';
 import { EditDishAdmin } from '../Pages/Admin/EditDishAdmin';
 
