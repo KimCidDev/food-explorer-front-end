@@ -27,9 +27,6 @@ export function Home() {
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
 
-  const [count, setCount] = useState("");
-  const [cart, setCart] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
   const menuPath = '/menu';
@@ -37,7 +34,7 @@ export function Home() {
 
   const saladDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad');
   const mainDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main');
-  const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Desserts') : dishes.filter(dish => dish.category === 'Desserts');
+  const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Dessert') : dishes.filter(dish => dish.category === 'Dessert');
 
   function handleSignOut () {
     navigate('/');

@@ -23,25 +23,72 @@ export function Cart () {
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);  
+  const [quantity, setQuantity] = useState(1);
+ // const [temporaryCart, setTemporaryCart = useState([])];
+
 
   const navigate = useNavigate();
 
-  function handleAddToCart(index) {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart];
-      updatedCart[index].quantity += 1;
-      return updatedCart
-    });
-  };
+ // function addToTemporary
+
+  function handleAddToCart(dishId) {
+    try {
+      const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]';
+      const cartUpdated = JSON.parse(cartDishes);
   
-  function handleSubtractFromCart(index) {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart];
-      if (updatedCart[index].quantity > 1) {
-        updatedCart[index].quantity -= 1;
-      } return updatedCart })
-  };
+      let updatedCart = [...cartUpdated];
+      const existingItemIndex = updatedCart.findIndex(item => item.id === dishId);
+      if (existingItemIndex !== -1) {
+        // If the dish is already in the cart, increment its quantity
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: updatedCart[existingItemIndex].quantity + 1,
+        };
+
+        localStorage.setItem('@foodExplorer:cart', JSON.stringify(updatedCart));
+      } else {
+        // If the dish is not in the cart, fetch its complete information
+        const dishInfo = dishSearchResult.find(dish => dish.id === dishId);
+        if (dishInfo) {
+          updatedCart.push(dishInfo); // Add the complete dish information to the cart
+
+          localStorage.setItem('@foodExplorer:cart', JSON.stringify(updatedCart));
+        } else {
+          console.error('Dish information not found');
+          return;
+        }
+      }
+  
+
+      setCart(updatedCart);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      // Handle error gracefully
+    }
+  }
+
+  function handleSubtractFromCart(dishId) {
+    try {
+      const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]';
+      const cartUpdated = JSON.parse(cartDishes);
+  
+      const updatedCart = cartUpdated.map((dish) => {
+        if (dish.id === dishId && dish.quantity > 1) {
+          return {
+            ...dish,
+            quantity: dish.quantity - 1,
+          };
+        }
+        return dish;
+      }).filter(item => item.quantity > 0); // Filter out dishes with quantity <= 0
+  
+      localStorage.setItem('@foodExplorer:cart', JSON.stringify(updatedCart));
+      setCart(updatedCart);
+    } catch (error) {
+      console.error('Error subtracting from cart:', error);
+      // Handle error gracefully
+    }
+  }
 
   function handleSignOut () {
     navigate('/');
@@ -161,20 +208,27 @@ export function Cart () {
         onChange={((e) => setSearch(e.target.value))}
       />
       {
-          search ? dishSearchResult.map((dish, index) => 
+          search ? 
+          (
+            dishSearchResult.map((dish) => 
             <div className='overviewBox' key={dish.id}> 
               <h3>{dish.name}</h3>
               <p>{dish.price}</p>
               <div className='howManyBox'>
-            <BiMinus onClick={() => handleSubtractFromCart(index)}/>
-            <p>{1}</p>
-            <BsPlusLg onClick={() => handleAddToCart(index)} />                      
+            <BiMinus onClick={() => handleSubtractFromCart(dish.id)}/>
+            <p>{cart.find(item => item.id === dish.id)?.quantity || 1}</p>
+            <BsPlusLg onClick={() => handleAddToCart(dish.id)} />                      
             <Button
             icon={BsPlusLg}
             onClick={() => handleSaveToCart(dish.id)}/>
             </div>
-        </div>)
-         : cart.map((dish, index) => 
+          </div>
+          )
+          )
+
+         : 
+         (
+          cart.map((dish, index) => (
           <div className='overviewBox' key={dish.id}> 
             <h3>{dish.name}</h3>
             <p>{dish.price}</p>
@@ -182,11 +236,10 @@ export function Cart () {
           <Button
           icon={BsXLg}
           onClick={() => handleRemoveFromCart(dish.id)}/>
-        </div>)
-      }
+        </div>))
+      )}
       <h2
-      onClick={handleSignOut}
-      >Sair</h2>
+      onClick={handleSignOut}>Sair</h2>
       </div>
 
       <Footer icon={PiCopyright}/>
