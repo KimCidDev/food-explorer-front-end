@@ -114,39 +114,27 @@ export function Cart () {
 
   function handleSaveToCart(dishId) {
     try {
-      const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]'; // Initialize as an empty array if no cart exists
+      const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]';
       const cartUpdated = JSON.parse(cartDishes);
-  
-      // Fetch dish data
-      const dishData = JSON.parse(localStorage.getItem('@foodExplorer:dishes')) || [];
-      const selectedDish = dishData.find(dish => dish.id === dishId);
-  
-      if (!selectedDish) {
-        console.error('Dish not found');
+
+      const dishInfo = dishSearchResult.find(dish => dish.id === dishId);
+      if (!dishInfo) {
+        console.error('Dish information not found');
         return;
       }
-  
-      // Check if the dish already exists in the cart
+
       const existingCartItem = cartUpdated.find(item => item.id === dishId);
-  
       if (existingCartItem) {
-        // If the dish already exists in the cart, update its quantity
         existingCartItem.quantity += quantity;
       } else {
-        // If the dish doesn't exist in the cart, add it with the specified quantity
-        cartUpdated.push({ ...selectedDish, quantity });
+        cartUpdated.push({ ...dishInfo, quantity });
       }
-  
-      // Update cart in localStorage
+
       localStorage.setItem('@foodExplorer:cart', JSON.stringify(cartUpdated));
-  
-      // Update state
       setCart(cartUpdated);
-  
-      // Provide feedback to the user
+      setTemporaryCart([]); // Clear temporary cart after saving
       alert("Meal placed on the cart. Yummy!");
       setSearch("");
-
       setLoading(false);
     } catch (error) {
       console.error('Error saving to cart:', error);
