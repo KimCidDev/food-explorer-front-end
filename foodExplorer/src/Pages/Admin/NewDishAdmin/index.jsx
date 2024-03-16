@@ -22,9 +22,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 
 export function NewDishAdmin () {
   const { updateDish, signOut } = useAuth();
-   
-  const params = useParams();
-  const [dish, setDish] = useState({});  
+
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
   
@@ -42,7 +40,7 @@ export function NewDishAdmin () {
   }
 
   async function handleAddTags(e) {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
     console.log(newTag);
     setTags(prevState => [...prevState, newTag]);
     setNewTag("");

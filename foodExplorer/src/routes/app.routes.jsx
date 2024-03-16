@@ -22,8 +22,6 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/foodinfo/:id" element={<FoodInfo/>} />
-      
-      <Route path="/admin/menu" element={<MenuAdmin />} />
 
     </Routes>
   )

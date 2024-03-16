@@ -1,7 +1,7 @@
+import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../../services/api';
 import { Swiper } from '../../components/Swiper';
 
 import { Container } from './styles';
@@ -75,8 +75,6 @@ export function Home() {
     fetchDishes();
   }, []);
 
-  // AQUI PARECE QUE EU TÔ FAZENDO DUAS VEZES A MESMA COISA COM O USEEFFECT, ELIMINAR O QUE FOR REDUNDANTE
-
   useEffect(() => {
     async function fetchDishesBySearch() {
       try {
@@ -125,21 +123,20 @@ export function Home() {
               />     
         }
         </div>
-
         <ImExit onClick={handleSignOut} />
       </Header>
 
       <main>
 
       {search === "" && (
-  <div className="banner">
-    <img src={macaroon} alt="macaroon sweet in many colors" />
-    <div className="textContent">
-      <h2>Unmatched flavors</h2>
-      <p>of all your favourites dishes, every single time.</p>
-    </div>
-  </div>
-)}
+        <div className="banner">
+          <img src={macaroon} alt="macaroon sweet in many colors" />
+          <div className="textContent">
+            <h2>Unmatched flavors</h2>
+            <p>of all your favourites dishes, every single time.</p>
+          </div>
+        </div>
+      )}
 
 
 
@@ -147,17 +144,17 @@ export function Home() {
         <Section title="Salads">
           <Swiper dishes={saladDishes} />
         </Section>
-      )}
+         )}
       {mainDishes.length > 0 && (
         <Section title="Main">
           <Swiper dishes={mainDishes} />
         </Section>
-      )}
+         )}
       {dessertDishes.length > 0 && (
         <Section title="Desserts">
           <Swiper dishes={dessertDishes} />
         </Section>
-      )}
+         )}
 
       </main>
 
