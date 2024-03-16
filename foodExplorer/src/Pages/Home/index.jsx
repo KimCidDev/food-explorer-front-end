@@ -60,7 +60,6 @@ export function Home() {
         console.log(response.data)
         const allDishes = response.data;
         localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
-        localStorage.setItem('@foodExplorer:cart', JSON.stringify([]));
 
         setDishes(allDishes);
         setLoading(false);
