@@ -1,23 +1,23 @@
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/auth';
-import { api } from '../../services/api';
 
 import { Container } from './styles';
-import { Header } from '../../components/Header';
-import { Logo } from '../../components/Logo'; 
-import { Button } from '../../components/Button';
-import { Section } from '../../components/Section';
-import { Footer } from '../../components/Footer';
 import { Tag } from '../../components/Tag';
+import { Logo } from '../../components/Logo'; 
+import { Header } from '../../components/Header';
+import { Button } from '../../components/Button';
+import { Footer } from '../../components/Footer';
+import { Section } from '../../components/Section';
 
-import { AiOutlineMenu } from 'react-icons/ai'; 
-import { AiOutlineLeft } from 'react-icons/ai'; 
-import { TiShoppingCart } from 'react-icons/ti'; 
 import { ImExit } from 'react-icons/im';
 import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
+import { AiOutlineMenu } from 'react-icons/ai'; 
+import { AiOutlineLeft } from 'react-icons/ai'; 
+import { TiShoppingCart } from 'react-icons/ti'; 
 
 export function FoodInfo () {
   const { user, signOut } = useAuth();  
@@ -88,26 +88,28 @@ export function FoodInfo () {
       <Section
       title="Voltar à página principal" 
       icon={AiOutlineLeft}
-      onClick={handleNavigateHome}
-       >
+      onClick={handleNavigateHome}>
+
       <img src={`http://localhost:5555/files/${dish.dishImg}`} alt={dish.description} />
+
       <div className="textContent">
-      <p>{dish.description}</p>
+        <p>{dish.description}</p>
       
       <div className="tagsSection">
-      { tags && tags.map(tag => (
-        <Tag key={tag.id} title={tag.name}></Tag>        
-      ))}
+        { tags && tags.map(tag => (
+          <Tag key={tag.id} title={tag.name}></Tag>        
+        ))}
       </div>
-      <div className="addToBasket">
-     
+
+      <div className="addToBasket">     
         { user.isAdmin ?
         <div className="adminEditButton">
         <Button
          title='Editar Prato'
          onClick={handleEditDish}
          /> 
-        </div> 
+        </div>
+
         :       
         <div className="howManyBox">
         <BiMinus/>
@@ -117,8 +119,7 @@ export function FoodInfo () {
         title='Adicionar ao carrinho'
         />
       </div> 
-        }
-         
+        }         
      </div>
      </div>
      </Section>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { api } from '../../../services/api';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../../hooks/auth';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,6 @@ import { Section } from '../../../components/Section';
 import { Select } from '../../../components/Select';
 
 import { ImExit } from 'react-icons/im';
-import { GiMailbox } from 'react-icons/gi';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineLeft } from 'react-icons/ai';
@@ -117,8 +116,7 @@ async function handleDeleteDish () {
       <Section
       icon={AiOutlineLeft}
       title="voltar"       
-      onClick={handleNavigateHome}
-       >
+      onClick={handleNavigateHome}>
 
         <h1>Editar Prato</h1>
         <form action="" id="newDishForm">

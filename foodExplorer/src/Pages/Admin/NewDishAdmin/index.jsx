@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { api } from '../../../services/api';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../../hooks/auth';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Container } from './styles';
 import { Tag } from '../../../components/Tag';
@@ -21,7 +21,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 export function NewDishAdmin () {
-  const { updateDish, signOut } = useAuth();
+  const { signOut } = useAuth();
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
@@ -100,6 +100,8 @@ export function NewDishAdmin () {
   return signOut();
 }
 
+// Ao invés disso podia ser algo como function pra limpar os campos
+
 async function handleDeleteDish () {
   const confirm = window.confirm("Deseja realmente excluir esse prato?")
 
@@ -128,87 +130,79 @@ async function handleDeleteDish () {
       <Section
       icon={AiOutlineLeft}
       title="voltar"       
-      onClick={handleNavigateHome}
-       >
+      onClick={handleNavigateHome}>
 
         <h1>Adicione os detalhes do novo prato</h1>
+
         <div className="formTop">
         <div className="dishImg">
-        <Input 
-        title="Imagem do Prato"
-        type="file"
-        id="hiddenInput"
-        onChange={handleAvatarImgUpdate}
-        />
-        <label htmlFor="hiddenInput">
-          <MdOutlineFileDownload />
-          <p>Alterar Imagem</p>
+          <Input 
+          title="Imagem do Prato"
+          type="file"
+          id="hiddenInput"
+          onChange={handleAvatarImgUpdate}
+          />
+          <label htmlFor="hiddenInput">
+            <MdOutlineFileDownload />
+            <p>Alterar Imagem</p>
         </label>
         </div>
-        <Input 
-        title="Nome do Prato"
-        placeholder="Nome do novo prato"
-        onChange={e=> setName(e.target.value)}
-        />
-        <Select
-        title="Categoria"
-        value="Salad"
-        onChange={e=> setCategory(e.target.value)}
-        />
+          <Input 
+          title="Nome do Prato"
+          placeholder="Nome do novo prato"
+          onChange={e=> setName(e.target.value)}
+          />
+          <Select
+          title="Categoria"
+          value="Salad"
+          onChange={e=> setCategory(e.target.value)}
+          />
         </div>
 
-        <div className="formMiddle">
-          
-        <Input 
-        title="Preço"
-        placeholder="Quanto custará o prato? Use apenas números" 
-        onChange={e=> setPrice(`CAD$ ${e.target.value}`)}
-        />
-        <div className="ingredientBox">
-        <h3>Tags</h3>
+        <div className="formMiddle">          
           <Input 
-           placeholder="Adicione uma tag"
-           onChange={e => setNewTag(e.target.value)}
-           value={newTag}
-          />
-          <Button
-          title="adicionar tag!"
-          onClick={handleAddTags}
-          />
-          <div className='tagBox'>
-        { 
-          
-        tags && tags.map((tag, index) => (
-                      <Tag
-                      key={index}
-                      title={tag}
-                      />
-          ))
-          }
-        </div>
-        </div>
+          title="Preço"
+          placeholder="Quanto custará o prato? Use apenas números" 
+          onChange={e=> setPrice(`CAD$ ${e.target.value}`)}
+        />        
+          <div className="ingredientBox">
+            <h3>Tags</h3>
+              <Input 
+              placeholder="Adicione uma tag"
+              onChange={e => setNewTag(e.target.value)}
+              value={newTag}
+              />
+              <Button
+              title="adicionar tag!"
+              onClick={handleAddTags}
+              />
+            <div className='tagBox'>
+            { tags && tags.map((tag, index) => (
+                  <Tag
+                  key={index}
+                  title={tag}
+                  />))
+            }
+        '   </div>
+           </div>
         
         </div>
 
         <div className="formBottom">        
-        <div className="description">        
-        <h3>Description</h3>
-        <textarea
-        name="" id="" cols="30" rows="4" 
-        placeholder="Conte os pontos-chave dessa obra-prima"
-        onChange={e=> setDescription(e.target.value)}>
-        </textarea>        
-        </div>
-        <div className="saveInfoBox">
-        <Button title="Criar Prato" onClick={handleCreateDish} form="newDishForm"/>
-        </div>
-        </div>
+          <div className="description">        
+            <h3>Description</h3>
+            <textarea
+            name="" id="" cols="30" rows="4" 
+            placeholder="Conte os pontos-chave dessa obra-prima"
+            onChange={e=> setDescription(e.target.value)}>
+            </textarea>        
+          </div>
+          <div className="saveInfoBox">
+            <Button title="Criar Prato" onClick={handleCreateDish} form="newDishForm"/>
+          </div>
+        </div>        
 
-        
-
-      </Section>
-
-     
+      </Section>     
       <Footer icon={PiCopyright}/>
     </Container>
   )

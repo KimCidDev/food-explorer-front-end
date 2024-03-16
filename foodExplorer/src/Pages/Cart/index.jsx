@@ -1,16 +1,15 @@
-import { Container } from './styles';
-import { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { api } from '../../services/api';
-
+import { Container } from './styles';
+import { BiMinus } from 'react-icons/bi';
+import { BsPlusLg } from 'react-icons/bs';
 import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
-import { BsPlusLg } from 'react-icons/bs';
-import { BiMinus } from 'react-icons/bi';
 
 import { PiCopyright } from 'react-icons/pi';
 import { BsSearch, BsXLg } from 'react-icons/bs';
@@ -21,10 +20,10 @@ export function Cart () {
 
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState("");
-  const [dishSearchResult, setDishSearchResult] = useState([]);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
- // const [temporaryCart, setTemporaryCart = useState([])];
+  const [dishSearchResult, setDishSearchResult] = useState([]);
+  // const [temporaryCart, setTemporaryCart = useState([])];
 
 
   const navigate = useNavigate();
@@ -63,7 +62,6 @@ export function Cart () {
       setCart(updatedCart);
     } catch (error) {
       console.error('Error adding to cart:', error);
-      // Handle error gracefully
     }
   }
 
