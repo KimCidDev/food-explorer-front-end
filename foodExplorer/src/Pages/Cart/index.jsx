@@ -23,12 +23,31 @@ export function Cart () {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [dishSearchResult, setDishSearchResult] = useState([]);
-  // const [temporaryCart, setTemporaryCart = useState([])];
+  const [temporaryCart, setTemporaryCart] = useState([]);
 
 
   const navigate = useNavigate();
 
- // function addToTemporary
+  function addToTemporaryCart (dishId) {
+    const dishOnTheList = temporaryCart.find(dish => dish.id == dishId);
+    if (dishOnTheList) {
+      dishOnTheList.quantity += 1;
+      setTemporaryCart([...temporaryCart]);
+    } else {
+      const dishResult = dishSearchResult.find(dish => dish.id == dishId);
+      if (dishResult) {
+      setTemporaryCart([...temporaryCart, {...dishResult, quantity: 1}])
+    }
+    }
+  }
+   
+  function subtractFromTemporaryCart (dishId) {
+    const dishOnTheList = temporaryCart.find(dish => dish.id == dishId);
+    if (dishOnTheList && dishOnTheList.quantity > 1) {
+      dishOnTheList.quantity += 1;
+      setTemporaryCart([...dishOnTheList]);
+    }
+  }
 
   function handleAddToCart(dishId) {
     try {
@@ -90,7 +109,6 @@ export function Cart () {
 
   function handleSignOut () {
     navigate('/');
-    console.log('olá')
     return signOut();
   };
 
@@ -184,7 +202,6 @@ export function Cart () {
   
     fetchDishesBySearch();
   
-    // Ensure that loading state is updated immediately after search
     setLoading(false);
   }, [search]);
   
@@ -199,43 +216,42 @@ export function Cart () {
         <h1 onClick={() => console.log(cart)}>Cart</h1>
       </Header>
       <div className="itemSearchBox">
-      <Input
-        placeholder="Procure pelo prato ou ingrediente desejado"
-        type="text"
-        icon={BsSearch}
-        onChange={((e) => setSearch(e.target.value))}
-      />
-      {
-          search ? 
-          (
-            dishSearchResult.map((dish) => 
-            <div className='overviewBox' key={dish.id}> 
-              <h3>{dish.name}</h3>
-              <p>{dish.price}</p>
-              <div className='howManyBox'>
-            <BiMinus onClick={() => handleSubtractFromCart(dish.id)}/>
-            <p>{cart.find(item => item.id === dish.id)?.quantity || 1}</p>
-            <BsPlusLg onClick={() => handleAddToCart(dish.id)} />                      
-            <Button
-            icon={BsPlusLg}
-            onClick={() => handleSaveToCart(dish.id)}/>
+        <Input
+          placeholder="Procure pelo prato ou ingrediente desejado"
+          type="text"
+          icon={BsSearch}
+          onChange={((e) => setSearch(e.target.value))}
+        />
+        {search ? 
+            (
+              dishSearchResult.map((dish) => 
+              <div className='overviewBox' key={dish.id}> 
+                <h3>{dish.name}</h3>
+                <p>{dish.price}</p>
+                <div className='howManyBox'>
+              <BiMinus onClick={() => handleSubtractFromCart(dish.id)}/>
+              <p>{cart.find(item => item.id === dish.id)?.quantity || 1}</p>
+              <BsPlusLg onClick={() => handleAddToCart(dish.id)} />                      
+              <Button
+              icon={BsPlusLg}
+              onClick={() => handleSaveToCart(dish.id)}/>
+              </div>
             </div>
-          </div>
-          )
-          )
+            )
+            )
 
-         : 
-         (
-          cart.map((dish, index) => (
-          <div className='overviewBox' key={dish.id}> 
-            <h3>{dish.name}</h3>
-            <p>{dish.price}</p>
-            <p>{dish.quantity}</p>
-          <Button
-          icon={BsXLg}
-          onClick={() => handleRemoveFromCart(dish.id)}/>
-        </div>))
-      )}
+            : 
+            (
+              cart.map((dish, index) => (
+              <div className='overviewBox' key={dish.id}> 
+                <h3>{dish.name}</h3>
+                <p>{dish.price}</p>
+                <p>{dish.quantity}</p>
+              <Button
+              icon={BsXLg}
+              onClick={() => handleRemoveFromCart(dish.id)}/>
+            </div>))
+            )}
       <h2
       onClick={handleSignOut}>Sair</h2>
       </div>
