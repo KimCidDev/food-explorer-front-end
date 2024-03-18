@@ -1,0 +1,360 @@
+import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from '../../../styles/deviceBreakpoints';
+
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+
+  padding-bottom: 90px;
+
+  overflow-y: auto;
+
+  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+
+  > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    .logo h1 {
+      font-size: 21px;
+    }
+
+    .logo svg {
+      height: 21px;
+    }
+
+    > .searchAndCart {
+      display: none;
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      > .searchAndCart {
+        display: flex;
+        width: 50%;
+        gap: 20px;
+
+        #searchInput {
+          height: 32px;
+          width: clamp(240px, 95%, 400px);
+
+          padding: 0 16px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border-radius: 8px;
+        }
+
+        button {
+          height: 32px;
+
+          padding: 0 10px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+
+          font-weight: bold;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  > .section {
+    padding: 0 24px;
+
+    margin-bottom: 8px;
+
+    > h1 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    }
+
+    > h1:first-child {
+      font-size: 16px;
+    }
+
+    > .childrenBox {
+      display: flex;
+      flex-direction: column;
+
+      gap: 18px;
+
+      height: 100%;
+
+      > h1 {
+        color: ${({ theme }) => theme.COLORS.LIGHT_200};
+        margin-bottom: 20px;
+      }
+
+      display: flex;
+      flex-direction: column;
+
+      > .formTop {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
+
+        #hiddenInput {
+          height: 0;
+          width: 0;
+          display: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .dishImg label {
+          display: flex;
+          align-items: center;
+
+          width: 100%;
+          height: 50px;
+
+          padding: 0 14px;
+          gap: 8px;
+
+          border-radius: 8px;
+          border: none;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
+          svg {
+            font-size: 21px;
+          }
+        }
+      }
+
+      > .formMiddle {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
+
+        > div .inputBox input {
+          width: 100px;
+        }
+
+        .ingredientBox h3 {
+          color: ${({ theme }) => theme.COLORS.LIGHT_100};
+          font-size: 14px;
+          font-weight: normal;
+        }
+
+        .ingredientBox .tagBox {
+          height: 45px;
+
+          align-items: center;
+
+          margin-top: 8px;
+          padding: 26px 14px;
+          gap: 16px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+          border-radius: 8px;
+
+          > div {
+            height: 32px;
+            padding: 10px 16px;
+
+            margin: 12px 0;
+
+            border-radius: 10px;
+            p {
+              color: ${({ theme }) => theme.COLORS.LIGHT_300};
+            }
+          }
+        }
+      }
+
+      > .formBottom {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 24px;
+
+        .description {
+          width: 100%;
+          height: 120px;
+          border-radius: 8px;
+
+          background-color: ${({ theme }) => theme.COLORS.DARK_800};
+
+          h3 {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            background-color: ${({ theme }) => theme.COLORS.DARK_400};
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+          }
+
+          > textarea {
+            width: 100%;
+            height: 80px;
+
+            padding: 10px 0 0 10px;
+
+            color: ${({ theme }) => theme.COLORS.LIGHT_200};
+
+            border-radius: 8px;
+            border: none;
+
+            background-color: transparent;
+
+            &::placeholder {
+              color: ${({ theme }) => theme.COLORS.LIGHT_500};
+              font-family: 'Roboto';
+            }
+          }
+        }
+
+        > .saveInfoBox {
+          display: flex;
+          gap: clamp(40px, 100px, 200px);
+
+          button {
+            width: 100%;
+            background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          }
+        }
+      }
+
+      @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+        padding: 0 80px;
+
+        > .formTop {
+          max-width: 100%;
+
+          flex-direction: row;
+          gap: 32px;
+
+          > div {
+            width: clamp(100%, 100%, 300px);
+          }
+
+          > div:nth-child(2) {
+            min-width: 170px;
+            max-width: 220px;
+          }
+        }
+
+        .formMiddle {
+          flex-direction: row;
+          align-items: center;
+
+          gap: 32px;
+
+          > h3 {
+            margin-bottom: 130px;
+          }
+
+          > .ingredientBox {
+            width: 100vw;
+          }
+
+          > .ingredientBox .tagBox {
+            display: flex;
+            margin-top: 8px;
+            width: 100%;
+          }
+
+          > div .inputBox input {
+            width: 100%;
+          }
+        }
+
+        .formBottom {
+          width: 100%;
+
+          display: flex;
+          justify-content: end;
+
+          > .description {
+            width: 100%;
+
+            textarea {
+              resize: none;
+              width: 100%;
+            }
+          }
+
+          > .saveInfoBox {
+            width: 100%;
+
+            display: flex;
+            justify-content: end;
+            gap: 30px;
+
+            button {
+              max-width: 125px;
+            }
+
+            button:first-child {
+              border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+              background-color: ${({ theme }) => theme.COLORS.DARK_800};
+              max-width: 125px;
+            }
+          }
+        }
+      }
+
+      @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
+        padding: 0 125px;
+
+        > .formTop {
+          max-width: 100%;
+          flex-direction: row;
+          gap: 32px;
+
+          > div {
+            width: clamp(100%, 100%, 300px);
+          }
+        }
+
+        .formMiddle {
+          flex-direction: row;
+          align-items: center;
+
+          gap: 32px;
+
+          > h3 {
+            margin-bottom: 130px;
+          }
+
+          > .ingredientBox {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .tagBox {
+            }
+          }
+        }
+
+        .formBottom {
+          width: 100%;
+
+          display: flex;
+          justify-content: end;
+
+          > .description {
+            width: 100%;
+
+            textarea {
+              resize: none;
+              width: 100%;
+            }
+          }
+
+          > button {
+            width: 98px;
+          }
+        }
+      }
+    }
+  }
+`;
