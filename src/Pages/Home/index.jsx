@@ -17,7 +17,7 @@ import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti';
 
-import macaroon from '../../assets/macaroon-promo-pic.png';
+import macaroon from '../../assets/bannerImg.png';
 
 export function Home() {
   const { signOut, user } = useAuth();
