@@ -90,7 +90,9 @@ export function FoodInfo () {
       icon={AiOutlineLeft}
       onClick={handleNavigateHome}>
 
-      <img src={`http://localhost:5555/files/${dish.dishImg}`} alt={dish.description} />
+      <img       
+      src={`https://food-explorer-back-end-w9f3.onrender.com/files/${dish.dishImg}`}  
+      alt={dish.description} />
 
       <div className="textContent">
         <p>{dish.description}</p>
