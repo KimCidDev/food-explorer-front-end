@@ -32,7 +32,6 @@ export const Container = styled.div`
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      // margin-bottom: clamp(30px, 90%, 80px);
       padding: 0 100px;
       justify-content: space-between;
 
@@ -100,20 +99,20 @@ export const Container = styled.div`
     > .banner {
       display: flex;
       align-items: center;
+      justify-content: center;
       background: linear-gradient(#091e26, #00131c);
 
       margin: 25px;
       border-radius: 3px;
 
       img {
-        height: clamp();
+        width: clamp(20%, 30vw, 375px);
       }
 
       .textContent {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        width: 100%;
 
         h2 {
           color: white;
@@ -132,12 +131,8 @@ export const Container = styled.div`
 
     @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
       > .banner {
-        justify-content: center;
+        align-items: center;
         margin-bottom: 50px;
-      }
-
-      > .banner .textContent p {
-        text-align: left;
       }
     }
 
@@ -148,15 +143,15 @@ export const Container = styled.div`
         max-height: 300px;
 
         justify-content: center;
-        align-items: center;
 
-        margin: 0 120px 62px 120px;
+        margin: 30px 120px 62px 120px;
+        padding: 0 30px;
 
-        gap: clamp(25px, 100%, 40px);
+        gap: clamp(2vw, 5vw, 10vw);
         overflow: visible;
 
         img {
-          width: clamp(150px, 250vw, 450px);
+          width: clamp(20%, 30vw, 375px);
         }
 
         .textContent {
@@ -176,11 +171,17 @@ export const Container = styled.div`
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-      .banner {
-        padding: 24px;
-        img {
+    .banner {
+      padding: 24px;
+      img {
+        display: none;
+      }
+
+      .textContent {
+        p {
           display: none;
         }
       }
+    }
   }
 `;

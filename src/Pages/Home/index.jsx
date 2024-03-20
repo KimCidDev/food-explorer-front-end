@@ -129,10 +129,10 @@ export function Home() {
 
       {search === "" && (
         <div className="banner">
-          <img src={macaroon} alt="macaroon sweet in many colors" />
+          <img src={macaroon} alt="blackberry ice cream bar" />
           <div className="textContent">
-            <h2>Unmatched flavors</h2>
-            <p>of all your favourites dishes, every single time.</p>
+            <h2>Why Wait for Special Days?</h2>
+            <p>Treat yourself to mouthwatering delights anytime you want.</p>
           </div>
         </div>
       )}
