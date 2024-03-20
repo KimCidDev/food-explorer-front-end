@@ -103,6 +103,10 @@ export const Container = styled.div`
       background: linear-gradient(#091e26, #00131c);
 
       margin: 25px;
+      padding: 0 30px;
+
+      gap: clamp(2vw, 5vw, 10vw);
+
       border-radius: 3px;
 
       img {
@@ -118,13 +122,13 @@ export const Container = styled.div`
           color: white;
           font-weight: bold;
           white-space: nowrap;
-          font-size: clamp(9px, 14px, 24px);
+          font-size: clamp(2vw, 14px, 2.5vw);
         }
 
         p {
           text-align: left;
           color: white;
-          font-size: clamp(3px, 11px, 12px);
+          font-size: clamp(0.8vw, 12px, 2vw);
         }
       }
     }
@@ -145,7 +149,6 @@ export const Container = styled.div`
         justify-content: center;
 
         margin: 30px 120px 62px 120px;
-        padding: 0 30px;
 
         gap: clamp(2vw, 5vw, 10vw);
         overflow: visible;
@@ -158,12 +161,12 @@ export const Container = styled.div`
           width: auto;
 
           h2 {
-            font-size: clamp(16px, 130%, 32px);
+            font-size: clamp(2vw, 14px, 4vw);
           }
 
           p {
             margin-top: 5px;
-            font-size: 14px;
+            font-size: clamp(1vw, 10px, 2vw);
           }
         }
       }
@@ -172,6 +175,7 @@ export const Container = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
     .banner {
+      min-height: 50px;
       padding: 24px;
       img {
         display: none;
