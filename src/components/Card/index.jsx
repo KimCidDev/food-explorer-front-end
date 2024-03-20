@@ -42,7 +42,7 @@ export function Card ({ dish }) {
   return (
     <Container >
       <img 
-      src={`http://localhost:5555/files/${dish.dishImg}`} 
+      src={`https://food-explorer-back-end-w9f3.onrender.com/files/${dish.dishImg}`} 
       alt={dish.description}
       onClick={() => handleDetails()}/>
       <h2>{dish.name}</h2>
