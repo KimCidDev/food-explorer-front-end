@@ -196,6 +196,8 @@ export const Container = styled.div`
     .section .childrenBox {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 
