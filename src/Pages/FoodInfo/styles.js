@@ -193,8 +193,10 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.SM}) {
-    display: flex;
-    flex-direction: column;
+    .section .childrenBox {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   > .section .tagsSection {

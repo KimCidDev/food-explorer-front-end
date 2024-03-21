@@ -27,7 +27,7 @@ export function Home() {
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const menuPath = '/menu';
   const navigate = useNavigate();
@@ -75,13 +75,15 @@ export function Home() {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
+
     async function fetchDishesBySearch() {
       try {
         const response = await api.get(`/dishes?name=${search}`)
         
         console.log(response.data)
         setDishSearchResult(response.data)
-
+        setLoading(false);
       } catch (error) {        
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);
