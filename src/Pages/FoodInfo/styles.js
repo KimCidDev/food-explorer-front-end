@@ -89,7 +89,7 @@ export const Container = styled.div`
     margin: 0 120px;
 
     h2 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      color: ${({ theme }) => theme.COLORS.PURPLE_200};
     }
   }
 
@@ -193,12 +193,33 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.SM}) {
-    .section .childrenBox {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .section {
+      margin: 0 20px;
+
+      .goBackLink {
+        h2 {
+          font-size: clamp(2vw, 14px, 2.5vw);
+        }
+      }
+
+      .childrenBox {
+        img {
+          display: none;
+          margin: 0;
+        }
+
+        .textContent {
+          background-color: red;
+        }
+      }
     }
+  }
+
+  .section .childrenBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   > .section .tagsSection {
