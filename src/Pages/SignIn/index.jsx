@@ -8,14 +8,17 @@ import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 
 
-export function SignIn() {
+export function SignIn({navigate}) {
   const [email, setEmail]  = useState("");
   const [password, setPassword]  = useState("");
 
   const { signIn } = useAuth();
 
   function handleSignIn () {
-    signIn({email, password})
+    signIn({email, password}, () => {
+      console.log('xis salada');
+      navigate('/');
+    })
   }
 
   return (

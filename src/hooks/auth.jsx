@@ -9,17 +9,21 @@ function AuthProvider({ children }) {
   
   async function signIn ({email, password}) {
     try {
-      console.log(email, password)      
+      console.log(email, password);      
       const response = await api.post('/sessions', { email, password });
-      console.log(response)
-
+      
       const { user, token } = response.data;
+      console.log(response);
 
       localStorage.setItem('@foodExplorer:user', JSON.stringify(user));
       localStorage.setItem('@foodExplorer:token', token);
 
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setData({user, token});
+
+      if (typeof onSuccess === 'function') {
+        onSuccess();
+      }
 
     } catch (error) {
       if(error.response) {
