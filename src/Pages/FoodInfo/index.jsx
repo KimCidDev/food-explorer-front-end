@@ -50,7 +50,7 @@ export function FoodInfo () {
       try {
         const response = await api.get(`/dishes/${id}`);
         const dishInfo = response.data.dish;
-        const dishtags = response.data.tags
+        const dishtags = response.data.tags;
         console.log(dishInfo);
         setDish(dishInfo);
         console.log(dishtags);

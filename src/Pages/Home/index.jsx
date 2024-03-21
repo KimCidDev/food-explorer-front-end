@@ -56,6 +56,8 @@ export function Home() {
     async function fetchDishes() {
 
       try {
+        setLoading(true);
+
         const response = await api.get(`/dishes?name=${search}`)
         console.log(response.data)
         const allDishes = response.data;
@@ -68,6 +70,8 @@ export function Home() {
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);  
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -75,10 +79,10 @@ export function Home() {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
-
+    
     async function fetchDishesBySearch() {
       try {
+        setLoading(true);
         const response = await api.get(`/dishes?name=${search}`)
         
         console.log(response.data)
@@ -89,6 +93,9 @@ export function Home() {
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);  
+      } finally {
+        setLoading(false);
+
       }
       }
       

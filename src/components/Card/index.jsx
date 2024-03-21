@@ -12,9 +12,7 @@ export function Card ({ dish }) {
   const navigate = useNavigate();
 
   const handleDetails = () => {
-    setTimeout(() => {
       navigate(`/foodinfo/${dish.id}`);
-    }, 0);
   };
 
   function handleAddToCart() {
