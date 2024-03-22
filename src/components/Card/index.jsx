@@ -7,13 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 
 export function Card ({ dish, isAdmin }) {
-  console.log(isAdmin)
-
-
   const [ quantity, setQuantity ] = useState(1);
   const [ cartDishes, setCartDishes ] = useState([]);
 
   const navigate = useNavigate();
+
+
+  function handleEditDish () {    
+    navigate(`/admin/editdish/${dish.id}`);
+  }
 
   const handleDetails = () => {
       navigate(`/foodinfo/${dish.id}`);
@@ -58,7 +60,7 @@ export function Card ({ dish, isAdmin }) {
         <div className="addToBasket">
         <Button 
         title="Edit Dish"
-        onClick={() => console.log('xis salada')} />
+        onClick={() => handleEditDish()} />
         </div>
 
         :
