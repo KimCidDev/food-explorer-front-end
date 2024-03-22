@@ -29,7 +29,7 @@ export function Home() {
 
   const [loading, setLoading] = useState(false);
 
-  const menuPath = '/menu';
+  const menuPath = '/cart';
   const navigate = useNavigate();
 
   const saladDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad');
