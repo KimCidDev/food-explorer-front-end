@@ -4,8 +4,12 @@ import { BsPlusLg } from 'react-icons/bs';
 import { BiMinus } from 'react-icons/bi';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 
-export function Card ({ dish }) {
+export function Card ({ dish, isAdmin }) {
+  console.log(isAdmin)
+
+
   const [ quantity, setQuantity ] = useState(1);
   const [ cartDishes, setCartDishes ] = useState([]);
 
@@ -45,8 +49,21 @@ export function Card ({ dish }) {
       onClick={() => handleDetails()}/>
       <h2>{dish.name}</h2>
       <p>{dish.description}</p>
+      {/* Aqui podia ter TAGS se card @media.SM*/}
       <p id="price">{dish.price}</p>
-      <div className="addToBasket">
+
+        {
+        isAdmin ? 
+
+        <div className="addToBasket">
+        <Button 
+        title="Edit Dish"
+        onClick={() => console.log('xis salada')} />
+        </div>
+
+        :
+
+        <div className="addToBasket">
         <div className="howManyBox">
           <BiMinus onClick={() => handleSubtractFromCart()}/>
           <p>{quantity}</p>
@@ -55,7 +72,9 @@ export function Card ({ dish }) {
         <Button 
         title="Add"
         onClick={() => handleSaveToCart(dish)} />
-      </div>
+</div>
+      }
+
     </Container>
   )
 }

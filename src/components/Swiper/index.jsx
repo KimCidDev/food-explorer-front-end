@@ -5,7 +5,7 @@ import { Container } from './styles';
 
 register();
 
-export function Swiper({ dishes }) {
+export function Swiper({ dishes, isAdmin }) {
   const swiperRef = useRef(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function Swiper({ dishes }) {
       <swiper-container ref={swiperRef} init="false" pagination="false" className="swiper-container"> 
         {dishes.map((dish) => (
           <swiper-slide key={dish.id}>
-            <Card dish={dish} />
+            <Card dish={dish} isAdmin={isAdmin}/>
           </swiper-slide>
         ))}
       </swiper-container>

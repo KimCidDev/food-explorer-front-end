@@ -150,12 +150,12 @@ export function Home() {
 
         {saladDishes.length > 0 && (
         <Section title="Salads">
-          <Swiper dishes={saladDishes} />
+          <Swiper dishes={saladDishes} isAdmin={user.isAdmin}/>
         </Section>
          )}
       {mainDishes.length > 0 && (
         <Section title="Main">
-          <Swiper dishes={mainDishes} />
+          <Swiper dishes={mainDishes} isAdmin={user.isAdmin}/>
         </Section>
          )}
       {dessertDishes.length > 0 && (
