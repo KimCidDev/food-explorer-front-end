@@ -99,7 +99,6 @@ export const Container = styled.div`
     margin-top: 42px;
 
     img {
-      height: clamp(250px, 100%, 400px);
       width: clamp(250px, 100%, 400px);
       margin-right: 60px;
     }
@@ -125,10 +124,14 @@ export const Container = styled.div`
       }
 
       .adminEditButton {
-        width: 400px;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         button {
-          width: 400px;
+          width: 20vw;
         }
       }
     }
@@ -139,6 +142,10 @@ export const Container = styled.div`
       justify-content: center;
       gap: 10px;
 
+      img {
+        height: clamp(20vw, 14px, 2.5vw);
+      }
+
       .textContent {
         max-width: 65%;
         align-items: start;
@@ -147,7 +154,7 @@ export const Container = styled.div`
         p {
           color: ${({ theme }) => theme.COLORS.LIGHT_300};
           font-family: 'Poppins', sans-serif;
-          font-size: 25px;
+          font-size: clamp(2vw, 14px, 2.5vw);
           text-align: justify;
           flex-wrap: nowrap;
         }
@@ -155,6 +162,10 @@ export const Container = styled.div`
 
       .addToBasket {
         margin-top: 24px;
+
+        .adminEditButton {
+          justify-content: left;
+        }
 
         > .howManyBox {
           gap: 32px;
@@ -186,14 +197,14 @@ export const Container = styled.div`
 
           p {
             font-size: 1rem;
-            color: ${({ theme }) => theme.COLORS.TINT_CARROT};
+            color: ${({ theme }) => theme.COLORS.LIGHT_200};
           }
         }
       }
     }
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.SM}) {
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
     .section {
       margin: 0 20px;
 
@@ -204,6 +215,8 @@ export const Container = styled.div`
       }
 
       .childrenBox {
+        display: flex;
+        flex-direction: column;
         gap: 30px;
 
         img {
@@ -212,6 +225,7 @@ export const Container = styled.div`
 
         .textContent {
           margin: 0 40px;
+          gap: 12px;
 
           p {
             text-align: justify;
@@ -222,8 +236,6 @@ export const Container = styled.div`
   }
 
   .section .childrenBox {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -253,10 +265,6 @@ export const Container = styled.div`
       p {
         font-size: 22px;
       }
-    }
-
-    > button {
-      max-width: auto;
     }
   }
 `;

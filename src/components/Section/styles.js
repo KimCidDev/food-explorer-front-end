@@ -19,7 +19,7 @@ export const Container = styled.div`
 
       display: flex;
       align-items: center;
-      color: ${({ theme }) => theme.COLORS.PURPLE_100};
+      color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
       font-family: 'Poppins';
       font-size: 24px;
       font-style: normal;
