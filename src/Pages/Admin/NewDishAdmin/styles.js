@@ -227,18 +227,12 @@ export const Container = styled.div`
         padding: 0 80px;
 
         > .formTop {
-          max-width: 100%;
-
           flex-direction: row;
+          flex-wrap: wrap;
           gap: 32px;
 
-          > div {
-            width: clamp(100%, 100%, 300px);
-          }
-
-          > div:nth-child(2) {
-            min-width: 170px;
-            max-width: 220px;
+          div {
+            flex-basis: calc(100% - 16px);
           }
         }
 
