@@ -16,6 +16,7 @@ import { BsStar } from 'react-icons/bs';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti';
+import { IoIosBasket } from "react-icons/io";
 
 import macaroon from '../../assets/bannerImg.png';
 
@@ -110,7 +111,7 @@ export function Home() {
 
   return (
     <Container>
-      <Header icon={AiOutlineMenu} to={menuPath}>
+      <Header icon={IoIosBasket} to={menuPath}>
         <Logo />
         <div className="searchAndCart">
           <h2>{`Hello, ${name}`}</h2>

@@ -148,7 +148,7 @@ export function Cart () {
   return (
     <Container>
       <Header icon={BsXLg} to='/'>    
-        <h1 onClick={() => console.log(cart)}>Cart</h1>
+        <h1 onClick={() => console.log(cart)}>Basket</h1>
       </Header>
       <div className="itemSearchBox">
         <Input

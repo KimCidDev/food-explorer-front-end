@@ -32,9 +32,10 @@ export const Container = styled.div`
   }
 
   h2 {
+    margin-top: 5px;
     font-weight: bold;
-    width: 100%;
     text-align: center;
+    font-size: clamp(2.4vh, 18px, 2.5vw);
   }
 
   p {
@@ -47,9 +48,17 @@ export const Container = styled.div`
   #price {
     margin-top: 32px;
     display: flex;
-    font-size: 18px;
+    font-size: clamp(2vh, 14px, 2.5vw);
     color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
     -webkit-font-smoothing: antialiased;
+  }
+
+  .addToBasket {
+    margin-top: 10px;
+
+    button {
+      padding: 0 10px;
+    }
   }
 
   .sendAmount .howManyBox p {
