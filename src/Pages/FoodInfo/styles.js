@@ -155,6 +155,7 @@ export const Container = styled.div`
 
       .addToBasket {
         margin-top: 24px;
+
         > .howManyBox {
           gap: 32px;
 
@@ -203,13 +204,18 @@ export const Container = styled.div`
       }
 
       .childrenBox {
+        gap: 30px;
+
         img {
-          display: none;
           margin: 0;
         }
 
         .textContent {
-          background-color: red;
+          margin: 0 40px;
+
+          p {
+            text-align: justify;
+          }
         }
       }
     }
