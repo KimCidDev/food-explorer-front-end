@@ -107,9 +107,7 @@ export function Home() {
   }, [search])
 
   if (loading) {
-    return 
-    
-    <Breathing/>    ;
+    return <Breathing/>;
   }
 
   return (
