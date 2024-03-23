@@ -4,7 +4,8 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 const fadeIn = keyframes`
   from {
     opacity: 0;
-  } to {
+  }
+  to {
     opacity: 1;
   }
 `;
@@ -127,20 +128,18 @@ export const Container = styled.div`
         gap: 8px;
 
         h2 {
-          color: white;
           font-weight: bold;
           white-space: nowrap;
-          font-size: clamp(2vw, 14px, 2.5vw);
+          font-size: clamp(0.8vw, 18px, 2.5vw);
         }
+      }
 
-        p {
-          text-align: left;
-          color: white;
-          font-size: clamp(0.8vw, 12px, 2vw);
-          &.fadeInAnim {
-            animation: ${fadeIn} 2s ease-in;
-          }
-        }
+      .textContent p {
+        text-align: left;
+        color: white;
+        font-size: clamp(0.8vw, 12px, 2vw);
+        opacity: 0;
+        animation: ${fadeIn} 1s ease forwards;
       }
     }
 
