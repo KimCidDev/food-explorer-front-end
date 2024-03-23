@@ -1,8 +1,52 @@
-# React + Vite
+# Food Explorer Frontend 🍽️🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the FaveMeal frontend repository! The frontend provides a user-friendly interface for browsing dishes, adding items to the cart, and managing orders.
 
-Currently, two official plugins are available:
+## Technologies Used 🛠️
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**;
+- **React Router**;
+- **Axios**;
+
+## Installation 📥
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/KimCidDev/food-explorer-front-end.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   Copy code
+   cd food-explorer-front-end
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   Copy code
+   npm install
+   ```
+
+## Usage 🚀
+
+1. Start the development server:
+
+```bash
+npm start
+```
+
+2. The application will open in your default web browser at http://localhost:3000.
+
+## Features ✨
+
+Browse dishes: View all available dishes and their details.
+Search dishes: Search for dishes by name and/or tag.
+User authentication: Register as a new user or log in to an existing account.
+User cart: Add items to the cart, adjust quantities, and remove items if necessary.
+
+## Contributors 👩‍💻👨‍💻
+
+KimCidDev
