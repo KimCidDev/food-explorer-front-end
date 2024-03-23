@@ -1,4 +1,4 @@
-# Food Explorer Frontend 🍽️🚀
+# FaveMeal Frontend 🍽️🚀
 
 Welcome to the FaveMeal frontend repository! The frontend provides a user-friendly interface for browsing dishes, adding items to the cart, and managing orders.
 
