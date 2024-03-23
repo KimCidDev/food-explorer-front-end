@@ -109,8 +109,7 @@ export function Home() {
   if (loading) {
     return 
     
-    <Breathing/>
-    ;
+    <Breathing/>    ;
   }
 
   return (
