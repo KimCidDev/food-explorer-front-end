@@ -143,9 +143,11 @@ export function Home() {
       {search === "" && (
         <div className="banner">
           <img src={macaroon} alt="blackberry ice cream bar" />
-          <div className={`textContent ${search === '' ? 'fadeInAnim' : ''}`}>
+          <div >
             <h2>Why Wait for Special Days?</h2>
-            <p>Treat yourself to mouthwatering delights anytime you want.</p>
+            <p id={`textContent ${search === '' ? 'fadeInAnim' : ''}`}>
+            Treat yourself to mouthwatering delights anytime you want.
+            </p>
           </div>
         </div>
       )}
