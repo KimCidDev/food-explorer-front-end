@@ -5,9 +5,8 @@ const fadeIn = keyframes`
   from {
     opacity: 0;
   } to {
-    
+    opacity: 1;
   }
-
 `;
 
 export const Container = styled.div`
@@ -126,6 +125,10 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         gap: 8px;
+
+        &.fadeInAnim {
+          animation: ${fadeIn} 2s ease-in;
+        }
 
         h2 {
           color: white;
