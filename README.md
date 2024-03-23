@@ -9,6 +9,8 @@ Welcome to the FaveMeal frontend repository! The frontend provides a user-friend
 - **React**;
 - **React Router**;
 - **Axios**;
+- **Styled Components**;
+- **Swiper**;
 
 ## Installation 📥
 
