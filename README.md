@@ -1,5 +1,7 @@
 # FaveMeal Frontend 🍽️🚀
 
+[Check it out!](https://favemeal.netlify.app/)
+
 Welcome to the FaveMeal frontend repository! The frontend provides a user-friendly interface for browsing dishes, adding items to the cart, and managing orders.
 
 ## Toolbox 🛠️
