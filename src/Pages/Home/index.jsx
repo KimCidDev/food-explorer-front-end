@@ -106,11 +106,6 @@ export function Home() {
     
   }, [search])
 
-  if (loading) {
-    return (<BreathingContainer loading={loading}>
-      <Breathing />
-    </BreathingContainer>)
-  }
 
   return (
     <Container>
@@ -139,6 +134,12 @@ export function Home() {
       </Header>
 
       <main>
+
+      { loading && (
+       <BreathingContainer loading={loading}>
+         <Breathing />
+        </BreathingContainer>
+        )}
 
       {search && (
         <div className="banner">
