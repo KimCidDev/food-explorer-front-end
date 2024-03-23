@@ -40,10 +40,10 @@ npm start
 
 ## Features ✨
 
-Browse dishes: View all available dishes and their details.
-Search dishes: Search for dishes by name and/or tag.
-User authentication: Register as a new user or log in to an existing account.
-User cart: Add items to the cart, adjust quantities, and remove items if necessary.
+- Browse dishes: View all available dishes and their details.
+- Search dishes: Search for dishes by name and/or tag.
+- User authentication: Register as a new user or log in to an existing account.
+- User cart: Add items to the cart, adjust quantities, and remove items if necessary.
 
 ## Contributors 👩‍💻👨‍💻
 
