@@ -199,3 +199,16 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const BreathingContainer = styled.div`
+  display: ${({ loading }) => (loading ? 'flex' : 'none')};
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  z-index: 999;
+`;

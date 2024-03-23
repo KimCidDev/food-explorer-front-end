@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper } from '../../components/Swiper';
 
-import { Container } from './styles';
+import { Container, BreathingContainer } from './styles';
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
@@ -107,7 +107,9 @@ export function Home() {
   }, [search])
 
   if (loading) {
-    return <Breathing/>;
+    return (<BreathingContainer loading={loading}>
+      <Breathing />
+    </BreathingContainer>)
   }
 
   return (

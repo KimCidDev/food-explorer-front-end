@@ -3,7 +3,7 @@ import { Container, Circle } from './styles';
 
 export function Breathing () {
   return (
-  <Container >
+  <Container className='breathing'>
     <Circle />
   </ Container>
   )
