@@ -19,6 +19,7 @@ import { TiShoppingCart } from 'react-icons/ti';
 import { IoIosBasket } from "react-icons/io";
 
 import macaroon from '../../assets/bannerImg.png';
+import { Breathing } from '../../components/Breathing';
 
 export function Home() {
   const { signOut, user } = useAuth();
@@ -106,7 +107,10 @@ export function Home() {
   }, [search])
 
   if (loading) {
-    return <div>Loading...</div>;
+    return 
+    
+    <Breathing/>
+    ;
   }
 
   return (
