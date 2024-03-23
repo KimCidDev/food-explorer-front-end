@@ -123,7 +123,7 @@ export function Cart () {
         const response = await api.get(`/dishes?name=${search}`);
         const dishesWithQuantity = response.data.map(dish => ({
           ...dish,
-          quantity: 1  // Initialize quantity to 1 for each dish
+          quantity: 1
         }));
         setDishSearchResult(dishesWithQuantity);
   
