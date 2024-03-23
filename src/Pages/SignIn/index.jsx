@@ -6,15 +6,18 @@ import { useAuth } from '../../hooks/auth';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
+import { Breathing } from '../../components/Breathing';
 
 
 export function SignIn({navigate}) {
   const [email, setEmail]  = useState("");
   const [password, setPassword]  = useState("");
+  const [loading, setLoading]  = useState(false);
 
   const { signIn } = useAuth();
 
   function handleSignIn () {
+    setLoading(true);
     signIn({email, password}, () => {
       console.log('xis salada');
       navigate('/');
