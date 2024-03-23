@@ -19,14 +19,12 @@ Welcome to the FaveMeal frontend repository! The frontend provides a user-friend
 2. Navigate to the project directory:
 
    ```bash
-   Copy code
    cd food-explorer-front-end
    ```
 
 3. Install dependencies:
 
    ```bash
-   Copy code
    npm install
    ```
 
