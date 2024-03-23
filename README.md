@@ -36,8 +36,6 @@ Welcome to the FaveMeal frontend repository! The frontend provides a user-friend
 npm start
 ```
 
-2. The application will open in your default web browser at http://localhost:3000.
-
 ## Features ✨
 
 - Browse dishes: View all available dishes and their details.
