@@ -140,7 +140,7 @@ export function Home() {
 
       <main>
 
-      {search === "" && (
+      {search && (
         <div className="banner">
           <img src={macaroon} alt="blackberry ice cream bar" />
           <div className='textContent'>
