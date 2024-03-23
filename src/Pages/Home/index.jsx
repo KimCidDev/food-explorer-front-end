@@ -145,7 +145,7 @@ export function Home() {
           <img src={macaroon} alt="blackberry ice cream bar" />
           <div >
             <h2>Why Wait for Special Days?</h2>
-            <p id={`textContent ${search === '' ? 'fadeInAnim' : ''}`}>
+            <p className={`textContent ${search === '' ? 'fadeInAnim' : ''}`}>
             Treat yourself to mouthwatering delights anytime you want.
             </p>
           </div>

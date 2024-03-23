@@ -126,7 +126,7 @@ export const Container = styled.div`
         flex-direction: column;
         gap: 8px;
 
-        &#fadeInAnim {
+        &.fadeInAnim {
           animation: ${fadeIn} 2s ease-in;
         }
 
