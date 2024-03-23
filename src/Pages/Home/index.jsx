@@ -84,20 +84,16 @@ export function Home() {
     
     async function fetchDishesBySearch() {
       try {
-        setLoading(true);
+        //setLoading(true); - dá a impressão de travadão
         const response = await api.get(`/dishes?name=${search}`)
         
         console.log(response.data)
         setDishSearchResult(response.data)
-        setLoading(false);
       } catch (error) {        
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);  
-      } finally {
-        setLoading(false);
-
       }
       }
       
@@ -135,13 +131,8 @@ export function Home() {
 
       <main>
 
-      { loading && (
-       <BreathingContainer loading={loading}>
-         <Breathing />
-        </BreathingContainer>
-        )}
 
-      {search && (
+      {search === "" && (
         <div className="banner">
           <img src={macaroon} alt="blackberry ice cream bar" />
           <div className='textContent'>
@@ -154,6 +145,11 @@ export function Home() {
       )}
 
 
+      { loading && (
+       <BreathingContainer loading={loading}>
+         <Breathing />
+        </BreathingContainer>
+        )}
 
         {saladDishes.length > 0 && (
         <Section title="Salads">
