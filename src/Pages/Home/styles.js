@@ -126,10 +126,6 @@ export const Container = styled.div`
         flex-direction: column;
         gap: 8px;
 
-        &.fadeInAnim {
-          animation: ${fadeIn} 2s ease-in;
-        }
-
         h2 {
           color: white;
           font-weight: bold;
@@ -141,6 +137,9 @@ export const Container = styled.div`
           text-align: left;
           color: white;
           font-size: clamp(0.8vw, 12px, 2vw);
+          &.fadeInAnim {
+            animation: ${fadeIn} 2s ease-in;
+          }
         }
       }
     }
