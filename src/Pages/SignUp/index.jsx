@@ -13,13 +13,14 @@ export function SignUp() {
   const [name, setName]  = useState("");
   const [email, setEmail]  = useState("");
   const [password, setPassword]  = useState("");
+  const [wantsAdmin, setWantsAdmin]  = useState(false);
   const [isAdmin, setIsAdmin]  = useState(false);
   const [isHiddenCodeVisible, setIsHiddenCodeVisible]  = useState(false);
   
   const navigate = useNavigate();
 
   function handleTapAndHold () {
-    if (isAdmin) {
+    if (wantsAdmin) {
     console.log('xis salada', isHiddenCodeVisible)
     setIsHiddenCodeVisible(true);
     }
@@ -90,12 +91,15 @@ export function SignUp() {
         <Input
         title="Quero ser administrador, oras!" 
         inputType="checkbox"
-        checked={isAdmin}
+        checked={wantsAdmin}
         onChange={() => {
-          setIsAdmin(!isAdmin)
-          return console.log(isAdmin)}}/>
+          setWantsAdmin(!wantsAdmin)
+          return console.log(wantsAdmin)
+        }
+        }
+          />
       
-      {isAdmin && (
+      {wantsAdmin && (
         <div className="adminCodeBox">
         <Input
           placeholder="Será que merece? Insira o código"
