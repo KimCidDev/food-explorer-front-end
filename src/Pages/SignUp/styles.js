@@ -30,6 +30,13 @@ export const Container = styled.div`
       font-family: 'Roboto Slab', sans-serif;
       letter-spacing: -1px;
     }
+
+    .hiddenCode {
+      height: 100px;
+      width: 100px;
+
+      background-color: red;
+    }
   }
 
   > div {
@@ -84,14 +91,25 @@ export const Form = styled.div`
 
   padding: 0 60px;
 
+  .adminCheckbox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    .inputBox input[type='checkbox'] {
+      height: 18px;
+    }
+
+    .adminCodeBox {
+    }
+  }
+
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     padding: 0 35px;
 
-    > div .inputBox input {
-      height: 35px;
-    }
-
     > div span {
+      height: 30px;
       font-size: 0.8rem;
     }
   }

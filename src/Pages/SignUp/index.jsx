@@ -13,6 +13,7 @@ export function SignUp() {
   const [name, setName]  = useState("");
   const [email, setEmail]  = useState("");
   const [password, setPassword]  = useState("");
+  const [isAdmin, setIsAdmin]  = useState(false);
   
   const navigate = useNavigate();
 
@@ -46,7 +47,16 @@ export function SignUp() {
           <path d="M19.6574 0L38.4133 10.8287V32.4862L19.6574 43.3149L0.901548 32.4862V10.8287L19.6574 0Z" fill="#065E7C"/>
         </svg>
         <h1>FaveMeal</h1>
+
+        { isAdmin && 
+          <div className="hiddenCode">
+          <p>123</p>
+          </div>
+        }
+     
       </div>
+
+
 
     <Form>
       <h1>Crie sua Conta</h1> 
@@ -67,6 +77,24 @@ export function SignUp() {
       inputType="password"
       placeholder="Six digits or more"
       onChange={e => setPassword(e.target.value)}/>
+      <div className='adminCheckbox'>
+        <Input
+        title="Quero ser administrador, oras!" 
+        inputType="checkbox"
+        checked={isAdmin}
+        onChange={() => {
+          setIsAdmin(!isAdmin)
+          return console.log(isAdmin)}}/>
+      
+      {isAdmin && (
+        <div className="adminCodeBox">
+        <Input
+          placeholder="Insira o código de admin"
+          onChange={e => setAdminCode(e.target.value)}
+        />
+      </div>
+      )}
+      </div>
 
       <Button title="Criar Conta" onClick={handleSignUp} />
       <ButtonText to='/' title="Já tenho uma conta"/>
