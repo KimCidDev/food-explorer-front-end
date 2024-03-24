@@ -32,10 +32,18 @@ export const Container = styled.div`
     }
 
     .hiddenCode {
-      height: 100px;
-      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      background-color: red;
+      height: 50px;
+      width: 50px;
+
+      background-color: transparent;
+
+      p {
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      }
     }
   }
 

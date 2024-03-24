@@ -89,7 +89,7 @@ export function SignUp() {
       {isAdmin && (
         <div className="adminCodeBox">
         <Input
-          placeholder="Insira o código de admin"
+          placeholder="Será que merece? Insira o código"
           onChange={e => setAdminCode(e.target.value)}
         />
       </div>
