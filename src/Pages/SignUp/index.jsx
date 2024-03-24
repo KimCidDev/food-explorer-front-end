@@ -19,8 +19,10 @@ export function SignUp() {
   const navigate = useNavigate();
 
   function handleTapAndHold () {
+    if (isAdmin) {
     console.log('xis salada', isHiddenCodeVisible)
     setIsHiddenCodeVisible(true);
+    }
   }
 
   function handleSignUp () {
