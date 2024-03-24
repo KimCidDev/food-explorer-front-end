@@ -7,12 +7,14 @@ import { Container, Form, HiddenCode } from './styles';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
-
+import { Breathing } from '../../components/Breathing';
 
 export function SignUp() {
-  const [name, setName]  = useState("");
-  const [email, setEmail]  = useState("");
-  const [password, setPassword]  = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading]= useState(false)
+
   const [wantsAdmin, setWantsAdmin]  = useState(false);
   const [isAdmin, setIsAdmin]  = useState(false);
   const [isHiddenCodeVisible, setIsHiddenCodeVisible]  = useState(false);
@@ -26,7 +28,7 @@ export function SignUp() {
     }
   }
 
-  function handleSignUp () {
+  async function handleSignUp () {
     if (!name || !email || !password) {
       return alert("todos os campos precisam estar preenchidos, rapá")
     }
@@ -35,21 +37,19 @@ export function SignUp() {
       setIsAdmin(true);
     }
 
-    // this could be Async/await - try/catch
-
-    api.post('/users', {name, email, password, isAdmin})
-    .then(() => {
+    setLoading(true)
+    try {
+      await api.post('/users', {name, email, password, isAdmin});
       alert("ususário cadastrado com sucesso aeaeaae uhul!");
       navigate('/');
-    })
-    .catch(error => {
+    } catch (error) {
       if (error.response) {
         console.log("Xis Salada");
-        alert(error.response.data.message)
+        alert(error.response.data.message);
       } else {
         alert("Não foi possível fazer o cadastro")
       }
-    });
+    };
   }
 
   return (
@@ -63,7 +63,7 @@ export function SignUp() {
    
 
 
-        <HiddenCode isAdmin={isAdmin} isHiddenCodeVisible={isHiddenCodeVisible}>
+        <HiddenCode isHiddenCodeVisible={isHiddenCodeVisible}>
          <p>123</p>
         </HiddenCode>
       </div>
@@ -109,7 +109,12 @@ export function SignUp() {
       )}
       </div>
 
-      <Button title="Criar Conta" onClick={handleSignUp} />
+      { loading ?
+        <Breathing/>
+        :
+        <Button title="Criar Conta" onClick={handleSignUp} />
+      }
+
       <ButtonText to='/' title="Já tenho uma conta"/>
     </Form>
     </Container>
