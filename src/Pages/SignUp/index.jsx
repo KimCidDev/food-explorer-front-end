@@ -64,68 +64,68 @@ export function SignUp() {
   return (
     <Container>
       
+
+
       <div className='logo' onTouchStart={handleTapAndHold} onTouchEnd={() => setIsHiddenCodeVisible(false)}>
         <svg width="20" height="44" viewBox="0 0 39 44" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19.6574 0L38.4133 10.8287V32.4862L19.6574 43.3149L0.901548 32.4862V10.8287L19.6574 0Z" fill="#065E7C"/>
         </svg>
         <h1>FaveMeal</h1>
-   
-
 
         <HiddenCode isHiddenCodeVisible={isHiddenCodeVisible}>
          <p>123</p>
         </HiddenCode>
       </div>
 
-    <Form>
-      <h1>Crie sua Conta</h1> 
-    
-      <Input 
-      title="Seu Nome" 
-      placeholder="Ex.: Josh Homme"
-      onChange={e => setName(e.target.value)}/>
-
-      <Input 
-      title="Email"
-      placeholder="Ex.: something@thatmail.com"
-      onChange={e => setEmail(e.target.value)}
-      />
-      
-      <Input 
-      title="Senha"
-      inputType="password"
-      placeholder="Six digits or more"
-      onChange={e => setPassword(e.target.value)}/>
-      <div className='adminCheckbox'>
-        <Input
-        title="Quero ser administrador, oras!" 
-        inputType="checkbox"
-        checked={wantsAdmin}
-        onChange={() => {
-          setWantsAdmin(!wantsAdmin)
-          return console.log(wantsAdmin)
-        }
-        }
-          />
-      
-      {wantsAdmin && (
-        <div className="adminCodeBox">
-        <Input
-          placeholder="Será que merece? Insira o código"
-          onChange={e => setAdminCode(e.target.value)}
-        />
-      </div>
-      )}
-      </div>
-
       { loading ?
         <Breathing/>
         :
-        <Button title="Criar Conta" onClick={handleSignUp} />
-      }
+        <Form>
+          <h1>Crie sua Conta</h1> 
+        
+          <Input 
+          title="Seu Nome" 
+          placeholder="Ex.: Josh Homme"
+          onChange={e => setName(e.target.value)}/>
 
-      <ButtonText to='/' title="Já tenho uma conta"/>
-    </Form>
+          <Input 
+          title="Email"
+          placeholder="Ex.: something@thatmail.com"
+          onChange={e => setEmail(e.target.value)}
+          />
+          
+          <Input 
+          title="Senha"
+          inputType="password"
+          placeholder="Six digits or more"
+          onChange={e => setPassword(e.target.value)}/>
+          <div className='adminCheckbox'>
+            <Input
+            title="Quero ser administrador, oras!" 
+            inputType="checkbox"
+            checked={wantsAdmin}
+            onChange={() => {
+              setWantsAdmin(!wantsAdmin)
+              return console.log(wantsAdmin)
+            }
+            }
+              />
+          
+          {wantsAdmin && (
+            <div className="adminCodeBox">
+            <Input
+              placeholder="Será que merece? Insira o código"
+              onChange={e => setAdminCode(e.target.value)}
+            />
+          </div>
+          )}
+          </div>
+
+
+            <Button title="Criar Conta" onClick={handleSignUp} />
+            <ButtonText to='/' title="Já tenho uma conta"/>
+        </Form>
+      }
     </Container>
     
   )
