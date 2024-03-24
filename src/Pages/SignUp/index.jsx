@@ -69,7 +69,7 @@ export function SignUp() {
         </svg>
         <h1>FaveMeal</h1>
 
-        <HiddenCode ishiddencodevisible={isHiddenCodeVisible.toString()}>
+        <HiddenCode isHiddenCodeVisible={isHiddenCodeVisible}>
          <p>123</p>
         </HiddenCode>
       </div>
