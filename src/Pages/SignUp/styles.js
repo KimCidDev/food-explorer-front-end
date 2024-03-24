@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
 
   display: flex;
@@ -78,7 +78,6 @@ export const Container = styled.div`
 
 export const Form = styled.div`
   width: 100%;
-  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -90,23 +89,23 @@ export const Form = styled.div`
   .adminCheckbox {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
 
     .inputBox input[type='checkbox'] {
       height: 18px;
-    }
-
-    .adminCodeBox {
     }
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     padding: 0 35px;
 
-    > div span {
-      height: 30px;
-      font-size: 0.8rem;
+    h1 {
+      margin-top: 20px;
+    }
+
+    span {
+      margin-bottom: 20px;
     }
   }
 `;
