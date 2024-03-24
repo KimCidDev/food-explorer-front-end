@@ -120,12 +120,15 @@ export const HiddenCode = styled.div`
 
   opacity: 0;
   z-index: 100;
-  opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
-  pointer-events: ${({ isHiddenCodeVisible }) =>
-    isHiddenCodeVisible ? 'auto' : 'none'};
 
   &:hover {
     transition: opacity 0.5s ease;
     opacity: 1; /* Change color on hover */
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
+    pointer-events: ${({ isHiddenCodeVisible }) =>
+      isHiddenCodeVisible ? 'auto' : 'none'};
   }
 `;
