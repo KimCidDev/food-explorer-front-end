@@ -16,6 +16,7 @@ export function SignUp() {
   const [loading, setLoading]= useState(false)
 
   const [wantsAdmin, setWantsAdmin]  = useState(false);
+  const [adminCode, setAdminCode]  = useState("");
   const [isAdmin, setIsAdmin]  = useState(false);
   const [isHiddenCodeVisible, setIsHiddenCodeVisible]  = useState(false);
   
@@ -29,17 +30,23 @@ export function SignUp() {
   }
 
   async function handleSignUp () {
+    let isAdminValue = isAdmin;
+    console.log(isAdminValue)
+    
     if (!name || !email || !password) {
       return alert("todos os campos precisam estar preenchidos, rapá")
     }
+    
 
-    if (adminCode === "123") {
-      setIsAdmin(true);
+    if (wantsAdmin && adminCode === "123") {
+      isAdminValue = true;
     }
 
-    setLoading(true)
+    setLoading(true);
     try {
-      await api.post('/users', {name, email, password, isAdmin});
+      console.log(isAdmin)
+
+      await api.post('/users', {name, email, password, isAdmin: isAdminValue});
       alert("ususário cadastrado com sucesso aeaeaae uhul!");
       navigate('/');
     } catch (error) {
@@ -48,7 +55,9 @@ export function SignUp() {
         alert(error.response.data.message);
       } else {
         alert("Não foi possível fazer o cadastro")
-      }
+      } 
+    } finally {
+      setIsAdmin(false);
     };
   }
 
