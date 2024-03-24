@@ -30,21 +30,6 @@ export const Container = styled.div`
       font-family: 'Roboto Slab', sans-serif;
       letter-spacing: -1px;
     }
-
-    .hiddenCode {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      height: 50px;
-      width: 50px;
-
-      background-color: transparent;
-
-      p {
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-      }
-    }
   }
 
   > div {
@@ -120,5 +105,27 @@ export const Form = styled.div`
       height: 30px;
       font-size: 0.8rem;
     }
+  }
+`;
+
+export const HiddenCode = styled.div`
+  width: 40px;
+  height: 40px;
+
+  position: fixed;
+  left: 80px;
+  top: 620px;
+
+  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+
+  opacity: 0;
+  z-index: 100;
+  opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
+  pointer-events: ${({ isHiddenCodeVisible }) =>
+    isHiddenCodeVisible ? 'auto' : 'none'};
+
+  &:hover {
+    transition: opacity 0.5s ease;
+    opacity: 1; /* Change color on hover */
   }
 `;

@@ -2,7 +2,7 @@ import { api } from '../../services/api';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Form } from './styles';
+import { Container, Form, HiddenCode } from './styles';
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -14,8 +14,13 @@ export function SignUp() {
   const [email, setEmail]  = useState("");
   const [password, setPassword]  = useState("");
   const [isAdmin, setIsAdmin]  = useState(false);
+  const [isHiddenCodeVisible, setIsHiddenCodeVisible]  = useState(false);
   
   const navigate = useNavigate();
+
+  function handleTapAndHold () {
+    setIsHiddenCodeVisible(true);
+  }
 
   function handleSignUp () {
     if (!name || !email || !password) {
@@ -42,21 +47,18 @@ export function SignUp() {
   return (
     <Container>
       
-      <div className='logo'>
+      <div className='logo' onTouchStart={handleTapAndHold} onTouchEnd={() => setIsHiddenCodeVisible(false)}>
         <svg width="20" height="44" viewBox="0 0 39 44" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19.6574 0L38.4133 10.8287V32.4862L19.6574 43.3149L0.901548 32.4862V10.8287L19.6574 0Z" fill="#065E7C"/>
         </svg>
         <h1>FaveMeal</h1>
+   
 
-        { isAdmin && 
-          <div className="hiddenCode">
-          <p>123</p>
-          </div>
-        }
-     
+
+        <HiddenCode isAdmin={isAdmin} isHiddenCodeVisible={isHiddenCodeVisible}>
+         <p>123</p>
+        </HiddenCode>
       </div>
-
-
 
     <Form>
       <h1>Crie sua Conta</h1> 
