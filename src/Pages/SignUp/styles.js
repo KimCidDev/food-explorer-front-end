@@ -19,9 +19,11 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 45px;
+    user-select: none;
 
     svg {
-      transform: scale(2.52); /* Adjust this value to get the desired size */
+      transform: scale(2.52);
+      user-select: none;
     }
 
     h1 {
@@ -29,6 +31,7 @@ export const Container = styled.div`
       font-size: 52px;
       font-family: 'Roboto Slab', sans-serif;
       letter-spacing: -1px;
+      user-select: none;
     }
   }
 
@@ -127,8 +130,9 @@ export const HiddenCode = styled.div`
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-    left: 10px;
+    left: 100px;
     top: 10px;
+    transition: opacity 1.5s ease;
     opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
     pointer-events: ${({ isHiddenCodeVisible }) =>
       isHiddenCodeVisible ? 'auto' : 'none'};
