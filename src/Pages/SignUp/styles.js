@@ -92,8 +92,19 @@ export const Form = styled.div`
     gap: 8px;
     width: 100%;
 
-    .inputBox input[type='checkbox'] {
-      height: 18px;
+    div:first-child {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .inputBox input[type='checkbox'] {
+        height: 18px;
+        width: 50px;
+      }
+    }
+    
+    .codeInput {
+      width: 40px;
     }
   }
 
@@ -132,8 +143,8 @@ export const HiddenCode = styled.div`
     left: 100px;
     top: 10px;
     transition: opacity 1.5s ease;
-    opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
-    pointer-events: ${({ isHiddenCodeVisible }) =>
-      isHiddenCodeVisible ? 'auto' : 'none'};
+    opacity: ${({ ishiddencodevisible }) => (ishiddencodevisible ? 1 : 0)};
+    pointer-events: ${({ ishiddencodevisible }) =>
+      ishiddencodevisible ? 'auto' : 'none'};
   }
 `;
