@@ -143,8 +143,8 @@ export const HiddenCode = styled.div`
     left: 100px;
     top: 10px;
     transition: opacity 1.5s ease;
-    opacity: ${({ ishiddencodevisible }) => (ishiddencodevisible ? 1 : 0)};
-    pointer-events: ${({ ishiddencodevisible }) =>
-      ishiddencodevisible ? 'auto' : 'none'};
+    opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
+    pointer-events: ${({ isHiddenCodeVisible }) =>
+      isHiddenCodeVisible ? 'auto' : 'none'};
   }
 `;
