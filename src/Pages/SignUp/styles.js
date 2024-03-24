@@ -123,10 +123,12 @@ export const HiddenCode = styled.div`
 
   &:hover {
     transition: opacity 0.5s ease;
-    opacity: 1; /* Change color on hover */
+    opacity: 1;
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    left: 10px;
+    top: 10px;
     opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 1 : 0)};
     pointer-events: ${({ isHiddenCodeVisible }) =>
       isHiddenCodeVisible ? 'auto' : 'none'};
