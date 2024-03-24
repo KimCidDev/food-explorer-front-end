@@ -30,9 +30,13 @@ export function SignUp() {
       return alert("todos os campos precisam estar preenchidos, rapá")
     }
 
+    if (adminCode === "123") {
+      setIsAdmin(true);
+    }
+
     // this could be Async/await - try/catch
 
-    api.post('/users', {name, email, password})
+    api.post('/users', {name, email, password, isAdmin})
     .then(() => {
       alert("ususário cadastrado com sucesso aeaeaae uhul!");
       navigate('/');
