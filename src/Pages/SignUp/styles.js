@@ -102,9 +102,9 @@ export const Form = styled.div`
         width: 50px;
       }
     }
-    
+
     .codeInput {
-      width: 40px;
+      width: 265px;
     }
   }
 
