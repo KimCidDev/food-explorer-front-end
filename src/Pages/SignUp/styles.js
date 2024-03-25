@@ -106,6 +106,10 @@ export const Form = styled.div`
     .codeInput {
       width: 265px;
     }
+
+    .breathing {
+      margin: -10px 0;
+    }
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {

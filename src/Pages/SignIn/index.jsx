@@ -40,26 +40,26 @@ export function SignIn({navigate}) {
       <Input 
       title="Email" 
       type='text' 
-      placeholder="Ex.: something@thatmail.com"
+      placeholder="Enter your email address"
       onChange={e => setEmail(e.target.value)}
       />
       
       
       <Input 
-      title="Senha" 
+      title="Password" 
       type='password' 
-      placeholder="Six digits or more"
+      placeholder="Six characters or more"
       onChange={e => setPassword(e.target.value)}
       />
 
       {loading ? <Breathing /> : null}
 
       <Button 
-      title="Entrar"
+      title="Ready to eat"
       onClick={handleSignIn}/>
       
       <ButtonText to='/register'
-      title="Criar uma conta"/>
+      title="Sign Up"/>
     </Form>
     </Container>
     

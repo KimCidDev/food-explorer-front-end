@@ -81,24 +81,24 @@ export function SignUp() {
           <h1>Crie sua Conta</h1> 
         
           <Input 
-          title="Seu Nome" 
-          placeholder="Ex.: Josh Homme"
+          title="Name" 
+          placeholder="John The Guy"
           onChange={e => setName(e.target.value)}/>
 
           <Input 
           title="Email"
-          placeholder="Ex.: something@thatmail.com"
+          placeholder="Enter your email address"
           onChange={e => setEmail(e.target.value)}
           />
           
           <Input 
-          title="Senha"
+          title="Password"
           inputType="password"
-          placeholder="Six digits or more"
+          placeholder="Six characters or more"
           onChange={e => setPassword(e.target.value)}/>
           <div className='adminCheckbox'>
             <Input
-            title="Quero ser administrador, oras!" 
+            title="I want to become an administrator" 
             inputType="checkbox"
             checked={wantsAdmin}
             onChange={() => {
@@ -112,7 +112,7 @@ export function SignUp() {
             <div className="adminCodeBox">
             <Input
               className="codeInput"
-              placeholder="Será que merece? Insira o código"
+              placeholder="If you have an admin code, enter it here"
               onChange={e => setAdminCode(e.target.value)}
             />
           </div>
@@ -120,8 +120,8 @@ export function SignUp() {
           </div>
 
 
-            <Button title="Criar Conta" onClick={handleSignUp} />
-            <ButtonText to='/' title="Já tenho uma conta"/>
+            <Button title="Sign Up" onClick={handleSignUp} />
+            <ButtonText to='/' title="Sign In"/>
         </Form>
       }
     </Container>
