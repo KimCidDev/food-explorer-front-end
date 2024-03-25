@@ -78,7 +78,7 @@ export function SignUp() {
         <Breathing/>
         :
         <Form>
-          <h1>Crie sua Conta</h1> 
+          <h1>Create your Account</h1> 
         
           <Input 
           title="Name" 
