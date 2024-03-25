@@ -35,7 +35,7 @@ export function SignIn({navigate}) {
     </div>  
 
     <Form>
-      <h1>Faça Login</h1> 
+      <h1>Sign In</h1> 
 
       <Input 
       title="Email" 
@@ -48,14 +48,14 @@ export function SignIn({navigate}) {
       <Input 
       title="Password" 
       type='password' 
-      placeholder="Six characters or more"
+      placeholder="and your password"
       onChange={e => setPassword(e.target.value)}
       />
 
       {loading ? <Breathing /> : null}
 
       <Button 
-      title="Ready to eat"
+      title="Sign In"
       onClick={handleSignIn}/>
       
       <ButtonText to='/register'
