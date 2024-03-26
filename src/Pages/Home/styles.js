@@ -191,7 +191,7 @@ export const Container = styled.div`
       min-height: 50px;
       padding: 24px;
       img {
-        display: none;
+        height: 15%;
       }
 
       .textContent {
