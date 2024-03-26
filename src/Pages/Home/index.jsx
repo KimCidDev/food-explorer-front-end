@@ -164,7 +164,7 @@ export function Home() {
          )}
       {dessertDishes.length > 0 && (
         <Section title="Desserts">
-          <Swiper dishes={dessertDishes} />
+          <Swiper dishes={dessertDishes} isAdmin={user.isAdmin}/>
         </Section>
          )}
 
