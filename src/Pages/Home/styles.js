@@ -117,12 +117,16 @@ export const Container = styled.div`
       margin: 25px;
       padding: 0 30px;
 
-      gap: clamp(2vw, 5vw, 10vw);
+      //gap: clamp(2vw, 5vw, 10vw);
 
       border-radius: 3px;
 
+      overflow: visible;
+
       img {
-        width: clamp(20%, 30vw, 375px);
+        max-width: 100%;
+        height: clamp(15vh, 30vw, 375px);
+        object-fit: cover;
       }
 
       .textContent {
@@ -166,10 +170,6 @@ export const Container = styled.div`
         gap: clamp(2vw, 5vw, 10vw);
         overflow: visible;
 
-        img {
-          width: clamp(20%, 30vw, 375px);
-        }
-
         .textContent {
           width: auto;
 
@@ -190,9 +190,8 @@ export const Container = styled.div`
     .banner {
       min-height: 50px;
       padding: 5px 12px;
-      img {
-        height: 8vh;
-      }
+
+      overflow: visible;
 
       .textContent {
         p {
