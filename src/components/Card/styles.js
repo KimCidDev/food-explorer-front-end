@@ -39,10 +39,11 @@ export const Container = styled.div`
   }
 
   h2 {
-    margin-top: 5px;
+    font-size: clamp(2.4vh, 18px, 2.5vw);
+    margin-bottom: clamp(18px, 2vw, 30px);
+
     font-weight: bold;
     text-align: center;
-    font-size: clamp(2.4vh, 18px, 2.5vw);
   }
 
   p {
@@ -64,8 +65,6 @@ export const Container = styled.div`
 
     gap: clamp(10px, 3vw, 20px);
 
-    margin-top: 10px;
-
     button {
       padding: 0 10px;
     }
@@ -78,21 +77,24 @@ export const Container = styled.div`
     gap: clamp(5px, 3vw, 14px);
 
     svg {
-      font-size: clamp(30px, 4vw, 40px);
+      font-size: clamp(12px, 3vw, 15px);
     }
 
     p {
       display: flex;
-      font-size: clamp(10px, 2vw, 22px);
+      font-size: clamp(8px, 2.5vw, 22px);
+    }
+
+    button {
+      height: 32px;
+      padding: 0 7px;
+      font-weight: bold;
+      width: clamp(10px, 10vw, 50px);
     }
   }
 
   img {
     height: 88px;
-  }
-
-  button {
-    height: 30px;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -133,14 +135,6 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
-        button {
-          height: 32px;
-          width: 100%;
-          padding: 0 20px;
-          font-weight: bold;
-          width: clamp(100px, 70%, 400px);
-        }
       }
     }
   }
