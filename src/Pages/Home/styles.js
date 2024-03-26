@@ -142,7 +142,7 @@ export const Container = styled.div`
         color: white;
         font-size: clamp(0.8vw, 12px, 2vw);
         opacity: 0;
-        animation: ${fadeIn} 1s ease forwards;
+        animation: ${fadeIn} 4s ease forwards;
       }
     }
 

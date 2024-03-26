@@ -121,8 +121,12 @@ async function handleDeleteDish () {
           <input 
           id="searchInput"
           type="text" 
-          placeholder="Busque por pratos ou ingredientes"/>
-          <Button icon={TiShoppingCart} title="Verificar Carrinho" />
+          placeholder="Search for your favorite dish..."/>
+          <Button 
+          icon={TiShoppingCart} 
+          title="View Basket"
+          onClick={() => navigate('/cart')}
+          />
         </div>
         <ImExit onClick={handleSignOut}/>
       </Header>
@@ -132,28 +136,28 @@ async function handleDeleteDish () {
       title="voltar"       
       onClick={handleNavigateHome}>
 
-        <h1>Adicione os detalhes do novo prato</h1>
+        <h1>Add Details of the new dish</h1>
 
         <div className="formTop">
         <div className="dishImg">
           <Input 
-          title="Imagem do Prato"
+          title="Dish Image"
           type="file"
           id="hiddenInput"
           onChange={handleAvatarImgUpdate}
           />
           <label htmlFor="hiddenInput">
             <MdOutlineFileDownload />
-            <p>Alterar Imagem</p>
+            <p>Change Image</p>
         </label>
         </div>
           <Input 
-          title="Nome do Prato"
-          placeholder="Nome do novo prato"
+          title="Dish Name"
+          placeholder="New dish name"
           onChange={e=> setName(e.target.value)}
           />
           <Select
-          title="Categoria"
+          title="Category"
           value={category}
           onChange={e=> setCategory(e.target.value)}
           />
@@ -161,19 +165,19 @@ async function handleDeleteDish () {
 
         <div className="formMiddle">          
           <Input 
-          title="Preço"
+          title="Price"
           placeholder="Ex.: 19.90" 
           onChange={e=> setPrice(`CAD$ ${e.target.value}`)}
         />        
           <div className="ingredientBox">
             <h3>Tags</h3>
               <Input 
-              placeholder="Adicione uma tag"
+              placeholder="Add a tag"
               onChange={e => setNewTag(e.target.value)}
               value={newTag}
               />
               <Button
-              title="adicionar tag!"
+              title="Add tag!"
               onClick={handleAddTags}
               />
             <div className='tagBox'>
@@ -193,12 +197,12 @@ async function handleDeleteDish () {
             <h3>Description</h3>
             <textarea
             name="" id="" cols="30" rows="4" 
-            placeholder="Conte os pontos-chave dessa obra-prima"
+            placeholder="Enter key points of this masterpiece"
             onChange={e=> setDescription(e.target.value)}>
             </textarea>        
           </div>
           <div className="saveInfoBox">
-            <Button title="Criar Prato" onClick={handleCreateDish} form="newDishForm"/>
+            <Button title="Create Dish" onClick={handleCreateDish} form="newDishForm"/>
           </div>
         </div>        
 
