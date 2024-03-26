@@ -10,16 +10,17 @@ import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
+import { Greeting } from '../../components/Greeting';
+import { Breathing } from '../../components/Breathing';
 
 import { ImExit } from 'react-icons/im';
 import { BsStar } from 'react-icons/bs';
+import { IoIosBasket } from "react-icons/io";
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti';
-import { IoIosBasket } from "react-icons/io";
 
 import macaroon from '../../assets/bannerImg.png';
-import { Breathing } from '../../components/Breathing';
 
 export function Home() {
   const { signOut, user } = useAuth();
@@ -107,7 +108,7 @@ export function Home() {
     <Container>
       <Header icon={IoIosBasket} to={menuPath}>
         <Logo />
-          <h2>{`Hello, ${name}`}</h2>
+        <Greeting name={name} />
         <div className="searchAndCart">
           <input
             id="searchInput"
