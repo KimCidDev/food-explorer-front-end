@@ -45,36 +45,42 @@ export function Card ({ dish, isAdmin }) {
 
   return (
     <Container >
-      <img 
-      src={`https://food-explorer-back-end-w9f3.onrender.com/files/${dish.dishImg}`} 
-      alt={dish.description}
-      onClick={() => handleDetails()}/>
-      <h2>{dish.name}</h2>
-      <p>{dish.description}</p>
+      <div className="mainInfo">
+        <img 
+        src={`https://food-explorer-back-end-w9f3.onrender.com/files/${dish.dishImg}`} 
+        alt={dish.description}
+        onClick={() => handleDetails()}
+        />
+        <h2>{dish.name}</h2>
+        <p>{dish.description}</p>
+      </div>
       {/* Aqui podia ter TAGS se card @media.SM*/}
-      <p id="price">{dish.price}</p>
 
         {
-        isAdmin ? 
-
-        <div className="addToBasket">
-        <Button 
-        title="Edit Dish"
-        onClick={() => handleEditDish()} />
-        </div>
+          isAdmin ? 
+          
+          <div className="addToBasket">
+            <p id="price">{dish.price}</p>
+            <Button 
+            title="Edit Dish"
+            onClick={() => handleEditDish()} />
+          </div>
 
         :
 
-        <div className="addToBasket">
-        <div className="howManyBox">
-          <BiMinus onClick={() => handleSubtractFromCart()}/>
-          <p>{quantity}</p>
-          <BsPlusLg onClick={() => handleAddToCart()} />
-        </div>      
-        <Button 
-        title="Add"
-        onClick={() => handleSaveToCart(dish)} />
-</div>
+          <div className="addToBasket">
+            <p id="price">{dish.price}</p>
+
+            <div className="howManyBox">
+              <BiMinus onClick={() => handleSubtractFromCart()}/>
+              <p>{quantity}</p>
+              <BsPlusLg onClick={() => handleAddToCart()} />
+            <Button 
+            title="Add"
+            onClick={() => handleSaveToCart(dish)} />
+            </div>   
+
+          </div>
       }
 
     </Container>

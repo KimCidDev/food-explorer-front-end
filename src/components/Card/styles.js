@@ -10,16 +10,23 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: clamp(1px, 4vw, 10px);
 
   border: solid 2px ${({ theme }) => theme.COLORS.GRADIENT_1};
   border-radius: 30px;
 
   padding: 25px;
-  gap: 0px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
   cursor: pointer;
+
+  .mainInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   #save {
     position: absolute;
@@ -40,13 +47,9 @@ export const Container = styled.div`
 
   p {
     display: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
 
   #price {
-    margin-top: 32px;
     display: flex;
     font-size: clamp(2vh, 14px, 2.5vw);
     color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
@@ -54,6 +57,13 @@ export const Container = styled.div`
   }
 
   .addToBasket {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: clamp(10px, 3vw, 20px);
+
     margin-top: 10px;
 
     button {
@@ -61,22 +71,19 @@ export const Container = styled.div`
     }
   }
 
-  .sendAmount .howManyBox p {
-    color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
-    font-size: 16px;
-  }
-
   .howManyBox {
     display: flex;
     align-items: center;
 
-    padding: 5px 0;
+    gap: clamp(5px, 3vw, 14px);
 
-    gap: 10px;
-    font-size: 22px;
+    svg {
+      font-size: clamp(30px, 4vw, 40px);
+    }
 
     p {
-      font-size: 18px;
+      display: flex;
+      font-size: clamp(10px, 2vw, 22px);
     }
   }
 
@@ -105,6 +112,10 @@ export const Container = styled.div`
 
     p {
       display: flex;
+
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
     }
 
     #price {
@@ -118,20 +129,18 @@ export const Container = styled.div`
       justify-content: space-around;
       align-items: center;
 
-      gap: 30px;
-
       .howManyBox {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 25px;
-      }
-      button {
-        height: 32px;
-        width: 100%;
-        padding: 0 20px;
-        font-weight: bold;
-        width: clamp(100px, 70%, 400px);
+
+        button {
+          height: 32px;
+          width: 100%;
+          padding: 0 20px;
+          font-weight: bold;
+          width: clamp(100px, 70%, 400px);
+        }
       }
     }
   }
