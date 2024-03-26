@@ -189,9 +189,9 @@ export const Container = styled.div`
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
     .banner {
       min-height: 50px;
-      padding: 24px;
+      padding: 5px 12px;
       img {
-        height: 15%;
+        height: 8vh;
       }
 
       .textContent {
