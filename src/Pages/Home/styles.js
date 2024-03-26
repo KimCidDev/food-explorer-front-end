@@ -55,11 +55,13 @@ export const Container = styled.div`
       .searchAndCart {
         display: flex;
         align-items: center;
-        gap: clamp(10px, 1px, 120px);
+        justify-content: center;
+
+        width: clamp(150px, 80%, 700px);
+        gap: clamp(5px, 80%, 20px);
 
         h2 {
           min-width: 100px;
-          margin: 0 clamp(30px, 2vw, 100px);
 
           font-size: clamp(10px, 1vw, 16px);
           color: ${({ theme }) => theme.COLORS.LIGHT_400};
@@ -69,8 +71,10 @@ export const Container = styled.div`
         #searchInput {
           height: 45px;
           width: clamp(110px, 60%, 170px);
-          color: ${({ theme }) => theme.COLORS.LIGHT_200};
+
           padding: 0 16px;
+
+          color: ${({ theme }) => theme.COLORS.LIGHT_200};
           background-color: ${({ theme }) => theme.COLORS.DARK_900};
           border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
           border-radius: 8px;
@@ -92,7 +96,6 @@ export const Container = styled.div`
           gap: 6px;
 
           padding: 0 5px;
-          margin-right: 10px;
 
           font-size: clamp(10px, 11px, 12px);
           font-weight: bold;

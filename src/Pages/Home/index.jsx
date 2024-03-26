@@ -107,12 +107,12 @@ export function Home() {
     <Container>
       <Header icon={IoIosBasket} to={menuPath}>
         <Logo />
-        <div className="searchAndCart">
           <h2>{`Hello, ${name}`}</h2>
+        <div className="searchAndCart">
           <input
             id="searchInput"
             type="text"
-            placeholder="Meal choice made yet?"
+            placeholder="Search for your favorite dish..."
             onChange={((e) => setSearch(e.target.value))}
           />
           { user.isAdmin ?

@@ -9,6 +9,7 @@ export const Container = styled.div`
   align-items: center;
 
   padding: 0 30px;
+  gap: 15px;
 
   margin-bottom: 30px;
 
@@ -21,6 +22,5 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    
   }
 `;
