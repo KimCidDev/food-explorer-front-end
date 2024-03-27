@@ -52,7 +52,7 @@ export function SignIn({navigate}) {
       onChange={e => setPassword(e.target.value)}
       />
 
-      {loading ? <Breathing /> : null}
+      {loading ? <Breathing size="small"/> : null}
 
       <Button 
       title="Sign In"

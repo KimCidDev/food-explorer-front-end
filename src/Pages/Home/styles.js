@@ -117,8 +117,6 @@ export const Container = styled.div`
       margin: 25px;
       padding: 0 30px;
 
-      //gap: clamp(2vw, 5vw, 10vw);
-
       border-radius: 3px;
 
       overflow: visible;

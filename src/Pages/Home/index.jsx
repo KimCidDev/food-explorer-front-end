@@ -148,7 +148,7 @@ export function Home() {
 
       { loading && (
        <BreathingContainer loading={loading}>
-         <Breathing />
+         <Breathing size="medium"/>
         </BreathingContainer>
         )}
 

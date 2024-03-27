@@ -1,10 +1,10 @@
 import { Container, Circle } from './styles';
 
 
-export function Breathing () {
+export function Breathing ({size}) {
   return (
   <Container className='breathing'>
-    <Circle />
+    <Circle size={size}/>
   </ Container>
   )
 }

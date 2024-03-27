@@ -75,7 +75,7 @@ export function SignUp() {
       </div>
 
       { loading ?
-        <Breathing/>
+        <Breathing size="medium"/>
         :
         <Form>
           <h1>Create your Account</h1> 
