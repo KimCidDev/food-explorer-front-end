@@ -2,15 +2,15 @@ import styled, { keyframes } from 'styled-components';
 
 const sizes = {
   small: {
-    width: '25px',
+    width: '45px',
     padding: '5px'
   },
   medium: {
-    width: '60px',
+    width: '80px',
     padding: '10px'
   },
   large: {
-    width: '120px',
+    width: '150px',
     padding: '15px'
   }
 };
