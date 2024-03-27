@@ -86,30 +86,38 @@ export const Form = styled.div`
 
   padding: 0 60px;
 
+  /* Set input width to 100% for responsiveness */
+  input[type='text'],
+  input[type='password'],
+  input[type='checkbox'] {
+    width: 100%;
+  }
+
   .adminCheckbox {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     width: 100%;
+    gap: 8px;
 
     div:first-child {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding-left: 0;
 
       .inputBox input[type='checkbox'] {
         height: 18px;
-        width: 50px;
+        width: 20px;
       }
     }
-
     .codeInput {
-      width: 265px;
+      margin-top: 0;
+      width: 100%;
     }
+  }
 
-    .breathing {
-      margin: -10px 0;
-    }
+  button {
+    min-height: 25px;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {

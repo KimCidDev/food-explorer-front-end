@@ -96,6 +96,7 @@ export function SignUp() {
           inputType="password"
           placeholder="Six characters or more"
           onChange={e => setPassword(e.target.value)}/>
+
           <div className='adminCheckbox'>
             <Input
             title="I want to become an administrator" 
@@ -107,17 +108,17 @@ export function SignUp() {
             }
             }
               />
+          </div>
+
           
           {wantsAdmin && (
-            <div className="adminCodeBox">
             <Input
               className="codeInput"
+              type="text"
               placeholder="If you have an admin code, enter it here"
               onChange={e => setAdminCode(e.target.value)}
             />
-          </div>
           )}
-          </div>
 
 
             <Button title="Sign Up" onClick={handleSignUp} />

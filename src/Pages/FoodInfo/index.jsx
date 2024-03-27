@@ -10,6 +10,7 @@ import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
 import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
+import { Breathing } from '../../components/Breathing';
 
 import { ImExit } from 'react-icons/im';
 import { BiMinus } from 'react-icons/bi';
@@ -65,7 +66,7 @@ export function FoodInfo () {
   }, [id]);
 
   if (!dish) {
-    return <div>Loading...</div>;
+    return <Breathing size="large"/>;
   }
 
   return (
@@ -76,17 +77,17 @@ export function FoodInfo () {
           <input
           id="searchInput"
           type="text"
-          placeholder='Procure por outros pratos'
+          placeholder='Search for something else'
           />
           <Button 
           icon={TiShoppingCart} 
-          title="Verificar Carrinho" />
+          title="View Basket" />
         </div>
         <ImExit onClick={handleSignOut}/>
       </Header>
 
       <Section
-      title="Voltar à página principal" 
+      title="Back to Home" 
       icon={AiOutlineLeft}
       onClick={handleNavigateHome}>
 
@@ -107,7 +108,7 @@ export function FoodInfo () {
         { user.isAdmin ?
         <div className="adminEditButton">
         <Button
-         title='Editar Prato'
+         title='Edit Dish'
          onClick={handleEditDish}
          /> 
         </div>
@@ -118,7 +119,7 @@ export function FoodInfo () {
         <p>01</p>
         <BsPlusLg/>
         <Button 
-        title='Adicionar ao carrinho'
+        title='Add to Basket'
         />
       </div> 
         }         
