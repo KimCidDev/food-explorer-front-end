@@ -50,7 +50,7 @@ export const breathingAnim = keyframes`
  `;
 
 export const Circle = styled.div`
-  height: 100px;
+  height: ${({ size }) => sizes[size].width};
   width: ${({ size }) => sizes[size].width};
   border-style: solid;
   border-radius: 50%;
