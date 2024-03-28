@@ -136,7 +136,6 @@ export function Home() {
       {search === "" && (
         <div className="banner">
           <img src={macaroon} alt="blackberry ice cream bar" />
-          <Breathing size={"small"}/>
           <div className='textContent'>
             <h2>Why Wait for Special Days?</h2>
             <p>
