@@ -77,6 +77,7 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.div`
+  height: 100vh;
   width: 100%;
 
   display: flex;

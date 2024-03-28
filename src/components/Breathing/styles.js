@@ -50,8 +50,8 @@ export const breathingAnim = keyframes`
  `;
 
 export const Circle = styled.div`
-  height: ${({ size }) => sizes[size].width};
-  width: ${({ size }) => sizes[size].width};
+  height: ${({ size }) => parseFloat(sizes[size].width)};
+  width: ${({ size }) => parseFloat(sizes[size].width)};
   border-style: solid;
   border-radius: 50%;
   border-color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
