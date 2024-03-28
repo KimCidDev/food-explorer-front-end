@@ -28,30 +28,26 @@ export const Container = styled.div`
 
 export const breathingAnim = keyframes`
   0% {
-    width: scale(0);
-    opacity: 0;
-  }
-  25% {
-    width: scale(0.25);
-    opacity: 1;
+    transform: scale(0.1);
+    opacity: 0.2;
   }
   50% {
-    width: scale(0.5);
+    transform: scale(0.5);
     opacity: 0.8;
   }
   75% {
-    width: scale(0.8);
+    transform: scale(0.8);
     opacity: 0.6;
   }
   100% {
-    width: scale(0.6);
-    opacity: 1;
+    transform: scale(0.4);
+    opacity: 0.4;
   }
  `;
 
 export const Circle = styled.div`
-  height: ${({ size }) => parseFloat(sizes[size].width)};
-  width: ${({ size }) => parseFloat(sizes[size].width)};
+  height: ${({ size }) => parseFloat(sizes[size].width)}px;
+  width: ${({ size }) => parseFloat(sizes[size].width)}px;
   border-style: solid;
   border-radius: 50%;
   border-color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
