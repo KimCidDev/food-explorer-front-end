@@ -20,6 +20,7 @@ export const Container = styled.div`
   padding-bottom: 90px;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  //background-color: #F4F0F5;
 
   > div:first-child {
     display: flex;
