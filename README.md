@@ -37,7 +37,7 @@ Bem-vindo ao repositório do frontend do FaveMeal! O front disponibiliza uma int
 1, Inicie o servidor de dev:
 
 ```bash
-npm start
+npm run dev
 ```
 
 # Funcionalidades ✨
@@ -92,7 +92,7 @@ Welcome to the FaveMeal frontend repository! The frontend provides a user-friend
 1. Start the development server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Features ✨
