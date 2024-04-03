@@ -42,10 +42,10 @@ npm start
 
 # Funcionalidades ✨
 
-Navegar pelos pratos: Visualize todos os pratos disponíveis e seus detalhes.
-Pesquisar pratos: Procure pratos por nome e/ou tag.
-Autenticação de usuário: Criar um novo usuário ou fazer login em uma conta existente.
-Cesto: Adicione itens ao cesto, ajuste quantidades e remova itens.
+- Navegar pelos pratos: Visualize todos os pratos disponíveis e seus detalhes.
+- Pesquisar pratos: Procure pratos por nome e/ou tag.
+- Autenticação de usuário: Criar um novo usuário ou fazer login em uma conta existente.
+- Cesto: Adicione itens ao cesto, ajuste quantidades e remova itens.
 
 # Contribuidores 👩‍💻👨‍💻
 
