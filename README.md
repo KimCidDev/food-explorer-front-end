@@ -45,6 +45,7 @@ npm run dev
 - Navegar pelos pratos: Visualize todos os pratos disponíveis e seus detalhes.
 - Pesquisar pratos: Procure pratos por nome e/ou tag.
 - Autenticação de usuário: Criar um novo usuário ou fazer login em uma conta existente.
+  - 🔎🧩😆 Se quiser testar como Admin, tente achar o código na tela.
 - Cesto: Adicione itens ao cesto, ajuste quantidades e remova itens.
 
 # Contribuidores 👩‍💻👨‍💻
@@ -100,6 +101,7 @@ npm run dev
 - Browse dishes: View all available dishes and their details.
 - Search dishes: Search for dishes by name and/or tag.
 - User authentication: Register as a new user or log in to an existing account.
+  - 🔎🧩😆 If you'd like to test as an admin, try locating the code around the logo.
 - User basket: Add items to the basket, adjust quantities, remove items.
 
 ## Contributors 👩‍💻👨‍💻
