@@ -93,7 +93,7 @@ export const Form = styled.div`
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR}; /* Light Grey Border Color */
+    border: none; /* Remove border */
     border-radius: 4px;
     background-color: ${({ theme }) =>
       theme.COLORS.INPUT_BG}; /* Light Grey Background Color for Inputs */
@@ -104,6 +104,10 @@ export const Form = styled.div`
       color: ${({ theme }) =>
         theme.COLORS.PLACEHOLDER_COLOR}; /* Placeholder text color */
     }
+  }
+
+  input[type='password'] {
+    margin-bottom: 0; /* Remove margin-bottom for password input */
   }
 
   .adminCheckbox {
@@ -131,7 +135,7 @@ export const Form = styled.div`
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR}; /* Light Grey Border Color */
+    border: none; /* Remove border */
     border-radius: 4px;
     background-color: ${({ theme }) =>
       theme.COLORS.INPUT_BG}; /* Light Grey Background Color for Inputs */
@@ -175,17 +179,18 @@ export const Form = styled.div`
 
 export const HiddenCode = styled.div`
   position: absolute;
-  top: 640px;
+  top: 50px;
+  //transform: translate(-50%, -50%);
   width: 350px;
   height: 120px;
   text-align: center;
   color: ${({ theme }) => theme.COLORS.SECONDARY}; /* Secondary color */
-  opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 0.0 : 0)};
-  transition: opacity 0.2s ease-in-out, transform 0.5s ease-in-out;
+  opacity: ${({ isHiddenCodeVisible }) => (isHiddenCodeVisible ? 0.001 : 0)};
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 
   &:hover {
     opacity: 1;
-    transform: scale(2); /* Increase size on hover */
+    transform: scale(1.2); /* Increase size on hover */
   }
 
   p {
@@ -195,7 +200,7 @@ export const HiddenCode = styled.div`
   }
 
   &:hover p {
-    font-size: 8rem; /* Increase font size on hover */
+    font-size: 10rem; /* Increase font size on hover */
   }
 `;
 
