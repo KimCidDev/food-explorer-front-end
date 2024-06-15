@@ -1,11 +1,11 @@
 // src/routes/app.routes.jsx
 
 import { Routes, Route } from 'react-router-dom';
-import { Home } from '../pages/Home';
-import { Cart } from '../pages/Cart';
-import { FoodInfo } from '../pages/FoodInfo';
-import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
-import { EditDishAdmin } from '../pages/Admin/EditDishAdmin';
+import { Home } from '../Pages/Home';
+import { Cart } from '../Pages/Cart';
+import { FoodInfo } from '../Pages/FoodInfo';
+import { NewDishAdmin } from '../Pages/Admin/NewDishAdmin';
+import { EditDishAdmin } from '../Pages/Admin/EditDishAdmin';
 import { useAuth } from '../hooks/auth';
 
 export function AppRoutes() {
