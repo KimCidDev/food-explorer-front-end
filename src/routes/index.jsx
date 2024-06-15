@@ -1,7 +1,7 @@
+// src/routes/index.jsx
+
 import { BrowserRouter } from 'react-router-dom';
-
 import { useAuth } from '../hooks/auth';
-
 import { AppRoutes } from './app.routes';
 import { AuthRoutes } from './auth.routes';
 
@@ -12,5 +12,5 @@ export function Routes() {
     <BrowserRouter>
       {user ? <AppRoutes /> : <AuthRoutes />}
     </BrowserRouter>
-  )
+  );
 }

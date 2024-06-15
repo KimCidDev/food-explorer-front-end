@@ -1,3 +1,5 @@
+// src/pages/Home/index.jsx
+
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
@@ -14,7 +16,7 @@ import { Greeting } from '../../components/Greeting';
 import { Breathing } from '../../components/Breathing';
 
 import { ImExit } from 'react-icons/im';
-import { IoIosBasket } from "react-icons/io";
+import { IoIosBasket } from 'react-icons/io';
 import { PiCopyright } from 'react-icons/pi';
 import { TiShoppingCart } from 'react-icons/ti';
 
@@ -22,29 +24,27 @@ import macaroon from '../../assets/bannerImg.png';
 
 export function Home() {
   const { signOut, user } = useAuth();
-  const [name, setName] = useState(user.name);
   const [dishes, setDishes] = useState([]);
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const menuPath = '/cart';
   const navigate = useNavigate();
 
   const saladDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Salad') : dishes.filter(dish => dish.category === 'Salad');
   const mainDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main');
   const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Dessert') : dishes.filter(dish => dish.category === 'Dessert');
 
-  function handleSignOut() {
+  function handleSignOut () {
     navigate('/');
     return signOut();
   }
 
-  function handleNavigateNewDish() {
-    return navigate('admin/newdish');
+  function handleNavigateNewDish () {
+    return navigate('/admin/newdish');
   }
 
-  function handleNavigateCart() {
+  function handleNavigateCart () {
     return navigate('/cart');
   }
 
@@ -56,46 +56,25 @@ export function Home() {
       try {
         setLoading(true);
         const response = await api.get(`/dishes?name=${search}`);
-        console.log(response.data);
         const allDishes = response.data;
         localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
         setDishes(allDishes);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching dish information:', error);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
       } finally {
         setLoading(false);
       }
     }
 
     fetchDishes();
-  }, []);
-
-  useEffect(() => {
-    async function fetchDishesBySearch() {
-      try {
-        const response = await api.get(`/dishes?name=${search}`);
-        console.log(response.data);
-        setDishSearchResult(response.data);
-      } catch (error) {
-        console.error('Error fetching dish information:', error);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      }
-    }
-
-    fetchDishesBySearch();
   }, [search]);
 
   return (
     <Container>
-      <Header icon={IoIosBasket} to={menuPath}>
+      <Header icon={IoIosBasket} to="/cart">
         <Logo />
-        <Greeting name={name} />
+        <Greeting name={user ? user.name : "Guest"} />
         <div className="searchAndCart">
           <input
             id="searchInput"
@@ -103,10 +82,15 @@ export function Home() {
             placeholder="Search for your favorite dish..."
             onChange={(e) => setSearch(e.target.value)}
           />
-          {user.isAdmin ? (
-            <Button icon={TiShoppingCart} title="New Dish" onClick={handleNavigateNewDish} />
-          ) : (
-            <Button icon={TiShoppingCart} title="View Cart" onClick={handleNavigateCart} />
+          {user && user.isAdmin ? (
+            <Button icon={TiShoppingCart}
+             title="New Dish"
+             onClick={handleNavigateNewDish} />
+            ) : (       
+            <Button icon={TiShoppingCart}
+             title="View Cart"
+             onClick={handleNavigateCart}
+              />     
           )}
         </div>
         <ImExit onClick={handleSignOut} />
@@ -126,24 +110,24 @@ export function Home() {
         )}
 
         {loading && (
-          <BreathingContainer loading={loading}>
-            <Breathing size="medium" />
+         <BreathingContainer loading={loading}>
+           <Breathing size="medium"/>
           </BreathingContainer>
         )}
 
         {saladDishes.length > 0 && (
           <Section title="Salads">
-            <Swiper dishes={saladDishes} isAdmin={user.isAdmin} />
+            <Swiper dishes={saladDishes} isAdmin={user ? user.isAdmin : false}/>
           </Section>
         )}
         {mainDishes.length > 0 && (
           <Section title="Main">
-            <Swiper dishes={mainDishes} isAdmin={user.isAdmin} />
+            <Swiper dishes={mainDishes} isAdmin={user ? user.isAdmin : false}/>
           </Section>
         )}
         {dessertDishes.length > 0 && (
           <Section title="Desserts">
-            <Swiper dishes={dessertDishes} isAdmin={user.isAdmin} />
+            <Swiper dishes={dessertDishes} isAdmin={user ? user.isAdmin : false}/>
           </Section>
         )}
       </main>

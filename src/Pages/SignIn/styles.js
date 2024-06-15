@@ -1,14 +1,7 @@
-import styled, { keyframes } from 'styled-components';
-import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
+// src/pages/SignIn/styles.js
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
+import styled from 'styled-components';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
   height: 100vh;
@@ -16,52 +9,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center the content vertically */
-  padding: 40px 20px; /* Add padding for better spacing on mobile screens */
-  background-color: ${({ theme }) =>
-    theme.COLORS.BACKGROUND}; /* Light Cream Background Color */
-
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Reduced gap for better alignment */
-    user-select: none;
-    margin-bottom: 30px; /* Add margin to separate logo and form */
-
-    svg {
-      transform: scale(1.5); /* Adjusted scale for better fit */
-      user-select: none;
-      fill: ${({ theme }) => theme.COLORS.LOGO_COLOR}; /* Purple Color */
-    }
-
-    h1 {
-      color: ${({ theme }) => theme.COLORS.LOGO_COLOR}; /* Purple Color */
-      font-size: 40px; /* Adjusted font size for better fit */
-      font-family: 'Roboto Slab', sans-serif;
-      letter-spacing: -1px;
-      user-select: none;
-    }
-  }
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     flex-direction: row;
     justify-content: space-around;
     padding: 0;
-    margin: 0 auto;
-
-    .logo {
-      margin-bottom: 0; /* Remove margin on larger screens */
-    }
-
-    .form-container {
-      max-width: 350px;
-      border-radius: 8px;
-      background-color: ${({ theme }) =>
-        theme.COLORS.INPUT_BG}; /* Softer background color for form */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
-      padding: 40px; /* Add padding for better spacing */
-    }
   }
 `;
 
@@ -69,52 +24,38 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Ensure consistent gap */
-
-  padding: 40px 20px; /* Adjust padding for better spacing */
-
-  background-color: ${({ theme }) =>
-    theme.COLORS.INPUT_BG}; /* Softer background color for the form */
-  border-radius: 8px; /* Add border radius for rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+  gap: 20px;
+  padding: 40px 20px;
+  background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   h1 {
-    color: ${({ theme }) => theme.COLORS.TEXT_COLOR}; /* Dark Grey Text Color */
-    margin-bottom: 20px; /* Add margin bottom to separate from inputs */
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+    margin-bottom: 20px;
   }
 
   .inputBox {
-    width: 100%; /* Ensure input boxes take full width */
+    width: 100%;
   }
 
-  /* Set input width to 100% for responsiveness */
   input[type='text'],
   input[type='password'] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: none; /* Remove border */
     border-radius: 4px;
-    background-color: ${({ theme }) =>
-      theme.COLORS.INPUT_BG}; /* Light Grey Background Color for Inputs */
-    color: ${({ theme }) =>
-      theme.COLORS.TEXT_COLOR}; /* Dark Grey Text Color for Inputs */
+    background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
 
     &::placeholder {
-      color: ${({ theme }) =>
-        theme.COLORS.PLACEHOLDER_COLOR}; /* Placeholder text color */
+      color: ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
     }
   }
 
-  input[type='password'] {
-    margin-bottom: 0; /* Remove margin-bottom for password input */
-  }
-
   button {
-    min-height: 40px; /* Adjust button height */
-    background-color: ${({ theme }) =>
-      theme.COLORS.BUTTON_COLOR}; /* Orange Button Color */
-    color: ${({ theme }) => theme.COLORS.FORM_BG}; /* White Button Text Color */
+    min-height: 40px;
+    background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+    color: ${({ theme }) => theme.COLORS.FORM_BG};
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -123,18 +64,16 @@ export const Form = styled.div`
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: ${({ theme }) =>
-        theme.COLORS.BUTTON_HOVER_COLOR}; /* Light Orange Hover Effect */
+      background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
     }
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 40px 35px; /* Adjust padding for large screens */
+    padding: 40px 35px;
 
     h1 {
       margin-top: 20px;
-      color: ${({ theme }) =>
-        theme.COLORS.TEXT_COLOR}; /* Dark Grey Text Color */
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
     }
   }
 `;
@@ -145,18 +84,23 @@ export const Logo = styled.div`
   align-items: center;
   gap: 20px;
   user-select: none;
+  margin-bottom: 30px;
 
   svg {
     transform: scale(1.5);
     user-select: none;
-    fill: ${({ theme }) => theme.COLORS.LOGO_COLOR}; /* Purple Color */
+    fill: ${({ theme }) => theme.COLORS.LOGO_COLOR};
   }
 
   h1 {
-    color: ${({ theme }) => theme.COLORS.LOGO_COLOR}; /* Purple Color */
-    font-size: 40px; /* Adjusted font size for better fit */
+    color: ${({ theme }) => theme.COLORS.LOGO_COLOR};
+    font-size: 40px;
     font-family: 'Roboto Slab', sans-serif;
     letter-spacing: -1px;
     user-select: none;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    margin-bottom: 0;
   }
 `;

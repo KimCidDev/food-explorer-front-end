@@ -1,17 +1,17 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+// src/routes/auth.routes.jsx
 
-import { SignIn } from '../Pages/SignIn';
-import { SignUp } from '../Pages/SignUp';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { SignIn } from '../pages/SignIn';
+import { SignUp } from '../pages/SignUp';
 
 export function AuthRoutes() {
   const navigate = useNavigate();
 
   return (
     <Routes>
-      <Route path="/" element={<SignIn navigate={navigate}/>} />
+      <Route path="/" element={<SignIn />} />
       <Route path="/register" element={<SignUp />} />
-
-      <Route path="*" element={<Navigate to="/" />}/>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
-  )
+  );
 }
