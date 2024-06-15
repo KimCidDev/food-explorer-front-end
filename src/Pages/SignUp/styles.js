@@ -12,7 +12,8 @@ export const Container = styled.div`
 
   padding-top: 90px;
 
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  background-color: ${({ theme }) =>
+    theme.COLORS.LIGHT_100}; /* Updated to a lighter background color */
 
   .logo {
     display: flex;
@@ -27,7 +28,8 @@ export const Container = styled.div`
     }
 
     h1 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      color: ${({ theme }) =>
+        theme.COLORS.DARK_700}; /* Darker text color for contrast */
       font-size: 52px;
       font-family: 'Roboto Slab', sans-serif;
       letter-spacing: -1px;
@@ -64,14 +66,15 @@ export const Container = styled.div`
       margin: 0;
       border-radius: 8px;
 
-      background-color: ${({ theme }) => theme.COLORS.DARK_700};
+      background-color: ${({ theme }) =>
+        theme.COLORS.LIGHT_200}; /* Lighter background color for form */
     }
 
     > div:nth-child(2) h1 {
       display: flex;
 
       font-size: 1.5rem;
-      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      color: ${({ theme }) => theme.COLORS.DARK_700}; /* Darker text color */
     }
   }
 `;
@@ -119,6 +122,20 @@ export const Form = styled.div`
 
   button {
     min-height: 25px;
+    background-color: ${({ theme }) =>
+      theme.COLORS.GRADIENT_1}; /* Updated button color */
+    color: ${({ theme }) => theme.COLORS.LIGHT_100}; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: ${({ theme }) =>
+        theme.COLORS.GRADIENT_2}; /* Hover effect */
+    }
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -126,6 +143,7 @@ export const Form = styled.div`
 
     h1 {
       margin-top: 20px;
+      color: ${({ theme }) => theme.COLORS.DARK_700}; /* Darker text color */
     }
 
     span {
@@ -142,7 +160,8 @@ export const HiddenCode = styled.div`
   left: 80px;
   top: 620px;
 
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  background-color: ${({ theme }) =>
+    theme.COLORS.LIGHT_200}; /* Updated to lighter color */
 
   opacity: 0;
   z-index: 100;

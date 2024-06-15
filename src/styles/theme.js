@@ -19,23 +19,23 @@ export default {
     DARK_900: '#0D1D25',
     DARK_1000: '#192227',
 
-    GRADIENT_1: '#568182',
-    GRADIENT_2: '#571154',
+    GRADIENT_1: '#FF8C00' /* Dark orange gradient */,
+    GRADIENT_2: '#FF4500' /* Orange red gradient */,
 
-    PURPLE_100: '#DAB6FF',
-    PURPLE_200: '#9C4DCC',
-    PURPLE_300: '#5D2555',
-    COOLEST_PURPLE:'#8a5eff',
+    PURPLE_100: '#E6E6FA',
+    PURPLE_200: '#D8BFD8',
+    PURPLE_300: '#DDA0DD',
+    COOLEST_PURPLE: '#DA70D6',
 
-    TINT_TOMATO_100: '#750310',
-    TINT_TOMATO_200: '#92000E',
-    TINT_TOMATO_300: '#AB222E',
-    TINT_TOMATO_400: '#AB4D55',
+    TINT_TOMATO_100: '#FF6347',
+    TINT_TOMATO_200: '#FF4500',
+    TINT_TOMATO_300: '#FF7F50',
+    TINT_TOMATO_400: '#FF8C69',
 
-    TINT_CARROT: '#FBA94C',
-    TINT_MINT: '#04D361',
+    TINT_CARROT: '#FFA07A',
+    TINT_MINT: '#98FB98',
 
-    TINT_CAKE_200: '#82F3FF',
-    TINT_CAKE_100: '#065E7C'
+    TINT_CAKE_200: '#FFE4B5',
+    TINT_CAKE_100: '#FFFACD'
   }
 };
