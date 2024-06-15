@@ -4,21 +4,16 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 export const Container = styled.div`
   width: clamp(200px, 80%, 600px);
   height: 290px;
-
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: clamp(1px, 4vw, 10px);
-
-  border: solid 2px ${({ theme }) => theme.COLORS.GRADIENT_1};
+  border: solid 2px ${({ theme }) => theme.COLORS.PRIMARY};
   border-radius: 30px;
-
   padding: 25px;
-
-  background-color: ${({ theme }) => theme.COLORS.DARK_200};
-
+  background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
   cursor: pointer;
 
   .mainInfo {
@@ -32,16 +27,13 @@ export const Container = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-
     margin: 15px;
-
     font-size: 22px;
   }
 
   h2 {
     font-size: clamp(2.4vh, 18px, 2.5vw);
     margin-bottom: clamp(18px, 2vw, 30px);
-
     font-weight: bold;
     text-align: center;
   }
@@ -53,8 +45,7 @@ export const Container = styled.div`
   #price {
     display: flex;
     font-size: clamp(2vh, 14px, 2.5vw);
-    color: ${({ theme }) => theme.COLORS.TINT_CAKE_200};
-    -webkit-font-smoothing: antialiased;
+    color: ${({ theme }) => theme.COLORS.SECONDARY};
   }
 
   .addToBasket {
@@ -62,7 +53,6 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: clamp(10px, 3vw, 20px);
 
     button {
@@ -73,7 +63,6 @@ export const Container = styled.div`
   .howManyBox {
     display: flex;
     align-items: center;
-
     gap: clamp(5px, 3vw, 14px);
 
     svg {
@@ -100,7 +89,6 @@ export const Container = styled.div`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     height: 500px;
     width: 400px;
-
     gap: 10px;
 
     img {
@@ -114,10 +102,9 @@ export const Container = styled.div`
 
     p {
       display: flex;
-
       font-family: 'Roboto', sans-serif;
       font-size: 13px;
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
     }
 
     #price {
@@ -126,7 +113,6 @@ export const Container = styled.div`
 
     .addToBasket {
       width: 200px;
-
       display: flex;
       justify-content: space-around;
       align-items: center;

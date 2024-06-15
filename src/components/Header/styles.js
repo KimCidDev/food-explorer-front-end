@@ -4,17 +4,23 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 export const Container = styled.div`
   width: 100%;
   height: 90px;
-
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
   padding: 0 30px;
-  gap: 15px;
+  background-color: ${({ theme }) =>
+    theme.COLORS.PRIMARY}; /* Updated to primary color */
+  color: ${({ theme }) => theme.COLORS.FORM_BG}; /* Ensure text is readable */
 
-  margin-bottom: 30px;
+  #menuLink {
+    display: flex;
+    align-items: center;
+    color: ${({ theme }) => theme.COLORS.FORM_BG}; /* Ensure icon is readable */
 
-  background-color: ${({ theme }) => theme.COLORS.DARK_700};
-  color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    svg {
+      margin-right: 8px;
+    }
+  }
 
   > h1 {
     font-size: 21px;
@@ -22,5 +28,6 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    padding: 0 100px;
   }
 `;

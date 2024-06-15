@@ -13,19 +13,19 @@ export function Swiper({ dishes, isAdmin }) {
     const params = {
       navigation: true,
       slidesPerView: 'auto',
-      spaceBetween: 20
+      spaceBetween: 20,
     };
 
     Object.assign(swiperContainer, params);
     swiperContainer.initialize();
-  }, []); 
+  }, []);
 
   return (
     <Container>
-      <swiper-container ref={swiperRef} init="false" pagination="false" className="swiper-container"> 
+      <swiper-container ref={swiperRef} init="false" pagination="false" className="swiper-container">
         {dishes.map((dish) => (
           <swiper-slide key={dish.id}>
-            <Card dish={dish} isAdmin={isAdmin}/>
+            <Card dish={dish} isAdmin={isAdmin} />
           </swiper-slide>
         ))}
       </swiper-container>
