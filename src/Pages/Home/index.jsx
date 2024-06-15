@@ -14,22 +14,18 @@ import { Greeting } from '../../components/Greeting';
 import { Breathing } from '../../components/Breathing';
 
 import { ImExit } from 'react-icons/im';
-import { BsStar } from 'react-icons/bs';
 import { IoIosBasket } from "react-icons/io";
 import { PiCopyright } from 'react-icons/pi';
-import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti';
 
 import macaroon from '../../assets/bannerImg.png';
 
 export function Home() {
   const { signOut, user } = useAuth();
-
   const [name, setName] = useState(user.name);
   const [dishes, setDishes] = useState([]);
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
-
   const [loading, setLoading] = useState(false);
 
   const menuPath = '/cart';
@@ -39,40 +35,37 @@ export function Home() {
   const mainDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Main') : dishes.filter(dish => dish.category === 'Main');
   const dessertDishes = dishSearchResult.length > 0 ? dishSearchResult.filter(dish => dish.category === 'Dessert') : dishes.filter(dish => dish.category === 'Dessert');
 
-  function handleSignOut () {
+  function handleSignOut() {
     navigate('/');
     return signOut();
   }
 
-  function handleNavigateNewDish () {
+  function handleNavigateNewDish() {
     return navigate('admin/newdish');
-}
-
-  function handleNavigateCart () {
-    return navigate('/cart')
   }
 
-  useEffect(() => {    
+  function handleNavigateCart() {
+    return navigate('/cart');
+  }
+
+  useEffect(() => {
     const token = localStorage.getItem('@foodExplorer:token');
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     async function fetchDishes() {
-
       try {
         setLoading(true);
-
-        const response = await api.get(`/dishes?name=${search}`)
-        console.log(response.data)
+        const response = await api.get(`/dishes?name=${search}`);
+        console.log(response.data);
         const allDishes = response.data;
         localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
-
         setDishes(allDishes);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);
         console.log(error.response.status);
-        console.log(error.response.headers);  
+        console.log(error.response.headers);
       } finally {
         setLoading(false);
       }
@@ -82,27 +75,21 @@ export function Home() {
   }, []);
 
   useEffect(() => {
-    
     async function fetchDishesBySearch() {
       try {
-        //setLoading(true); - dá a impressão de travadão
-        const response = await api.get(`/dishes?name=${search}`)
-        
-        console.log(response.data)
-        setDishSearchResult(response.data)
-      } catch (error) {        
+        const response = await api.get(`/dishes?name=${search}`);
+        console.log(response.data);
+        setDishSearchResult(response.data);
+      } catch (error) {
         console.error('Error fetching dish information:', error);
         console.log(error.response.data);
         console.log(error.response.status);
-        console.log(error.response.headers);  
+        console.log(error.response.headers);
       }
-      }
-      
-    
-    fetchDishesBySearch()
-    
-  }, [search])
+    }
 
+    fetchDishesBySearch();
+  }, [search]);
 
   return (
     <Container>
@@ -114,60 +101,51 @@ export function Home() {
             id="searchInput"
             type="text"
             placeholder="Search for your favorite dish..."
-            onChange={((e) => setSearch(e.target.value))}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          { user.isAdmin ?
-            <Button icon={TiShoppingCart}
-             title="New Dish"
-             onClick={handleNavigateNewDish} />
-            :       
-            <Button icon={TiShoppingCart}
-             title="View Cart"
-             onClick={handleNavigateCart}
-              />     
-        }
+          {user.isAdmin ? (
+            <Button icon={TiShoppingCart} title="New Dish" onClick={handleNavigateNewDish} />
+          ) : (
+            <Button icon={TiShoppingCart} title="View Cart" onClick={handleNavigateCart} />
+          )}
         </div>
         <ImExit onClick={handleSignOut} />
       </Header>
 
       <main>
-
-
-      {search === "" && (
-        <div className="banner">
-          <img src={macaroon} alt="blackberry ice cream bar" />
-          <div className='textContent'>
-            <h2>Why Wait for Special Days?</h2>
-            <p>
-            Treat yourself to mouthwatering delights anytime you want.
-            </p>
+        {search === "" && (
+          <div className="banner">
+            <img src={macaroon} alt="blackberry ice cream bar" />
+            <div className='textContent'>
+              <h2>Why Wait for Special Days?</h2>
+              <p>
+                Treat yourself to mouthwatering delights anytime you want.
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-
-      { loading && (
-       <BreathingContainer loading={loading}>
-         <Breathing size="medium"/>
-        </BreathingContainer>
+        {loading && (
+          <BreathingContainer loading={loading}>
+            <Breathing size="medium" />
+          </BreathingContainer>
         )}
 
         {saladDishes.length > 0 && (
-        <Section title="Salads">
-          <Swiper dishes={saladDishes} isAdmin={user.isAdmin}/>
-        </Section>
-         )}
-      {mainDishes.length > 0 && (
-        <Section title="Main">
-          <Swiper dishes={mainDishes} isAdmin={user.isAdmin}/>
-        </Section>
-         )}
-      {dessertDishes.length > 0 && (
-        <Section title="Desserts">
-          <Swiper dishes={dessertDishes} isAdmin={user.isAdmin}/>
-        </Section>
-         )}
-
+          <Section title="Salads">
+            <Swiper dishes={saladDishes} isAdmin={user.isAdmin} />
+          </Section>
+        )}
+        {mainDishes.length > 0 && (
+          <Section title="Main">
+            <Swiper dishes={mainDishes} isAdmin={user.isAdmin} />
+          </Section>
+        )}
+        {dessertDishes.length > 0 && (
+          <Section title="Desserts">
+            <Swiper dishes={dessertDishes} isAdmin={user.isAdmin} />
+          </Section>
+        )}
       </main>
 
       <Footer icon={PiCopyright} />

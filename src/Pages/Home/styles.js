@@ -13,20 +13,15 @@ const fadeIn = keyframes`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
-
   padding-bottom: 90px;
-
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
-  //background-color: #F4F0F5;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
   > div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 40px;
 
     .logo h1 {
@@ -37,7 +32,7 @@ export const Container = styled.div`
       height: 21px;
     }
 
-    > .searchAndCart {
+    .searchAndCart {
       display: none;
     }
 
@@ -57,50 +52,54 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
         width: clamp(150px, 80%, 700px);
         gap: clamp(5px, 80%, 20px);
 
         h2 {
           min-width: 100px;
-
           font-size: clamp(10px, 1vw, 16px);
-          color: ${({ theme }) => theme.COLORS.LIGHT_400};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           white-space: nowrap;
         }
 
         #searchInput {
           height: 45px;
           width: clamp(110px, 60%, 170px);
-
           padding: 0 16px;
-
-          color: ${({ theme }) => theme.COLORS.LIGHT_200};
-          background-color: ${({ theme }) => theme.COLORS.DARK_900};
-          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+          background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+          border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
           border-radius: 8px;
         }
 
         input {
           &::placeholder {
             font-size: clamp(6px, 10px, 1rem);
+            color: ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
           }
         }
 
         button {
           width: clamp(100px, 90%, 150px);
           height: clamp(40px, 40px, 55px);
-
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 6px;
-
           padding: 0 5px;
-
           font-size: clamp(10px, 11px, 12px);
           font-weight: bold;
           white-space: nowrap;
+          background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+          color: ${({ theme }) => theme.COLORS.FORM_BG};
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
+          }
         }
       }
     }
@@ -109,23 +108,21 @@ export const Container = styled.div`
   main {
     padding: 0 25px;
 
-    > .banner {
+    .banner {
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(#091e26, #00131c);
-
       margin: 25px;
       padding: 0 30px;
-
-      border-radius: 3px;
-
-      overflow: visible;
+      border-radius: 8px;
+      overflow: hidden;
 
       img {
         max-width: 100%;
         height: clamp(15vh, 30vw, 375px);
         object-fit: cover;
+        border-radius: 8px;
       }
 
       .textContent {
@@ -137,20 +134,21 @@ export const Container = styled.div`
           font-weight: bold;
           white-space: nowrap;
           font-size: clamp(0.8vw, 18px, 2.5vw);
+          color: ${({ theme }) => theme.COLORS.FORM_BG};
         }
-      }
 
-      .textContent p {
-        text-align: left;
-        color: white;
-        font-size: clamp(0.8vw, 12px, 2vw);
-        opacity: 0;
-        animation: ${fadeIn} 4s ease forwards;
+        p {
+          text-align: left;
+          color: ${({ theme }) => theme.COLORS.FORM_BG};
+          font-size: clamp(0.8vw, 12px, 2vw);
+          opacity: 0;
+          animation: ${fadeIn} 4s ease forwards;
+        }
       }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-      > .banner {
+      .banner {
         align-items: center;
         margin-bottom: 50px;
       }
@@ -161,13 +159,10 @@ export const Container = styled.div`
 
       .banner {
         max-height: 300px;
-
         justify-content: center;
-
         margin: 30px 120px 62px 120px;
-
         gap: clamp(2vw, 5vw, 10vw);
-        overflow: visible;
+        overflow: hidden;
 
         .textContent {
           width: auto;
@@ -183,17 +178,14 @@ export const Container = styled.div`
         }
       }
     }
-  }
 
-  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-    .banner {
-      min-height: 50px;
-      padding: 5px 12px;
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+      .banner {
+        min-height: 50px;
+        padding: 5px 12px;
+        overflow: hidden;
 
-      overflow: visible;
-
-      .textContent {
-        p {
+        .textContent p {
           display: none;
         }
       }
@@ -210,6 +202,6 @@ export const BreathingContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
   z-index: 999;
 `;
