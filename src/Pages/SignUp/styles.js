@@ -80,7 +80,7 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.div`
-  height: 100vh;
+  height: auto;
   width: 100%;
 
   display: flex;
@@ -88,7 +88,12 @@ export const Form = styled.div`
   align-items: center;
   gap: 32px;
 
-  padding: 0 60px;
+  padding: 40px 60px; /* Adjust padding for better spacing */
+
+  background-color: ${({ theme }) =>
+    theme.COLORS.LIGHT_200}; /* Set background color for the form */
+  border-radius: 8px; /* Add border radius for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
 
   /* Set input width to 100% for responsiveness */
   input[type='text'],
@@ -139,7 +144,7 @@ export const Form = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 0 35px;
+    padding: 40px 35px; /* Adjust padding for large screens */
 
     h1 {
       margin-top: 20px;
