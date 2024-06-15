@@ -14,22 +14,21 @@ export default createGlobalStyle`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-      body div {
-        background-color: #FFE4C4; /* Light and warm background color for mobile */
-      }
-
-      p {
-        //font-size: 0.8rem;
+      /* Light and warm background color for mobile */
+      body {
+        background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
       }
     }
     @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-      body div {
-        background-color: #FFDAB9; /* Peach puff color for medium devices */
+      /* Peach puff color for medium devices */
+      body {
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
       }
     }
     @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
-      body div {
-        background-color: #FFEFD5; /* Papaya whip color for large devices */
+      /* Papaya whip color for large devices */
+      body {
+        background-color: ${({ theme }) => theme.COLORS.FORM_BG};
       }
     }
   }
@@ -38,7 +37,7 @@ export default createGlobalStyle`
     width: 100%;
     font-family: 'Roboto Slab', sans-serif;
     color: ${({ theme }) =>
-      theme.COLORS.DARK_700}; /* Dark text color for readability */
+      theme.COLORS.TEXT_COLOR}; /* Dark text color for readability */
   }
 
   p, span {
@@ -52,6 +51,6 @@ export default createGlobalStyle`
   }
 
   h2, p, svg {
-    color: ${({ theme }) => theme.COLORS.DARK_700}; /* Dark text color */
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR}; /* Dark text color */
   }
 `;

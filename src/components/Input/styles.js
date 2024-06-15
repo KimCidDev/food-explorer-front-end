@@ -3,33 +3,35 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
 
-  color: ${({ theme }) => theme.COLORS.LIGHT_500};
+  color: ${({ theme }) => theme.COLORS.TEXT_COLOR}; /* Dark Grey Text Color */
 
   p {
     margin-bottom: 8px;
   }
 
-  > .inputBox {
+  .inputBox {
     display: flex;
     align-items: center;
+    padding: 0 14px; /* Consistent padding */
 
-    padding-left: 14px;
+    background-color: ${({ theme }) =>
+      theme.COLORS.INPUT_BG}; /* Light Grey Background Color */
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR}; /* Dark Grey Text Color */
 
-    background-color: ${({ theme }) => theme.COLORS.DARK_900};
-    color: ${({ theme }) => theme.COLORS.GRAY_300};
-
-    border-radius: 8px;
+    border-radius: 8px; /* Smooth the corners */
+    border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR}; /* Light Grey Border Color */
 
     svg {
-      margin-left: 16px;
-      color: ${({ theme }) => theme.COLORS.LIGHT_500};
+      margin-right: 10px; /* Adjust margin for icon spacing */
+      color: ${({ theme }) => theme.COLORS.ICON_COLOR}; /* Dark Grey Color */
     }
 
     input {
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
-
-      width: 315px;
-      height: 50px;
+      color: ${({ theme }) =>
+        theme.COLORS.TEXT_COLOR}; /* Dark Grey Text Color */
+      width: 100%;
+      height: 35px;
+      padding: 0 14px; /* Consistent padding */
 
       border-radius: 8px;
       border: none;
@@ -37,9 +39,14 @@ export const Container = styled.div`
       background-color: transparent;
 
       &::placeholder {
-        padding-left: 14px;
-        color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        color: ${({ theme }) =>
+          theme.COLORS.PLACEHOLDER_COLOR}; /* Light Grey Placeholder Color */
       }
     }
+  }
+
+  input[type='checkbox'] {
+    width: auto;
+    margin: 0;
   }
 `;

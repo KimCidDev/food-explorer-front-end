@@ -1,41 +1,15 @@
 export default {
   COLORS: {
-    LIGHT_100: '#FFFFFF',
-    LIGHT_200: '#FFFAF1',
-    LIGHT_300: '#E1E1E6',
-    LIGHT_400: '#C4C4CC',
-    LIGHT_500: '#7C7C8A',
-    LIGHT_600: '#76797B',
-    LIGHT_700: '#4D585E',
-
-    DARK_100: '#000405',
-    DARK_200: '#00070A',
-    DARK_300: '#000204',
-    DARK_400: '#000A0F',
-    DARK_500: '#000C12',
-    DARK_600: '#00111A',
-    DARK_700: '#001119',
-    DARK_800: '#0D161B',
-    DARK_900: '#0D1D25',
-    DARK_1000: '#192227',
-
-    GRADIENT_1: '#FF8C00' /* Dark orange gradient */,
-    GRADIENT_2: '#FF4500' /* Orange red gradient */,
-
-    PURPLE_100: '#E6E6FA',
-    PURPLE_200: '#D8BFD8',
-    PURPLE_300: '#DDA0DD',
-    COOLEST_PURPLE: '#DA70D6',
-
-    TINT_TOMATO_100: '#FF6347',
-    TINT_TOMATO_200: '#FF4500',
-    TINT_TOMATO_300: '#FF7F50',
-    TINT_TOMATO_400: '#FF8C69',
-
-    TINT_CARROT: '#FFA07A',
-    TINT_MINT: '#98FB98',
-
-    TINT_CAKE_200: '#FFE4B5',
-    TINT_CAKE_100: '#FFFACD'
+    PRIMARY: '#9C27B0',
+    SECONDARY: '#FF9800',
+    BACKGROUND: '#FFF8E1',
+    FORM_BG: '#FFFFFF',
+    INPUT_BG: '#FFF1E6', /* Softer background color */
+    TEXT_COLOR: '#424242',
+    BUTTON_COLOR: '#FF9800',
+    BUTTON_HOVER_COLOR: '#FFA726',
+    LOGO_COLOR: '#9C27B0',
+    ICON_COLOR: '#424242',
+    PLACEHOLDER_COLOR: '#757575' /* Darker placeholder color */
   }
 };
