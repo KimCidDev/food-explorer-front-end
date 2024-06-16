@@ -1,12 +1,16 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { Container } from './styles';
+// src/components/DatePicker/index.jsx
 
-export function CustomDatePicker({ selectedDate, onDateChange }) {
+import React from 'react';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+export function DatePicker({ selectedDate, onDateChange }) {
   return (
-    <Container>
-      <DatePicker selected={selectedDate} onChange={onDateChange} />
-    </Container>
+    <ReactDatePicker
+      selected={selectedDate}
+      onChange={onDateChange}
+      dateFormat="yyyy/MM/dd"
+      className="datepicker-input"
+    />
   );
 }
