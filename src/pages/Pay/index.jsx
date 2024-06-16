@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useAuth } from '../../hooks/auth';
 import { Container } from './styles';
 import { Header } from '../../components/Header';
@@ -11,8 +10,9 @@ import DatePicker from '../../components/DatePicker';
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
+import axios from 'axios';
 
-const stripePromise = loadStripe('pk_live_51PSQvcLWJE5BtmPhG8CDrwKJ8ZBM5U2XzRhjF2PxwoECezEp8YkCrqOCjY4pfVgiUU5tDTken67p48O2xi69XxSR00fGpnmSP8');
+const stripePromise = loadStripe('your-stripe-public-key');
 
 export function Pay() {
   const { user, signOut } = useAuth();
@@ -27,6 +27,20 @@ export function Pay() {
     return signOut();
   };
 
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
+    const { data: { id } } = await axios.post('http://localhost:3000/payments/create-checkout-session', {
+      items: [
+        { name: 'Example Item', price: 1000, quantity: 1 },
+      ],
+    });
+
+    const { error } = await stripe.redirectToCheckout({ sessionId: id });
+    if (error) {
+      console.error('Error during redirect to checkout:', error);
+    }
+  };
+
   return (
     <Container>
       <Header icon={AiOutlineMenu}>
@@ -36,43 +50,13 @@ export function Pay() {
 
       <Elements stripe={stripePromise}>
         <h2>Pague com o cartão</h2>
-        <PaymentForm />
+        <Button title="Pagar" onClick={handleCheckout} />
       </Elements>
 
-      <h3>Escolha uma data para a entrega</h3>
+{/*       <h3>Escolha uma data para a entrega</h3>
       <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
-
+*/}
       <Footer icon={PiCopyright} />
     </Container>
-  );
-}
-
-function PaymentForm() {
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (!stripe || !elements) {
-      return;
-    }
-
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: 'https://favemeal.netlify.app/',
-      },
-    });
-
-    if (error) {
-      console.error('Error during payment confirmation:', error);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <Button title="Pagar" type="submit" />
-    </form>
   );
 }
