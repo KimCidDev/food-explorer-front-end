@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['@stripe/stripe-js']
+      external: ['@stripe/stripe-js', '@stripe/react-stripe-js']
     }
   }
 });
