@@ -1,7 +1,7 @@
 // src/routes/app.routes.jsx
 
 import { Routes, Route } from 'react-router-dom';
-import { Home } from '../pages/Home';
+import { Home } from '../pages/Home'; //pages, not Pages
 import { Cart } from '../pages/Cart';
 import { FoodInfo } from '../pages/FoodInfo';
 import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
