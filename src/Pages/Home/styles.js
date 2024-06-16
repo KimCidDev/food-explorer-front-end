@@ -26,6 +26,22 @@ const wobbleAnimation = keyframes`
   }
 `;
 
+const wobbleOnce = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
 const wobbleAndHide = keyframes`
   0% {
     transform: scale(1);
@@ -143,97 +159,46 @@ export const Container = styled.div`
 
     .banner {
       display: flex;
+      flex-direction: row;
       align-items: center;
-      justify-content: space-around;
-      background: ${({ theme }) => theme.COLORS.BACKGROUND};
-      margin: 25px;
-      padding: 0 45px;
-      border: 3px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-      border-radius: 33px;
-      overflow: visible; /* Allow the image to overflow */
-      height: 75vh; /* Make the banner take up 75% of the viewport height */
-      position: relative;
-
-      img {
-        max-width: 50%;
-        height: 35rem;
-        object-fit: cover;
-        margin: -50px 0; /* Make the image overflow the top and bottom */
-        animation: ${wobbleAnimation} 1.5s ease-in-out;
-      }
+      justify-content: center;
+      text-align: left;
+      padding: 20px;
+      background-color: ${({ theme }) => theme.COLORS.BANNER_BG};
+      border: 3px solid orange; /* Temporary style for debugging */
 
       .textContent {
-        display: flex;
+        margin-left: 20px;
+      }
+
+      img {
+        max-width: 80%; /* Ensures image doesn't exceed 80% of the container's width */
+        height: auto; /* Maintains aspect ratio */
+        animation: ${wobbleOnce} 1.5s ease-in-out;
+        animation-fill-mode: forwards; /* Ensures the animation stops after one run */
+        animation-iteration-count: 1; /* Ensures the animation runs only once */
+      }
+
+      @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
         flex-direction: column;
-        gap: 8px;
-        text-align: left;
-        width: 45%;
-
-        h2 {
-          font-weight: bold;
-          font-size: clamp(1.5rem, 3vw, 3rem);
-          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-        }
-
-        p {
-          font-size: clamp(1rem, 1.5vw, 1.5rem);
-          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-          animation: ${fadeIn} 4s ease forwards;
-        }
-      }
-    }
-
-    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-      main {
-        .banner {
-          background: red; /* Temporary style for debugging */
-          flex-direction: column; /* Change to column for small screens */
-          align-items: center;
-          text-align: center;
-          padding: 5px 12px;
-
-          .textContent {
-            width: 100%; /* Adjust width to avoid text overflow */
-          }
-
-          img {
-            max-width: 100%; /* Ensure image fits within the container */
-            height: 200px; /* Force height to see if it is applied */
-            animation: ${wobbleAndHide} 1.5s ease-in-out; /* Apply the new animation */
-          }
-        }
-      }
-    }
-
-    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-      .banner {
-        margin-bottom: 50px;
-      }
-    }
-
-    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      padding: 0;
-
-      .banner {
-        margin: 30px 120px 62px 120px;
+        align-items: center;
+        text-align: center;
+        padding: 5px 12px;
 
         .textContent {
-          width: 45%;
-
-          h2 {
-            font-size: clamp(2vw, 2rem, 4vw);
-          }
-
-          p {
-            margin-top: 5px;
-            font-size: clamp(1vw, 1rem, 2vw);
-          }
+          margin-left: 0;
+          margin-top: 10px;
+          width: 100%;
         }
 
         img {
-          max-width: 50%;
+          width: clamp(150px, 80%, 400px); /* Adjust the width using clamp */
+          height: auto;
+          animation: ${wobbleAndHide} 1.5s ease-in-out;
         }
       }
     }
   }
 `;
+
+export default Container;

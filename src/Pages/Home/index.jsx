@@ -1,4 +1,4 @@
-import { Container } from './styles';
+import { Container } from './styles.js';
 
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
