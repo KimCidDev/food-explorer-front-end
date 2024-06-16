@@ -3,23 +3,19 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
-
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
   > .itemSearchBox {
     padding: 0 30px;
 
     h2 {
       height: 50px;
-
       margin-top: 36px;
       padding: 10px;
-
-      color: ${({ theme }) => theme.COLORS.LIGHT_100};
-      border-bottom: 1px solid ${({ theme }) => theme.COLORS.LIGHT_700};
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+      border-bottom: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
     }
 
     input {
@@ -32,8 +28,7 @@ export const Container = styled.div`
       justify-content: space-around;
       margin: 15px 0;
       padding: 5px 0;
-
-      background-color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
+      background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
       border-radius: 10px;
 
       .howManyBox {
@@ -45,19 +40,27 @@ export const Container = styled.div`
           height: 16px;
 
           path {
-            fill: white !important;
+            fill: ${({ theme }) => theme.COLORS.ICON_COLOR} !important;
           }
         }
       }
     }
 
     h3 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
     }
 
     button {
       width: 20px;
       height: 20px;
+      background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+      border: none;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
+      }
     }
   }
 `;

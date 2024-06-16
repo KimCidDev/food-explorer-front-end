@@ -5,15 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { Container } from './styles';
 import { BiMinus } from 'react-icons/bi';
-import { BsPlusLg } from 'react-icons/bs';
+import { BsPlusLg, BsSearch, BsXLg } from 'react-icons/bs';
 import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 
 import { PiCopyright } from 'react-icons/pi';
-import { BsSearch, BsXLg } from 'react-icons/bs';
-
 
 export function Cart () {
   const { signOut } = useAuth();
@@ -21,38 +19,36 @@ export function Cart () {
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [temporaryCart, setTemporaryCart] = useState([]);
 
-
   const navigate = useNavigate();
 
-  function addToTemporaryCart (dishId) {
-    const dishOnTheList = temporaryCart.find(dish => dish.id == dishId);
+  function addToTemporaryCart(dishId) {
+    const dishOnTheList = temporaryCart.find(dish => dish.id === dishId);
     if (dishOnTheList) {
       dishOnTheList.quantity += 1;
       setTemporaryCart([...temporaryCart]);
     } else {
-      const dishResult = dishSearchResult.find(dish => dish.id == dishId);
+      const dishResult = dishSearchResult.find(dish => dish.id === dishId);
       if (dishResult) {
-      setTemporaryCart([...temporaryCart, {...dishResult, quantity: 1}])
-    }
+        setTemporaryCart([...temporaryCart, { ...dishResult, quantity: 1 }]);
+      }
     }
   }
    
-  function subtractFromTemporaryCart (dishId) {
-    const dishOnTheList = temporaryCart.find(dish => dish.id == dishId);
+  function subtractFromTemporaryCart(dishId) {
+    const dishOnTheList = temporaryCart.find(dish => dish.id === dishId);
     if (dishOnTheList && dishOnTheList.quantity > 1) {
       dishOnTheList.quantity -= 1;
       setTemporaryCart([...temporaryCart]);
     }
   }
 
-  function handleSignOut () {
+  function handleSignOut() {
     navigate('/');
     return signOut();
-  };
+  }
 
   function handleSaveToCart(dishId) {
     try {
@@ -67,7 +63,6 @@ export function Cart () {
 
       const existingCartItem = cartUpdated.find(item => item.id === dishId);
       const quantityInTemporaryCart = temporaryCart.find(item => item.id === dishId)?.quantity || 1;
-      console.log(quantityInTemporaryCart)
 
       if (existingCartItem) {
         existingCartItem.quantity = quantityInTemporaryCart;
@@ -83,39 +78,28 @@ export function Cart () {
       setLoading(false);
     } catch (error) {
       console.error('Error saving to cart:', error);
-      // Handle error gracefully
     }
   }
   
-  function handleRemoveFromCart (dishId) {
+  function handleRemoveFromCart(dishId) {
     const filteredCart = cart.filter(item => item.id !== dishId);
     localStorage.setItem('@foodExplorer:cart', JSON.stringify(filteredCart));
-    return setCart(filteredCart);
-  };
-
-  
+    setCart(filteredCart);
+  }
 
   useEffect(() => {
     async function fetchCartDishes() {
       try {
-        const cartDishes = localStorage.getItem('@foodExplorer:cart') || [];
+        const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]';
         const cartUpdated = JSON.parse(cartDishes);
-
-        setCart(cartUpdated)
+        setCart(cartUpdated);
         setLoading(false);
-        
-
       } catch (error) {        
         console.error('Error fetching dish information:', error);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);  
       }
-      }
-      
-      fetchCartDishes()
-    
-  }, [])
+    }
+    fetchCartDishes();
+  }, []);
 
   useEffect(() => {
     async function fetchDishesBySearch() {
@@ -126,20 +110,13 @@ export function Cart () {
           quantity: 1
         }));
         setDishSearchResult(dishesWithQuantity);
-  
+        setLoading(false);
       } catch (error) {        
         console.error('Error fetching dish information:', error);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);  
       }
     }
-  
     fetchDishesBySearch();
-  
-    setLoading(false);
   }, [search]);
-  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -164,33 +141,33 @@ export function Cart () {
                 <h3>{dish.name}</h3>
                 <p>{dish.price}</p>
                 <div className='howManyBox'>
-              <BiMinus onClick={() => subtractFromTemporaryCart(dish.id)}/>
-              <p>{temporaryCart.find(item => item.id === dish.id)?.quantity || 1}</p>
-              <BsPlusLg onClick={() => addToTemporaryCart(dish.id)} />                      
-              <Button
-              icon={BsPlusLg}
-              onClick={() => handleSaveToCart(dish.id)}/>
+                  <BiMinus onClick={() => subtractFromTemporaryCart(dish.id)}/>
+                  <p>{temporaryCart.find(item => item.id === dish.id)?.quantity || 1}</p>
+                  <BsPlusLg onClick={() => addToTemporaryCart(dish.id)} />                      
+                  <Button
+                    icon={BsPlusLg}
+                    onClick={() => handleSaveToCart(dish.id)}
+                  />
+                </div>
               </div>
-            </div>
             )
-            )
-
-            : 
+            ) : 
             (
-              cart.map((dish, index) => (
-              <div className='overviewBox' key={dish.id}> 
-                <h3>{dish.name}</h3>
-                <p>{dish.price}</p>
-                <p>{dish.quantity}</p>
-              <Button
-              icon={BsXLg}
-              onClick={() => handleRemoveFromCart(dish.id)}/>
-            </div>))
-            )}
-      <h2
-      onClick={handleSignOut}>Sair</h2>
+              cart.map((dish) => (
+                <div className='overviewBox' key={dish.id}> 
+                  <h3>{dish.name}</h3>
+                  <p>{dish.price}</p>
+                  <p>{dish.quantity}</p>
+                  <Button
+                    icon={BsXLg}
+                    onClick={() => handleRemoveFromCart(dish.id)}
+                  />
+                </div>
+              ))
+            )
+        }
+        <h2 onClick={handleSignOut}>Sair</h2>
       </div>
-
       <Footer icon={PiCopyright}/>
     </Container>
   )
