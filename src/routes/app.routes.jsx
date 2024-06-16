@@ -1,11 +1,10 @@
-// src/routes/app.routes.jsx
-
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home'; // Ensure this path is correct
 import { Cart } from '../pages/Cart';
 import { FoodInfo } from '../pages/FoodInfo';
 import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
 import { EditDishAdmin } from '../pages/Admin/EditDishAdmin';
+import { Pay } from '../pages/Pay'; // Import the Pay component
 import { useAuth } from '../hooks/auth';
 
 export function AppRoutes() {
@@ -18,6 +17,7 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/foodinfo/:id" element={<FoodInfo />} />
+      <Route path="/pay" element={<Pay />} /> {/* Add the route for Pay */}
     </Routes>
   );
 }
