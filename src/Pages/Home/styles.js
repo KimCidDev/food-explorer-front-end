@@ -184,26 +184,23 @@ export const Container = styled.div`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-      .banner {
-        background-color: red; /* Temporary style for debugging */
-        border: 5px solid;
-        flex-direction: column; /* Change to column for small screens */
-        align-items: center;
-        text-align: center;
-        padding: 5px 12px;
+      main {
+        .banner {
+          background: red; /* Temporary style for debugging */
+          flex-direction: column; /* Change to column for small screens */
+          align-items: center;
+          text-align: center;
+          padding: 5px 12px;
 
-        .textContent {
-          width: 90%; /* Adjust width to avoid text overflow */
-          p {
-            display: none;
+          .textContent {
+            width: 100%; /* Adjust width to avoid text overflow */
           }
-        }
 
-        img {
-          max-width: 90%; /* Ensure image fits within the container */
-          height: auto;
-          margin: 0; /* Remove margin for better alignment */
-          animation: ${wobbleAndHide} 1.5s ease-in-out; /* Apply the new animation */
+          img {
+            max-width: 100%; /* Ensure image fits within the container */
+            height: 200px; /* Force height to see if it is applied */
+            animation: ${wobbleAndHide} 1.5s ease-in-out; /* Apply the new animation */
+          }
         }
       }
     }
