@@ -1,23 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 24px;
+  display: inline-block;
+  margin-right: 4px;
+  background-color: ${({ theme }) => theme.COLORS.TAG_BG};
+  color: ${({ theme }) => theme.COLORS.TAG_TEXT};
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
 
-  border: none;
-  border-radius: 5px;
-
-  padding: 4px 8px;
-
-  margin: 12px;
-
-  background-color: ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
-
-  > p {
-    font-size: 15px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_200};
-    white-space: nowrap;
+  p {
+    margin: 0;
   }
 `;

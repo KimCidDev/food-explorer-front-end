@@ -10,6 +10,8 @@ export default {
     BUTTON_HOVER_COLOR: '#FB8C00', // Slightly darker for hover effect
     LOGO_COLOR: '#512D6D', // Match the new primary color for consistency
     ICON_COLOR: '#333333', // Match text color for uniformity
-    PLACEHOLDER_COLOR: '#757575' // Keeping the same as it's a good neutral placeholder color
+    PLACEHOLDER_COLOR: '#757575',
+    TAG_BG: '#f0f0f0',
+    TAG_TEXT: '#333' // Keeping the same as it's a good neutral placeholder color
   }
 };
