@@ -7,11 +7,13 @@ const sizes = {
 };
 
 export const Container = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   background-color: transparent;
 `;
 
@@ -29,7 +31,7 @@ export const breathingAnim = keyframes`
 export const Circle = styled.div`
   height: ${({ size }) => sizes[size]};
   width: ${({ size }) => sizes[size]};
-  border: 3px solid ${({ theme }) => theme.COLORS.COOLEST_PURPLE};
+  border: 3px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
   border-radius: 50%;
   animation: ${breathingAnim} 2s infinite;
 `;

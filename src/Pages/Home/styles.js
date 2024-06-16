@@ -147,17 +147,17 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       text-align: left;
-      padding: 20px;
       margin-top: 20px;
       background-color: ${({ theme }) => theme.COLORS.BANNER_BG};
-      border: 3px solid orange; /* Temporary style for debugging */
+      border: 3px solid orange;
+      border-radius: 33%; /* Temporary style for debugging */
 
       .textContent {
         margin-left: 20px;
       }
 
       img {
-        max-width: 43%; /* Ensures image doesn't exceed 80% of the container's width */
+        max-width: 33%; /* Ensures image doesn't exceed 80% of the container's width */
         height: auto; /* Maintains aspect ratio */
         animation: ${wobbleOnce} 1.5s ease-in-out;
         animation-fill-mode: forwards; /* Ensures the animation stops after one run */
