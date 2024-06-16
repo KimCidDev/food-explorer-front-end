@@ -145,16 +145,12 @@ export const Container = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       text-align: left;
-      margin-top: 20px;
+      margin-top: 30px;
       background-color: ${({ theme }) => theme.COLORS.BANNER_BG};
       border: 3px solid orange;
-      border-radius: 33%; /* Temporary style for debugging */
-
-      .textContent {
-        margin-left: 20px;
-      }
+      border-radius: 33px; /* Temporary style for debugging */
 
       img {
         max-width: 33%; /* Ensures image doesn't exceed 80% of the container's width */
