@@ -12,7 +12,7 @@ import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-const stripePromise = loadStripe('your-stripe-public-key');
+const stripePromise = loadStripe('pk_live_51PSQvcLWJE5BtmPhG8CDrwKJ8ZBM5U2XzRhjF2PxwoECezEp8YkCrqOCjY4pfVgiUU5tDTken67p48O2xi69XxSR00fGpnmSP8');
 
 export function Pay() {
   const { user, signOut } = useAuth();
@@ -60,7 +60,7 @@ function PaymentForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'your-redirect-url-after-payment',
+        return_url: 'https://favemeal.netlify.app/',
       },
     });
 
