@@ -15,6 +15,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: red;
 
     padding: 0 40px;
 
@@ -107,7 +108,7 @@ export const Container = styled.div`
     margin-top: 42px;
 
     img {
-      width: clamp(250px, 100%, 400px);
+      width: clamp(150px, 50%, 200px);
       margin-right: 60px;
     }
 
@@ -215,7 +216,7 @@ export const Container = styled.div`
 
   @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
     .section {
-      margin: 0 20px;
+      margin: 0 200px;
 
       .goBackLink {
         h2 {
@@ -227,10 +228,6 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         gap: 30px;
-
-        img {
-          margin: 0;
-        }
 
         .textContent {
           margin: 0 40px;
@@ -306,7 +303,7 @@ export const SectionWrapper = styled.div`
     align-items: center;
     gap: 10px;
 
-    h2 {  
+    h2 {
       cursor: pointer;
       color: ${({ theme }) => theme.COLORS.PRIMARY};
       font-size: 24px;
