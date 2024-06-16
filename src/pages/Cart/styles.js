@@ -58,8 +58,20 @@ export const Container = styled.div`
       color: #fff;
       cursor: pointer;
 
+      &:hover {
+        background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
+      }
+    }
 
-      //olá
+    .proceedButton {
+      width: 100%;
+      height: 40px;
+      background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+
       &:hover {
         background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
       }

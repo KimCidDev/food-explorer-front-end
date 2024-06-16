@@ -13,15 +13,13 @@ import { Button } from '../../components/Button';
 
 import { PiCopyright } from 'react-icons/pi';
 
-export function Cart () {
+export function Cart() {
   const { signOut } = useAuth();
-
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [temporaryCart, setTemporaryCart] = useState([]);
-
   const navigate = useNavigate();
 
   function addToTemporaryCart(dishId) {
@@ -36,7 +34,7 @@ export function Cart () {
       }
     }
   }
-   
+
   function subtractFromTemporaryCart(dishId) {
     const dishOnTheList = temporaryCart.find(dish => dish.id === dishId);
     if (dishOnTheList && dishOnTheList.quantity > 1) {
@@ -85,6 +83,10 @@ export function Cart () {
     const filteredCart = cart.filter(item => item.id !== dishId);
     localStorage.setItem('@foodExplorer:cart', JSON.stringify(filteredCart));
     setCart(filteredCart);
+  }
+
+  function handleProceedToPayment() {
+    navigate('/pay');
   }
 
   useEffect(() => {
@@ -166,6 +168,7 @@ export function Cart () {
               ))
             )
         }
+        <Button className="proceedButton" title="Proceed to Payment" onClick={handleProceedToPayment} />
         <h2 onClick={handleSignOut}>Sair</h2>
       </div>
       <Footer icon={PiCopyright}/>
