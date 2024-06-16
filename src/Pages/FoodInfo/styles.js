@@ -8,65 +8,6 @@ export const Container = styled.div`
   padding-bottom: 150px;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
-  > header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 clamp(0.8rem, 2vw, 2rem);
-
-    background-color: red;
-
-    .logo {
-      h1 {
-        color: ${({ theme }) => theme.COLORS.LOGO_COLOR};
-        font-size: 200px;
-      }
-    }
-
-    .searchAndCart {
-      display: none;
-    }
-
-    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      margin-bottom: clamp(15px, 90%, 30px);
-      padding: 0 120px;
-
-      .searchAndCart {
-        display: flex;
-        align-items: center;
-        width: 50%;
-        gap: 20px;
-
-        #searchInput {
-          height: 45px;
-          width: clamp(100px, 85%, 500px);
-          padding: 0 16px;
-          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-          background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
-          border: 1px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-          border-radius: 8px;
-        }
-
-        button {
-          height: 56px;
-          padding: 0 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
-          font-weight: bold;
-          white-space: nowrap;
-          background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-
-          &:hover {
-            background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
-          }
-        }
-      }
-    }
-  }
-
   .section {
     display: flex;
 
