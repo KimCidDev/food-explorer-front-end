@@ -18,7 +18,7 @@ export const Container = styled.div`
   padding-bottom: 90px;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
-  > div:first-child {
+  > header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,26 +109,34 @@ export const Container = styled.div`
     padding: 0 25px;
 
     .banner {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       background: ${({ theme }) => theme.COLORS.BACKGROUND};
       margin: 25px;
-      padding: 0 30px;
+      padding: 30px;
       border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
       overflow: hidden;
 
       img {
-        max-width: 100%;
-        height: clamp(15vh, 30vw, 375px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border-radius: 8px;
+        opacity: 0.5;
       }
 
       .textContent {
+        position: relative;
+        z-index: 1;
         display: flex;
         flex-direction: column;
         gap: 8px;
+        text-align: center;
 
         h2 {
           font-weight: bold;
@@ -138,7 +146,7 @@ export const Container = styled.div`
         }
 
         p {
-          text-align: left;
+          text-align: center;
           color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           font-size: clamp(0.8vw, 12px, 2vw);
           opacity: 0;
