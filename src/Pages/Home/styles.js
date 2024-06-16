@@ -10,22 +10,6 @@ const fadeIn = keyframes`
   }
 `;
 
-const wobbleAnimation = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
-    animation-timing-function: ease-in;
-  }
-  75% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
 const wobbleOnce = keyframes`
   0% {
     transform: scale(1);
@@ -164,6 +148,7 @@ export const Container = styled.div`
       justify-content: center;
       text-align: left;
       padding: 20px;
+      margin-top: 20px;
       background-color: ${({ theme }) => theme.COLORS.BANNER_BG};
       border: 3px solid orange; /* Temporary style for debugging */
 
@@ -172,7 +157,7 @@ export const Container = styled.div`
       }
 
       img {
-        max-width: 80%; /* Ensures image doesn't exceed 80% of the container's width */
+        max-width: 20%; /* Ensures image doesn't exceed 80% of the container's width */
         height: auto; /* Maintains aspect ratio */
         animation: ${wobbleOnce} 1.5s ease-in-out;
         animation-fill-mode: forwards; /* Ensures the animation stops after one run */
