@@ -10,6 +10,39 @@ const fadeIn = keyframes`
   }
 `;
 
+const wobbleAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+const wobbleAndHide = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+`;
+
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -109,55 +142,74 @@ export const Container = styled.div`
     padding: 0 25px;
 
     .banner {
-      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       background: ${({ theme }) => theme.COLORS.BACKGROUND};
       margin: 25px;
-      padding: 30px;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      overflow: hidden;
+      padding: 0 45px;
+      border: 3px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+      border-radius: 33px;
+      overflow: visible; /* Allow the image to overflow */
+      height: 75vh; /* Make the banner take up 75% of the viewport height */
+      position: relative;
 
       img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        max-width: 50%;
+        height: 35rem;
         object-fit: cover;
-        opacity: 0.5;
+        margin: -50px 0; /* Make the image overflow the top and bottom */
+        animation: ${wobbleAnimation} 1.5s ease-in-out;
       }
 
       .textContent {
-        position: relative;
-        z-index: 1;
         display: flex;
         flex-direction: column;
         gap: 8px;
-        text-align: center;
+        text-align: left;
+        width: 45%;
 
         h2 {
           font-weight: bold;
-          white-space: nowrap;
-          font-size: clamp(0.8vw, 18px, 2.5vw);
+          font-size: clamp(1.5rem, 3vw, 3rem);
           color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
         }
 
         p {
-          text-align: center;
+          font-size: clamp(1rem, 1.5vw, 1.5rem);
           color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-          font-size: clamp(0.8vw, 12px, 2vw);
-          opacity: 0;
           animation: ${fadeIn} 4s ease forwards;
+        }
+      }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+      .banner {
+        background-color: red; /* Temporary style for debugging */
+        border: 5px solid;
+        flex-direction: column; /* Change to column for small screens */
+        align-items: center;
+        text-align: center;
+        padding: 5px 12px;
+
+        .textContent {
+          width: 90%; /* Adjust width to avoid text overflow */
+          p {
+            display: none;
+          }
+        }
+
+        img {
+          max-width: 90%; /* Ensure image fits within the container */
+          height: auto;
+          margin: 0; /* Remove margin for better alignment */
+          animation: ${wobbleAndHide} 1.5s ease-in-out; /* Apply the new animation */
         }
       }
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
       .banner {
-        align-items: center;
         margin-bottom: 50px;
       }
     }
@@ -166,35 +218,23 @@ export const Container = styled.div`
       padding: 0;
 
       .banner {
-        max-height: 300px;
-        justify-content: center;
         margin: 30px 120px 62px 120px;
-        gap: clamp(2vw, 5vw, 10vw);
-        overflow: hidden;
 
         .textContent {
-          width: auto;
+          width: 45%;
 
           h2 {
-            font-size: clamp(2vw, 14px, 4vw);
+            font-size: clamp(2vw, 2rem, 4vw);
           }
 
           p {
             margin-top: 5px;
-            font-size: clamp(1vw, 10px, 2vw);
+            font-size: clamp(1vw, 1rem, 2vw);
           }
         }
-      }
-    }
 
-    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-      .banner {
-        min-height: 50px;
-        padding: 5px 12px;
-        overflow: hidden;
-
-        .textContent p {
-          display: none;
+        img {
+          max-width: 50%;
         }
       }
     }
