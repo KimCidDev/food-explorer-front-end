@@ -7,8 +7,7 @@ import { Container } from './styles';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
-import { DatePicker } from '../../components/DatePicker'; // Assuming you have a DatePicker component
-
+import { DatePicker } from '../../components/DatePicker'.;
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
