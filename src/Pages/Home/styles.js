@@ -157,7 +157,7 @@ export const Container = styled.div`
       }
 
       img {
-        max-width: 20%; /* Ensures image doesn't exceed 80% of the container's width */
+        max-width: 40%; /* Ensures image doesn't exceed 80% of the container's width */
         height: auto; /* Maintains aspect ratio */
         animation: ${wobbleOnce} 1.5s ease-in-out;
         animation-fill-mode: forwards; /* Ensures the animation stops after one run */

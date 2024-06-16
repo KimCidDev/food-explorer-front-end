@@ -6,5 +6,13 @@ export default defineConfig({
   root: '.',
   build: {
     outDir: 'build'
+  },
+  server: {
+    watch: {
+      usePolling: true // Use polling for file changes, useful in some environments
+    },
+    hmr: {
+      overlay: true // Enable HMR overlay for showing errors in the browser
+    }
   }
 });
