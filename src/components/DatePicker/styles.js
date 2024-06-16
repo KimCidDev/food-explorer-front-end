@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-
-  .react-datepicker {
-    border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
-    border-radius: 8px;
-    background-color: ${({ theme }) => theme.COLORS.FORM_BG};
+  .react-datepicker-wrapper {
+    width: 100%;
   }
 
-  .react-datepicker__header {
-    background-color: ${({ theme }) => theme.COLORS.PRIMARY};
-    border-bottom: none;
-  }
-
-  .react-datepicker__day--selected {
-    background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-    color: #fff;
+  .react-datepicker__input-container {
+    width: 100%;
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
+      background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+      font-size: 16px;
+      &:focus {
+        border-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+      }
+    }
   }
 `;

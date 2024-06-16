@@ -4,34 +4,33 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-  padding: 20px;
+  padding-bottom: 90px;
   overflow-y: auto;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  h2 {
-    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
+  h2,
   h3 {
     color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-    font-size: 18px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: ${({ theme }) => theme.COLORS.FORM_BG};
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     button {
-      width: 100%;
-      max-width: 200px;
-      align-self: center;
+      margin-top: 20px;
       background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-
       &:hover {
         background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
       }
