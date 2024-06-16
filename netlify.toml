@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist" # Ensure this matches your actual build output directory
+  publish = "dist"
 
 [build.environment]
   NODE_ENV = "production"
