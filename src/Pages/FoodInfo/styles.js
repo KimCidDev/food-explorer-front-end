@@ -281,3 +281,47 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const SectionWrapper = styled.div`
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 20px;
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      margin: 50px 120px;
+
+      .childrenBox {
+        margin: 30px 40px;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+      }
+    }
+  }
+
+  .goBackLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    h2 {  
+      cursor: pointer;
+      color: ${({ theme }) => theme.COLORS.PRIMARY};
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      align-items: flex-start;
+      text-align: justify;
+    }
+  }
+`;
