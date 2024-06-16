@@ -1,10 +1,12 @@
+import { Container } from './styles';
+
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper } from '../../components/Swiper';
 
-import { Container } from './styles';
+
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
