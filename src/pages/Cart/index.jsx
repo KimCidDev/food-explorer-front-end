@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useNavigate } from 'react-router-dom';
+
 import { Container } from './styles';
-import { BiMinus, BsPlusLg, BsSearch, BsXLg } from 'react-icons/bs';
+import { BiMinus } from 'react-icons/bi';
+import { BsPlusLg, BsSearch, BsXLg } from 'react-icons/bs';
 import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
+
 import { PiCopyright } from 'react-icons/pi';
 
 export function Cart() {
@@ -17,6 +20,7 @@ export function Cart() {
   const [loading, setLoading] = useState(true);
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [temporaryCart, setTemporaryCart] = useState([]);
+
   const navigate = useNavigate();
 
   function addToTemporaryCart(dishId) {
@@ -81,10 +85,6 @@ export function Cart() {
     localStorage.setItem('@foodExplorer:cart', JSON.stringify(filteredCart));
     setCart(filteredCart);
   }
-
-  const handleCheckout = () => {
-    navigate('/pay');
-  };
 
   useEffect(() => {
     async function fetchCartDishes() {
@@ -165,10 +165,10 @@ export function Cart() {
               ))
             )
         }
+        <Button title="Proceed to Payment" onClick={() => navigate('/pay')} />
         <h2 onClick={handleSignOut}>Sair</h2>
-        <Button title="Proceed to Payment" onClick={handleCheckout} /> {/* Add this line */}
       </div>
-      <Footer icon={PiCopyright}/>
+      <Footer icon={PiCopyright} />
     </Container>
   )
 }
