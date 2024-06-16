@@ -1,44 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { useAuth } from '../../hooks/auth';
-import { api } from '../../services/api';
 import { Container } from './styles';
-import { BiMinus } from 'react-icons/bi';
-import { BsPlusLg, BsSearch, BsXLg } from 'react-icons/bs';
-import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
+import DatePicker from '../../components/DatePicker';
+import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
+import { AiOutlineMenu } from 'react-icons/ai';
+import axios from 'axios';
 
-export function Cart() {
-  const { signOut } = useAuth();
+const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
+
+export function Pay() {
+  const { user, signOut } = useAuth();
   const [cart, setCart] = useState([]);
-  const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [dishSearchResult, setDishSearchResult] = useState([]);
-  const [temporaryCart, setTemporaryCart] = useState([]);
-  const navigate = useNavigate();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const addToTemporaryCart = (dishId) => {
-    const dishOnTheList = temporaryCart.find(dish => dish.id === dishId);
-    if (dishOnTheList) {
-      dishOnTheList.quantity += 1;
-      setTemporaryCart([...temporaryCart]);
-    } else {
-      const dishResult = dishSearchResult.find(dish => dish.id === dishId);
-      if (dishResult) {
-        setTemporaryCart([...temporaryCart, { ...dishResult, quantity: 1 }]);
-      }
-    }
-  };
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem('@foodExplorer:cart')) || [];
+    setCart(cartItems);
+  }, []);
 
-  const subtractFromTemporaryCart = (dishId) => {
-    const dishOnTheList = temporaryCart.find(dish => dish.id === dishId);
-    if (dishOnTheList && dishOnTheList.quantity > 1) {
-      dishOnTheList.quantity -= 1;
-      setTemporaryCart([...temporaryCart]);
-    }
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
 
   const handleSignOut = () => {
@@ -46,129 +33,40 @@ export function Cart() {
     return signOut();
   };
 
-  const handleSaveToCart = (dishId) => {
-    try {
-      const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]';
-      const cartUpdated = JSON.parse(cartDishes);
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
 
-      const dishInfo = dishSearchResult.find(dish => dish.id === dishId);
-      if (!dishInfo) {
-        console.error('Dish information not found');
-        return;
-      }
+    const items = cart.map(item => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    }));
 
-      const existingCartItem = cartUpdated.find(item => item.id === dishId);
-      const quantityInTemporaryCart = temporaryCart.find(item => item.id === dishId)?.quantity || 1;
+    const { data: { id } } = await axios.post('http://localhost:5555/payments/create-checkout-session', {
+      items,
+    });
 
-      if (existingCartItem) {
-        existingCartItem.quantity = quantityInTemporaryCart;
-      } else {
-        cartUpdated.push({ ...dishInfo, quantity: quantityInTemporaryCart });
-      }
-
-      localStorage.setItem('@foodExplorer:cart', JSON.stringify(cartUpdated));
-      setCart(cartUpdated);
-      setTemporaryCart([]);
-      alert('Meal placed on the cart. Yummy!');
-      setSearch('');
-      setLoading(false);
-    } catch (error) {
-      console.error('Error saving to cart:', error);
+    const { error } = await stripe.redirectToCheckout({ sessionId: id });
+    if (error) {
+      console.error('Error during redirect to checkout:', error);
     }
   };
-
-  const handleRemoveFromCart = (dishId) => {
-    const filteredCart = cart.filter(item => item.id !== dishId);
-    localStorage.setItem('@foodExplorer:cart', JSON.stringify(filteredCart));
-    setCart(filteredCart);
-  };
-
-  const handlePaymentRedirect = () => {
-    navigate('/pay');
-  };
-
-  useEffect(() => {
-    async function fetchCartDishes() {
-      try {
-        const cartDishes = localStorage.getItem('@foodExplorer:cart') || '[]';
-        const cartUpdated = JSON.parse(cartDishes);
-        setCart(cartUpdated);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching dish information:', error);
-      }
-    }
-    fetchCartDishes();
-  }, []);
-
-  useEffect(() => {
-    async function fetchDishesBySearch() {
-      try {
-        const response = await api.get(`/dishes?name=${search}`);
-        const dishesWithQuantity = response.data.map(dish => ({
-          ...dish,
-          quantity: 1
-        }));
-        setDishSearchResult(dishesWithQuantity);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching dish information:', error);
-      }
-    }
-    fetchDishesBySearch();
-  }, [search]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Container>
-      <Header icon={BsXLg} to='/'>
-        <h1 onClick={() => console.log(cart)}>Basket</h1>
+      <Header icon={AiOutlineMenu}>
+        <h2>Olá, {user.name}</h2>
+        <ImExit onClick={handleSignOut} />
       </Header>
-      <div className="itemSearchBox">
-        <Input
-          placeholder="Procure pelo prato ou ingrediente desejado"
-          type="text"
-          icon={BsSearch}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        {search ? (
-          dishSearchResult.map((dish) => (
-            <div className='overviewBox' key={dish.id}>
-              <h3>{dish.name}</h3>
-              <p>{dish.price}</p>
-              <div className='howManyBox'>
-                <BiMinus onClick={() => subtractFromTemporaryCart(dish.id)} />
-                <p>{temporaryCart.find(item => item.id === dish.id)?.quantity || 1}</p>
-                <BsPlusLg onClick={() => addToTemporaryCart(dish.id)} />
-                <Button
-                  icon={BsPlusLg}
-                  onClick={() => handleSaveToCart(dish.id)}
-                />
-              </div>
-            </div>
-          ))
-        ) : (
-          cart.map((dish) => (
-            <div className='overviewBox' key={dish.id}>
-              <h3>{dish.name}</h3>
-              <p>{dish.price}</p>
-              <p>{dish.quantity}</p>
-              <Button
-                icon={BsXLg}
-                onClick={() => handleRemoveFromCart(dish.id)}
-              />
-            </div>
-          ))
-        )}
-        <Button
-          title="Proceed to Payment"
-          onClick={handlePaymentRedirect}
-        />
-        <h2 onClick={handleSignOut}>Sair</h2>
-      </div>
+
+      <Elements stripe={stripePromise}>
+        <h2>Pague com o cartão</h2>
+        <Button title="Pagar" onClick={handleCheckout} />
+      </Elements>
+
+      <h3>Escolha uma data para a entrega</h3>
+      <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+
       <Footer icon={PiCopyright} />
     </Container>
   );
