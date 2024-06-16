@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loadStripe } from '../../../node_modules/@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useAuth } from '../../hooks/auth';
@@ -7,6 +7,7 @@ import { Container } from './styles';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
+import { DatePicker } from '../../components/DatePicker'; // Assuming you have a DatePicker component
 
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
@@ -17,7 +18,7 @@ const stripePromise = loadStripe('your-stripe-public-key');
 export function Pay() {
   const { user, signOut } = useAuth();
   const [selectedDate, setSelectedDate] = useState(new Date());
-  
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
