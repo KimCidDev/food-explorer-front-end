@@ -112,7 +112,7 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(#091e26, #00131c);
+      background: ${({ theme }) => theme.COLORS.BACKGROUND};
       margin: 25px;
       padding: 0 30px;
       border-radius: 8px;
@@ -134,12 +134,12 @@ export const Container = styled.div`
           font-weight: bold;
           white-space: nowrap;
           font-size: clamp(0.8vw, 18px, 2.5vw);
-          color: ${({ theme }) => theme.COLORS.FORM_BG};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
         }
 
         p {
           text-align: left;
-          color: ${({ theme }) => theme.COLORS.FORM_BG};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           font-size: clamp(0.8vw, 12px, 2vw);
           opacity: 0;
           animation: ${fadeIn} 4s ease forwards;
@@ -191,17 +191,4 @@ export const Container = styled.div`
       }
     }
   }
-`;
-
-export const BreathingContainer = styled.div`
-  display: ${({ loading }) => (loading ? 'flex' : 'none')};
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
-  z-index: 999;
 `;

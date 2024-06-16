@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export function Header({ icon: Icon, children, to }) {
   return (
-    <Container>
+    <Container as="header">
       <Link id="menuLink" to={to}>
         {Icon && <Icon size={20} />}
       </Link>

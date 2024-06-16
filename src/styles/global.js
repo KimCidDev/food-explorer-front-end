@@ -50,7 +50,64 @@ export default createGlobalStyle`
     font-weight: 600; /* Increased font weight for better visibility */
   }
 
-  h2, p, svg {
+  /* General text color */
+  h2, p {
     color: ${({ theme }) => theme.COLORS.TEXT_COLOR}; /* Dark text color */
+  }
+
+  /* Specific rules for text on dark backgrounds */
+  header, footer, .navbar {
+    background-color: ${({ theme }) => theme.COLORS.PRIMARY};
+    color: #FFFFFF; /* Light text color for dark background */
+  }
+
+  header h1, header h2, header h3, header p,
+  footer h1, footer h2, footer h3, footer p,
+  .navbar h1, .navbar h2, .navbar h3, .navbar p {
+    color: #FFFFFF; /* Ensure all text within header, footer, and navbar is white */
+  }
+
+  .navbar a, header a, footer a {
+    color: #FFFFFF; /* Ensure links are also white */
+  }
+
+  /* Buttons */
+  button {
+    background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
+  }
+
+  /* Input and Textarea */
+  input, textarea {
+    background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+    border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
+  }
+
+  /* Form Container */
+  .form-container {
+    background-color: ${({ theme }) => theme.COLORS.FORM_BG};
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    color: ${({ theme }) => theme.COLORS.ICON_COLOR};
   }
 `;

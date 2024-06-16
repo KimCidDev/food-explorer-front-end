@@ -1,11 +1,10 @@
-// src/pages/Home/index.jsx
-
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper } from '../../components/Swiper';
-import { Container, BreathingContainer } from './styles';
+
+import { Container } from './styles';
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
@@ -13,20 +12,25 @@ import { Footer } from '../../components/Footer';
 import { Section } from '../../components/Section';
 import { Greeting } from '../../components/Greeting';
 import { Breathing } from '../../components/Breathing';
+
 import { ImExit } from 'react-icons/im';
+import { BsStar } from 'react-icons/bs';
 import { IoIosBasket } from 'react-icons/io';
 import { PiCopyright } from 'react-icons/pi';
+import { AiOutlineMenu } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti';
 
 import macaroon from '../../assets/bannerImg.png';
 
 export function Home() {
   const { signOut, user } = useAuth();
+
   const [name, setName] = useState(user.name);
   const [dishes, setDishes] = useState([]);
   const [search, setSearch] = useState("");
   const [dishSearchResult, setDishSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
+
   const menuPath = '/cart';
   const navigate = useNavigate();
 
@@ -54,9 +58,12 @@ export function Home() {
     async function fetchDishes() {
       try {
         setLoading(true);
-        const response = await api.get(`/dishes?name=${search}`);
+
+        const response = await api.get(`/dishes?name=${search}`)
+        console.log(response.data);
         const allDishes = response.data;
         localStorage.setItem('@foodExplorer:dishes', JSON.stringify(allDishes));
+
         setDishes(allDishes);
         setLoading(false);
       } catch (error) {
@@ -73,11 +80,13 @@ export function Home() {
     async function fetchDishesBySearch() {
       try {
         const response = await api.get(`/dishes?name=${search}`);
+        console.log(response.data);
         setDishSearchResult(response.data);
       } catch (error) {        
         console.error('Error fetching dish information:', error);
       }
     }
+
     fetchDishesBySearch();
   }, [search]);
 
@@ -91,12 +100,20 @@ export function Home() {
             id="searchInput"
             type="text"
             placeholder="Search for your favorite dish..."
-            onChange={((e) => setSearch(e.target.value))}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          { user.isAdmin ?
-            <Button icon={TiShoppingCart} title="New Dish" onClick={handleNavigateNewDish} />
+          {user.isAdmin ?
+            <Button 
+              icon={TiShoppingCart}
+              title="New Dish"
+              onClick={handleNavigateNewDish}
+            />
             :       
-            <Button icon={TiShoppingCart} title="View Cart" onClick={handleNavigateCart} />     
+            <Button 
+              icon={TiShoppingCart}
+              title="View Cart"
+              onClick={handleNavigateCart}
+            />
           }
         </div>
         <ImExit onClick={handleSignOut} />
@@ -112,27 +129,30 @@ export function Home() {
             </div>
           </div>
         )}
+
         {loading && (
-          <BreathingContainer loading={loading}>
-            <Breathing size="medium"/>
-          </BreathingContainer>
+          <div className="loading-container">
+            <Breathing size="medium" />
+          </div>
         )}
+
         {saladDishes.length > 0 && (
           <Section title="Salads">
-            <Swiper dishes={saladDishes} isAdmin={user.isAdmin}/>
+            <Swiper dishes={saladDishes} isAdmin={user.isAdmin} />
           </Section>
         )}
         {mainDishes.length > 0 && (
           <Section title="Main">
-            <Swiper dishes={mainDishes} isAdmin={user.isAdmin}/>
+            <Swiper dishes={mainDishes} isAdmin={user.isAdmin} />
           </Section>
         )}
         {dessertDishes.length > 0 && (
           <Section title="Desserts">
-            <Swiper dishes={dessertDishes} isAdmin={user.isAdmin}/>
+            <Swiper dishes={dessertDishes} isAdmin={user.isAdmin} />
           </Section>
         )}
       </main>
+
       <Footer icon={PiCopyright} />
     </Container>
   );
