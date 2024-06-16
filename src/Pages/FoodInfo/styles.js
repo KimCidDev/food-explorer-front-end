@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   padding-bottom: 150px;
 
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
   > div:first-child {
     display: flex;
@@ -19,11 +19,13 @@ export const Container = styled.div`
     padding: 0 40px;
 
     .logo h1 {
+      color: ${({ theme }) => theme.COLORS.LOGO_COLOR};
       font-size: 21px;
     }
 
     .logo svg {
       height: 21px;
+      color: ${({ theme }) => theme.COLORS.LOGO_COLOR};
     }
 
     > .searchAndCart {
@@ -53,12 +55,12 @@ export const Container = styled.div`
           height: 45px;
           width: clamp(100px, 85%, 500px);
 
-          color: ${({ theme }) => theme.COLORS.LIGHT_200};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
 
           padding: 0 16px;
-          background-color: ${({ theme }) => theme.COLORS.DARK_900};
+          background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
 
-          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          border: 1px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
           border-radius: 8px;
         }
 
@@ -69,7 +71,6 @@ export const Container = styled.div`
 
         button {
           height: 56px;
-
           padding: 0 10px;
 
           display: flex;
@@ -79,6 +80,13 @@ export const Container = styled.div`
 
           font-weight: bold;
           white-space: nowrap;
+
+          background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+
+          &:hover {
+            background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
+          }
         }
       }
     }
@@ -89,7 +97,7 @@ export const Container = styled.div`
     margin: 0 120px;
 
     h2 {
-      color: ${({ theme }) => theme.COLORS.PURPLE_200};
+      color: ${({ theme }) => theme.COLORS.PRIMARY};
     }
   }
 
@@ -109,7 +117,7 @@ export const Container = styled.div`
       align-items: center;
 
       h1 {
-        color: ${({ theme }) => theme.COLORS.LIGHT_200};
+        color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
         font-size: 27px;
         display: flex;
         align-items: center;
@@ -152,7 +160,7 @@ export const Container = styled.div`
         gap: 20px;
 
         p {
-          color: ${({ theme }) => theme.COLORS.LIGHT_300};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           font-family: 'Poppins', sans-serif;
           font-size: clamp(2vw, 14px, 2.5vw);
           text-align: justify;
@@ -172,6 +180,7 @@ export const Container = styled.div`
 
           svg {
             font-size: 52px;
+            color: ${({ theme }) => theme.COLORS.ICON_COLOR};
           }
 
           p {
@@ -197,7 +206,7 @@ export const Container = styled.div`
 
           p {
             font-size: 1rem;
-            color: ${({ theme }) => theme.COLORS.LIGHT_200};
+            color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           }
         }
       }
@@ -264,6 +273,10 @@ export const Container = styled.div`
       svg,
       p {
         font-size: 22px;
+      }
+
+      svg {
+        color: ${({ theme }) => theme.COLORS.ICON_COLOR};
       }
     }
   }
