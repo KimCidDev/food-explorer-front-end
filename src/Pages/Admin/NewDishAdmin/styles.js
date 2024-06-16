@@ -4,18 +4,14 @@ import { DEVICE_BREAKPOINTS } from '../../../styles/deviceBreakpoints';
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-
   padding-bottom: 90px;
-
   overflow-y: auto;
-
-  background-color: ${({ theme }) => theme.COLORS.DARK_400};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
   > div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 40px;
 
     .logo h1 {
@@ -26,12 +22,12 @@ export const Container = styled.div`
       height: 21px;
     }
 
-    > .searchAndCart {
+    .searchAndCart {
       display: none;
     }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-      > .searchAndCart {
+      .searchAndCart {
         display: flex;
         width: 50%;
         gap: 20px;
@@ -39,25 +35,19 @@ export const Container = styled.div`
         #searchInput {
           height: 32px;
           width: clamp(240px, 95%, 400px);
-
           padding: 0 16px;
-
-          background-color: ${({ theme }) => theme.COLORS.DARK_900};
-
-          border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+          background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+          border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
           border-radius: 8px;
         }
 
         button {
           height: 32px;
-
           padding: 0 10px;
-
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 12px;
-
           font-weight: bold;
           white-space: nowrap;
         }
@@ -65,36 +55,27 @@ export const Container = styled.div`
     }
   }
 
-  > .section {
-    padding: 0 24px;
-
+  .section {
+    padding: 20px;
     margin-bottom: 8px;
 
-    > h1 {
-      color: ${({ theme }) => theme.COLORS.LIGHT_200};
-    }
-
-    > h1:first-child {
+    h1 {
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
       font-size: 16px;
     }
 
-    > .childrenBox {
+    .childrenBox {
       display: flex;
       flex-direction: column;
-
       gap: 18px;
-
       height: 100%;
 
-      > h1 {
-        color: ${({ theme }) => theme.COLORS.LIGHT_200};
+      h1 {
+        color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
         margin-bottom: 20px;
       }
 
-      display: flex;
-      flex-direction: column;
-
-      > .formTop {
+      .formTop {
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -106,22 +87,19 @@ export const Container = styled.div`
           display: none;
           margin: 0;
           padding: 0;
+          border: none;
         }
 
         .dishImg label {
           display: flex;
           align-items: center;
-
           width: 100%;
           height: 50px;
-
           padding: 0 14px;
           gap: 8px;
-
+          border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
           border-radius: 8px;
-          border: none;
-
-          background-color: ${({ theme }) => theme.COLORS.DARK_800};
+          background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
 
           svg {
             font-size: 21px;
@@ -129,50 +107,41 @@ export const Container = styled.div`
         }
       }
 
-      > .formMiddle {
+      .formMiddle {
         display: flex;
         flex-direction: column;
         gap: 24px;
         margin-bottom: 24px;
 
-        > div .inputBox input {
-          width: 100px;
-        }
-
         .ingredientBox h3 {
-          color: ${({ theme }) => theme.COLORS.LIGHT_100};
+          color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           font-size: 14px;
           font-weight: normal;
         }
 
         .ingredientBox .tagBox {
-          height: 45px;
-
+          display: flex;
           align-items: center;
-
+          flex-wrap: wrap;
           margin-top: 8px;
-          padding: 26px 14px;
-          gap: 16px;
-
-          background-color: ${({ theme }) => theme.COLORS.DARK_900};
-
+          padding: 16px;
+          gap: 10px;
+          background-color: ${({ theme }) => theme.COLORS.TAG_BG};
           border-radius: 8px;
 
-          > div {
-            height: 32px;
-            padding: 10px 16px;
-
-            margin: 12px 0;
-
+          div {
+            background-color: ${({ theme }) => theme.COLORS.SECONDARY};
             border-radius: 10px;
+            padding: 10px;
+            margin: 8px 0;
             p {
-              color: ${({ theme }) => theme.COLORS.LIGHT_300};
+              color: ${({ theme }) => theme.COLORS.TAG_TEXT};
             }
           }
         }
       }
 
-      > .formBottom {
+      .formBottom {
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -182,92 +151,84 @@ export const Container = styled.div`
           width: 100%;
           height: 120px;
           border-radius: 8px;
-
-          background-color: ${({ theme }) => theme.COLORS.DARK_800};
+          background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
 
           h3 {
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            background-color: ${({ theme }) => theme.COLORS.DARK_400};
-            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+            margin: 0;
+            padding: 0;
+            color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
           }
 
-          > textarea {
+          textarea {
             width: 100%;
             height: 80px;
-
-            padding: 10px 0 0 10px;
-
-            color: ${({ theme }) => theme.COLORS.LIGHT_200};
-
+            color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
             border-radius: 8px;
             border: none;
-
             background-color: transparent;
+            margin: 0;
 
             &::placeholder {
-              color: ${({ theme }) => theme.COLORS.LIGHT_500};
+              color: ${({ theme }) => theme.COLORS.PLACEHOLDER_COLOR};
               font-family: 'Roboto';
+              font-style: italic;
             }
           }
         }
 
-        > .saveInfoBox {
+        .saveInfoBox {
           display: flex;
           gap: clamp(40px, 100px, 200px);
 
           button {
             width: 100%;
-            background-color: ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
+            max-width: 125px;
+            background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+            border: 1px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+            color: ${({ theme }) => theme.COLORS.FORM_BG};
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: ${({ theme }) =>
+                theme.COLORS.BUTTON_HOVER_COLOR};
+            }
           }
         }
       }
 
       @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-        padding: 0 80px;
-
-        > .formTop {
+        .formTop {
           flex-direction: row;
           flex-wrap: wrap;
           gap: 32px;
 
-          div {
-            flex-basis: calc(100% - 16px);
+          .inputBox:first-child {
+            border: 0px solid black;
           }
         }
 
         .formMiddle {
           flex-direction: row;
           align-items: center;
-
           gap: 32px;
 
-          > h3 {
-            margin-bottom: 130px;
-          }
-
-          > .ingredientBox {
+          .ingredientBox {
             width: 100vw;
           }
 
-          > .ingredientBox .tagBox {
+          .ingredientBox .tagBox {
             display: flex;
             margin-top: 8px;
-            width: 100%;
-          }
-
-          > div .inputBox input {
             width: 100%;
           }
         }
 
         .formBottom {
           width: 100%;
-
           display: flex;
           justify-content: end;
 
-          > .description {
+          .description {
             width: 100%;
 
             textarea {
@@ -276,9 +237,8 @@ export const Container = styled.div`
             }
           }
 
-          > .saveInfoBox {
+          .saveInfoBox {
             width: 100%;
-
             display: flex;
             justify-content: end;
             gap: 30px;
@@ -288,23 +248,28 @@ export const Container = styled.div`
             }
 
             button:first-child {
-              border: 1px solid ${({ theme }) => theme.COLORS.TINT_TOMATO_400};
-              background-color: ${({ theme }) => theme.COLORS.DARK_800};
+              background-color: ${({ theme }) => theme.COLORS.INPUT_BG};
+              border: 1px solid ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+              color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
               max-width: 125px;
+
+              &:hover {
+                background-color: ${({ theme }) =>
+                  theme.COLORS.BUTTON_HOVER_COLOR};
+                color: ${({ theme }) => theme.COLORS.FORM_BG};
+              }
             }
           }
         }
       }
 
       @media (min-width: ${DEVICE_BREAKPOINTS.XL}) {
-        padding: 0 125px;
-
-        > .formTop {
+        .formTop {
           max-width: 100%;
           flex-direction: row;
           gap: 32px;
 
-          > div {
+          div {
             width: clamp(100%, 100%, 300px);
           }
         }
@@ -312,30 +277,21 @@ export const Container = styled.div`
         .formMiddle {
           flex-direction: row;
           align-items: center;
-
           gap: 32px;
 
-          > h3 {
-            margin-bottom: 130px;
-          }
-
-          > .ingredientBox {
+          .ingredientBox {
             display: flex;
             flex-direction: column;
             gap: 10px;
-
-            .tagBox {
-            }
           }
         }
 
         .formBottom {
           width: 100%;
-
           display: flex;
           justify-content: end;
 
-          > .description {
+          .description {  
             width: 100%;
 
             textarea {
@@ -344,7 +300,7 @@ export const Container = styled.div`
             }
           }
 
-          > button {
+          button {
             width: 98px;
           }
         }

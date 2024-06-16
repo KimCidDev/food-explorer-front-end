@@ -20,7 +20,6 @@ export const Container = styled.footer`
 
   > div {
     display: flex;
-    align-items: center;
 
     svg {
       height: 18px;

@@ -20,194 +20,170 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-export function NewDishAdmin () {
+export function NewDishAdmin() {
   const { signOut } = useAuth();
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
-  
-  const [ name, setName ] = useState("");
-  const [ description, setDescription ] = useState("");
-  const [ price, setPrice ] = useState("");
-  const [ category, setCategory ] = useState("");
-
-  const [ dishImgFile, setdishImgFile ] = useState(null);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [dishImgFile, setDishImgFile] = useState(null);
 
   const navigate = useNavigate();
 
-  function handleNavigateHome () {
+  function handleNavigateHome() {
     navigate('/');
   }
 
   async function handleAddTags(e) {
     e.preventDefault();
-    console.log(newTag);
-    setTags(prevState => [...prevState, newTag]);
+    setTags((prevState) => [...prevState, newTag]);
     setNewTag("");
   }
 
   async function handleCreateDish() {
     try {
-      
       const dishData = {
-      name,
-      description,
-      category,
-      price,
-      tags
-    };
+        name,
+        description,
+        category,
+        price,
+        tags
+      };
 
-    let dishImgFileName = null;
-    if (dishImgFile) {
-      const fileFormData = new FormData();
-      fileFormData.append('dishImg', dishImgFile);
+      let dishImgFileName = null;
+      if (dishImgFile) {
+        const fileFormData = new FormData();
+        fileFormData.append('dishImg', dishImgFile);
 
-      const response = await api.post('/dishes/upload', fileFormData);
-      dishImgFileName = response.data.fileName;
-    }
+        const response = await api.post('/dishes/upload', fileFormData);
+        dishImgFileName = response.data.fileName;
+      }
 
-    const dish = {
-      ...dishData,
-      dishImg: dishImgFileName
-    } 
+      const dish = {
+        ...dishData,
+        dishImg: dishImgFileName
+      };
 
-    console.log(dish)
-    
-    await api.post("/dishes", dish);
-    
-
-    return alert("Prato criado com sucesso");
-
-
-    } catch (error) {      
-      if(error.response) {
-        alert(error.response.data.message)
+      await api.post("/dishes", dish);
+      alert("Dish created successfully");
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
       } else {
-        alert("Não foi possível autenticar o seu login")
+        alert("Could not authenticate your login");
       }
     }
-
   }
 
-  async function handleAvatarImgUpdate (event) {
+  async function handleAvatarImgUpdate(event) {
     const file = event.target.files[0];
-    console.log(file)
-    setdishImgFile(file)
- }
-
- function handleSignOut () {
-  navigate('/');
-  return signOut();
-}
-
-// Ao invés disso podia ser algo como function pra limpar os campos
-
-async function handleDeleteDish () {
-  const confirm = window.confirm("Deseja realmente excluir esse prato?")
-
-  if (confirm) {
-    navigate('/');
-    return await api.delete(`/dishes/${id}`);
+    setDishImgFile(file);
   }
-}
 
-  
+  function handleSignOut() {
+    navigate('/');
+    return signOut();
+  }
 
   return (
     <Container>
       <Header icon={AiOutlineMenu}>
         <Logo />
         <div className="searchAndCart">
-          <input 
-          id="searchInput"
-          type="text" 
-          placeholder="Search for your favorite dish..."/>
-          <Button 
-          icon={TiShoppingCart} 
-          title="View Basket"
-          onClick={() => navigate('/cart')}
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search for your favorite dish..."
+          />
+          <Button
+            icon={TiShoppingCart}
+            title="View Basket"
+            onClick={() => navigate('/cart')}
           />
         </div>
-        <ImExit onClick={handleSignOut}/>
+        <ImExit onClick={handleSignOut} />
       </Header>
 
       <Section
-      icon={AiOutlineLeft}
-      title="voltar"       
-      onClick={handleNavigateHome}>
-
+        icon={AiOutlineLeft}
+        title="Back"
+        onClick={handleNavigateHome}
+      >
         <h1>Add Details of the new dish</h1>
 
         <div className="formTop">
-        <div className="dishImg">
-          <Input 
-          title="Dish Image"
-          type="file"
-          id="hiddenInput"
-          onChange={handleAvatarImgUpdate}
-          />
-          <label htmlFor="hiddenInput">
-            <MdOutlineFileDownload />
-            <p>Change Image</p>
-        </label>
-        </div>
-          <Input 
-          title="Dish Name"
-          placeholder="New dish name"
-          onChange={e=> setName(e.target.value)}
+          <div className="dishImg">
+            <Input
+              title="Dish Image"
+              type="file"
+              id="hiddenInput"
+              onChange={handleAvatarImgUpdate}
+            />
+            <label htmlFor="hiddenInput">
+              <MdOutlineFileDownload />
+              <p>Change Image</p>
+            </label>
+          </div>
+          <Input
+            title="Dish Name"
+            placeholder="New dish name"
+            onChange={(e) => setName(e.target.value)}
           />
           <Select
-          title="Category"
-          value={category}
-          onChange={e=> setCategory(e.target.value)}
+            title="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
           />
         </div>
 
-        <div className="formMiddle">          
-          <Input 
-          title="Price"
-          placeholder="Ex.: 19.90" 
-          onChange={e=> setPrice(`CAD$ ${e.target.value}`)}
-        />        
+        <div className="formMiddle">
+
           <div className="ingredientBox">
             <h3>Tags</h3>
-              <Input 
+            <Input
               placeholder="Add a tag"
-              onChange={e => setNewTag(e.target.value)}
+              onChange={(e) => setNewTag(e.target.value)}
               value={newTag}
-              />
-              <Button
+            />
+            <Button
               title="Add tag!"
               onClick={handleAddTags}
-              />
+            />
             <div className='tagBox'>
-            { tags && tags.map((tag, index) => (
-                  <Tag
+              {tags.map((tag, index) => (
+                <Tag
                   key={index}
                   title={tag}
-                  />))
-            }
-        '   </div>
-           </div>
-        
+                />
+              ))}
+            </div>
+          </div>
+          <Input
+            title="Price"
+            placeholder="Ex.: 19"
+            onChange={(e) => setPrice(`CAD$ ${e.target.value}`)}
+          />
         </div>
 
-        <div className="formBottom">        
-          <div className="description">        
+        <div className="formBottom">
+          <div className="description">
             <h3>Description</h3>
             <textarea
-            name="" id="" cols="30" rows="4" 
-            placeholder="Enter key points of this masterpiece"
-            onChange={e=> setDescription(e.target.value)}>
-            </textarea>        
+              cols="30"
+              rows="4"
+              placeholder="Enter key points of this masterpiece"
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
           <div className="saveInfoBox">
-            <Button title="Create Dish" onClick={handleCreateDish} form="newDishForm"/>
+            <Button title="Create Dish" onClick={handleCreateDish} form="newDishForm" />
           </div>
-        </div>        
-
-      </Section>     
-      <Footer icon={PiCopyright}/>
+        </div>
+      </Section>
+      <Footer icon={PiCopyright} />
     </Container>
-  )
-} 
+  );
+}

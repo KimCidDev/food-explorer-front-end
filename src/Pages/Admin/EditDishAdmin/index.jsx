@@ -22,17 +22,14 @@ import { MdOutlineFileDownload } from "react-icons/md";
 
 export function EditDishAdmin () {
   const { updateDish, signOut } = useAuth();
-   
   const params = useParams();
   const { id } = params; 
   const [dish, setDish] = useState({});  
   const [tags, setTags] = useState([]);  
-  
   const [ name, setName ] = useState("");
   const [ description, setDescription ] = useState("");
   const [ price, setPrice ] = useState("");
   const [ category, setCategory ] = useState("");
-
   const [ dishImgFile, setdishImgFile ] = useState(null);
 
   const navigate = useNavigate();
@@ -42,37 +39,33 @@ export function EditDishAdmin () {
   }
 
   async function handleUpdateDish() {
-    const dish = {
+    const updatedDish = {
       id,
       name,
       description,
       category,
       price
-    }
-
-    await updateDish({dish, dishImgFile});
+    };
+    await updateDish({dish: updatedDish, dishImgFile});
   }
 
   async function handleAvatarImgUpdate (event) {
     const file = event.target.files[0];
-
-    setdishImgFile(file)
- }
-
- function handleSignOut () {
-  navigate('/');
-  return signOut();
-}
-
-async function handleDeleteDish () {
-  const confirm = window.confirm("Deseja realmente excluir esse prato?")
-
-  if (confirm) {
-    navigate('/');
-    return await api.delete(`/dishes/${id}`);
+    setdishImgFile(file);
   }
-}
 
+  function handleSignOut () {
+    navigate('/');
+    return signOut();
+  }
+
+  async function handleDeleteDish () {
+    const confirm = window.confirm("Deseja realmente excluir esse prato?");
+    if (confirm) {
+      navigate('/');
+      await api.delete(`/dishes/${id}`);
+    }
+  }
 
   useEffect(() => {    
     const token = localStorage.getItem('@foodExplorer:token');
@@ -82,22 +75,16 @@ async function handleDeleteDish () {
       try {
         const response = await api.get(`/dishes/${id}`);
         const dishInfo = response.data.dish;
-        const dishtags = response.data.tags
-        console.log(dishInfo);
+        const dishtags = response.data.tags;
         setDish(dishInfo);
-        console.log(dishtags);
         setTags(dishtags);
       } catch (error) {
         console.error('Error fetching dish information:', error);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);  
       }
     }
 
     fetchClickedDish();
-  }, []);
-  
+  }, [id]);
 
   return (
     <Container>
@@ -105,83 +92,79 @@ async function handleDeleteDish () {
         <Logo />
         <div className="searchAndCart">
           <input 
-          id="searchInput"
-          type="text" 
-          placeholder="Busque por pratos ou ingredientes"/>
+            id="searchInput"
+            type="text" 
+            placeholder="Busque por pratos ou ingredientes"
+          />
           <Button icon={TiShoppingCart} title="Verificar Carrinho" />
         </div>
         <ImExit onClick={handleSignOut}/>
       </Header>
 
       <Section
-      icon={AiOutlineLeft}
-      title="voltar"       
-      onClick={handleNavigateHome}>
-
+        icon={AiOutlineLeft}
+        title="voltar"
+        onClick={handleNavigateHome}
+      >
         <h1>Editar Prato</h1>
-        <form action="" id="newDishForm">
-          
-        <div className="formTop">
-          <div className="dishImg">
+        <form id="editDishForm">
+          <div className="formTop">
+            <div className="dishImg">
+              <Input 
+                title="Imagem do Prato"
+                type="file"
+                id="hiddenInput"
+                onChange={handleAvatarImgUpdate}
+              />
+              <label htmlFor="hiddenInput">
+                <MdOutlineFileDownload />
+                <p>Alterar Imagem</p>
+              </label>
+            </div>
             <Input 
-            title="Imagem do Prato"
-            type="file"
-            id="hiddenInput"
-            onChange={handleAvatarImgUpdate}
+              title="Nome do Prato"
+              placeholder={dish.name}
+              onChange={e => setName(e.target.value)}
             />
-            <label htmlFor="hiddenInput">
-              <MdOutlineFileDownload />
-              <p>Alterar Imagem</p>
-            </label>
+            <Select
+              title="Categoria"
+              value={category || dish.category}
+              onChange={e => setCategory(e.target.value)}
+            />
           </div>
-          <Input 
-          title="Nome do Prato"
-          placeholder={dish.name}
-          onChange={e=> setName(e.target.value)}
-          />
-          <Select
-          title="Categoria"
-          value={dish.category}
-          onChange={e=> setCategory(e.target.value)}
-          />
-        </div>
 
-        <div className="formMiddle">
-          <div className="ingredientBox">
-            <h3>Tags</h3>
-            <div className='tagBox'>
-              { tags && tags.map(tag => (
-              <Tag
-              key={tag.id} 
-              title={tag.name}
-              />))
-              }
+          <div className="formMiddle">
+            <div className="ingredientBox">
+              <h3>Tags</h3>
+              <div className='tagBox'>
+                {tags.map(tag => (
+                  <Tag key={tag.id} title={tag.name} />
+                ))}
+              </div>
+            </div>
+            <Input 
+              title="Preço"
+              placeholder={dish.price} 
+              onChange={e => setPrice(e.target.value)}
+            />          
+          </div>
+
+          <div className="formBottom">        
+            <div className="description">        
+              <h3>Descrição</h3>
+              <textarea
+                placeholder={dish.description}
+                onChange={e => setDescription(e.target.value)}
+              />
+            </div>
+            <div className="saveInfoBox">
+              <Button title="Salvar Alterações" onClick={handleUpdateDish} />
+              <Button title="Excluir Prato" onClick={handleDeleteDish} />
             </div>
           </div>
-          <Input 
-          title="Preço"
-          placeholder={dish.price} 
-          onChange={e=> setPrice(e.target.value)}
-          />          
-        </div>
-
-        <div className="formBottom">        
-          <div className="description">        
-            <h3>Description</h3>
-            <textarea
-            placeholder={dish.description}
-            onChange={e=> setPrice(e.target.value)}>
-            </textarea>        
-          </div>
-          <div className="saveInfoBox">
-            <Button title="Salvar Alterações" onClick={handleUpdateDish} form="newDishForm"/>
-            <Button title="Excluir Prato" onClick={handleDeleteDish} form="newDishForm"/>
-          </div>
-        </div>
         </form>        
-
       </Section>     
       <Footer icon={PiCopyright}/>
     </Container>
-  )
+  );
 } 

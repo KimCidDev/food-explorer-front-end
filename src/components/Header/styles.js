@@ -13,7 +13,7 @@ export const Container = styled.header`
 
   .logo {
     display: flex;
-    align-items: center;
+    margin: 0 15px;
 
     h1 {
       font-size: 21px;

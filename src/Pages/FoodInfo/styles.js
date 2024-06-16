@@ -28,7 +28,7 @@ export const Container = styled.div`
       img {
         width: 100%;
         height: auto;
-        max-width: 300px;
+        max-width: 280px;
         object-fit: cover;
         margin-right: 60px;
       }
@@ -71,7 +71,7 @@ export const Container = styled.div`
         gap: 10px;
 
         img {
-          min-width: 150px;
+          min-width: 250px;
           max-width: 100%;
         }
 
@@ -115,6 +115,7 @@ export const Container = styled.div`
       }
 
       @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+
         img {
           margin: 0;
         }
@@ -171,17 +172,17 @@ export const SectionWrapper = styled.div`
     margin: 25px 20px;
 
     @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-      margin: 20px clamp(80px, 70%, 120px);
+      margin: 20px clamp(40px, 10%, 80px);
 
       .childrenBox {
         margin: 30px;
         display: flex;
         flex-direction: row;
-        gap: 40px;
+        gap: clamp(20px, 5%, 40px);
       }
     }
 
-    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
       .childrenBox {
         display: flex;
         flex-direction: column;
