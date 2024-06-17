@@ -22,8 +22,8 @@ export function AppRoutes() {
       
       
       <Route path="/pay" element={<Pay />} />
-      <Route path="/sucess" element={<Success />} />
-      <Route path="/cancelPay" element={<CancelPay />} />
+      <Route path="/Sucess" element={<Success />} />
+      <Route path="/CancelPay" element={<CancelPay />} />
 
 
     </Routes>
