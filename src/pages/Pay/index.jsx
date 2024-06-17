@@ -57,19 +57,25 @@ export function Pay() {
     <Container>
       <Header icon={AiOutlineMenu}>
         <div className="header-content">
-          <h2>Olá, {user.name}</h2>
+          <h2>Hello, {user.name}</h2>
           <ImExit onClick={handleSignOut} />
         </div>
       </Header>
 
       <div className="content">
-        <Elements stripe={stripePromise}>
-          <h2>Pague com o cartão</h2>
-          <Button title="Pagar" onClick={handleCheckout} />
-        </Elements>
+        <section>
+          <h2>Choose a delivery date</h2>
+          <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+        </section>
 
-        <h3>Escolha uma data para a entrega</h3>
-        <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+        <section>
+          <h2>Pay with card</h2>
+          <Elements stripe={stripePromise}>
+            <Button title="Pay" onClick={handleCheckout} className="pay-button" />
+          </Elements>
+        </section>
+        
+        <img src="path/to/your/image.jpg" alt="Happy people eating" className="promo-image" />
       </div>
 
       <Footer icon={PiCopyright} />

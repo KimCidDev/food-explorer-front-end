@@ -27,31 +27,33 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding: 20px;
+
+    section {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px 0;
+      text-align: center;
+    }
   }
 
-  h2,
-  h3 {
+  h2 {
     color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-    margin: 20px 0;
+    margin-bottom: 20px;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: ${({ theme }) => theme.COLORS.FORM_BG};
+  .pay-button {
+    width: 200px;
+    background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+    &:hover {
+      background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
+    }
+  }
+
+  .promo-image {
+    margin-top: 30px;
+    width: 80%;
+    max-width: 600px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-    button {
-      margin-top: 20px;
-      background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-      &:hover {
-        background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
-      }
-    }
   }
 `;
