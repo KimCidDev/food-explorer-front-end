@@ -14,7 +14,8 @@ import axios from 'axios';
 import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
 import { useNavigate } from 'react-router-dom';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
 
 export function Pay() {
   const { user, signOut } = useAuth();
