@@ -14,8 +14,8 @@ import axios from 'axios';
 import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
 import { useNavigate } from 'react-router-dom';
 
+// Use Vite environment variable
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-
 
 export function Pay() {
   const { user, signOut } = useAuth();
@@ -58,7 +58,7 @@ export function Pay() {
     }));
 
     try {
-      const { data: { id } } = await axios.post(`${import.meta.env.REACT_APP_API_URL}payments/create-checkout-session`, {
+      const { data: { id } } = await axios.post(`${import.meta.env.VITE_API_URL}/payments/create-checkout-session`, {
         items,
       });
 
