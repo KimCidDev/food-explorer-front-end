@@ -63,8 +63,7 @@ export const Container = styled.div`
         }
       }
 
-      .addButton,
-      .removeButton {
+      button {
         height: 40px;
         width: clamp(40px, 50%, 100px);
         background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
@@ -81,7 +80,7 @@ export const Container = styled.div`
         }
 
         svg {
-          fill: #fff !important;
+          fill: ${({ theme }) => theme.COLORS.TEXT_COLOR} !important;
         }
       }
     }
@@ -129,7 +128,9 @@ export const ProceedButton = styled.button`
   }
 `;
 
-export const RemoveButton = styled.button`
+export const RemoveButton = styled.button.attrs({
+  $icon: true
+})`
   height: 40px;
   width: clamp(40px, 50%, 100px);
   background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
@@ -146,6 +147,6 @@ export const RemoveButton = styled.button`
   }
 
   svg {
-    fill: #fff !important;
+    fill: white;
   }
 `;

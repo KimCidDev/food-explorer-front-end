@@ -152,9 +152,10 @@ export function Cart() {
               <p>{dish.price}</p>
               <p>{dish.quantity}</p>
               <RemoveButton
-                icon={BsXLg}
                 onClick={() => handleRemoveFromCart(dish.id)}
-              />
+              >
+                <BsXLg />
+              </RemoveButton>
             </div>
           ))
         )}
