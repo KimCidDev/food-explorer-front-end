@@ -4,9 +4,9 @@ import { Cart } from '../pages/Cart';
 import { FoodInfo } from '../pages/FoodInfo';
 import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
 import { EditDishAdmin } from '../pages/Admin/EditDishAdmin';
-import { Pay } from '../pages/Pay'; // Import the Pay component
-import { Success } from '../pages/Success' // Import the Pay component;
-import { CancelPay } from '../pages/CancelPay'; // Import the Pay component
+import { Pay } from '../pages/Pay';
+import { Success } from '../pages/Success';
+import { CancelPay } from '../pages/CancelPay';
 import { useAuth } from '../hooks/auth';
 
 export function AppRoutes() {
@@ -22,8 +22,8 @@ export function AppRoutes() {
       
       
       <Route path="/pay" element={<Pay />} />
-      <Route path="/Sucess" element={<Success />} />
-      <Route path="/CancelPay" element={<CancelPay />} />
+      <Route path="/success" element={<Success />} />
+      <Route path="/cancelpay" element={<CancelPay />} />
 
 
     </Routes>
