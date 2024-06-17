@@ -6,8 +6,9 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 export const Container = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  height: 66px;
   padding: 0 40px;
+  justify-content: space-between;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY};
   color: #ffffff; /* Ensure text color is white */
 

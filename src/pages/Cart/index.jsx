@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import { useNavigate } from 'react-router-dom';
-
 import { Container } from './styles';
 import { BiMinus } from 'react-icons/bi';
 import { BsPlusLg, BsSearch, BsXLg } from 'react-icons/bs';
@@ -13,8 +11,9 @@ import { Button } from '../../components/Button';
 
 import { PiCopyright } from 'react-icons/pi';
 
-export function Cart() {
+export function Cart () {
   const { signOut } = useAuth();
+
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
@@ -131,16 +130,16 @@ export function Cart() {
           placeholder="Procure pelo prato ou ingrediente desejado"
           type="text"
           icon={BsSearch}
-          onChange={((e) => setSearch(e.target.value))}
+          onChange={(e) => setSearch(e.target.value)}
         />
         {search ? 
-            (
-              dishSearchResult.map((dish) => 
+          (
+            dishSearchResult.map((dish) => 
               <div className='overviewBox' key={dish.id}> 
                 <h3>{dish.name}</h3>
                 <p>{dish.price}</p>
                 <div className='howManyBox'>
-                  <BiMinus onClick={() => subtractFromTemporaryCart(dish.id)}/>
+                  <BiMinus onClick={() => subtractFromTemporaryCart(dish.id)} />
                   <p>{temporaryCart.find(item => item.id === dish.id)?.quantity || 1}</p>
                   <BsPlusLg onClick={() => addToTemporaryCart(dish.id)} />                      
                   <Button
@@ -150,25 +149,24 @@ export function Cart() {
                 </div>
               </div>
             )
-            ) : 
-            (
-              cart.map((dish) => (
-                <div className='overviewBox' key={dish.id}> 
-                  <h3>{dish.name}</h3>
-                  <p>{dish.price}</p>
-                  <p>{dish.quantity}</p>
-                  <Button
-                    icon={BsXLg}
-                    onClick={() => handleRemoveFromCart(dish.id)}
-                  />
-                </div>
-              ))
-            )
+          ) : 
+          (
+            cart.map((dish) => (
+              <div className='overviewBox' key={dish.id}> 
+                <h3>{dish.name}</h3>
+                <p>{dish.price}</p>
+                <p>{dish.quantity}</p>
+                <Button
+                  icon={BsXLg}
+                  onClick={() => handleRemoveFromCart(dish.id)}
+                />
+              </div>
+            ))
+          )
         }
-        <Button title="Proceed to Payment" onClick={() => navigate('/pay')} />
         <h2 onClick={handleSignOut}>Sair</h2>
       </div>
       <Footer icon={PiCopyright} />
     </Container>
-  )
+  );
 }

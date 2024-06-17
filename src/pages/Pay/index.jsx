@@ -13,7 +13,9 @@ import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import axios from 'axios';
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+//const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
+
 
 export function Pay() {
   const { user, signOut } = useAuth();
