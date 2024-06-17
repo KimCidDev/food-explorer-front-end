@@ -94,7 +94,7 @@ export function FoodInfo () {
 
   return (
     <Container>
-      <Header icon={AiOutlineMenu} to="/cart">
+      <Header icon={TiShoppingCart} to="/cart">
         <Logo />        
         <div className="searchAndCart">
           <input

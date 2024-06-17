@@ -9,7 +9,8 @@ import { Button } from '../../components/Button';
 import DatePicker from '../../components/DatePicker';
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
-import { AiOutlineMenu } from 'react-icons/ai';
+import { TiShoppingCart } from 'react-icons/ti';
+
 import axios from 'axios';
 import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -70,7 +71,7 @@ export function Pay() {
   return (
     <Container>
       <header>
-        <Header icon={AiOutlineMenu} to="/cart">
+        <Header icon={TiShoppingCart} to="/cart">
           <p>Olá, {user.name}</p>
         </Header>
         <ImExit onClick={handleSignOut} />

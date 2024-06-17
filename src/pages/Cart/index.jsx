@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { Container, RemoveButton, ProceedButton } from './styles';
-import { BiMinus, BiPlus } from 'react-icons/bi';
-import { BsSearch, BsXLg } from 'react-icons/bs';
+
+import { Logo } from '../../components/Logo';
 import { Input } from '../../components/Input';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 
 import { PiCopyright } from 'react-icons/pi';
+import { BiMinus, BiPlus } from 'react-icons/bi';
+import { BsSearch, BsXLg } from 'react-icons/bs';
+
 import { api } from '../../services/api';
 
 export function Cart() {
@@ -119,7 +122,8 @@ export function Cart() {
   return (
     <Container>
       <Header icon={BsXLg} to='/'>
-        <h1>Basket</h1>
+        <Logo />
+        <h3>Basket</h3>
       </Header>
       <div className="itemSearchBox">
         <Input
