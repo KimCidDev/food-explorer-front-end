@@ -1,3 +1,5 @@
+// src/pages/CancelPay/index.jsx
+
 import React from 'react';
 import { Container } from './styles';
 import { Header } from '../../components/Header';
@@ -8,17 +10,17 @@ import { useNavigate } from 'react-router-dom';
 export function CancelPay() {
   const navigate = useNavigate();
 
-  const handleNavigateHome = () => {
+  const handleGoHome = () => {
     navigate('/');
   };
 
   return (
     <Container>
       <Header />
-      <div className="content">
-        <h1>Payment Canceled</h1>
-        <p>Your payment was canceled. If you have any questions or need assistance, please contact our support.</p>
-        <Button title="Go to Home" onClick={handleNavigateHome} />
+      <div className="contentWrapper">
+        <h1>Payment Cancelled</h1>
+        <p>Your payment was cancelled. Please try again if you wish to complete the purchase.</p>
+        <Button title="Go Home" onClick={handleGoHome} />
       </div>
       <Footer />
     </Container>
