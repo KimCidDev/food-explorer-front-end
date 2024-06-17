@@ -57,7 +57,7 @@ export function Pay() {
     <Container>
       <Header icon={AiOutlineMenu}>
         <div className="header-content">
-          <h2>Hello, {user.name}</h2>
+          <p>Hello, {user.name}</p>
           <ImExit onClick={handleSignOut} />
         </div>
       </Header>
