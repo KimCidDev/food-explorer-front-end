@@ -1,3 +1,4 @@
+// src/pages/Pay/index.jsx
 import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -55,21 +56,23 @@ export function Pay() {
   return (
     <Container>
       <Header icon={AiOutlineMenu}>
-        <h2>Olá, {user.name}</h2>
-        <ImExit onClick={handleSignOut} />
+        <div className="header-content">
+          <h2>Olá, {user.name}</h2>
+          <ImExit onClick={handleSignOut} />
+        </div>
       </Header>
 
-      <Elements stripe={stripePromise}>
-        <h2>Pague com o cartão</h2>
-        <Button title="Pagar" onClick={handleCheckout} />
-      </Elements>
+      <div className="content">
+        <Elements stripe={stripePromise}>
+          <h2>Pague com o cartão</h2>
+          <Button title="Pagar" onClick={handleCheckout} />
+        </Elements>
 
-      <h3>Escolha uma data para a entrega</h3>
-      <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+        <h3>Escolha uma data para a entrega</h3>
+        <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+      </div>
 
       <Footer icon={PiCopyright} />
     </Container>
   );
 }
-
-
