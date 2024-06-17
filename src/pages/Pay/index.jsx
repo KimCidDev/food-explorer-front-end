@@ -6,12 +6,13 @@ import { Container } from './styles';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
+import DatePicker from '../../components/DatePicker';
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import axios from 'axios';
 
-const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 export function Pay() {
   const { user, signOut } = useAuth();
@@ -37,7 +38,7 @@ export function Pay() {
 
     const items = cart.map(item => ({
       name: item.name,
-      price: item.price,
+      price: item.price * 100, // Convert to cents
       quantity: item.quantity,
     }));
 
@@ -63,7 +64,12 @@ export function Pay() {
         <Button title="Pagar" onClick={handleCheckout} />
       </Elements>
 
+      <h3>Escolha uma data para a entrega</h3>
+      <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+
       <Footer icon={PiCopyright} />
     </Container>
   );
 }
+
+
