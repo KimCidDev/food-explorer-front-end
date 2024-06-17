@@ -5,7 +5,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   overflow-y: auto;
-  padding-bottom: 150px;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
   .section {
@@ -175,10 +174,9 @@ export const SectionWrapper = styled.div`
       margin: 20px clamp(40px, 10%, 80px);
 
       .childrenBox {
-        margin: 30px;
         display: flex;
+        max-height: 450px;
         flex-direction: row;
-        gap: clamp(20px, 5%, 40px);
       }
     }
 
