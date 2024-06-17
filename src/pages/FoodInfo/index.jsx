@@ -29,6 +29,7 @@ export function FoodInfo () {
 
   const [dish, setDish] = useState(null);
   const [tags, setTags] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   function handleNavigateHome () {
     navigate('/');
@@ -52,9 +53,7 @@ export function FoodInfo () {
         const response = await api.get(`/dishes/${id}`);
         const dishInfo = response.data.dish;
         const dishtags = response.data.tags;
-        console.log(dishInfo);
         setDish(dishInfo);
-        console.log(dishtags);
         setTags(dishtags);
 
       } catch (error) {
@@ -65,23 +64,49 @@ export function FoodInfo () {
     fetchDish();
   }, [id]);
 
+  const handleAddToCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem('@foodExplorer:cart')) || [];
+    const existingItem = cartItems.find(item => item.id === dish.id);
+
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      cartItems.push({ ...dish, quantity });
+    }
+
+    localStorage.setItem('@foodExplorer:cart', JSON.stringify(cartItems));
+    alert('Item added to cart!');
+  };
+
+  const handleIncreaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   if (!dish) {
     return <Breathing size="large"/>;
   }
 
   return (
     <Container>
-      <Header icon={AiOutlineMenu}>
+      <Header icon={AiOutlineMenu} to="/cart">
         <Logo />        
         <div className="searchAndCart">
           <input
-          id="searchInput"
-          type="text"
-          placeholder='Search for something else'
+            id="searchInput"
+            type="text"
+            placeholder='Search for something else'
           />
           <Button 
-          icon={TiShoppingCart} 
-          title="View Basket" />
+            icon={TiShoppingCart} 
+            title="View Basket" 
+            onClick={() => navigate('/cart')}
+          />
         </div>
         <ImExit onClick={handleSignOut}/>
       </Header>
@@ -93,8 +118,8 @@ export function FoodInfo () {
           onClick={handleNavigateHome}>
 
           <img       
-          src={`https://food-explorer-back-end-w9f3.onrender.com/files/${dish.dishImg}`}  
-          alt={dish.description} />
+            src={`https://food-explorer-back-end-w9f3.onrender.com/files/${dish.dishImg}`}  
+            alt={dish.description} />
 
           <div className="textContent">
             <p>{dish.description}</p>
@@ -107,29 +132,29 @@ export function FoodInfo () {
 
             <div className="addToBasket">     
               { user.isAdmin ?
-              <div className="adminEditButton">
-                <Button
-                 title='Edit Dish'
-                 onClick={handleEditDish}
-                 /> 
-              </div>
-
+                <div className="adminEditButton">
+                  <Button
+                   title='Edit Dish'
+                   onClick={handleEditDish}
+                   /> 
+                </div>
               :       
-              <div className="howManyBox">
-                <BiMinus/>
-                <p>01</p>
-                <BsPlusLg/>
-                <Button 
-                title='Add to Basket'
-                />
-              </div> 
+                <div className="howManyBox">
+                  <BiMinus onClick={handleDecreaseQuantity} />
+                  <p>{quantity}</p>
+                  <BsPlusLg onClick={handleIncreaseQuantity} />
+                  <Button 
+                    title='Add to Basket'
+                    onClick={handleAddToCart}
+                  />
+                </div> 
               }         
-           </div>
-         </div>
-       </Section>
-     </SectionWrapper>
+            </div>
+          </div>
+        </Section>
+      </SectionWrapper>
 
       <Footer icon={PiCopyright}/>
     </Container>
-  )
+  );
 }

@@ -115,7 +115,6 @@ export const Container = styled.div`
       }
 
       @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
-
         img {
           margin: 0;
         }
@@ -159,6 +158,7 @@ export const Container = styled.div`
 
       svg {
         color: ${({ theme }) => theme.COLORS.ICON_COLOR};
+        cursor: pointer;
       }
     }
   }

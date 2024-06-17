@@ -12,26 +12,39 @@ import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import axios from 'axios';
 import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
+import { useNavigate } from 'react-router-dom';
 
 //const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
 
 export function Pay() {
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem('@foodExplorer:cart')) || [];
     setCart(cartItems);
+    calculateTotal(cartItems);
   }, []);
+
+  const extractPrice = (priceString) => {
+    return parseFloat(priceString.replace('CAD$ ', ''));
+  };
+
+  const calculateTotal = (cartItems) => {
+    const total = cartItems.reduce((acc, item) => acc + extractPrice(item.price) * item.quantity, 0);
+    setTotalPrice(total.toFixed(2));
+  };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
   const handleSignOut = () => {
-    navigate('/');
+    navigate('/cart');
     return signOut();
   };
 
@@ -40,7 +53,7 @@ export function Pay() {
 
     const items = cart.map(item => ({
       name: item.name,
-      price: item.price * 100, // Convert to cents
+      price: extractPrice(item.price) * 100, // Convert to cents
       quantity: item.quantity,
     }));
 
@@ -57,26 +70,34 @@ export function Pay() {
   return (
     <Container>
       <header>
-        <AiOutlineMenu />
-        <h2>Olá, {user.name}</h2>
+        <Header icon={AiOutlineMenu} to="/cart">
+          <p>Olá, {user.name}</p>
+        </Header>
         <ImExit onClick={handleSignOut} />
       </header>
 
       <div className="contentWrapper">
         <div className="textWrapper">
+          <div className="cartSummary">
+            <h3>Order Summary</h3>
+            {cart.map(item => (
+              <p key={item.id}>{item.name} x {item.quantity}: CAD$ {(extractPrice(item.price) * item.quantity).toFixed(2)}</p>
+            ))}
+            <h2>Total: CAD$ {totalPrice}</h2>
+          </div>
+
           <div className="datePickerWrapper">
             <h3>Choose a delivery date</h3>
             <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
-          </div>
-
-          <div className="paymentWrapper">
-            <h2>Pay with card</h2>
-            <Button title="Pay" onClick={handleCheckout} />
           </div>
         </div>
 
         <div className="imageWrapper">
           <img src={EnjoyItAsset} alt="Enjoy your meal" />
+          <div className="paymentWrapper">
+            <h2>Pay with card</h2>
+            <Button title="Pay" onClick={handleCheckout} />
+          </div>
         </div>
       </div>
 
