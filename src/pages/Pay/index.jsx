@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useAuth } from '../../hooks/auth';
-import { Container, Section, DatePickerContainer, PaymentButton } from './styles';
+import { Container } from './styles';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { Button } from '../../components/Button';
 import DatePicker from '../../components/DatePicker';
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import axios from 'axios';
+import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
-// const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
+//const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
 
 export function Pay() {
   const { user, signOut } = useAuth();
@@ -54,24 +56,29 @@ export function Pay() {
 
   return (
     <Container>
-      <Header icon={AiOutlineMenu}>
+      <header>
+        <AiOutlineMenu />
         <h2>Olá, {user.name}</h2>
         <ImExit onClick={handleSignOut} />
-      </Header>
+      </header>
 
-      <Section>
-        <h2>Choose a delivery date</h2>
-        <DatePickerContainer>
-          <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
-        </DatePickerContainer>
-      </Section>
+      <div className="contentWrapper">
+        <div className="textWrapper">
+          <div className="datePickerWrapper">
+            <h3>Choose a delivery date</h3>
+            <DatePicker selectedDate={selectedDate} onDateChange={handleDateChange} />
+          </div>
 
-      <Section>
-        <h2>Pay with card</h2>
-        <Elements stripe={stripePromise}>
-          <PaymentButton onClick={handleCheckout}>Pay</PaymentButton>
-        </Elements>
-      </Section>
+          <div className="paymentWrapper">
+            <h2>Pay with card</h2>
+            <Button title="Pay" onClick={handleCheckout} />
+          </div>
+        </div>
+
+        <div className="imageWrapper">
+          <img src={EnjoyItAsset} alt="Enjoy your meal" />
+        </div>
+      </div>
 
       <Footer icon={PiCopyright} />
     </Container>
