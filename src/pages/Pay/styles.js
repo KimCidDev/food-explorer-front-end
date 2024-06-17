@@ -1,59 +1,54 @@
-// src/pages/Pay/styles.js
 import styled from 'styled-components';
-import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-  padding-bottom: 90px;
-  overflow-y: auto;
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
-
   display: flex;
   flex-direction: column;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+  align-items: center;
+  padding: 20px;
+`;
 
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-  }
-
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-
-    section {
-      width: 100%;
-      max-width: 400px;
-      margin: 20px 0;
-      text-align: center;
-    }
-  }
+export const Section = styled.div`
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: ${({ theme }) => theme.COLORS.FORM_BG};
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h2 {
-    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
     margin-bottom: 20px;
+    color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
   }
+`;
 
-  .pay-button {
-    width: 200px;
-    background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
-    &:hover {
-      background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
-    }
-  }
+export const DatePickerContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
-  .promo-image {
-    margin-top: 30px;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+export const PaymentButton = styled.button`
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
+  background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.COLORS.BUTTON_HOVER_COLOR};
   }
 `;
