@@ -5,6 +5,8 @@ import { FoodInfo } from '../pages/FoodInfo';
 import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
 import { EditDishAdmin } from '../pages/Admin/EditDishAdmin';
 import { Pay } from '../pages/Pay'; // Import the Pay component
+import { Success } from '../pages/Success' // Import the Pay component;
+import { CancelPay } from '../pages/CancelPay'; // Import the Pay component
 import { useAuth } from '../hooks/auth';
 
 export function AppRoutes() {
@@ -17,7 +19,13 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/foodinfo/:id" element={<FoodInfo />} />
-      <Route path="/pay" element={<Pay />} /> {/* Add the route for Pay */}
+      
+      
+      <Route path="/pay" element={<Pay />} />
+      <Route path="/sucess" element={<Success />} />
+      <Route path="/cancelPay" element={<CancelPay />} />
+
+
     </Routes>
   );
 }
