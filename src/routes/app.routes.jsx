@@ -5,8 +5,8 @@ import { FoodInfo } from '../pages/FoodInfo';
 import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
 import { EditDishAdmin } from '../pages/Admin/EditDishAdmin';
 import { Pay } from '../pages/Pay';
-import { Success } from '../pages/Success';
-import { CancelPay } from '../pages/CancelPay';
+import { PayDone } from '../pages/PayDone';
+import { PayFail } from '../pages/PayFail';
 import { useAuth } from '../hooks/auth';
 
 export function AppRoutes() {
@@ -17,11 +17,11 @@ export function AppRoutes() {
       {user.isAdmin && <Route path="/admin/newdish" element={<NewDishAdmin />} />}
       {user.isAdmin && <Route path="/admin/editdish/:id" element={<EditDishAdmin />} />}
       <Route path="/" element={<Home />} />
-      <Route path="/cart" element={<Success />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/foodinfo/:id" element={<FoodInfo />} />
       <Route path="/pay" element={<Pay />} />
-      <Route path="/success" element={<Success />} />
-      <Route path="/cancelpay" element={<CancelPay />} />
+      <Route path="/paydone" element={<PayDone />} />
+      <Route path="/payfail" element={<PayFail />} />
       {/* Catch-all route */}
       <Route path="*" element={<Home />} />
     </Routes>

@@ -7,7 +7,7 @@ import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 
-export function CancelPay() {
+export function PayFail() {
   const navigate = useNavigate();
 
   const handleGoHome = () => {

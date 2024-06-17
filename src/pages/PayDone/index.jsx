@@ -7,7 +7,7 @@ import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 
-export function Success() {
+export function PayDone() {
   const navigate = useNavigate();
 
   const handleGoHome = () => {
