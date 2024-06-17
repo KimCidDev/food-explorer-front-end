@@ -10,13 +10,11 @@ import DatePicker from '../../components/DatePicker';
 import { ImExit } from 'react-icons/im';
 import { PiCopyright } from 'react-icons/pi';
 import { TiShoppingCart } from 'react-icons/ti';
-
 import axios from 'axios';
 import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
 import { useNavigate } from 'react-router-dom';
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
-// SWITCH TO DEV MODE  - const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 export function Pay() {
   const { user, signOut } = useAuth();
@@ -58,13 +56,17 @@ export function Pay() {
       quantity: item.quantity,
     }));
 
-    const { data: { id } } = await axios.post('http://localhost:5555/payments/create-checkout-session', {
-      items,
-    });
+    try {
+      const { data: { id } } = await axios.post(`${process.env.REACT_APP_API_URL}/payments/create-checkout-session`, {
+        items,
+      });
 
-    const { error } = await stripe.redirectToCheckout({ sessionId: id });
-    if (error) {
-      console.error('Error during redirect to checkout:', error);
+      const { error } = await stripe.redirectToCheckout({ sessionId: id });
+      if (error) {
+        console.error('Error during redirect to checkout:', error);
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
     }
   };
 
