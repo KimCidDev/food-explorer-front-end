@@ -17,7 +17,7 @@ export function AppRoutes() {
       {user.isAdmin && <Route path="/admin/newdish" element={<NewDishAdmin />} />}
       {user.isAdmin && <Route path="/admin/editdish/:id" element={<EditDishAdmin />} />}
       <Route path="/" element={<Home />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={<Success />} />
       <Route path="/foodinfo/:id" element={<FoodInfo />} />
       <Route path="/pay" element={<Pay />} />
       <Route path="/success" element={<Success />} />
