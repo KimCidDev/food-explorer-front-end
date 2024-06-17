@@ -28,7 +28,8 @@ export const Container = styled.div`
 
     .overviewBox {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
+      gap: 40px;
       align-items: center;
       width: 100%;
       margin: 15px 0;
@@ -79,7 +80,7 @@ export const Container = styled.div`
         }
 
         svg {
-          fill: white;
+          fill: ${({ theme }) => theme.COLORS.TEXT_COLOR} !important;
         }
       }
     }
@@ -144,6 +145,6 @@ export const RemoveButton = styled.button`
   }
 
   svg {
-    fill: white;
+    fill: ${({ theme }) => theme.COLORS.TEXT_COLOR} !important;
   }
 `;
