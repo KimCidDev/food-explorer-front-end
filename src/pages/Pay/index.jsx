@@ -15,8 +15,8 @@ import axios from 'axios';
 import EnjoyItAsset from '../../assets/EnjoyItAsset.jpg';
 import { useNavigate } from 'react-router-dom';
 
-//const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
-const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+// SWITCH TO DEV MODE  - const stripePromise = loadStripe('pk_test_51PSQvcLWJE5BtmPhRMwDiLJJqBMlL7bEiLA2mbZ5cwB3ZjyQXpCguRvfgZbDHbydAqfsX3k5LIRjkZYOZrO4qpXn00cqrq3SZY');
 
 export function Pay() {
   const { user, signOut } = useAuth();
