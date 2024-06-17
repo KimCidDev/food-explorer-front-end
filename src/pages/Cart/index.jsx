@@ -132,13 +132,13 @@ export function Cart() {
           dishSearchResult.map((dish) =>
             <div className='overviewBox' key={dish.id}>
               <h3>{dish.name}</h3>
-              <p>CAD$ {dish.price}</p>
+              <p>{dish.price}</p>
               <div className='howManyBox'>
                 <BiMinus onClick={() => subtractFromTemporaryCart(dish.id)} />
                 <p>{temporaryCart.find(item => item.id === dish.id)?.quantity || 1}</p>
                 <BiPlus onClick={() => addToTemporaryCart(dish.id)} />
                 <Button
-                  className="removeButton"
+                  className="addButton"
                   icon={BiPlus}
                   onClick={() => handleSaveToCart(dish.id)}
                 />

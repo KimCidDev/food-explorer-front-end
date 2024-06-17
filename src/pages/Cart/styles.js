@@ -63,7 +63,8 @@ export const Container = styled.div`
         }
       }
 
-      button {
+      .addButton,
+      .removeButton {
         height: 40px;
         width: clamp(40px, 50%, 100px);
         background-color: ${({ theme }) => theme.COLORS.BUTTON_COLOR};
@@ -80,7 +81,7 @@ export const Container = styled.div`
         }
 
         svg {
-          fill: ${({ theme }) => theme.COLORS.TEXT_COLOR} !important;
+          fill: #fff !important;
         }
       }
     }
@@ -145,6 +146,6 @@ export const RemoveButton = styled.button`
   }
 
   svg {
-    fill: ${({ theme }) => theme.COLORS.TEXT_COLOR} !important;
+    fill: #fff !important;
   }
 `;
