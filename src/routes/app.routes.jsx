@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home } from '../pages/Home'; // Ensure this path is correct
+import { Home } from '../pages/Home';
 import { Cart } from '../pages/Cart';
 import { FoodInfo } from '../pages/FoodInfo';
 import { NewDishAdmin } from '../pages/Admin/NewDishAdmin';
@@ -19,13 +19,11 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/foodinfo/:id" element={<FoodInfo />} />
-      
-      
       <Route path="/pay" element={<Pay />} />
       <Route path="/success" element={<Success />} />
       <Route path="/cancelpay" element={<CancelPay />} />
-
-
+      {/* Catch-all route */}
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 }
