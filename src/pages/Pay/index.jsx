@@ -57,6 +57,7 @@ export function Pay() {
     }));
 
     try {
+      console.log('Stripe Public Key:', process.env.REACT_APP_STRIPE_PUBLIC_KEY);
       const { data: { id } } = await axios.post(`${process.env.REACT_APP_API_URL}/payments/create-checkout-session`, {
         items,
       });
